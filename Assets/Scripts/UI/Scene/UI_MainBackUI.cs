@@ -46,7 +46,7 @@ public class UI_MainBackUI : UI_Scene
 
         Button CreateScheduleBTN = Get<Button>((int)Buttons.CreateScheduleBTN);
 
-        CreateScheduleBTN.onClick.AddListener(ShowOrCloseCreateSchedulePopup);
+        CreateScheduleBTN.onClick.AddListener(ShowSchedulePopup);
         GetButton((int)Buttons.GameStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Game));
         GetButton((int)Buttons.SongStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Song));
         GetButton((int)Buttons.ChatStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Chat));
@@ -111,13 +111,17 @@ public class UI_MainBackUI : UI_Scene
             temp = "위험";
         }
         else temp = "심각";
-
         return temp;
     }
 
-    public void ShowOrCloseCreateSchedulePopup()
+    public void ShowCreateScheduleBTN()
+    {
+        Get<Button>((int)Buttons.CreateScheduleBTN).gameObject.SetActive(true);
+    }
+
+    public void ShowSchedulePopup()
     {
          Managers.UI_Manager.ShowPopupUI<UI_SchedulePopup>();
-        Get<Button>((int)Buttons.CreateScheduleBTN).gameObject.SetActive(false);
+         Get<Button>((int)Buttons.CreateScheduleBTN).gameObject.SetActive(false);
     }
 }

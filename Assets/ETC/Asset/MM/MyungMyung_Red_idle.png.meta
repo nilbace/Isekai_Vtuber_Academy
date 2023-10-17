@@ -1,19 +1,22 @@
 fileFormatVersion: 2
-guid: 753ad035e0f870f4ca9d2d899f593caf
+guid: e480556fba0385b4abca170570e4f3f4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7548804895282987194
-    second: Days_0
+      213: 4382019062885078568
+    second: MyungMyung_Red_idle_0
   - first:
-      213: -5209249354478285736
-    second: Days_1
+      213: -5989228823897354461
+    second: MyungMyung_Red_idle_1
   - first:
-      213: -1684415861928719608
-    second: Days_2
+      213: -4253151523377224627
+    second: MyungMyung_Red_idle_2
   - first:
-      213: 2913366585927356401
-    second: Days_3
+      213: -3621834103442842905
+    second: MyungMyung_Red_idle_3
+  - first:
+      213: -1353788650650284322
+    second: MyungMyung_Red_idle_4
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -101,6 +104,18 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -116,13 +131,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Days_0
+      name: MyungMyung_Red_idle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 36
-        height: 36
+        width: 74
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab082169e0eb2c860800000000000000
-      internalID: 7548804895282987194
+      spriteID: 826514aee1f00dc30800000000000000
+      internalID: 4382019062885078568
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Days_1
+      name: MyungMyung_Red_idle_1
       rect:
         serializedVersion: 2
-        x: 36
+        x: 74
         y: 0
-        width: 36
-        height: 36
+        width: 74
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85c83e7df4705b7b0800000000000000
-      internalID: -5209249354478285736
+      spriteID: 32f4111fd1cf1eca0800000000000000
+      internalID: -5989228823897354461
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Days_2
+      name: MyungMyung_Red_idle_2
       rect:
         serializedVersion: 2
-        x: 72
+        x: 148
         y: 0
-        width: 36
-        height: 36
+        width: 74
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80b84bfa2b0cf98e0800000000000000
-      internalID: -1684415861928719608
+      spriteID: d4460314935c9f4c0800000000000000
+      internalID: -4253151523377224627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Days_3
+      name: MyungMyung_Red_idle_3
       rect:
         serializedVersion: 2
-        x: 108
+        x: 222
         y: 0
-        width: 36
-        height: 36
+        width: 74
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,8 +208,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ff41b6697b5e6820800000000000000
-      internalID: 2913366585927356401
+      spriteID: 7ead4ec7219acbdc0800000000000000
+      internalID: -3621834103442842905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyungMyung_Red_idle_4
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 0
+        width: 74
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edec8091560663de0800000000000000
+      internalID: -1353788650650284322
       vertices: []
       indices: 
       edges: []

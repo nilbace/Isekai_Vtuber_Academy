@@ -29,8 +29,8 @@ public class UI_SchedulePopup : UI_Popup
         RestBTN,
         GoOutBTN,
 
-        LeftPageBTN,
-        RightPageBTN,
+        StartScheduleBTN,
+        BackBTN,
 
     }
     enum Texts
@@ -43,7 +43,7 @@ public class UI_SchedulePopup : UI_Popup
     {
         Days7,
         Contents3,
-        SubContents4,
+        SubContents,
         Sub0, Sub1, Sub2, Sub3, 
     }
 
@@ -76,7 +76,6 @@ public class UI_SchedulePopup : UI_Popup
         Bind<Button>(typeof(Buttons));
         Bind<Image>(typeof(Images));
 
-        GetGameObject((int)GameObjects.SubContents4).SetActive(false);
 
         for (int i = 0; i<7; i++)
         {
@@ -85,13 +84,12 @@ public class UI_SchedulePopup : UI_Popup
             temp.onClick.AddListener( () => ClickDay(inttemp));
         }
 
+        GetGameObject((int)GameObjects.SubContents).SetActive(false);
         GetButton((int)Buttons.BroadCastBTN).onClick.AddListener(BroadCastBTN);
         GetButton((int)Buttons.RestBTN).onClick.AddListener(RestBTN);
         GetButton((int)Buttons.GoOutBTN).onClick.AddListener(GoOutBTN);
 
-        GetButton((int)Buttons.LeftPageBTN).onClick.AddListener(GoLeftPage);
-        GetButton((int)Buttons.RightPageBTN).onClick.AddListener(GoRightPage);
-
+        GetButton((int)Buttons.BackBTN).onClick.AddListener( () => Managers.UI_Manager.ClosePopupUI());
         ClickDay(0); //기본 월요일 선택
     }
 
@@ -114,17 +112,14 @@ public class UI_SchedulePopup : UI_Popup
     SevenDays _nowSelectedDay = SevenDays.Monday;
     OneDayScheduleData[] _SevenDayScheduleDatas = new OneDayScheduleData[7];
     
-
     void ClickDay(int i)
     {
         _nowSelectedDay = (SevenDays)i;
         RenewalDayBTNColor();
     }
 
-    public Color Orange;
-
+    //색상 지정용 함수
     void RenewalDayBTNColor()
-        //색상 지정용 함수
     {
         for(int i = 0; i<7;i++)
         {
@@ -184,22 +179,6 @@ public class UI_SchedulePopup : UI_Popup
             MoneyCost = 0;
             Six_Stats = new int[6];
         }
-
-        public void PrintData()
-        {
-            Debug.Log("Korean Name: " + KorName);
-            Debug.Log("Info Text: " + infotext);
-            Debug.Log("Schedule Type: " + scheduleType);
-            Debug.Log("Broadcast Type: " + broadcastType);
-            Debug.Log("Rest Type: " + restType);
-            Debug.Log("Go Out Type: " + goOutType);
-            Debug.Log("Fis Subs Up Value: " + FisSubsUpValue);
-            Debug.Log("Per Subs Up Value: " + PerSubsUpValue);
-            Debug.Log("Health Point Change Value: " + HealthPointChangeValue);
-            Debug.Log("Mental Point Change Value: " + MentalPointChageValue);
-            Debug.Log("Income Magnitude: " + InComeMag);
-            Debug.Log("Money Cost: " + MoneyCost);
-        }
     }
 
     public enum BroadCastType
@@ -219,29 +198,25 @@ public class UI_SchedulePopup : UI_Popup
         MaxCount
     }
 
-    
-
     void BroadCastBTN()
     {
         GetGameObject((int)GameObjects.Contents3).SetActive(false);
-        GetGameObject((int)GameObjects.SubContents4).SetActive(true);
+        GetGameObject((int)GameObjects.SubContents).SetActive(true);
         ChooseScheduleTypeAndFillList(ScheduleType.BroadCast);
-
     }
     void RestBTN()
     {
         GetGameObject((int)GameObjects.Contents3).SetActive(false);
-        GetGameObject((int)GameObjects.SubContents4).SetActive(true);
+        GetGameObject((int)GameObjects.SubContents).SetActive(true);
         ChooseScheduleTypeAndFillList(ScheduleType.Rest);
     }
 
     void GoOutBTN()
     {
         GetGameObject((int)GameObjects.Contents3).SetActive(false);
-        GetGameObject((int)GameObjects.SubContents4).SetActive(true);
+        GetGameObject((int)GameObjects.SubContents).SetActive(true);
         ChooseScheduleTypeAndFillList(ScheduleType.GoOut);
     }
-
 
     List<OneDayScheduleData> nowSelectScheduleTypeList = new List<OneDayScheduleData>();
     void ChooseScheduleTypeAndFillList(ScheduleType type)
@@ -254,7 +229,6 @@ public class UI_SchedulePopup : UI_Popup
                 {
                     nowSelectScheduleTypeList.Add(Managers.Data.GetOneDayDataByName((BroadCastType)i));
                 }
-                
                 break;
 
             case ScheduleType.Rest:
@@ -271,85 +245,6 @@ public class UI_SchedulePopup : UI_Popup
                 }
                 break;
         }
-        _nowpage = 0;
-        Renewal4SubContentsBTN();
-    }
-
-    int _nowpage = 0; int _MaxPage;
-
-
-    void Renewal4SubContentsBTN()
-    {
-        _MaxPage = nowSelectScheduleTypeList.Count / 4;
-
-        if(_nowpage == 0)
-        {
-            GetButton((int)Buttons.LeftPageBTN).interactable = false;
-        }
-        else
-        {
-            GetButton((int)Buttons.LeftPageBTN).interactable = true;
-        }
-
-        if(_nowpage == _MaxPage)
-        {
-            GetButton((int)Buttons.RightPageBTN).interactable = false;
-        }
-        else
-        {
-            GetButton((int)Buttons.RightPageBTN).interactable = true;
-        }
-
-        for (int i = 0;i<4;i++)
-        {
-            if (isIndexExist(i))
-            {
-                if(_SevenDayScheduleDatas[(int)_nowSelectedDay] == null)
-                {
-                    GetGameObject(3 + i).
-                    GetOrAddComponent<UI_SubContent>().SetInfo(nowSelectScheduleTypeList[nowIndex(i)], 0);
-                }
-                else
-                {
-                    GetGameObject(3 + i).
-                    GetOrAddComponent<UI_SubContent>().SetInfo(nowSelectScheduleTypeList[nowIndex(i)], _SevenDayScheduleDatas[(int)_nowSelectedDay].MoneyCost);
-                }
-                
-            }
-            else
-            {
-                GetGameObject(3 + i).
-                    GetOrAddComponent<UI_SubContent>().SetInfo(null, 0);
-            }
-                
-        }
-
-    }
-
-    void GoLeftPage()
-    {
-        _nowpage--;
-        Renewal4SubContentsBTN();
-    }
-
-    void GoRightPage()
-    {
-        _nowpage++;
-        Renewal4SubContentsBTN();
-    }
-
-    bool isIndexExist(int i)
-    {
-        int temp = i + (4 * _nowpage);
-        if (nowSelectScheduleTypeList.Count-1 >= temp)
-            return true;
-        else
-            return false;
-    }
-
-    int nowIndex(int i)
-    {
-        return i + (4 * _nowpage);
     }
 
     public void SetDaySchedule(OneDayScheduleData data)
@@ -375,8 +270,7 @@ public class UI_SchedulePopup : UI_Popup
         }
 
         RenewalDayBTNColor();
-        GetGameObject((int)GameObjects.Contents3).SetActive(true);
-        GetGameObject((int)GameObjects.SubContents4).SetActive(false);
+        GetGameObject((int)GameObjects.SubContents).SetActive(false);
     }
 
     IEnumerator StartSchedule()
@@ -399,8 +293,6 @@ public class UI_SchedulePopup : UI_Popup
         Debug.Log($"1주일 별 구독자 변화량 : {afterStar - beforeStar}");
 
         UI_MainBackUI.instance.UpdateUItexts();
-        UI_MainBackUI.instance.ShowOrCloseCreateSchedulePopup();
-
 
         if (Managers.Data._myPlayerData.NowWeek % 5 != 0) Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
         else Managers.UI_Manager.ShowPopupUI<UI_Merchant>();
@@ -465,6 +357,7 @@ public class UI_SchedulePopup : UI_Popup
 
     private void OnDisable()
     {
+        UI_MainBackUI.instance.ShowCreateScheduleBTN();
         for(int i =0;i<7;i++)
         {
             if(_SevenDayScheduleDatas[i]!= null)
@@ -474,6 +367,5 @@ public class UI_SchedulePopup : UI_Popup
             UI_MainBackUI.instance.UpdateUItexts();
         }
     }
-
     #endregion
 }
