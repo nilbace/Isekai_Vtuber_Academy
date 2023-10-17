@@ -50,6 +50,7 @@ public class UI_SchedulePopup : UI_Popup
     enum Images
     {
         ItemIcon,
+        ScheduleSlotSelected,
     }
 
     private void Awake()
@@ -63,17 +64,21 @@ public class UI_SchedulePopup : UI_Popup
         Init();
     }
 
+    Sprite[] DaysImages = new Sprite[4];
+
     public override void Init()
     {
         base.Init();
 
+        DaysImages = Resources.LoadAll<Sprite>("Days");
+
         Bind<GameObject>(typeof(GameObjects));
         Bind<Button>(typeof(Buttons));
+        Bind<Image>(typeof(Images));
 
         GetGameObject((int)GameObjects.SubContents4).SetActive(false);
 
         for (int i = 0; i<7; i++)
-            //7ÀÏµé
         {
             int inttemp = i;
             Button temp = GetButton(i);
@@ -125,23 +130,23 @@ public class UI_SchedulePopup : UI_Popup
         {
             if(i == (int)_nowSelectedDay)
             {
-                GetButton(i).GetComponent<Image>().color = Color.red;
+                GetImage(1).transform.localPosition = new Vector3((i - 3) * 40, 66.5f, 0);
             }
             else if(_SevenDayScheduleDatas[i] == null)
             {
-                GetButton(i).GetComponent<Image>().color = Color.white;
+                GetButton(i).GetComponent<Image>().sprite = DaysImages[3];
             }
             else if(_SevenDayScheduleDatas[i].scheduleType == ScheduleType.BroadCast)
             {
-                GetButton(i).GetComponent<Image>().color = Color.blue;
+                GetButton(i).GetComponent<Image>().sprite = DaysImages[0];
             }
             else if(_SevenDayScheduleDatas[i].scheduleType == ScheduleType.Rest)
             {
-                GetButton(i).GetComponent<Image>().color = Color.green;
+                GetButton(i).GetComponent<Image>().sprite = DaysImages[1];
             }
             else
             {
-                GetButton(i).GetComponent<Image>().color = Orange;
+                GetButton(i).GetComponent<Image>().sprite = DaysImages[2];
             }
         }
     }

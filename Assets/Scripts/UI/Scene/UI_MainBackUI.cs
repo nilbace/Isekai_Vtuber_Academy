@@ -14,12 +14,6 @@ public class UI_MainBackUI : UI_Scene
         MyMoneyTMP, //현재 보유 골드
         MySubsTMP,  //현재 보유 구독자수
         NowWeekTMP,
-        GameStatTMP,
-        SongStatTMP,
-        ChatStatTMP,
-        StrStatTMP,
-        MentalStatTMP,
-        LuckStatTMP
     }
 
     enum Buttons
@@ -80,13 +74,6 @@ public class UI_MainBackUI : UI_Scene
             TMPro.TMP_Text tmpText = Get<TMPro.TMP_Text>((int)textType);
             tmpText.text = GetInitialTextForType(textType);
         }
-
-        Get<TMPro.TMP_Text>((int)Texts.GameStatTMP).text =   "게임 : " + Managers.Data._myPlayerData.SixStat[0];
-        Get<TMPro.TMP_Text>((int)Texts.SongStatTMP).text =   "노래 : " + Managers.Data._myPlayerData.SixStat[1];
-        Get<TMPro.TMP_Text>((int)Texts.ChatStatTMP).text =   "저챗 : " + Managers.Data._myPlayerData.SixStat[2];
-        Get<TMPro.TMP_Text>((int)Texts.StrStatTMP).text =    "근력 : " + Managers.Data._myPlayerData.SixStat[3];
-        Get<TMPro.TMP_Text>((int)Texts.MentalStatTMP).text = "멘탈 : " + Managers.Data._myPlayerData.SixStat[4];
-        Get<TMPro.TMP_Text>((int)Texts.LuckStatTMP).text =   "행운 : " + Managers.Data._myPlayerData.SixStat[5];
     }
 
     private string GetInitialTextForType(Texts textType)
@@ -128,20 +115,9 @@ public class UI_MainBackUI : UI_Scene
         return temp;
     }
 
-    bool isPopupOpen = false;
     public void ShowOrCloseCreateSchedulePopup()
     {
-        TMP_Text CreateScheduleTMP = Get<Button>((int)Buttons.CreateScheduleBTN).GetComponentInChildren<TMP_Text>();
-        if (isPopupOpen)
-        {
-            Managers.UI_Manager.ClosePopupUI();
-            CreateScheduleTMP.text = "스케쥴 작성하기";
-        }
-        else
-        {
-            Managers.UI_Manager.ShowPopupUI<UI_SchedulePopup>();
-            CreateScheduleTMP.text = "방으로 돌아가기";
-        }        
-        isPopupOpen = !isPopupOpen;
+         Managers.UI_Manager.ShowPopupUI<UI_SchedulePopup>();
+        Get<Button>((int)Buttons.CreateScheduleBTN).gameObject.SetActive(false);
     }
 }

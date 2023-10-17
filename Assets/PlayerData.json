@@ -1,17 +1,19 @@
 {
     "NowWeek": 1,
-    "nowSubCount": 0,
-    "nowGoldAmount": 0,
-    "NowHeart": 100,
-    "NowStar": 100,
+    "nowSubCount": 55,
+    "nowGoldAmount": 92,
+    "NowHeart": 86,
+    "NowStar": 86,
     "SixStat": [
+        3,
         0,
         0,
         0,
-        0,
-        0,
+        3,
         0
     ],
-    "DoneEventNames": [],
+    "DoneEventNames": [
+        "민트초코 먹기"
+    ],
     "BoughtItems": []
 }
