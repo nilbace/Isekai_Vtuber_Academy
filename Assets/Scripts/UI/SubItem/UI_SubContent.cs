@@ -36,7 +36,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 
         thisBTN.onClick.AddListener(OnClicked);
 
-        LikePressed();
+        //LikePressed();
     }
 
     public void SetInfo(OneDayScheduleData scheduleData, int nowSchCost, bool isSelected)
