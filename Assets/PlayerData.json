@@ -1,17 +1,20 @@
 {
     "NowWeek": 1,
-    "nowSubCount": 0,
-    "nowGoldAmount": 0,
-    "NowHeart": 100,
-    "NowStar": 100,
+    "nowSubCount": 1786,
+    "nowGoldAmount": 5263,
+    "NowHeart": 2,
+    "NowStar": 2,
     "SixStat": [
+        14,
         0,
         0,
         0,
-        0,
-        0,
+        14,
         0
     ],
-    "DoneEventNames": [],
+    "DoneEventNames": [
+        "포카리 물만두",
+        "스카이 다이빙"
+    ],
     "BoughtItems": []
 }

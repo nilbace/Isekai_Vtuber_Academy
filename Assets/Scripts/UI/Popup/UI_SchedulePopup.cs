@@ -11,9 +11,12 @@ using static Define;
 /// 스케쥴 관리와 방송 정보에 대한 정보가 담겨있는 스크립트
 /// </summary>
 public class UI_SchedulePopup : UI_Popup
-    
 {
-    public static UI_SchedulePopup instance; 
+    public static UI_SchedulePopup instance;
+    public Transform ParentTR;
+    public GameObject UISubContent;
+    bool SubContentSelectPhase = false;
+    private ScrollRect scrollRect;
 
     enum Buttons
     {
@@ -38,7 +41,6 @@ public class UI_SchedulePopup : UI_Popup
         PointText,
         ScoreText,
     }
-
     enum GameObjects
     {
         Days7,
@@ -46,7 +48,6 @@ public class UI_SchedulePopup : UI_Popup
         SubContents,
         Sub0, Sub1, Sub2, Sub3, 
     }
-
     enum Images
     {
         ItemIcon,
@@ -66,6 +67,25 @@ public class UI_SchedulePopup : UI_Popup
 
     Sprite[] DaysImages = new Sprite[4];
 
+    /// <summary>
+    /// 방송 휴식 외출 선택
+    /// </summary>
+    void State_SelectType()
+    {
+        SubContentSelectPhase = false;
+        GetGameObject((int)GameObjects.Contents3).SetActive(true);
+        GetGameObject((int)GameObjects.SubContents).SetActive(false);
+    }
+
+    /// <summary>
+    /// 하위 컨텐츠 선택
+    /// </summary>
+    void State_SelectSubContent()
+    {
+        SubContentSelectPhase = true;
+        GetGameObject((int)GameObjects.Contents3).SetActive(false);
+        GetGameObject((int)GameObjects.SubContents).SetActive(true);
+    }
     public override void Init()
     {
         base.Init();
@@ -84,13 +104,15 @@ public class UI_SchedulePopup : UI_Popup
             temp.onClick.AddListener( () => ClickDay(inttemp));
         }
 
+        scrollRect = GetComponentInChildren<ScrollRect>();
         GetGameObject((int)GameObjects.SubContents).SetActive(false);
-        GetButton((int)Buttons.BroadCastBTN).onClick.AddListener(BroadCastBTN);
-        GetButton((int)Buttons.RestBTN).onClick.AddListener(RestBTN);
-        GetButton((int)Buttons.GoOutBTN).onClick.AddListener(GoOutBTN);
-
-        GetButton((int)Buttons.BackBTN).onClick.AddListener( () => Managers.UI_Manager.ClosePopupUI());
-        ClickDay(0); //기본 월요일 선택
+        GetButton((int)Buttons.BroadCastBTN).onClick.       AddListener(BroadCastBTN);
+        GetButton((int)Buttons.RestBTN).onClick.            AddListener(RestBTN);
+        GetButton((int)Buttons.GoOutBTN).onClick.           AddListener(GoOutBTN);
+        GetButton((int)Buttons.StartScheduleBTN).onClick.   AddListener(()=>StartCoroutine(StartSchedule()));
+        GetButton((int)Buttons.BackBTN).onClick.            AddListener(BackBTN);
+        UpdateInteractableButton();
+        ClickDay(0);
     }
 
     #region ScheduleCheck
@@ -111,14 +133,49 @@ public class UI_SchedulePopup : UI_Popup
 
     SevenDays _nowSelectedDay = SevenDays.Monday;
     OneDayScheduleData[] _SevenDayScheduleDatas = new OneDayScheduleData[7];
+    float[] _SeveDayScrollVarValue =  new float[7];
+
+    public void StoreScrollVarValue(float value)
+    {
+        _SeveDayScrollVarValue[(int)_nowSelectedDay] = value;
+    }
     
     void ClickDay(int i)
     {
         _nowSelectedDay = (SevenDays)i;
+        if(_SevenDayScheduleDatas[(int)_nowSelectedDay] != null)
+        {
+            if(_SevenDayScheduleDatas[(int)_nowSelectedDay].scheduleType == ScheduleType.BroadCast)
+            {
+                BroadCastBTN();
+            }
+            else if (_SevenDayScheduleDatas[(int)_nowSelectedDay].scheduleType == ScheduleType.Rest)
+            {
+                RestBTN();
+            }
+            else
+            {
+                GoOutBTN();
+            }
+        }
+        else
+        {
+            State_SelectType();
+        }
         RenewalDayBTNColor();
     }
 
-    //색상 지정용 함수
+    void UpdateInteractableButton()
+    {
+        for(int i = 0; i<7;i++)
+        {
+            GetButton(i).interactable = (i <= (int)_nowSelectedDay) ? true : false;
+        }
+    }
+
+    /// <summary>
+    /// 색상 지정용 함수
+    /// </summary>
     void RenewalDayBTNColor()
     {
         for(int i = 0; i<7;i++)
@@ -127,7 +184,8 @@ public class UI_SchedulePopup : UI_Popup
             {
                 GetImage(1).transform.localPosition = new Vector3((i - 3) * 40, 66.5f, 0);
             }
-            else if(_SevenDayScheduleDatas[i] == null)
+
+            if(_SevenDayScheduleDatas[i] == null)
             {
                 GetButton(i).GetComponent<Image>().sprite = DaysImages[3];
             }
@@ -200,21 +258,21 @@ public class UI_SchedulePopup : UI_Popup
 
     void BroadCastBTN()
     {
-        GetGameObject((int)GameObjects.Contents3).SetActive(false);
-        GetGameObject((int)GameObjects.SubContents).SetActive(true);
+        SubContentSelectPhase = true;
+        State_SelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.BroadCast);
     }
     void RestBTN()
     {
-        GetGameObject((int)GameObjects.Contents3).SetActive(false);
-        GetGameObject((int)GameObjects.SubContents).SetActive(true);
+        SubContentSelectPhase = true;
+        State_SelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.Rest);
     }
 
     void GoOutBTN()
     {
-        GetGameObject((int)GameObjects.Contents3).SetActive(false);
-        GetGameObject((int)GameObjects.SubContents).SetActive(true);
+        SubContentSelectPhase = true;
+        State_SelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.GoOut);
     }
 
@@ -222,12 +280,15 @@ public class UI_SchedulePopup : UI_Popup
     void ChooseScheduleTypeAndFillList(ScheduleType type)
     {
         nowSelectScheduleTypeList.Clear();
+        DeleteAllChildren();
         switch (type)
         {
             case ScheduleType.BroadCast:
                 for (int i = 0; i < (int)BroadCastType.MaxCount; i++)
                 {
                     nowSelectScheduleTypeList.Add(Managers.Data.GetOneDayDataByName((BroadCastType)i));
+                    GameObject go = Instantiate(UISubContent, ParentTR, false);
+                    go.GetComponent<UI_SubContent>().SetInfo(Managers.Data.GetOneDayDataByName((BroadCastType)i),_SevenDayScheduleDatas[(int)_nowSelectedDay]);
                 }
                 break;
 
@@ -235,6 +296,8 @@ public class UI_SchedulePopup : UI_Popup
                 for (int i = 0; i < (int)RestType.MaxCount; i++)
                 {
                     nowSelectScheduleTypeList.Add(Managers.Data.GetOneDayDataByName((RestType)i));
+                    GameObject go = Instantiate(UISubContent, ParentTR, false);
+                    go.GetComponent<UI_SubContent>().SetInfo(Managers.Data.GetOneDayDataByName((RestType)i), _SevenDayScheduleDatas[(int)_nowSelectedDay]);
                 }
                 break;
 
@@ -242,8 +305,33 @@ public class UI_SchedulePopup : UI_Popup
                 for (int i = 0; i < (int)GoOutType.MaxCount; i++)
                 {
                     nowSelectScheduleTypeList.Add(Managers.Data.GetOneDayDataByName((GoOutType)i));
+                    GameObject go = Instantiate(UISubContent, ParentTR, false);
+                    go.GetComponent<UI_SubContent>().SetInfo(Managers.Data.GetOneDayDataByName((GoOutType)i), _SevenDayScheduleDatas[(int)_nowSelectedDay]);
                 }
                 break;
+        }
+        StartCoroutine(moveScroll());
+    }
+
+    IEnumerator moveScroll()
+    {
+        yield return new WaitForEndOfFrame();
+        if (_SevenDayScheduleDatas[(int)_nowSelectedDay] != null)
+        {
+            scrollRect.horizontalScrollbar.value = _SeveDayScrollVarValue[(int)_nowSelectedDay];
+        }
+    }
+
+    /// <summary>
+    /// 세부 컨텐츠들 전부 삭제 > 다시 만들기 전에
+    /// </summary>
+    public void DeleteAllChildren()
+    {
+        int childCount = ParentTR.childCount;
+
+        for (int i = childCount - 1; i >= 0; i--)
+        {
+            Destroy(ParentTR.GetChild(i).gameObject);
         }
     }
 
@@ -251,30 +339,32 @@ public class UI_SchedulePopup : UI_Popup
     {
         _SevenDayScheduleDatas[(int)_nowSelectedDay] = data;
         ChangeNowSelectDayToNearestAndCheckFull();
+        UpdateInteractableButton();
     }
     #endregion
 
     void ChangeNowSelectDayToNearestAndCheckFull()
     {
-        for(int i = 0;i<7;i++)
+        for (int i = 0;i<7;i++)
         {
             if(_SevenDayScheduleDatas[i] == null)
             {
                 _nowSelectedDay = (SevenDays)i;
                 break;
             }
-            if(i==6)
-            {
-                StartCoroutine(StartSchedule());
-            }
         }
-
         RenewalDayBTNColor();
         GetGameObject((int)GameObjects.SubContents).SetActive(false);
+        GetGameObject((int)GameObjects.Contents3).SetActive(true);
     }
 
     IEnumerator StartSchedule()
     {
+        for(int i = 0;i<7;i++)
+        {
+            if (_SevenDayScheduleDatas[i] == null) yield break;
+        }
+
         int beforeSubsAmount = Managers.Data._myPlayerData.nowSubCount;
         int beforeHeart = Managers.Data._myPlayerData.NowHeart;
         int beforeStar = Managers.Data._myPlayerData.NowStar;
@@ -288,9 +378,9 @@ public class UI_SchedulePopup : UI_Popup
         int aftersubsAmount = Managers.Data._myPlayerData.nowSubCount;
         int afterHeart = Managers.Data._myPlayerData.NowHeart;
         int afterStar = Managers.Data._myPlayerData.NowStar;
-        Debug.Log($"1주일 총 구독자 변화량 : {aftersubsAmount - beforeSubsAmount}");
-        Debug.Log($"1주일 하트 구독자 변화량 : {afterHeart - beforeHeart}");
-        Debug.Log($"1주일 별 구독자 변화량 : {afterStar - beforeStar}");
+        Debug.Log($"1주일 총 구독자 변화량 :     {aftersubsAmount - beforeSubsAmount}");
+        Debug.Log($"1주일 하트 구독자 변화량 :   {afterHeart - beforeHeart}");
+        Debug.Log($"1주일 별 구독자 변화량 :     {afterStar - beforeStar}");
 
         UI_MainBackUI.instance.UpdateUItexts();
 
@@ -365,6 +455,20 @@ public class UI_SchedulePopup : UI_Popup
                 Managers.Data._myPlayerData.nowGoldAmount += _SevenDayScheduleDatas[i].MoneyCost;
             }
             UI_MainBackUI.instance.UpdateUItexts();
+        }
+    }
+
+    void BackBTN()
+    {
+        if(SubContentSelectPhase)
+        {
+            SubContentSelectPhase = false;
+            GetGameObject((int)GameObjects.Contents3).SetActive(true);
+            GetGameObject((int)GameObjects.SubContents).SetActive(false);
+        }
+        else
+        {
+            Managers.UI_Manager.ClosePopupUI();
         }
     }
     #endregion
