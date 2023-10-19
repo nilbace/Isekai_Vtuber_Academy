@@ -352,7 +352,10 @@ public class UI_SchedulePopup : UI_Popup
         yield return new WaitForEndOfFrame();
         if (_SevenDayScheduleDatas[(int)_nowSelectedDay] != null)
         {
-            scrollRect.horizontalScrollbar.value = _SeveDayScrollVarValue[(int)_nowSelectedDay];
+            float targetValue = _SeveDayScrollVarValue[(int)_nowSelectedDay]; // 목표 값 설정
+
+            // Dotween을 사용하여 scrollRect.horizontalScrollbar.value를 목표 값까지 움직이기
+            DOTween.To(() => scrollRect.horizontalScrollbar.value, x => scrollRect.horizontalScrollbar.value = x, targetValue, moveDuration).SetEase(ease);
         }
     }
 
