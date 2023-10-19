@@ -81,7 +81,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 
 
 
-    float offset = 5.5f;
+    [SerializeField] float offset = 5.5f;
     private bool isPressed = false;
     bool TruelyInteractable =  false;
     Vector2 pressedPosition;
