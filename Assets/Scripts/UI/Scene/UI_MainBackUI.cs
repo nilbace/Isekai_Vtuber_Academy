@@ -9,8 +9,8 @@ public class UI_MainBackUI : UI_Scene
 {
     enum Texts
     {
-        HealthTMP,  //현재 건강 상태
-        MentalTMP,  //현재 정신 상태
+        HeartTMP,  //현재 건강 상태
+        StarTMP,  //현재 정신 상태
         MyMoneyTMP, //현재 보유 골드
         MySubsTMP,  //현재 보유 구독자수
         NowWeekTMP,
@@ -24,6 +24,12 @@ public class UI_MainBackUI : UI_Scene
         ChatStatBTN,
         StrStatBTN, MentalStatBTN, LuckStatBTN
     }
+
+    enum GameObjects
+    {
+        HeartBar, StarBar
+    }
+
 
     public static UI_MainBackUI instance;
 
@@ -43,6 +49,7 @@ public class UI_MainBackUI : UI_Scene
         base.Init();
         Bind<TMPro.TMP_Text>(typeof(Texts));
         Bind<Button>(typeof(Buttons));
+        Bind<GameObject>(typeof(GameObjects));
 
         Button CreateScheduleBTN = Get<Button>((int)Buttons.CreateScheduleBTN);
 
@@ -53,7 +60,6 @@ public class UI_MainBackUI : UI_Scene
         GetButton((int)Buttons.StrStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Health));
         GetButton((int)Buttons.MentalStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Mental));
         GetButton((int)Buttons.LuckStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Luck));
-
 
         UpdateUItexts();
     }
@@ -74,15 +80,20 @@ public class UI_MainBackUI : UI_Scene
             TMPro.TMP_Text tmpText = Get<TMPro.TMP_Text>((int)textType);
             tmpText.text = GetInitialTextForType(textType);
         }
+
+        GetGameObject((int)GameObjects.HeartBar).transform.localScale =
+            new Vector3((float)Managers.Data._myPlayerData.NowHeart/100f, 1, 1);
+        GetGameObject((int)GameObjects.StarBar).transform.localScale =
+            new Vector3((float)Managers.Data._myPlayerData.NowStar / 100f, 1, 1);
     }
 
     private string GetInitialTextForType(Texts textType)
     {
         switch (textType)
         {
-            case Texts.HealthTMP:
+            case Texts.HeartTMP:
                 return GetNowConditionToString(Managers.Data._myPlayerData.NowHeart);
-            case Texts.MentalTMP:
+            case Texts.StarTMP:
                 return GetNowConditionToString(Managers.Data._myPlayerData.NowStar);
             case Texts.MyMoneyTMP:
                 return Managers.Data._myPlayerData.nowGoldAmount.ToString();

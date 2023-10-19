@@ -101,6 +101,11 @@ public class DataManager
     #region ScheduleData
 
     float[] weekBounsMagnification = new float[5];
+    public OneDayScheduleData[] _SevenDayScheduleDatas = new OneDayScheduleData[7];
+    public float[] _SeveDayScrollVarValue = new float[7];
+
+
+
     public float GetNowWeekBonusMag()
     {
         int temp = _myPlayerData.NowWeek;
