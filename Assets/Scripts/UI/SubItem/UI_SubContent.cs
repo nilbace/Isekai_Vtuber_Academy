@@ -41,10 +41,10 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     public void SetInfo(OneDayScheduleData scheduleData, OneDayScheduleData settedData)
     {
         thisSubSchedleData = scheduleData;
-        GetText((int)Texts.NameTMP).text = thisSubSchedleData.KorName;
-        GetText((int)Texts.InfoTMP).text = thisSubSchedleData.infotext;
-        GetText((int)Texts.SubUp).text = thisSubSchedleData.KorName;
-        GetText((int)Texts.GoldUp).text = thisSubSchedleData.KorName;
+        GetText((int)Texts.NameTMP).text    = thisSubSchedleData.KorName;
+        GetText((int)Texts.InfoTMP).text    = thisSubSchedleData.infotext;
+        GetText((int)Texts.SubUp).text      = thisSubSchedleData.KorName;
+        GetText((int)Texts.GoldUp).text     = thisSubSchedleData.KorName;
 
         if(settedData == null)
         {
@@ -64,7 +64,6 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
             }
         }
         
-
         if(scheduleData == settedData)
         {
             LikePressed();
@@ -79,6 +78,9 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         UI_MainBackUI.instance.UpdateUItexts();
         UI_SchedulePopup.instance.SetDaySchedule(thisSubSchedleData);
     }
+
+
+
     float offset = 5.5f;
     private bool isPressed = false;
     bool TruelyInteractable =  false;

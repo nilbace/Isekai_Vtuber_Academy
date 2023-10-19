@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static DataManager;
 using static Define;
+using DG.Tweening;
 
 /// <summary>
 /// 스케쥴 관리와 방송 정보에 대한 정보가 담겨있는 스크립트
@@ -106,13 +107,18 @@ public class UI_SchedulePopup : UI_Popup
 
         scrollRect = GetComponentInChildren<ScrollRect>();
         GetGameObject((int)GameObjects.SubContents).SetActive(false);
-        GetButton((int)Buttons.BroadCastBTN).onClick.       AddListener(BroadCastBTN);
-        GetButton((int)Buttons.RestBTN).onClick.            AddListener(RestBTN);
-        GetButton((int)Buttons.GoOutBTN).onClick.           AddListener(GoOutBTN);
+        GetButton((int)Buttons.BroadCastBTN).onClick.       AddListener(ClickBroadCastBTN);
+        GetButton((int)Buttons.RestBTN).onClick.            AddListener(ClickRestBTN);
+        GetButton((int)Buttons.GoOutBTN).onClick.           AddListener(ClickGoOutBTN);
         GetButton((int)Buttons.StartScheduleBTN).onClick.   AddListener(()=>StartCoroutine(StartSchedule()));
         GetButton((int)Buttons.BackBTN).onClick.            AddListener(BackBTN);
+
+        _SeveDayScrollVarValue = Managers.Data._SeveDayScrollVarValue;
+        _SevenDayScheduleDatas = Managers.Data._SevenDayScheduleDatas;
+
+        SetSelectImg();
         UpdateInteractableButton();
-        ClickDay(0);
+        ClickLastDay_PlusOne();
     }
 
     #region ScheduleCheck
@@ -138,51 +144,79 @@ public class UI_SchedulePopup : UI_Popup
     public void StoreScrollVarValue(float value)
     {
         _SeveDayScrollVarValue[(int)_nowSelectedDay] = value;
+        Managers.Data._SeveDayScrollVarValue = _SeveDayScrollVarValue;
+    }
+
+    void SetSelectImg()
+    {
+        int i = 0;
+        for (; i < 7; i++)
+        {
+            if (_SevenDayScheduleDatas[i] == null)
+            {
+                _nowSelectedDay = (SevenDays)i;
+                break;
+            }
+        }
+        if (i == 7) i = 6;
+        GetImage(1).transform.DOMoveX(((int)_nowSelectedDay - 3) * 40, 0f);
     }
     
     void ClickDay(int i)
     {
         _nowSelectedDay = (SevenDays)i;
-        if(_SevenDayScheduleDatas[(int)_nowSelectedDay] != null)
+        if (_SevenDayScheduleDatas[(int)_nowSelectedDay] != null)
         {
             if(_SevenDayScheduleDatas[(int)_nowSelectedDay].scheduleType == ScheduleType.BroadCast)
             {
-                BroadCastBTN();
+                ClickBroadCastBTN();
             }
             else if (_SevenDayScheduleDatas[(int)_nowSelectedDay].scheduleType == ScheduleType.Rest)
             {
-                RestBTN();
+                ClickRestBTN();
             }
             else
             {
-                GoOutBTN();
+                ClickGoOutBTN();
             }
         }
         else
         {
             State_SelectType();
         }
-        RenewalDayBTNColor();
+        UpdateColorAndSelected();
     }
 
     void UpdateInteractableButton()
     {
-        for(int i = 0; i<7;i++)
+        int i = 0;
+
+        for(;i<7;i++)
         {
-            GetButton(i).interactable = (i <= (int)_nowSelectedDay) ? true : false;
+            if(_SevenDayScheduleDatas[i] == null)
+            {
+                _nowSelectedDay = (SevenDays)i;
+                break;
+            }
+        }
+        if (i == 7) i = 6;
+        for(int j = 0; j<7;j++)
+        {
+            GetButton(j).interactable = (j <= i) ? true : false;
         }
     }
-
+    [SerializeField] Ease ease;
+    [SerializeField] float moveDuration;
     /// <summary>
     /// 색상 지정용 함수
     /// </summary>
-    void RenewalDayBTNColor()
+    void UpdateColorAndSelected()
     {
         for(int i = 0; i<7;i++)
         {
             if(i == (int)_nowSelectedDay)
             {
-                GetImage(1).transform.localPosition = new Vector3((i - 3) * 40, 66.5f, 0);
+                GetImage(1).transform.DOMoveX((i - 3) * 40, moveDuration).SetEase(ease);
             }
 
             if(_SevenDayScheduleDatas[i] == null)
@@ -256,20 +290,20 @@ public class UI_SchedulePopup : UI_Popup
         MaxCount
     }
 
-    void BroadCastBTN()
+    void ClickBroadCastBTN()
     {
         SubContentSelectPhase = true;
         State_SelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.BroadCast);
     }
-    void RestBTN()
+    void ClickRestBTN()
     {
         SubContentSelectPhase = true;
         State_SelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.Rest);
     }
 
-    void GoOutBTN()
+    void ClickGoOutBTN()
     {
         SubContentSelectPhase = true;
         State_SelectSubContent();
@@ -338,14 +372,18 @@ public class UI_SchedulePopup : UI_Popup
     public void SetDaySchedule(OneDayScheduleData data)
     {
         _SevenDayScheduleDatas[(int)_nowSelectedDay] = data;
-        ChangeNowSelectDayToNearestAndCheckFull();
+        Managers.Data._SevenDayScheduleDatas = _SevenDayScheduleDatas;
+        //저장소 저장
+
+        ClickLastDay_PlusOne();
         UpdateInteractableButton();
     }
     #endregion
 
-    void ChangeNowSelectDayToNearestAndCheckFull()
+    void ClickLastDay_PlusOne()
     {
-        for (int i = 0;i<7;i++)
+        int i = 0;
+        for (;i<7;i++)
         {
             if(_SevenDayScheduleDatas[i] == null)
             {
@@ -353,9 +391,9 @@ public class UI_SchedulePopup : UI_Popup
                 break;
             }
         }
-        RenewalDayBTNColor();
-        GetGameObject((int)GameObjects.SubContents).SetActive(false);
-        GetGameObject((int)GameObjects.Contents3).SetActive(true);
+        if (i == 7) i = (int)_nowSelectedDay;
+        ClickDay(i);
+        UpdateColorAndSelected();
     }
 
     IEnumerator StartSchedule()
