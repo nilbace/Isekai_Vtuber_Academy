@@ -3021,7 +3021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &423605435
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3316,7 +3316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4ff71142511b5bb48922058cd94f4fb0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e7538b21d3f9ff84fa3a82c3c99feedb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3509,7 +3509,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4ff71142511b5bb48922058cd94f4fb0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e7538b21d3f9ff84fa3a82c3c99feedb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6705,7 +6705,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4ff71142511b5bb48922058cd94f4fb0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e7538b21d3f9ff84fa3a82c3c99feedb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7956,7 +7956,7 @@ GameObject:
   - component: {fileID: 1228309153}
   - component: {fileID: 1228309152}
   m_Layer: 5
-  m_Name: ChatStatBTN
+  m_Name: DrawStatBTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8047,7 +8047,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cf99d4951ecd76c4f9b0c06a5c6effb2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b9464283612bb3444bae0ec9252895fa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12595,7 +12595,7 @@ GameObject:
   - component: {fileID: 2045932421}
   - component: {fileID: 2045932420}
   m_Layer: 5
-  m_Name: LuckStatBTN
+  m_Name: ChatStatBTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12686,7 +12686,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ab9b20275fc0d8045a9bf970b4805439, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf99d4951ecd76c4f9b0c06a5c6effb2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
