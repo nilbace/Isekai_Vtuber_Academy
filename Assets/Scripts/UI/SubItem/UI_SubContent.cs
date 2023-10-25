@@ -31,7 +31,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     {
         GetImage((int)Images.HeartUD).transform.localPosition = pozs.HeartPoz;
         GetImage((int)Images.StarUD).transform.localPosition = pozs.StarPoz;
-        GetImage((int)Images.StatIcon).transform.localPosition = pozs.StarPoz;
+        GetImage((int)Images.StatIcon).transform.localPosition = pozs.StatIconPoz;
         GetText((int)Texts.SubTMP).transform.localPosition = pozs.SubTextPoz;
         GetText((int)Texts.GoldTMP).transform.localPosition = pozs.GoldTextPoz;
     }
