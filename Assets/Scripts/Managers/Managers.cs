@@ -17,6 +17,7 @@ public class Managers : MonoBehaviour
     DataManager _data = new DataManager();
     REventManager _RE = new REventManager();
     GameManager _Gm = new GameManager();
+    MultiSpriteManager _MSM = new MultiSpriteManager();
     public static InputManager Input {get {return instance._input;}}
     public static ResourceManager Resource{get{return instance._resource;}}
     public static UI_Manager UI_Manager{get{return instance._ui_manager;}}
@@ -25,6 +26,7 @@ public class Managers : MonoBehaviour
     public static DataManager Data { get { return instance._data; } }
     public static REventManager RandEvent { get { return instance._RE; } }
     public static GameManager GM { get { return instance._Gm; } }
+    public static MultiSpriteManager MSM { get { return instance._MSM; } }
     
     void Awake()
     {
@@ -54,6 +56,7 @@ public class Managers : MonoBehaviour
             s_instance._sound.Init();
             s_instance._pool.Init();
             s_instance._data.Init();
+            s_instance._MSM.Init();
         }
     }
 

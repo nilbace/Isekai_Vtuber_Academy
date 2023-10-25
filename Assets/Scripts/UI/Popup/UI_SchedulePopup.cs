@@ -66,8 +66,6 @@ public class UI_SchedulePopup : UI_Popup
         Init();
     }
 
-    Sprite[] DaysImages = new Sprite[4];
-
     /// <summary>
     /// 방송 휴식 외출 선택
     /// </summary>
@@ -90,8 +88,6 @@ public class UI_SchedulePopup : UI_Popup
     public override void Init()
     {
         base.Init();
-
-        DaysImages = Resources.LoadAll<Sprite>("Days");
 
         Bind<GameObject>(typeof(GameObjects));
         Bind<Button>(typeof(Buttons));
@@ -218,27 +214,27 @@ public class UI_SchedulePopup : UI_Popup
             {
                 if(GetButton(i).interactable == true)
                 {
-                    GetButton(i).GetComponent<Image>().sprite = DaysImages[3];
+                    GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[3];
                 }
                 else
                 {
-                    GetButton(i).GetComponent<Image>().sprite = DaysImages[4];
+                    GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[4];
                 }
             }
             else if(_SevenDayScheduleDatas[i].scheduleType == ScheduleType.BroadCast)
             {
-                GetButton(i).GetComponent<Image>().sprite = DaysImages[0];
+                GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[0];
                 GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = new Color(0, 0, 0, 1);
             }
             else if(_SevenDayScheduleDatas[i].scheduleType == ScheduleType.Rest)
             {
-                GetButton(i).GetComponent<Image>().sprite = DaysImages[1];
+                GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[1];
                 GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = new Color(0, 0, 0, 1);
 
             }
             else
             {
-                GetButton(i).GetComponent<Image>().sprite = DaysImages[2];
+                GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[2];
                 GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = new Color(0, 0, 0, 1);
 
             }

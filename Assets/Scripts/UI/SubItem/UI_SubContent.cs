@@ -12,9 +12,24 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     public Button thisBTN;
     ScrollRect scrollRect;
 
+    [System.Serializable]
+    public struct Pozs
+    {
+        public Vector2 HeartPoz;
+        public Vector2 StarPoz;
+        public Vector2 SubTextPoz;
+        public Vector2 GoldTextPoz;
+        public Vector2 StatIconPoz;
+    }
+
+    public Pozs BroadCastpoz = new Pozs();
+    public Pozs Restpoz = new Pozs();
+    public Pozs GOoutpoz = new Pozs();
+
+ 
     enum Images
     {
-        HeartUD, StarUD
+        UI_SubContent,  HeartUD, StarUD
     }
     enum Texts
     { 
@@ -45,6 +60,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         GetText((int)Texts.InfoTMP).text    = thisSubSchedleData.infotext;
         GetText((int)Texts.SubUp).text      = thisSubSchedleData.KorName;
         GetText((int)Texts.GoldUp).text     = thisSubSchedleData.KorName;
+
 
         if(settedData == null)
         {
