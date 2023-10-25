@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UI_SchedulePopup;
+using static Define;
 
 public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {

@@ -23,8 +23,8 @@ public class UI_MainBackUI : UI_Scene
         SongStatBTN,
         DrawStatBTN,
         StrStatBTN, 
-        MentalStatBTN, 
-        ChatStatBTN
+        MentalStatBTN,
+        LuckStatBTN
     }
 
     enum GameObjects
@@ -61,7 +61,7 @@ public class UI_MainBackUI : UI_Scene
         GetButton((int)Buttons.DrawStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Chat));
         GetButton((int)Buttons.StrStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Health));
         GetButton((int)Buttons.MentalStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Mental));
-        GetButton((int)Buttons.ChatStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Luck));
+        GetButton((int)Buttons.LuckStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Luck));
 
         UpdateUItexts();
     }

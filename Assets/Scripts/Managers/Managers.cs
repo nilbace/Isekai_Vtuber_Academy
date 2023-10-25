@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class Managers : MonoBehaviour
 {
     static Managers s_instance;
-    static Managers instance {get{Init(); return s_instance;}}
+    public static Managers instance {get{Init(); return s_instance;}}
     
 
     InputManager _input = new InputManager();
@@ -16,6 +16,7 @@ public class Managers : MonoBehaviour
     PoolManager _pool = new PoolManager();
     DataManager _data = new DataManager();
     REventManager _RE = new REventManager();
+    GameManager _Gm = new GameManager();
     public static InputManager Input {get {return instance._input;}}
     public static ResourceManager Resource{get{return instance._resource;}}
     public static UI_Manager UI_Manager{get{return instance._ui_manager;}}
@@ -23,6 +24,7 @@ public class Managers : MonoBehaviour
     public static PoolManager Pool{get{return instance._pool;}}
     public static DataManager Data { get { return instance._data; } }
     public static REventManager RandEvent { get { return instance._RE; } }
+    public static GameManager GM { get { return instance._Gm; } }
     
     void Awake()
     {
@@ -71,13 +73,18 @@ public class Managers : MonoBehaviour
     IEnumerator LoadDatas()
     {
         Coroutine cor1 = StartCoroutine(s_instance._data.RequestAndSetDayDatas(DayDatasURL));
-        //Coroutine cor2 = StartCoroutine(s_instance._data.RequestAndSetRandEventDatas(RandEventURL)); 
-        //Coroutine cor3 = StartCoroutine(s_instance._data.RequestAndSetItemDatas(MerchantURL));
+        Coroutine cor2 = StartCoroutine(s_instance._data.RequestAndSetRandEventDatas(RandEventURL)); 
+        Coroutine cor3 = StartCoroutine(s_instance._data.RequestAndSetItemDatas(MerchantURL));
 
         yield return cor1;
-        //yield return cor2;
-        //yield return cor3;
+        yield return cor2;
+        yield return cor3;
 
         Debug.Log("시작 가능");
+    }
+
+    public void StartSchedule()
+    {
+        StartCoroutine(_Gm.StartSchedule());
     }
 }
