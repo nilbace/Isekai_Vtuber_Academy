@@ -142,23 +142,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisBTN: {fileID: 0}
   BroadCastpoz:
-    HeartPoz: {x: -10, y: -13, z: 0}
-    StarPoz: {x: 15, y: 1.71, z: 0}
-    StatIconPoz: {x: 10, y: 7.05, z: 0}
-    SubTextPoz: {x: 5, y: 7.68, z: 0}
-    GoldTextPoz: {x: -10, y: 29.4, z: 0}
+    HeartPoz: {x: -12.5, y: -12.5, z: 0}
+    StarPoz: {x: 17.5, y: -12.5, z: 0}
+    StatIconPoz: {x: 0, y: 0, z: 0}
+    SubTextPoz: {x: 3.5, y: -24.5, z: 0}
+    GoldTextPoz: {x: 3.5, y: -36.5, z: 0}
   Restpoz:
     HeartPoz: {x: 0, y: 0, z: 0}
     StarPoz: {x: 0, y: 0, z: 0}
     StatIconPoz: {x: 0, y: 0, z: 0}
     SubTextPoz: {x: 0, y: 0, z: 0}
-    GoldTextPoz: {x: 0, y: 0, z: 0}
+    GoldTextPoz: {x: 0, y: -36.5, z: 0}
   GOoutpoz:
-    HeartPoz: {x: 0, y: 0, z: 0}
-    StarPoz: {x: 0, y: 0, z: 0}
-    StatIconPoz: {x: 0, y: 0, z: 0}
+    HeartPoz: {x: 0, y: -12.5, z: 0}
+    StarPoz: {x: 0, y: -12.5, z: 0}
+    StatIconPoz: {x: 0, y: -12.5, z: 0}
     SubTextPoz: {x: 0, y: 0, z: 0}
-    GoldTextPoz: {x: 0, y: 0, z: 0}
+    GoldTextPoz: {x: 0, y: -36.5, z: 0}
   offset: 6
   Offset: 70
 --- !u!1 &3889826550822649576
@@ -404,7 +404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: -13}
+  m_AnchoredPosition: {x: -12.5, y: -12.5}
   m_SizeDelta: {x: 5, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8090578953112928647
@@ -615,8 +615,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.4571, y: -36.2}
-  m_SizeDelta: {x: 154.6558, y: 46.1463}
+  m_AnchoredPosition: {x: 3.5, y: -36.5}
+  m_SizeDelta: {x: 150, y: 46.1463}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8090578953647638435
 CanvasRenderer:
@@ -749,8 +749,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.2844, y: -24.1}
-  m_SizeDelta: {x: 159.5798, y: 46.1463}
+  m_AnchoredPosition: {x: 3.5, y: -24.5}
+  m_SizeDelta: {x: 150, y: 46.1463}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8090578954350446353
 CanvasRenderer:
@@ -883,7 +883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19.3, y: -12.399999}
+  m_AnchoredPosition: {x: 17.5, y: -12.5}
   m_SizeDelta: {x: 5, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8090578954364263518
@@ -914,7 +914,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3870009308859825733, guid: 5a2e3b0d5a6095f418dad842e7a4c801, type: 3}
+  m_Sprite: {fileID: 4125658922741033043, guid: 5a2e3b0d5a6095f418dad842e7a4c801, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

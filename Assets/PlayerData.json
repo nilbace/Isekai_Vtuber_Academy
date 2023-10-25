@@ -2,19 +2,23 @@
     "NowWeek": 2,
     "nowSubCount": 0,
     "nowGoldAmount": -500,
-    "NowHeart": 93,
-    "NowStar": 85,
+    "NowHeart": 2,
+    "NowStar": 2,
     "SixStat": [
-        14,
-        0,
+        29,
+        3,
+        4,
         1,
-        1,
-        11,
+        26,
         0
     ],
     "DoneEventNames": [
         "헴릿 공연 난입",
-        "술 헤롱헤롱"
+        "술 헤롱헤롱",
+        "엘라 당근 사기",
+        "포카리 물만두",
+        "TS 코스프레",
+        "팬레터 읽기"
     ],
     "BoughtItems": []
 }
