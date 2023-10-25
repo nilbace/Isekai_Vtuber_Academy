@@ -216,19 +216,31 @@ public class UI_SchedulePopup : UI_Popup
 
             if(_SevenDayScheduleDatas[i] == null)
             {
-                GetButton(i).GetComponent<Image>().sprite = DaysImages[3];
+                if(GetButton(i).interactable == true)
+                {
+                    GetButton(i).GetComponent<Image>().sprite = DaysImages[3];
+                }
+                else
+                {
+                    GetButton(i).GetComponent<Image>().sprite = DaysImages[4];
+                }
             }
             else if(_SevenDayScheduleDatas[i].scheduleType == ScheduleType.BroadCast)
             {
                 GetButton(i).GetComponent<Image>().sprite = DaysImages[0];
+                GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = new Color(0, 0, 0, 1);
             }
             else if(_SevenDayScheduleDatas[i].scheduleType == ScheduleType.Rest)
             {
                 GetButton(i).GetComponent<Image>().sprite = DaysImages[1];
+                GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = new Color(0, 0, 0, 1);
+
             }
             else
             {
                 GetButton(i).GetComponent<Image>().sprite = DaysImages[2];
+                GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = new Color(0, 0, 0, 1);
+
             }
         }
     }
@@ -317,12 +329,12 @@ public class UI_SchedulePopup : UI_Popup
 
     public void SetDaySchedule(OneDayScheduleData data)
     {
+        //历厘家 历厘
         _SevenDayScheduleDatas[(int)_nowSelectedDay] = data;
         Managers.Data._SevenDayScheduleDatas = _SevenDayScheduleDatas;
-        //历厘家 历厘
-
-        ClickLastDay_PlusOne();
+        
         UpdateInteractableButton();
+        ClickLastDay_PlusOne();
     }
     #endregion
 
