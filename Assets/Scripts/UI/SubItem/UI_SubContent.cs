@@ -18,6 +18,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         public Vector3 HeartPoz;
         public Vector3 StarPoz;
         public Vector3 StatIconPoz;
+        public Vector3 StatUDPoz;
         public Vector3 SubTextPoz;
         public Vector3 GoldTextPoz;
         
@@ -32,13 +33,14 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         GetImage((int)Images.HeartUD).transform.localPosition = pozs.HeartPoz;
         GetImage((int)Images.StarUD).transform.localPosition = pozs.StarPoz;
         GetImage((int)Images.StatIcon).transform.localPosition = pozs.StatIconPoz;
+        GetImage((int)Images.StatUD).transform.localPosition = pozs.StatUDPoz;
         GetText((int)Texts.SubTMP).transform.localPosition = pozs.SubTextPoz;
         GetText((int)Texts.GoldTMP).transform.localPosition = pozs.GoldTextPoz;
     }
  
     enum Images
     {
-        HeartUD, StarUD, StatIcon
+        HeartUD, StarUD, StatIcon, StatUD
     }
     enum Texts
     { 

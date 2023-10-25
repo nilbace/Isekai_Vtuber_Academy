@@ -146,18 +146,21 @@ MonoBehaviour:
     HeartPoz: {x: -12.5, y: -12.5, z: 0}
     StarPoz: {x: 17.5, y: -12.5, z: 0}
     StatIconPoz: {x: 0, y: 3000, z: 0}
+    StatUDPoz: {x: 0, y: 3000, z: 0}
     SubTextPoz: {x: 3.5, y: -24.5, z: 0}
     GoldTextPoz: {x: 3.5, y: -36.5, z: 0}
   Restpoz:
     HeartPoz: {x: -12.5, y: -24.5, z: 0}
     StarPoz: {x: 17.5, y: -24.5, z: 0}
     StatIconPoz: {x: 0, y: 3000, z: 0}
+    StatUDPoz: {x: 0, y: 3000, z: 0}
     SubTextPoz: {x: 0, y: 3000, z: 0}
     GoldTextPoz: {x: 3.5, y: -36.5, z: 0}
   GOoutpoz:
     HeartPoz: {x: 4.5, y: -24.5, z: 0}
     StarPoz: {x: 26.5, y: -24.5, z: 0}
     StatIconPoz: {x: -28, y: -24, z: 0}
+    StatUDPoz: {x: -18.5, y: -24.5, z: 0}
     SubTextPoz: {x: 0, y: 3000, z: 0}
     GoldTextPoz: {x: 3.5, y: -36.5, z: 0}
   offset: 6
