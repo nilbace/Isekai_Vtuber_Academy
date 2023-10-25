@@ -21,8 +21,10 @@ public class UI_MainBackUI : UI_Scene
         CreateScheduleBTN,
         GameStatBTN,
         SongStatBTN,
-        ChatStatBTN,
-        StrStatBTN, MentalStatBTN, LuckStatBTN
+        DrawStatBTN,
+        StrStatBTN, 
+        MentalStatBTN, 
+        ChatStatBTN
     }
 
     enum GameObjects
@@ -56,10 +58,10 @@ public class UI_MainBackUI : UI_Scene
         CreateScheduleBTN.onClick.AddListener(ShowSchedulePopup);
         GetButton((int)Buttons.GameStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Game));
         GetButton((int)Buttons.SongStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Song));
-        GetButton((int)Buttons.ChatStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Chat));
+        GetButton((int)Buttons.DrawStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Chat));
         GetButton((int)Buttons.StrStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Health));
         GetButton((int)Buttons.MentalStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Mental));
-        GetButton((int)Buttons.LuckStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Luck));
+        GetButton((int)Buttons.ChatStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Luck));
 
         UpdateUItexts();
     }
