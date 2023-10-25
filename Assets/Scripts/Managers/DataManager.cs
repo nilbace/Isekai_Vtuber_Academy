@@ -101,9 +101,10 @@ public class DataManager
     #region ScheduleData
 
     float[] weekBounsMagnification = new float[5];
+
+    //Schedule Popup데이터 관리용
     public OneDayScheduleData[] _SevenDayScheduleDatas = new OneDayScheduleData[7];
     public float[] _SeveDayScrollVarValue = new float[7];
-
 
 
     public float GetNowWeekBonusMag()
@@ -147,83 +148,60 @@ public class DataManager
 
     public IEnumerator RequestAndSetDayDatas(string www)
     {
-        UnityWebRequest wwww = UnityWebRequest.Get(www);
+        UnityWebRequest wwww = UnityWebRequest.Get(www);        
         yield return wwww.SendWebRequest();
 
-        string data = wwww.downloadHandler.text;
-        string[] lines = data.Substring(0, data.Length - 1).Split('\n');
 
-        Queue<string> tempfloatList = new Queue<string>();
+        Queue<string> tempstringQueue = new Queue<string>();
+
+
+        string data = wwww.downloadHandler.text;
+        string[] lines = data.Substring(0, data.Length).Split('\n');        
 
         foreach (string line in lines)
         {
-            string templine = line.Substring(0, line.Length - 1);
-            tempfloatList.Enqueue(templine);
-        }
-
-        for (int i = 0; i < 5; i++)
-        {
-            weekBounsMagnification[i] = float.Parse(tempfloatList.Dequeue());
+            Debug.Log(line);
+            string[] lines2 = data.Substring(0, data.Length).Split('\t');
+            foreach(string temp in lines2)
+            {
+                //Debug.Log(temp);
+                tempstringQueue.Enqueue(temp);
+            }
         }
 
         for(int i = 0;i<(int)BroadCastType.MaxCount; i++)
         {
-            OneDayScheduleData temp = new OneDayScheduleData();
-            temp.scheduleType = ScheduleType.BroadCast;
-            temp.broadcastType = (BroadCastType)i;
-            temp.KorName = tempfloatList.Dequeue();
-            temp.infotext = tempfloatList.Dequeue();
-            temp.FisSubsUpValue = float.Parse(tempfloatList.Dequeue());
-            temp.PerSubsUpValue = float.Parse(tempfloatList.Dequeue());
-            temp.HealthPointChangeValue = float.Parse(tempfloatList.Dequeue());
-            temp.MentalPointChageValue = float.Parse(tempfloatList.Dequeue());
-            temp.InComeMag = float.Parse(tempfloatList.Dequeue());
-            temp.MoneyCost = int.Parse(tempfloatList.Dequeue());
-            for(int j = 0;j<6; j++)
-            {
-                temp.Six_Stats[j] = int.Parse(tempfloatList.Dequeue());
-            }
-            oneDayDatasList.Add(temp);
+            ProcessStringToList(ScheduleType.BroadCast, i, tempstringQueue);
         }
         for (int i = 0; i <  (int)RestType.MaxCount; i++)
         {
-            OneDayScheduleData temp = new OneDayScheduleData();
-            temp.scheduleType = ScheduleType.Rest;
-            temp.restType = (RestType)i;
-            temp.KorName = tempfloatList.Dequeue();
-            temp.infotext = tempfloatList.Dequeue();
-            temp.FisSubsUpValue = float.Parse(tempfloatList.Dequeue());
-            temp.PerSubsUpValue = float.Parse(tempfloatList.Dequeue());
-            temp.HealthPointChangeValue = float.Parse(tempfloatList.Dequeue());
-            temp.MentalPointChageValue = float.Parse(tempfloatList.Dequeue());
-            temp.InComeMag = float.Parse(tempfloatList.Dequeue());
-            temp.MoneyCost = int.Parse(tempfloatList.Dequeue());
-            for (int j = 0; j < 6; j++)
-            {
-                temp.Six_Stats[j] = int.Parse(tempfloatList.Dequeue());
-            }
-            oneDayDatasList.Add(temp);
+            ProcessStringToList(ScheduleType.Rest, i, tempstringQueue);
         }
         for (int i = 0; i < (int)GoOutType.MaxCount; i++)
         {
-            OneDayScheduleData temp = new OneDayScheduleData();
-            temp.scheduleType = ScheduleType.GoOut;
-            temp.goOutType = (GoOutType)i;
-            temp.KorName = tempfloatList.Dequeue();
-            temp.infotext = tempfloatList.Dequeue();
-            temp.FisSubsUpValue = float.Parse(tempfloatList.Dequeue());
-            temp.PerSubsUpValue = float.Parse(tempfloatList.Dequeue());
-            temp.HealthPointChangeValue = float.Parse(tempfloatList.Dequeue());
-            temp.MentalPointChageValue = float.Parse(tempfloatList.Dequeue());
-            temp.InComeMag = float.Parse(tempfloatList.Dequeue());
-            temp.MoneyCost = int.Parse(tempfloatList.Dequeue());
-            for (int j = 0; j < 6; j++)
-            {
-                temp.Six_Stats[j] = int.Parse(tempfloatList.Dequeue());
-            }
-            oneDayDatasList.Add(temp);
+            ProcessStringToList(ScheduleType.GoOut, i, tempstringQueue);
         }
 
+    }
+
+    void ProcessStringToList(ScheduleType scheduleType, int index, Queue<string> tempstringQueue)
+    {
+        OneDayScheduleData temp = new OneDayScheduleData();
+        temp.scheduleType = ScheduleType.BroadCast;
+        temp.broadcastType = (BroadCastType)index;
+        temp.KorName = tempstringQueue.Dequeue();
+        temp.FisSubsUpValue = float.Parse(tempstringQueue.Dequeue());
+        temp.PerSubsUpValue = float.Parse(tempstringQueue.Dequeue());
+        temp.HealthPointChangeValue = float.Parse(tempstringQueue.Dequeue());
+        temp.MentalPointChageValue = float.Parse(tempstringQueue.Dequeue());
+        temp.InComeMag = float.Parse(tempstringQueue.Dequeue());
+        temp.MoneyCost = int.Parse(tempstringQueue.Dequeue());
+        for (int j = 0; j < 6; j++)
+        {
+            temp.Six_Stats[j] = int.Parse(tempstringQueue.Dequeue());
+        }
+        temp.infotext = tempstringQueue.Dequeue();
+        oneDayDatasList.Add(temp);
     }
 
     #endregion

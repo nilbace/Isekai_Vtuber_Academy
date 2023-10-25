@@ -70,5 +70,21 @@ public class Define : MonoBehaviour
         public int IncomeBonus;
     }
 
+    public enum BroadCastType
+    {
+        Game, Song, Chat, Horror, Cook, GameChallenge, NewClothe, MaxCount
+    }
+
+    public enum RestType
+    {
+        hea1, hea2, hea3, men1, men2, men3, MaxCount
+    }
+
+    public enum GoOutType
+    {
+        game1, game2, game3, song1, song2, song3, chat1, chat2, chat3,
+        hea1, hea2, hea3, men1, men2, men3, luck1, luck2, luck3,
+        MaxCount
+    }
 
 }

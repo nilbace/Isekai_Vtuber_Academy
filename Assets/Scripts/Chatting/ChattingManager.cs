@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using DG.Tweening;
-using static UI_SchedulePopup;
-
+using static Define;
 public class ChattingManager : MonoBehaviour//
 {
     #region URL&StringLists
