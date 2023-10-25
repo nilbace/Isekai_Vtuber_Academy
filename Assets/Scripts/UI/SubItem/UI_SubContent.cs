@@ -15,21 +15,30 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     [System.Serializable]
     public struct Pozs
     {
-        public Vector2 HeartPoz;
-        public Vector2 StarPoz;
-        public Vector2 SubTextPoz;
-        public Vector2 GoldTextPoz;
-        public Vector2 StatIconPoz;
+        public Vector3 HeartPoz;
+        public Vector3 StarPoz;
+        public Vector3 StatIconPoz;
+        public Vector3 SubTextPoz;
+        public Vector3 GoldTextPoz;
+        
     }
 
     public Pozs BroadCastpoz = new Pozs();
     public Pozs Restpoz = new Pozs();
     public Pozs GOoutpoz = new Pozs();
 
+    void SetPozition(Pozs pozs)
+    {
+        GetImage((int)Images.HeartUD).transform.localPosition = pozs.HeartPoz;
+        GetImage((int)Images.StarUD).transform.localPosition = pozs.StarPoz;
+        GetImage((int)Images.StatIcon).transform.localPosition = pozs.StarPoz;
+        GetText((int)Texts.SubUp).transform.localPosition = pozs.SubTextPoz;
+        GetText((int)Texts.GoldUp).transform.localPosition = pozs.GoldTextPoz;
+    }
  
     enum Images
     {
-        UI_SubContent,  HeartUD, StarUD
+        HeartUD, StarUD, StatIcon
     }
     enum Texts
     { 
@@ -56,16 +65,26 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     public void SetInfo(OneDayScheduleData scheduleData, OneDayScheduleData settedData)
     {
         thisSubSchedleData = scheduleData;
+        SpriteState spriteState = new SpriteState();
         switch (scheduleData.scheduleType)
         {
             case ScheduleType.BroadCast:
-                GetImage((int)Images.UI_SubContent).sprite = Managers.MSM.DaysPannel[0];
+                GetComponent<Image>().sprite = Managers.MSM.DaysPannel[0];
+                spriteState.pressedSprite = Managers.MSM.DaysPannel[1];
+                thisBTN.spriteState = spriteState;
+                SetPozition(BroadCastpoz);
                 break;
             case ScheduleType.Rest:
-                GetImage((int)Images.UI_SubContent).sprite = Managers.MSM.DaysPannel[2];
+                GetComponent<Image>().sprite = Managers.MSM.DaysPannel[2];
+                spriteState.pressedSprite = Managers.MSM.DaysPannel[3];
+                thisBTN.spriteState = spriteState;
+                SetPozition(Restpoz);
                 break;
             case ScheduleType.GoOut:
-                GetImage((int)Images.UI_SubContent).sprite = Managers.MSM.DaysPannel[4];
+                GetComponent<Image>().sprite = Managers.MSM.DaysPannel[4];
+                spriteState.pressedSprite = Managers.MSM.DaysPannel[5];
+                thisBTN.spriteState = spriteState;
+                SetPozition(GOoutpoz);
                 break;
         }
 
@@ -163,7 +182,18 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     {
         TruelyInteractable = true;
         thisBTN.interactable = false;
-        GetComponent<Image>().sprite = thisBTN.spriteState.pressedSprite;
+        switch (thisSubSchedleData.scheduleType)
+        {
+            case ScheduleType.BroadCast:
+                GetComponent<Image>().sprite = Managers.MSM.DaysPannel[1];
+                break;
+            case ScheduleType.Rest:
+                GetComponent<Image>().sprite = Managers.MSM.DaysPannel[3];
+                break;
+            case ScheduleType.GoOut:
+                GetComponent<Image>().sprite = Managers.MSM.DaysPannel[5];
+                break;
+        }
         foreach (Transform tr in GetComponentsInChildren<Transform>())
         {
             tr.localPosition += new Vector3(0, -offset, 0);

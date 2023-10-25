@@ -142,23 +142,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisBTN: {fileID: 0}
   BroadCastpoz:
-    HeartPoz: {x: 0, y: 0}
-    StarPoz: {x: 0, y: 0}
-    SubTextPoz: {x: 0, y: 0}
-    GoldTextPoz: {x: 0, y: 0}
-    StatIconPoz: {x: 0, y: 0}
+    HeartPoz: {x: 0, y: 0, z: 0}
+    StarPoz: {x: 0, y: 0, z: 0}
+    StatIconPoz: {x: 0, y: 0, z: 0}
+    SubTextPoz: {x: 0, y: 0, z: 0}
+    GoldTextPoz: {x: 0, y: 0, z: 0}
   Restpoz:
-    HeartPoz: {x: 0, y: 0}
-    StarPoz: {x: 0, y: 0}
-    SubTextPoz: {x: 0, y: 0}
-    GoldTextPoz: {x: 0, y: 0}
-    StatIconPoz: {x: 0, y: 0}
+    HeartPoz: {x: 0, y: 0, z: 0}
+    StarPoz: {x: 0, y: 0, z: 0}
+    StatIconPoz: {x: 0, y: 0, z: 0}
+    SubTextPoz: {x: 0, y: 0, z: 0}
+    GoldTextPoz: {x: 0, y: 0, z: 0}
   GOoutpoz:
-    HeartPoz: {x: 0, y: 0}
-    StarPoz: {x: 0, y: 0}
-    SubTextPoz: {x: 0, y: 0}
-    GoldTextPoz: {x: 0, y: 0}
-    StatIconPoz: {x: 0, y: 0}
+    HeartPoz: {x: 0, y: 0, z: 0}
+    StarPoz: {x: 0, y: 0, z: 0}
+    StatIconPoz: {x: 0, y: 0, z: 0}
+    SubTextPoz: {x: 0, y: 0, z: 0}
+    GoldTextPoz: {x: 0, y: 0, z: 0}
   offset: 6
   Offset: 70
 --- !u!1 &3889826550822649576
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 5240747581389490729}
   - component: {fileID: 7139800532626952151}
   m_Layer: 5
-  m_Name: Image
+  m_Name: StatIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
