@@ -32,8 +32,8 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         GetImage((int)Images.HeartUD).transform.localPosition = pozs.HeartPoz;
         GetImage((int)Images.StarUD).transform.localPosition = pozs.StarPoz;
         GetImage((int)Images.StatIcon).transform.localPosition = pozs.StarPoz;
-        GetText((int)Texts.SubUp).transform.localPosition = pozs.SubTextPoz;
-        GetText((int)Texts.GoldUp).transform.localPosition = pozs.GoldTextPoz;
+        GetText((int)Texts.SubTMP).transform.localPosition = pozs.SubTextPoz;
+        GetText((int)Texts.GoldTMP).transform.localPosition = pozs.GoldTextPoz;
     }
  
     enum Images
@@ -44,8 +44,8 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     { 
         NameTMP,
         InfoTMP,
-        SubUp,
-        GoldUp
+        SubTMP,
+        GoldTMP
     }
 
     private void Awake()
@@ -90,8 +90,8 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 
         GetText((int)Texts.NameTMP).text    = thisSubSchedleData.KorName;
         GetText((int)Texts.InfoTMP).text    = thisSubSchedleData.infotext;
-        GetText((int)Texts.SubUp).text      = thisSubSchedleData.KorName;
-        GetText((int)Texts.GoldUp).text     = thisSubSchedleData.KorName;
+        GetText((int)Texts.SubTMP).text      = thisSubSchedleData.KorName;
+        GetText((int)Texts.GoldTMP).text     = thisSubSchedleData.KorName;
 
 
         if(settedData == null)

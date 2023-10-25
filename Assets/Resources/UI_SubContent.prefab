@@ -142,11 +142,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisBTN: {fileID: 0}
   BroadCastpoz:
-    HeartPoz: {x: 0, y: 0, z: 0}
-    StarPoz: {x: 0, y: 0, z: 0}
-    StatIconPoz: {x: 0, y: 0, z: 0}
-    SubTextPoz: {x: 0, y: 0, z: 0}
-    GoldTextPoz: {x: 0, y: 0, z: 0}
+    HeartPoz: {x: -10, y: -13, z: 0}
+    StarPoz: {x: 15, y: 1.71, z: 0}
+    StatIconPoz: {x: 10, y: 7.05, z: 0}
+    SubTextPoz: {x: 5, y: 7.68, z: 0}
+    GoldTextPoz: {x: -10, y: 29.4, z: 0}
   Restpoz:
     HeartPoz: {x: 0, y: 0, z: 0}
     StarPoz: {x: 0, y: 0, z: 0}
@@ -404,7 +404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.7, y: -12.4}
+  m_AnchoredPosition: {x: -10, y: -13}
   m_SizeDelta: {x: 5, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8090578953112928647
@@ -593,7 +593,7 @@ GameObject:
   - component: {fileID: 8090578953647638435}
   - component: {fileID: 8090578953647638434}
   m_Layer: 5
-  m_Name: GoldUp
+  m_Name: GoldTMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -727,7 +727,7 @@ GameObject:
   - component: {fileID: 8090578954350446353}
   - component: {fileID: 8090578954350446352}
   m_Layer: 5
-  m_Name: SubUp
+  m_Name: SubTMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
