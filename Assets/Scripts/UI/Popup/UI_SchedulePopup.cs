@@ -277,20 +277,17 @@ public class UI_SchedulePopup : UI_Popup
 
     void ClickBroadCastBTN()
     {
-        SubContentSelectPhase = true;
         State_SelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.BroadCast);
     }
     void ClickRestBTN()
     {
-        SubContentSelectPhase = true;
         State_SelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.Rest);
     }
 
     void ClickGoOutBTN()
     {
-        SubContentSelectPhase = true;
         State_SelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.GoOut);
     }

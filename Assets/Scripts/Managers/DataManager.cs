@@ -126,22 +126,22 @@ public class DataManager
         return temp;
     }
 
-    public OneDayScheduleData GetOneDayDataByName(BroadCastType restType)
+    public OneDayScheduleData GetOneDayDataByName(BroadCastType broadType)
     {
         OneDayScheduleData temp = new OneDayScheduleData();
         foreach (OneDayScheduleData one in oneDayDatasList)
         {
-            if (one.broadcastType == restType) temp = one;
+            if (one.broadcastType == broadType) temp = one;
         }
         return temp;
     }
 
-    public OneDayScheduleData GetOneDayDataByName(GoOutType restType)
+    public OneDayScheduleData GetOneDayDataByName(GoOutType GooutType)
     {
         OneDayScheduleData temp = new OneDayScheduleData();
         foreach (OneDayScheduleData one in oneDayDatasList)
         {
-            if (one.goOutType == restType) temp = one;
+            if (one.goOutType == GooutType) temp = one;
         }
         return temp;
     }
@@ -151,44 +151,58 @@ public class DataManager
         UnityWebRequest wwww = UnityWebRequest.Get(www);        
         yield return wwww.SendWebRequest();
 
-
-        Queue<string> tempstringQueue = new Queue<string>();
-
-
         string data = wwww.downloadHandler.text;
-        string[] lines = data.Substring(0, data.Length).Split('\n');        
+        string[] lines = data.Substring(0, data.Length).Split('\n');
+        Queue<string> stringqueue = new Queue<string>();
 
-        foreach (string line in lines)
+        foreach(string line in lines)
         {
-            Debug.Log(line);
-            string[] lines2 = data.Substring(0, data.Length).Split('\t');
-            foreach(string temp in lines2)
-            {
-                //Debug.Log(temp);
-                tempstringQueue.Enqueue(temp);
-            }
+            stringqueue.Enqueue(line);
         }
+
 
         for(int i = 0;i<(int)BroadCastType.MaxCount; i++)
         {
-            ProcessStringToList(ScheduleType.BroadCast, i, tempstringQueue);
+            ProcessStringToList(ScheduleType.BroadCast, i, stringqueue.Dequeue());
         }
         for (int i = 0; i <  (int)RestType.MaxCount; i++)
         {
-            ProcessStringToList(ScheduleType.Rest, i, tempstringQueue);
+            ProcessStringToList(ScheduleType.Rest, i, stringqueue.Dequeue());
         }
         for (int i = 0; i < (int)GoOutType.MaxCount; i++)
         {
-            ProcessStringToList(ScheduleType.GoOut, i, tempstringQueue);
+            ProcessStringToList(ScheduleType.GoOut, i, stringqueue.Dequeue());
         }
-
     }
 
-    void ProcessStringToList(ScheduleType scheduleType, int index, Queue<string> tempstringQueue)
+    void ProcessStringToList(ScheduleType scheduleType,int index,string data)
     {
+        string[] lines = data.Substring(0, data.Length).Split('\t');
+        Queue<string> tempstringQueue = new Queue<string>();
+
+        foreach (string asdf in lines)
+        {
+            tempstringQueue.Enqueue(asdf);
+        }
+
         OneDayScheduleData temp = new OneDayScheduleData();
-        temp.scheduleType = ScheduleType.BroadCast;
-        temp.broadcastType = (BroadCastType)index;
+
+        if(scheduleType == ScheduleType.BroadCast)
+        {
+            temp.scheduleType = ScheduleType.BroadCast;
+            temp.broadcastType = (BroadCastType)index;
+        }
+        else if(scheduleType == ScheduleType.Rest)
+        {
+            temp.scheduleType = ScheduleType.Rest;
+            temp.restType = (RestType)index;
+        }
+        else
+        {
+            temp.scheduleType = ScheduleType.GoOut;
+            temp.goOutType = (GoOutType)index;
+        }
+        
         temp.KorName = tempstringQueue.Dequeue();
         temp.FisSubsUpValue = float.Parse(tempstringQueue.Dequeue());
         temp.PerSubsUpValue = float.Parse(tempstringQueue.Dequeue());
