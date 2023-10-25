@@ -56,6 +56,19 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     public void SetInfo(OneDayScheduleData scheduleData, OneDayScheduleData settedData)
     {
         thisSubSchedleData = scheduleData;
+        switch (scheduleData.scheduleType)
+        {
+            case ScheduleType.BroadCast:
+                GetImage((int)Images.UI_SubContent).sprite = Managers.MSM.DaysPannel[0];
+                break;
+            case ScheduleType.Rest:
+                GetImage((int)Images.UI_SubContent).sprite = Managers.MSM.DaysPannel[2];
+                break;
+            case ScheduleType.GoOut:
+                GetImage((int)Images.UI_SubContent).sprite = Managers.MSM.DaysPannel[4];
+                break;
+        }
+
         GetText((int)Texts.NameTMP).text    = thisSubSchedleData.KorName;
         GetText((int)Texts.InfoTMP).text    = thisSubSchedleData.infotext;
         GetText((int)Texts.SubUp).text      = thisSubSchedleData.KorName;
@@ -155,5 +168,5 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         {
             tr.localPosition += new Vector3(0, -offset, 0);
         }
-    }   
+    }
 }
