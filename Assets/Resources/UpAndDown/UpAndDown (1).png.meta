@@ -41,6 +41,24 @@ TextureImporter:
   - first:
       213: 4043448355780712423
     second: UpAndDown (1)_12
+  - first:
+      213: -5315800291759483813
+    second: UpAndDown (1)_13
+  - first:
+      213: 7041540443984848181
+    second: UpAndDown (1)_14
+  - first:
+      213: -8798597674142718815
+    second: UpAndDown (1)_15
+  - first:
+      213: -3316459110020408005
+    second: UpAndDown (1)_16
+  - first:
+      213: 6967869290351111466
+    second: UpAndDown (1)_17
+  - first:
+      213: 5288335156184887880
+    second: UpAndDown (1)_18
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -423,6 +441,132 @@ TextureImporter:
       bones: []
       spriteID: 7e752f14bd63d1830800000000000000
       internalID: 4043448355780712423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UpAndDown (1)_13
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 0
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5412c88ccb7a36b0800000000000000
+      internalID: -5315800291759483813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UpAndDown (1)_14
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 0
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5356343e9b398b160800000000000000
+      internalID: 7041540443984848181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UpAndDown (1)_15
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 0
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a42527480a15e580800000000000000
+      internalID: -8798597674142718815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UpAndDown (1)_16
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3d1023c20299f1d0800000000000000
+      internalID: -3316459110020408005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UpAndDown (1)_17
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 0
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2d2bb4c338d2b060800000000000000
+      internalID: 6967869290351111466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UpAndDown (1)_18
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 0
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8423c954ec0f36940800000000000000
+      internalID: 5288335156184887880
       vertices: []
       indices: 
       edges: []
