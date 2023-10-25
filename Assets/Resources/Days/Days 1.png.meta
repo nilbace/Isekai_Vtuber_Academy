@@ -14,6 +14,21 @@ TextureImporter:
   - first:
       213: 2913366585927356401
     second: Days_3
+  - first:
+      213: -2643233851524504723
+    second: Days 1_0
+  - first:
+      213: -1420537928389874643
+    second: Days 1_1
+  - first:
+      213: -1603729586806323306
+    second: Days 1_2
+  - first:
+      213: -6502898960092442253
+    second: Days 1_3
+  - first:
+      213: 9189265512996131446
+    second: Days 1_4
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -128,7 +143,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Days_0
+      name: Days 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +157,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab082169e0eb2c860800000000000000
-      internalID: 7548804895282987194
+      spriteID: d63289501d8515bd0800000000000000
+      internalID: -2643233851524504723
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Days_1
+      name: Days 1_1
       rect:
         serializedVersion: 2
         x: 36
@@ -163,14 +178,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85c83e7df4705b7b0800000000000000
-      internalID: -5209249354478285736
+      spriteID: d2c2a5cc74c394ce0800000000000000
+      internalID: -1420537928389874643
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Days_2
+      name: Days 1_2
       rect:
         serializedVersion: 2
         x: 72
@@ -184,14 +199,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80b84bfa2b0cf98e0800000000000000
-      internalID: -1684415861928719608
+      spriteID: 69700ae00786eb9e0800000000000000
+      internalID: -1603729586806323306
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Days_3
+      name: Days 1_3
       rect:
         serializedVersion: 2
         x: 108
@@ -205,8 +220,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ff41b6697b5e6820800000000000000
-      internalID: 2913366585927356401
+      spriteID: 371de6189df01c5a0800000000000000
+      internalID: -6502898960092442253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Days 1_4
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 36
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 672d1e81c44d68f70800000000000000
+      internalID: 9189265512996131446
       vertices: []
       indices: 
       edges: []
