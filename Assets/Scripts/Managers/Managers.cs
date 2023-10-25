@@ -16,6 +16,7 @@ public class Managers : MonoBehaviour
     PoolManager _pool = new PoolManager();
     DataManager _data = new DataManager();
     REventManager _RE = new REventManager();
+    GameManager _Gm = new GameManager();
     public static InputManager Input {get {return instance._input;}}
     public static ResourceManager Resource{get{return instance._resource;}}
     public static UI_Manager UI_Manager{get{return instance._ui_manager;}}
@@ -23,6 +24,7 @@ public class Managers : MonoBehaviour
     public static PoolManager Pool{get{return instance._pool;}}
     public static DataManager Data { get { return instance._data; } }
     public static REventManager RandEvent { get { return instance._RE; } }
+    public static GameManager GM { get { return instance._Gm; } }
     
     void Awake()
     {

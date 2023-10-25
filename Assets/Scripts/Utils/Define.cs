@@ -87,4 +87,56 @@ public class Define : MonoBehaviour
         MaxCount
     }
 
+    public enum SevenDays
+    {
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday,
+    }
+
+    public enum ScheduleType
+    {
+        Null, BroadCast, Rest, GoOut
+    }
+
+    public class OneDayScheduleData
+    {
+        public string KorName;
+        public string infotext;
+        public ScheduleType scheduleType;
+        public BroadCastType broadcastType;
+        public RestType restType;
+        public GoOutType goOutType;
+        public float FisSubsUpValue;
+        public float PerSubsUpValue;
+        public float HealthPointChangeValue;
+        public float MentalPointChageValue;
+        public float InComeMag;
+        public int MoneyCost;
+        public int[] Six_Stats;
+
+        public OneDayScheduleData()
+        {
+            KorName = "";
+            this.scheduleType = ScheduleType.Null;
+            this.broadcastType = BroadCastType.MaxCount;
+            this.restType = RestType.MaxCount;
+            this.goOutType = GoOutType.MaxCount;
+            this.infotext = "";
+            FisSubsUpValue = 0;
+            PerSubsUpValue = 0;
+            HealthPointChangeValue = 0;
+            MentalPointChageValue = 0;
+            InComeMag = 0;
+            MoneyCost = 0;
+            Six_Stats = new int[6];
+        }
+    }
+
+
+
 }
