@@ -25,11 +25,16 @@ public class GameManager
         Debug.Log($"1주일 하트 구독자 변화량 :   {afterHeart - beforeHeart}");
         Debug.Log($"1주일 별 구독자 변화량 :     {afterStar - beforeStar}");
 
+        for(int i =0;i<7;i++)
+        {
+            Managers.Data._SevenDayScheduleDatas[i] = null;
+            Managers.Data._SeveDayScrollVarValue[i] = 0;
+        }
+
         UI_MainBackUI.instance.UpdateUItexts();
 
         if (Managers.Data._myPlayerData.NowWeek % 5 != 0) Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
         else Managers.UI_Manager.ShowPopupUI<UI_Merchant>();
-
     }
 
     void CarryOutOneDayWork(OneDayScheduleData oneDay)

@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class Managers : MonoBehaviour
 {
     static Managers s_instance;
-    static Managers instance {get{Init(); return s_instance;}}
+    public static Managers instance {get{Init(); return s_instance;}}
     
 
     InputManager _input = new InputManager();
@@ -73,13 +73,18 @@ public class Managers : MonoBehaviour
     IEnumerator LoadDatas()
     {
         Coroutine cor1 = StartCoroutine(s_instance._data.RequestAndSetDayDatas(DayDatasURL));
-        //Coroutine cor2 = StartCoroutine(s_instance._data.RequestAndSetRandEventDatas(RandEventURL)); 
-        //Coroutine cor3 = StartCoroutine(s_instance._data.RequestAndSetItemDatas(MerchantURL));
+        Coroutine cor2 = StartCoroutine(s_instance._data.RequestAndSetRandEventDatas(RandEventURL)); 
+        Coroutine cor3 = StartCoroutine(s_instance._data.RequestAndSetItemDatas(MerchantURL));
 
         yield return cor1;
-        //yield return cor2;
-        //yield return cor3;
+        yield return cor2;
+        yield return cor3;
 
         Debug.Log("시작 가능");
+    }
+
+    public void StartSchedule()
+    {
+        StartCoroutine(_Gm.StartSchedule());
     }
 }

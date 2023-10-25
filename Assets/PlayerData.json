@@ -1,17 +1,20 @@
 {
-    "NowWeek": 1,
+    "NowWeek": 2,
     "nowSubCount": 0,
-    "nowGoldAmount": 0,
-    "NowHeart": 60,
-    "NowStar": 98,
+    "nowGoldAmount": -500,
+    "NowHeart": 93,
+    "NowStar": 85,
     "SixStat": [
+        14,
         0,
-        0,
-        0,
-        0,
-        0,
+        1,
+        1,
+        11,
         0
     ],
-    "DoneEventNames": [],
+    "DoneEventNames": [
+        "헴릿 공연 난입",
+        "술 헤롱헤롱"
+    ],
     "BoughtItems": []
 }
