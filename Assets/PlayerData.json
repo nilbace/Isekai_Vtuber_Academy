@@ -1,33 +1,19 @@
 {
-    "NowWeek": 10,
-    "nowSubCount": 4445590,
-    "nowGoldAmount": 26077416,
-    "NowHeart": 46,
-    "NowStar": 65,
+    "NowWeek": 2,
+    "nowSubCount": 516,
+    "nowGoldAmount": 806,
+    "NowHeart": 51,
+    "NowStar": 51,
     "SixStat": [
-        81.0,
-        1.0,
-        1.0,
-        1.0,
-        39.0,
-        1.0
+        12.0,
+        0.0,
+        0.0,
+        0.0,
+        7.0,
+        0.0
     ],
     "DoneEventNames": [
-        "고삼차 먹방",
-        "포카리 물만두",
-        "스카이 다이빙",
-        "게임1",
-        "실버 버튼 언박싱",
-        "도수치료 직캠",
-        "게임2",
         "밀웜 먹방"
     ],
-    "BoughtItems": [
-        "수상한 마이크",
-        "수상한 마우스",
-        "수상한 물약",
-        "수상한 책",
-        "수상한 덤벨",
-        "수상한 부적"
-    ]
+    "BoughtItems": []
 }
