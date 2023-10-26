@@ -273,7 +273,7 @@ public class UI_SchedulePopup : UI_Popup
                 {
                     nowSelectScheduleTypeList.Add(Managers.Data.GetOneDayDataByName((BroadCastType)i));
                     GameObject go = Instantiate(UISubContent, ParentTR, false);
-                    go.GetComponent<UI_SubContent>().SetInfo(Managers.Data.GetOneDayDataByName((BroadCastType)i),_SevenDayScheduleDatas[(int)_nowSelectedDay]);
+                    go.GetComponent<UI_SubContent>().SetInfo(Managers.Data.GetOneDayDataByName((BroadCastType)i),_SevenDayScheduleDatas[(int)_nowSelectedDay], _nowSelectedDay);
                 }
                 break;
 
@@ -282,7 +282,7 @@ public class UI_SchedulePopup : UI_Popup
                 {
                     nowSelectScheduleTypeList.Add(Managers.Data.GetOneDayDataByName((RestType)i));
                     GameObject go = Instantiate(UISubContent, ParentTR, false);
-                    go.GetComponent<UI_SubContent>().SetInfo(Managers.Data.GetOneDayDataByName((RestType)i), _SevenDayScheduleDatas[(int)_nowSelectedDay]);
+                    go.GetComponent<UI_SubContent>().SetInfo(Managers.Data.GetOneDayDataByName((RestType)i), _SevenDayScheduleDatas[(int)_nowSelectedDay], _nowSelectedDay);
                 }
                 break;
 
@@ -291,7 +291,7 @@ public class UI_SchedulePopup : UI_Popup
                 {
                     nowSelectScheduleTypeList.Add(Managers.Data.GetOneDayDataByName((GoOutType)i));
                     GameObject go = Instantiate(UISubContent, ParentTR, false);
-                    go.GetComponent<UI_SubContent>().SetInfo(Managers.Data.GetOneDayDataByName((GoOutType)i), _SevenDayScheduleDatas[(int)_nowSelectedDay]);
+                    go.GetComponent<UI_SubContent>().SetInfo(Managers.Data.GetOneDayDataByName((GoOutType)i), _SevenDayScheduleDatas[(int)_nowSelectedDay], _nowSelectedDay);
                 }
                 break;
         }

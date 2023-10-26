@@ -10,6 +10,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 {
     public OneDayScheduleData thisSubSchedleData;
     public Button thisBTN;
+    SevenDays thisBTNDay;
     ScrollRect scrollRect;
 
     [System.Serializable]
@@ -64,9 +65,10 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         scrollRect = GetComponentInParent<ScrollRect>();
     }
 
-    public void SetInfo(OneDayScheduleData scheduleData, OneDayScheduleData settedData)
+    public void SetInfo(OneDayScheduleData scheduleData, OneDayScheduleData settedData, SevenDays nowDay)
     {
         thisSubSchedleData = scheduleData;
+        thisBTNDay = nowDay;
         SpriteState spriteState = new SpriteState();
         switch (scheduleData.scheduleType)
         {
@@ -93,8 +95,12 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         GetText((int)Texts.NameTMP).text    = thisSubSchedleData.KorName;
         GetText((int)Texts.InfoTMP).text    = thisSubSchedleData.infotext;
         GetText((int)Texts.SubTMP).text      = thisSubSchedleData.KorName;
-        GetText((int)Texts.GoldTMP).text     = thisSubSchedleData.MoneyCost.ToString();
+        GetText((int)Texts.GoldTMP).text     =  (-thisSubSchedleData.MoneyCost).ToString();
 
+        if(scheduleData.scheduleType == ScheduleType.BroadCast)
+        {
+            SetMoneyAndSubData_BroadCast();
+        }
 
         if(settedData == null)
         {
@@ -213,5 +219,30 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         {
             tr.localPosition += new Vector3(0, -offset, 0);
         }
+    }
+
+    void SetMoneyAndSubData_BroadCast()
+    {
+        int tempSub = Managers.Data._myPlayerData.nowSubCount;
+       
+        for(int i = 0; i< (int)thisBTNDay; i++)
+        {
+            tempSub += ExpectedSub(tempSub, thisSubSchedleData);
+        }
+
+        GetText((int)Texts.SubTMP).text = ExpectedSub(tempSub, thisSubSchedleData).ToString();
+        GetText((int)Texts.GoldTMP).text = Mathf.CeilToInt(tempSub * thisSubSchedleData.InComeMag).ToString();
+    }
+
+    int ExpectedSub(int SubCount, OneDayScheduleData oneDayScheduleData)
+    {
+        return CalculateSubAfterDay(SubCount, oneDayScheduleData.FisSubsUpValue, oneDayScheduleData.PerSubsUpValue, Managers.Data.GetNowWeekBonusMag());
+    }
+
+    int CalculateSubAfterDay(int now, float fix, float per, float bonus)
+    {
+        float temp = (now + fix) * ((float)(100 + per) / 100f) * bonus;
+        int result = Mathf.CeilToInt(temp);
+        return result - now;
     }
 }

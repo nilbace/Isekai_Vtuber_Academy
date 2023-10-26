@@ -1,15 +1,15 @@
 {
-    "NowWeek": 7,
-    "nowSubCount": 221258,
-    "nowGoldAmount": 681583,
-    "NowHeart": 47,
-    "NowStar": 92,
+    "NowWeek": 8,
+    "nowSubCount": 384627,
+    "nowGoldAmount": 1220215,
+    "NowHeart": 100,
+    "NowStar": 100,
     "SixStat": [
-        52.0,
+        59.0,
         1.0,
         1.0,
         1.0,
-        25.0,
+        27.0,
         1.0
     ],
     "DoneEventNames": [
@@ -17,7 +17,8 @@
         "포카리 물만두",
         "스카이 다이빙",
         "게임1",
-        "실버 버튼 언박싱"
+        "실버 버튼 언박싱",
+        "도수치료 직캠"
     ],
     "BoughtItems": [
         "수상한 마이크",
