@@ -68,7 +68,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     public void SetInfo(OneDayScheduleData scheduleData, OneDayScheduleData settedData, SevenDays nowDay)
     {
         thisSubSchedleData = scheduleData;
-        thisBTNDay = nowDay;
+        thisBTNDay = nowDay;    
         SpriteState spriteState = new SpriteState();
         switch (scheduleData.scheduleType)
         {
@@ -227,7 +227,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
        
         for(int i = 0; i< (int)thisBTNDay; i++)
         {
-            tempSub += ExpectedSub(tempSub, thisSubSchedleData);
+            tempSub += ExpectedSub(tempSub, Managers.Data._SevenDayScheduleDatas[i]);
         }
 
         GetText((int)Texts.SubTMP).text = ExpectedSub(tempSub, thisSubSchedleData).ToString();
@@ -236,7 +236,9 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 
     int ExpectedSub(int SubCount, OneDayScheduleData oneDayScheduleData)
     {
-        return CalculateSubAfterDay(SubCount, oneDayScheduleData.FisSubsUpValue, oneDayScheduleData.PerSubsUpValue, Managers.Data.GetNowWeekBonusMag());
+        if(oneDayScheduleData.scheduleType == ScheduleType.BroadCast)
+            return CalculateSubAfterDay(SubCount, oneDayScheduleData.FisSubsUpValue, oneDayScheduleData.PerSubsUpValue, Managers.Data.GetNowWeekBonusMag());
+        return 0;
     }
 
     int CalculateSubAfterDay(int now, float fix, float per, float bonus)
