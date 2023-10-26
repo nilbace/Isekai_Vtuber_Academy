@@ -1,15 +1,15 @@
 {
-    "NowWeek": 8,
-    "nowSubCount": 384627,
-    "nowGoldAmount": 1220215,
-    "NowHeart": 100,
-    "NowStar": 100,
+    "NowWeek": 10,
+    "nowSubCount": 4445590,
+    "nowGoldAmount": 26077416,
+    "NowHeart": 46,
+    "NowStar": 65,
     "SixStat": [
-        59.0,
+        81.0,
         1.0,
         1.0,
         1.0,
-        27.0,
+        39.0,
         1.0
     ],
     "DoneEventNames": [
@@ -18,7 +18,9 @@
         "스카이 다이빙",
         "게임1",
         "실버 버튼 언박싱",
-        "도수치료 직캠"
+        "도수치료 직캠",
+        "게임2",
+        "밀웜 먹방"
     ],
     "BoughtItems": [
         "수상한 마이크",

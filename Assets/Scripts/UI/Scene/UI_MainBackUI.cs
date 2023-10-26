@@ -29,7 +29,7 @@ public class UI_MainBackUI : UI_Scene
 
     enum GameObjects
     {
-        HeartBar, StarBar
+        HeartBar, StarBar, HeartCover, StarCover
     }
 
 
@@ -83,10 +83,10 @@ public class UI_MainBackUI : UI_Scene
             tmpText.text = GetInitialTextForType(textType);
         }
 
-        GetGameObject((int)GameObjects.HeartBar).transform.localScale =
-            new Vector3((float)Managers.Data._myPlayerData.NowHeart/100f, 1, 1);
-        GetGameObject((int)GameObjects.StarBar).transform.localScale =
-            new Vector3((float)Managers.Data._myPlayerData.NowStar / 100f, 1, 1);
+        GetGameObject((int)GameObjects.HeartCover).transform.localScale =
+            new Vector3( 1 - (float)Managers.Data._myPlayerData.NowHeart/100f, 1, 1);
+        GetGameObject((int)GameObjects.StarCover).transform.localScale =
+            new Vector3( 1 - (float)Managers.Data._myPlayerData.NowStar / 100f, 1, 1);
     }
 
     private string GetInitialTextForType(Texts textType)
