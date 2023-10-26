@@ -45,16 +45,16 @@ public class Define : MonoBehaviour
     {
         public string ItemName;
         public int Cost;
-        public int[] SixStats;
+        public float[] SixStats;
         public string ItemImageName;
         public int EntWeek;
 
         public Item(string itemName = "", int cost = 0, string itemImageName = "", int entWeek = 0)
-            : this(itemName, cost, itemImageName, entWeek, new int[6])
+            : this(itemName, cost, itemImageName, entWeek, new float[6])
         {
         }
 
-        public Item(string itemName, int cost, string itemImageName, int entWeek, int[] sixStats)
+        public Item(string itemName, int cost, string itemImageName, int entWeek, float[] sixStats)
         {
             ItemName = itemName;
             Cost = cost;
@@ -113,11 +113,11 @@ public class Define : MonoBehaviour
         public GoOutType goOutType;
         public float FisSubsUpValue;
         public float PerSubsUpValue;
-        public float HealthPointChangeValue;
-        public float MentalPointChageValue;
+        public float HeartVariance;
+        public float StarVariance;
         public float InComeMag;
         public int MoneyCost;
-        public int[] Six_Stats;
+        public float[] Six_Stats;
 
         public OneDayScheduleData()
         {
@@ -129,11 +129,11 @@ public class Define : MonoBehaviour
             this.infotext = "";
             FisSubsUpValue = 0;
             PerSubsUpValue = 0;
-            HealthPointChangeValue = 0;
-            MentalPointChageValue = 0;
+            HeartVariance = 0;
+            StarVariance = 0;
             InComeMag = 0;
             MoneyCost = 0;
-            Six_Stats = new int[6];
+            Six_Stats = new float[6];
         }
     }
 

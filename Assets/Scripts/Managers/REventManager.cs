@@ -80,7 +80,6 @@ public class REventManager
         }
 
         Managers.Data._myPlayerData.DoneEventNames.Add(temp.EventName);
-        Managers.Data.SaveData();
         return temp;
     }
 

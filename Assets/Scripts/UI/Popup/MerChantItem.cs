@@ -62,7 +62,6 @@ public class MerChantItem : MonoBehaviour
 
         UI_MainBackUI.instance.UpdateUItexts();
         Managers.Data._myPlayerData.BoughtItems.Add(_thisItem.ItemName);
-        Managers.Data.SaveData();
         UI_Merchant.instance.UpdateTexts();
     }
     

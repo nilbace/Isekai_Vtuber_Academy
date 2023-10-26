@@ -1,24 +1,30 @@
 {
-    "NowWeek": 2,
-    "nowSubCount": 0,
-    "nowGoldAmount": -500,
-    "NowHeart": 2,
-    "NowStar": 2,
+    "NowWeek": 7,
+    "nowSubCount": 221258,
+    "nowGoldAmount": 681583,
+    "NowHeart": 47,
+    "NowStar": 92,
     "SixStat": [
-        29,
-        3,
-        4,
-        1,
-        26,
-        0
+        52.0,
+        1.0,
+        1.0,
+        1.0,
+        25.0,
+        1.0
     ],
     "DoneEventNames": [
-        "헴릿 공연 난입",
-        "술 헤롱헤롱",
-        "엘라 당근 사기",
+        "고삼차 먹방",
         "포카리 물만두",
-        "TS 코스프레",
-        "팬레터 읽기"
+        "스카이 다이빙",
+        "게임1",
+        "실버 버튼 언박싱"
     ],
-    "BoughtItems": []
+    "BoughtItems": [
+        "수상한 마이크",
+        "수상한 마우스",
+        "수상한 물약",
+        "수상한 책",
+        "수상한 덤벨",
+        "수상한 부적"
+    ]
 }

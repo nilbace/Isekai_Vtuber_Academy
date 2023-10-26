@@ -100,7 +100,7 @@ public class DataManager
 
     #region ScheduleData
 
-    float[] weekBounsMagnification = new float[5];
+    float[] weekBounsMagnification = { 1.5f, 1.3f, 1.1f, 1f, 1f };
 
     //Schedule Popup데이터 관리용
     public OneDayScheduleData[] _SevenDayScheduleDatas = new OneDayScheduleData[7];
@@ -206,13 +206,13 @@ public class DataManager
         temp.KorName = tempstringQueue.Dequeue();
         temp.FisSubsUpValue = float.Parse(tempstringQueue.Dequeue());
         temp.PerSubsUpValue = float.Parse(tempstringQueue.Dequeue());
-        temp.HealthPointChangeValue = float.Parse(tempstringQueue.Dequeue());
-        temp.MentalPointChageValue = float.Parse(tempstringQueue.Dequeue());
+        temp.HeartVariance = float.Parse(tempstringQueue.Dequeue());
+        temp.StarVariance = float.Parse(tempstringQueue.Dequeue());
         temp.InComeMag = float.Parse(tempstringQueue.Dequeue());
         temp.MoneyCost = int.Parse(tempstringQueue.Dequeue());
         for (int j = 0; j < 6; j++)
         {
-            temp.Six_Stats[j] = int.Parse(tempstringQueue.Dequeue());
+            temp.Six_Stats[j] = float.Parse(tempstringQueue.Dequeue());
         }
         temp.infotext = tempstringQueue.Dequeue();
         oneDayDatasList.Add(temp);
@@ -257,10 +257,10 @@ public class DataManager
         tempitem.Cost = int.Parse(tempstrings.Dequeue());    
         tempitem.ItemImageName = tempstrings.Dequeue();      
 
-        int[] tempint = new int[6];
+        float[] tempint = new float[6];
         for (int j = 0; j < 6; j++)
         {
-            tempint[j] = int.Parse(tempstrings.Dequeue());
+            tempint[j] = float.Parse(tempstrings.Dequeue());
         }
 
         tempitem.SixStats = tempint;
@@ -275,7 +275,7 @@ public class DataManager
 
     public Bonus GetProperty(StatName statName)
     {
-        int highestStat = Managers.Data._myPlayerData.SixStat[(int)statName];
+        float highestStat = Managers.Data._myPlayerData.SixStat[(int)statName];
         Bonus bonus = new Bonus();
 
         if (highestStat >= 200)
@@ -328,7 +328,6 @@ public class DataManager
             bonus.SubBonus = 5;
             bonus.IncomeBonus = 0;
         }
-
         return bonus;
     }
 
@@ -344,7 +343,7 @@ public class PlayerData
     public int nowGoldAmount;
     public int NowHeart;
     public int NowStar;
-    public int[] SixStat;
+    public float[] SixStat;
     public List<string> DoneEventNames;
     public List<string> BoughtItems;
 
@@ -355,14 +354,14 @@ public class PlayerData
         nowGoldAmount = 0;
         NowHeart = 100;
         NowStar = 100;
-        SixStat = new int[6];
+        SixStat = new float[6];
         DoneEventNames = new List<string>();
         BoughtItems = new List<string>();
     }
 
-    public int GetHighestStat()
+    public float GetHighestStat()
     {
-        int temp = 0;
+        float temp = 0;
         for(int i = 0;i<6;i++)
         {
             if(temp < SixStat[i])
@@ -377,7 +376,7 @@ public class PlayerData
     public Define.StatName GetHigestStatName()
     {
         Define.StatName temp = Define.StatName.Game;
-        int temp2 = 0;
+        float temp2 = 0;
 
         for(int i = 0;i<6;i++)
         {
@@ -389,9 +388,6 @@ public class PlayerData
         }
         return temp;
     }
-
-   
-
 }
 
 

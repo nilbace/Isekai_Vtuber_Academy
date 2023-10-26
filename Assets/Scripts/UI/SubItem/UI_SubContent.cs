@@ -93,7 +93,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         GetText((int)Texts.NameTMP).text    = thisSubSchedleData.KorName;
         GetText((int)Texts.InfoTMP).text    = thisSubSchedleData.infotext;
         GetText((int)Texts.SubTMP).text      = thisSubSchedleData.KorName;
-        GetText((int)Texts.GoldTMP).text     = thisSubSchedleData.KorName;
+        GetText((int)Texts.GoldTMP).text     = thisSubSchedleData.MoneyCost.ToString();
 
 
         if(settedData == null)
@@ -106,12 +106,25 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         }
         thisBTN.interactable = true;
 
-        if(settedData != null)
+        if(scheduleData.scheduleType != ScheduleType.BroadCast)
         {
-            if (Managers.Data._myPlayerData.nowGoldAmount + settedData.MoneyCost < scheduleData.MoneyCost)
+            if(settedData == null)
             {
-                thisBTN.interactable = false;
+                if(Managers.Data._myPlayerData.nowGoldAmount < scheduleData.MoneyCost)
+                {
+                    thisBTN.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
+                    thisBTN.interactable = false;
+                }
             }
+            else
+            {
+                if (Managers.Data._myPlayerData.nowGoldAmount + settedData.MoneyCost < scheduleData.MoneyCost)
+                {
+                    thisBTN.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
+                    thisBTN.interactable = false;
+                }
+            }
+            
         }
         
         if(scheduleData == settedData)

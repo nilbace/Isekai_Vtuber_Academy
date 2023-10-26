@@ -54,6 +54,7 @@ public class UI_RandomEvent : UI_Popup
         Managers.Data._myPlayerData.NowWeek++;
         ProcessData();
         UI_MainBackUI.instance.UpdateUItexts();
+        UI_MainBackUI.instance.ShowCreateScheduleBTN();
         Managers.Data.SaveData();
         Managers.UI_Manager.ClosePopupUI();
     }

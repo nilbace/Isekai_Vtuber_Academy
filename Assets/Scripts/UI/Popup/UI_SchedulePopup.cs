@@ -350,19 +350,6 @@ public class UI_SchedulePopup : UI_Popup
         UpdateColorAndSelected();
     }
 
-    
-    private void OnDisable()
-    {
-        UI_MainBackUI.instance.ShowCreateScheduleBTN();
-        for(int i =0;i<7;i++)
-        {
-            if(_SevenDayScheduleDatas[i]!= null)
-            {
-                Managers.Data._myPlayerData.nowGoldAmount += _SevenDayScheduleDatas[i].MoneyCost;
-            }
-            UI_MainBackUI.instance.UpdateUItexts();
-        }
-    }
 
     void StartScheduleBTN()
     {
@@ -379,6 +366,7 @@ public class UI_SchedulePopup : UI_Popup
         }
         else
         {
+            UI_MainBackUI.instance.ShowCreateScheduleBTN();
             Managers.UI_Manager.ClosePopupUI();
         }
     }
