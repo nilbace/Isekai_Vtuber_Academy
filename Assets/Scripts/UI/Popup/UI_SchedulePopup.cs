@@ -308,6 +308,10 @@ public class UI_SchedulePopup : UI_Popup
             // Dotween을 사용하여 scrollRect.horizontalScrollbar.value를 목표 값까지 움직이기
             DOTween.To(() => scrollRect.horizontalScrollbar.value, x => scrollRect.horizontalScrollbar.value = x, targetValue, moveDuration).SetEase(ease);
         }
+        else
+        {
+            scrollRect.horizontalScrollbar.value = 0;
+        }
     }
 
     /// <summary>
