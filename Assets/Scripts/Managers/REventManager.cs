@@ -109,8 +109,8 @@ public class REventManager
                     temp = foundEvent2;
                 }
                 break;
-            case StatName.Chat:
-                EventData foundEvent3 = eventlist.Find(eventData => eventData.StatName == StatName.Chat && eventData.OccurableWeek == Managers.Data._myPlayerData.NowWeek);
+            case StatName.Draw:
+                EventData foundEvent3 = eventlist.Find(eventData => eventData.StatName == StatName.Draw && eventData.OccurableWeek == Managers.Data._myPlayerData.NowWeek);
                 if (foundEvent3 != null)
                 {
                     Debug.Log("ÄÚµù ¸ÁÇß´Ù");
@@ -157,7 +157,7 @@ public class REventManager
                     break;
                 case StatName.Song:
                     break;
-                case StatName.Chat:
+                case StatName.Draw:
                     break;
                 case StatName.Health:
                     break;

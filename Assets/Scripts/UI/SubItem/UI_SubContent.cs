@@ -65,7 +65,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         scrollRect = GetComponentInParent<ScrollRect>();
     }
 
-    public void SetInfo(OneDayScheduleData scheduleData, OneDayScheduleData settedData, SevenDays nowDay)
+    public void SetInfo(OneDayScheduleData scheduleData, OneDayScheduleData settedData, SevenDays nowDay, StatName statName)
     {
         thisSubSchedleData = scheduleData;
         thisBTNDay = nowDay;    
@@ -136,6 +136,11 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         if(scheduleData == settedData)
         {
             LikePressed();
+        }
+
+        if(statName != StatName.FALSE)
+        {
+            GetImage((int)Images.StatIcon).sprite = Managers.MSM.MiniStatIcons[(int)statName];
         }
     }
 
