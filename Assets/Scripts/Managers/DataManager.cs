@@ -5,7 +5,6 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
-using static UI_SchedulePopup;
 using static Define;
 
 /// <summary>
@@ -14,7 +13,7 @@ using static Define;
 public class DataManager
 { 
     public PlayerData _myPlayerData;
-    
+    float[] weekBounsMagnification = { 1.5f, 1.3f, 1.1f, 1f, 1f };
 
     public void Init()
     {
@@ -100,7 +99,7 @@ public class DataManager
 
     #region ScheduleData
 
-    float[] weekBounsMagnification = { 1.5f, 1.3f, 1.1f, 1f, 1f };
+    
 
     //Schedule Popup데이터 관리용
     public OneDayScheduleData[] _SevenDayScheduleDatas = new OneDayScheduleData[7];
