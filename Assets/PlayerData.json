@@ -1,20 +1,21 @@
 {
-    "NowWeek": 3,
-    "nowSubCount": 1828,
-    "nowGoldAmount": 3318,
-    "NowHeart": 30,
-    "NowStar": 30,
+    "NowWeek": 4,
+    "nowSubCount": 9396,
+    "nowGoldAmount": 17480,
+    "NowHeart": 32,
+    "NowStar": 52,
     "SixStat": [
-        20.0,
+        27.0,
+        1.0,
+        3.0,
         0.0,
-        0.0,
-        0.0,
-        10.0,
+        13.0,
         0.0
     ],
     "DoneEventNames": [
         "밀웜 먹방",
-        "화내는 엘라"
+        "화내는 엘라",
+        "헴릿 공연 난입"
     ],
     "BoughtItems": []
 }
