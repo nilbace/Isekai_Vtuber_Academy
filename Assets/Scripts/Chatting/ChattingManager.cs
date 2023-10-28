@@ -144,7 +144,7 @@ public class ChattingManager : MonoBehaviour//
                 StartCoroutine(StartGenerateChatting(JustChatList));
                 break;
 
-            case BroadCastType.Horror:
+            case BroadCastType.Healing:
                 StartCoroutine(StartGenerateChatting(HorrorChatList));
                 break;
 
@@ -152,11 +152,11 @@ public class ChattingManager : MonoBehaviour//
                 StartCoroutine(StartGenerateChatting(CookChatList));
                 break;
 
-            case BroadCastType.GameChallenge:
+            case BroadCastType.PlayInst:
                 StartCoroutine(StartGenerateChatting(ChallengeChatList));
                 break;
 
-            case BroadCastType.NewClothe:
+            case BroadCastType.Horror:
                 StartCoroutine(StartGenerateChatting(NewCloChatList));
                 break;
         }
