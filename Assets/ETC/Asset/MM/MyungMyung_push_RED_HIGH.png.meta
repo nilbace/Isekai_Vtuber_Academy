@@ -1,22 +1,28 @@
 fileFormatVersion: 2
-guid: c754900fcab129e48966e10aa87def69
+guid: 1212f35010e00e7468154fab53bfafb1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7170011320662786582
-    second: MyungMyung_PUSH_RED_0
+      213: 839941094149213445
+    second: MyungMyung_push_RED_HIGH_0
   - first:
-      213: 241134433766742096
-    second: MyungMyung_PUSH_RED_1
+      213: 2938980104519015236
+    second: MyungMyung_push_RED_HIGH_1
   - first:
-      213: -8526759931341500616
-    second: MyungMyung_PUSH_RED_2
+      213: 3690030583027276089
+    second: MyungMyung_push_RED_HIGH_2
   - first:
-      213: -3952565575805671194
-    second: MyungMyung_PUSH_RED_3
+      213: -4818856170275126276
+    second: MyungMyung_push_RED_HIGH_3
   - first:
-      213: -3869132474987021457
-    second: MyungMyung_PUSH_RED_4
+      213: 4215561301325923878
+    second: MyungMyung_push_RED_HIGH_4
+  - first:
+      213: 2228518579585086864
+    second: MyungMyung_push_RED_HIGH_5
+  - first:
+      213: 2362729997746548169
+    second: MyungMyung_push_RED_HIGH_6
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -131,7 +137,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MyungMyung_PUSH_RED_0
+      name: MyungMyung_push_RED_HIGH_0
       rect:
         serializedVersion: 2
         x: 0
@@ -145,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aed7d5431b00f7c90800000000000000
-      internalID: -7170011320662786582
+      spriteID: 50d440599f118ab00800000000000000
+      internalID: 839941094149213445
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MyungMyung_PUSH_RED_1
+      name: MyungMyung_push_RED_HIGH_1
       rect:
         serializedVersion: 2
         x: 74
@@ -166,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05818cb6d7ea85300800000000000000
-      internalID: 241134433766742096
+      spriteID: 44bdbcb65da59c820800000000000000
+      internalID: 2938980104519015236
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MyungMyung_PUSH_RED_2
+      name: MyungMyung_push_RED_HIGH_2
       rect:
         serializedVersion: 2
         x: 148
@@ -187,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83f0b57e40ddaa980800000000000000
-      internalID: -8526759931341500616
+      spriteID: 9391bafb34f953330800000000000000
+      internalID: 3690030583027276089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MyungMyung_PUSH_RED_3
+      name: MyungMyung_push_RED_HIGH_3
       rect:
         serializedVersion: 2
         x: 222
@@ -208,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e86aa6ec8aa529c0800000000000000
-      internalID: -3952565575805671194
+      spriteID: cf34d0338dbff1db0800000000000000
+      internalID: -4818856170275126276
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MyungMyung_PUSH_RED_4
+      name: MyungMyung_push_RED_HIGH_4
       rect:
         serializedVersion: 2
         x: 296
@@ -229,8 +235,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6b787773841e4ac0800000000000000
-      internalID: -3869132474987021457
+      spriteID: 6264a662baea08a30800000000000000
+      internalID: 4215561301325923878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyungMyung_push_RED_HIGH_5
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 0
+        width: 74
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 095f68747d94dee10800000000000000
+      internalID: 2228518579585086864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyungMyung_push_RED_HIGH_6
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 0
+        width: 74
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cda7d72a6a1ac020800000000000000
+      internalID: 2362729997746548169
       vertices: []
       indices: 
       edges: []
