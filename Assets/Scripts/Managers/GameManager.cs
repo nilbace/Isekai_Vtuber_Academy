@@ -92,13 +92,13 @@ public class GameManager
         }
         else
         {
-            HeartVariance = oneDay.HeartVariance;
-            StarVariance  = oneDay.StarVariance;
+            HeartVariance = oneDay.HeartVariance * StrengthBonus();
+            StarVariance  = oneDay.StarVariance * MentalBonus();
         }
-        Debug.Log($"건강 변화량 : ({Mathf.Clamp(Mathf.CeilToInt(HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100) - Managers.Data._myPlayerData.NowHeart}," +
-            $" {Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100) - Managers.Data._myPlayerData.NowStar}), " +
-            $"결과 ( {Mathf.Clamp(Mathf.CeilToInt(HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100)}, " +
-            $"{Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100)})");
+        Debug.Log($"건강 변화량 : ({Mathf.Clamp((HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100) - Managers.Data._myPlayerData.NowHeart}," +
+            $" {Mathf.Clamp((StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100) - Managers.Data._myPlayerData.NowStar}), " +
+            $"결과 ( {Mathf.Clamp((HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100)}, " +
+            $"{Mathf.Clamp((StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100)})");
 
         Managers.Data._myPlayerData.NowHeart = Mathf.Clamp(Mathf.CeilToInt(HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100);
         Managers.Data._myPlayerData.NowStar = Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100);
@@ -129,6 +129,25 @@ public class GameManager
         Managers.Data._myPlayerData.nowSubCount += Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f);
         Debug.Log($"특성 골드 보너스 : {Mathf.CeilToInt(DayIncome * (tempBonus.IncomeBonus) / 100f)} 특성 구독자 보너스 증가량 : {Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f)}");
     }
+
+    float StrengthBonus()
+    {
+        int temp = (int)Math.Floor(Managers.Data._myPlayerData.SixStat[3]);
+        float result = (float)(temp / 10);
+        result *= 0.05f;
+        result = 1 - result;
+        return result;
+    }
+
+    float MentalBonus()
+    {
+        int temp = (int)Math.Floor(Managers.Data._myPlayerData.SixStat[4]);
+        float result = (float)(temp / 10);
+        result *= 0.05f;
+        result = 1 - result;
+        return result;
+    }
+
     #endregion
 
     #region SuccessAndFail

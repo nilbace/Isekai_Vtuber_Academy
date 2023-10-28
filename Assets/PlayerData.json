@@ -1,21 +1,20 @@
 {
-    "NowWeek": 4,
-    "nowSubCount": 5300,
-    "nowGoldAmount": 2886,
-    "NowHeart": 60,
-    "NowStar": 65,
+    "NowWeek": 3,
+    "nowSubCount": 7992,
+    "nowGoldAmount": 15186,
+    "NowHeart": 46,
+    "NowStar": 67,
     "SixStat": [
-        27.0,
-        2.0,
-        1.0,
-        1.0,
+        22.0,
+        0.0,
+        0.0,
+        0.0,
         12.0,
-        1.0
+        0.0
     ],
     "DoneEventNames": [
-        "도수치료 직캠",
-        "진수성찬 먹방",
-        "밀웜 먹방"
+        "화내는 엘라",
+        "엘라 당근 사기"
     ],
     "BoughtItems": []
 }
