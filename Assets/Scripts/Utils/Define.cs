@@ -72,7 +72,7 @@ public class Define : MonoBehaviour
 
     public enum BroadCastType
     {
-        Game, Song, Draw, Healing, Cook, PlayInst, Horror, MaxCount
+        Game, Song, Draw, Healing, Cook, PlayInst, Horror, Ringfit, Challenge, MagicShow, MaxCount
     }
 
     public enum RestType
