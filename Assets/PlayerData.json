@@ -1,20 +1,20 @@
 {
     "NowWeek": 3,
-    "nowSubCount": 7992,
-    "nowGoldAmount": 15186,
-    "NowHeart": 46,
-    "NowStar": 67,
+    "nowSubCount": 12037,
+    "nowGoldAmount": 23178,
+    "NowHeart": 39,
+    "NowStar": 61,
     "SixStat": [
-        22.0,
+        23.0,
         0.0,
         0.0,
         0.0,
-        12.0,
+        13.0,
         0.0
     ],
     "DoneEventNames": [
-        "화내는 엘라",
-        "엘라 당근 사기"
+        "고삼차 먹방",
+        "스카이 다이빙"
     ],
     "BoughtItems": []
 }
