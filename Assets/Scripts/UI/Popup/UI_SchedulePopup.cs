@@ -236,13 +236,12 @@ public class UI_SchedulePopup : UI_Popup
             {
                 GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[2];
                 GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = new Color(0, 0, 0, 1);
-
             }
         }
     }
 
+
     #region Schedules
-    
 
     void ClickBroadCastBTN()
     {
