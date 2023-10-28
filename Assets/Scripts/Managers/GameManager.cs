@@ -13,12 +13,13 @@ public class GameManager
         int beforeStar = Managers.Data._myPlayerData.NowStar;
 
         // 월요일은 안아파
-        isSick = false; SickDayOne = false;  
-
+        isSick = false; SickDayOne = false;
+        string[] daysOfWeek = { "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일" };
         for (int i = 0; i < 7; i++)
         {
+            Debug.Log($"{daysOfWeek[i]} 스케줄 {Managers.Data._SevenDayScheduleDatas[i].KorName} 시작");
             CarryOutOneDayWork(Managers.Data._SevenDayScheduleDatas[i]);
-            Debug.Log($"{i + 1}일차 스케쥴 종료"); Debug.Log("-----------------------------------------");
+            Debug.Log("-----------------------------------------");
             UI_MainBackUI.instance.UpdateUItexts();
             yield return new WaitForSeconds(0.1f);
         }
@@ -43,18 +44,20 @@ public class GameManager
 
     void CarryOutOneDayWork(OneDayScheduleData oneDay)
     {
-        //휴식 하는게 아니라면
+        //휴식 하는게 아니라면 아플 수 있음
         if(oneDay.scheduleType != ScheduleType.Rest)
         {
             CheckPossibilityOfCatching_Aya();
         }
 
+        //아프면 그냥 누워있을 거임
         if(isSick)
         {
             CarryOutSickDay();
             return;
         }
 
+        //안아프면 모든 일정에 대해 대성공이 뜰 수 있음
         float bonusMultiplier = 1.0f;
         if (CheckPossibilityOfBigSuccess())
         {
@@ -65,16 +68,15 @@ public class GameManager
         float nowWeekmag = Managers.Data.GetNowWeekBonusMag();
 
         int OneDayNewSubs = CalculateSubAfterDay(Managers.Data._myPlayerData.nowSubCount,
-            oneDay.FisSubsUpValue, oneDay.PerSubsUpValue, nowWeekmag*bonusMultiplier);
+            oneDay.FisSubsUpValue, oneDay.PerSubsUpValue, nowWeekmag * bonusMultiplier);
 
         int OneDayIncome = Mathf.CeilToInt(Managers.Data._myPlayerData.nowSubCount * oneDay.InComeMag * bonusMultiplier);
-        Managers.Data._myPlayerData.nowGoldAmount += OneDayIncome;
-        Debug.Log($"골드 증가량 : {OneDayIncome}");
 
         if (oneDay.scheduleType == ScheduleType.BroadCast)
         {
             Managers.Data._myPlayerData.nowSubCount += OneDayNewSubs;
-            Debug.Log($"구독자 증가량 : {OneDayNewSubs}");
+            Managers.Data._myPlayerData.nowGoldAmount += OneDayIncome;
+            Debug.Log($"구독+ : {OneDayNewSubs}" + $" / 골드 + : {OneDayIncome}");
         }
 
         if (oneDay.broadcastType == BroadCastType.Game || oneDay.broadcastType == BroadCastType.Song || oneDay.broadcastType == BroadCastType.Draw)
@@ -82,14 +84,21 @@ public class GameManager
             CalculateBonus((StatName)Enum.Parse(typeof(StatName), oneDay.broadcastType.ToString()), OneDayNewSubs, OneDayIncome);
         }
 
-        float HeartVariance = oneDay.HeartVariance * bonusMultiplier;
-        float StarVariance = oneDay.StarVariance * bonusMultiplier;
-
-        Debug.Log($"하트 변화량 : {Mathf.Clamp(Mathf.CeilToInt(HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100) - Managers.Data._myPlayerData.NowHeart}" +
-            $"현재 하트 : {Mathf.Clamp(Mathf.CeilToInt(HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100)}");
-
-        Debug.Log($"별 변화량 : {Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100) - Managers.Data._myPlayerData.NowStar}" +
-            $"현재 별 : {Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100)}");
+        float HeartVariance; float StarVariance;
+        if (oneDay.scheduleType == ScheduleType.Rest)
+        {
+            HeartVariance = oneDay.HeartVariance * bonusMultiplier;
+            StarVariance = oneDay.StarVariance * bonusMultiplier;
+        }
+        else
+        {
+            HeartVariance = oneDay.HeartVariance;
+            StarVariance  = oneDay.StarVariance;
+        }
+        Debug.Log($"건강 변화량 : ({Mathf.Clamp(Mathf.CeilToInt(HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100) - Managers.Data._myPlayerData.NowHeart}," +
+            $" {Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100) - Managers.Data._myPlayerData.NowStar}), " +
+            $"결과 ( {Mathf.Clamp(Mathf.CeilToInt(HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100)}, " +
+            $"{Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100)})");
 
         Managers.Data._myPlayerData.NowHeart = Mathf.Clamp(Mathf.CeilToInt(HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100);
         Managers.Data._myPlayerData.NowStar = Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100);
@@ -204,7 +213,6 @@ public class GameManager
     bool CheckPossibilityOfBigSuccess()
     {
         int LuckGrade = ((int)Managers.Data._myPlayerData.SixStat[5]) / 10;
-        Debug.Log(LuckGrade);
         if (UnityEngine.Random.Range(0, 100) < (LuckGrade*5))
         {
             return true;
