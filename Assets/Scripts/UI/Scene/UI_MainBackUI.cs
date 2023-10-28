@@ -15,7 +15,11 @@ public class UI_MainBackUI : UI_Scene
         MySubsTMP,  //현재 보유 구독자수
         NowWeekTMP,
         TempGameTMP,
-
+        TempSongTMP,
+        TempDrawTMP,
+        TempStrTMP,
+        TempMenTMP,
+        TempLuckTMP,
     }
 
     enum Buttons
@@ -32,7 +36,7 @@ public class UI_MainBackUI : UI_Scene
     enum GameObjects
     {
         HeartBar, StarBar, HeartCover, StarCover,
-        GameStat_Cover,
+        GameStat_Cover, SongStat_Cover, DrawStat_Cover, StrStat_Cover, MenStat_Cover, LuckStat_Cover
     }
 
 
@@ -91,9 +95,12 @@ public class UI_MainBackUI : UI_Scene
         GetGameObject((int)GameObjects.StarCover).transform.localScale =
             new Vector3( 1 - (float)Managers.Data._myPlayerData.NowStar / 100f, 1, 1);
 
-        GetGameObject((int)GameObjects.GameStat_Cover).transform.localScale =
-            new Vector3(1 - (float)Managers.Data._myPlayerData.SixStat[0] / 200f, 1, 1);
-        GetText((int)Texts.TempGameTMP).text = Managers.Data._myPlayerData.SixStat[0].ToString();
+        for(int i = 0; i<6;i++)
+        {
+            GetGameObject((int)GameObjects.GameStat_Cover+i).transform.localScale =
+           new Vector3(1 - (float)Managers.Data._myPlayerData.SixStat[i] / 200f, 1, 1);
+            GetText((int)Texts.TempGameTMP+i).text = Managers.Data._myPlayerData.SixStat[i].ToString();
+        }
     }
 
     private string GetInitialTextForType(Texts textType)

@@ -1,19 +1,21 @@
 {
-    "NowWeek": 2,
-    "nowSubCount": 992,
-    "nowGoldAmount": 1550,
-    "NowHeart": 51,
-    "NowStar": 51,
+    "NowWeek": 4,
+    "nowSubCount": 5300,
+    "nowGoldAmount": 2886,
+    "NowHeart": 60,
+    "NowStar": 65,
     "SixStat": [
+        27.0,
+        2.0,
+        1.0,
+        1.0,
         12.0,
-        0.0,
-        0.0,
-        0.0,
-        7.0,
-        0.0
+        1.0
     ],
     "DoneEventNames": [
-        "뮹뮹 다이어트"
+        "도수치료 직캠",
+        "진수성찬 먹방",
+        "밀웜 먹방"
     ],
     "BoughtItems": []
 }
