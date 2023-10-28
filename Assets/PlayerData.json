@@ -1,20 +1,19 @@
 {
-    "NowWeek": 3,
-    "nowSubCount": 6098,
-    "nowGoldAmount": 10796,
-    "NowHeart": 86,
-    "NowStar": 86,
+    "NowWeek": 2,
+    "nowSubCount": 992,
+    "nowGoldAmount": 1550,
+    "NowHeart": 51,
+    "NowStar": 51,
     "SixStat": [
-        17.0,
+        12.0,
         0.0,
-        1.0,
-        1.0,
-        8.0,
+        0.0,
+        0.0,
+        7.0,
         0.0
     ],
     "DoneEventNames": [
-        "자르반 84세와 만남",
-        "민트초코 먹기"
+        "뮹뮹 다이어트"
     ],
     "BoughtItems": []
 }

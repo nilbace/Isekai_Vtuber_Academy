@@ -14,6 +14,8 @@ public class UI_MainBackUI : UI_Scene
         MyMoneyTMP, //현재 보유 골드
         MySubsTMP,  //현재 보유 구독자수
         NowWeekTMP,
+        TempGameTMP,
+
     }
 
     enum Buttons
@@ -29,7 +31,8 @@ public class UI_MainBackUI : UI_Scene
 
     enum GameObjects
     {
-        HeartBar, StarBar, HeartCover, StarCover
+        HeartBar, StarBar, HeartCover, StarCover,
+        GameStat_Cover,
     }
 
 
@@ -87,6 +90,10 @@ public class UI_MainBackUI : UI_Scene
             new Vector3( 1 - (float)Managers.Data._myPlayerData.NowHeart/100f, 1, 1);
         GetGameObject((int)GameObjects.StarCover).transform.localScale =
             new Vector3( 1 - (float)Managers.Data._myPlayerData.NowStar / 100f, 1, 1);
+
+        GetGameObject((int)GameObjects.GameStat_Cover).transform.localScale =
+            new Vector3(1 - (float)Managers.Data._myPlayerData.SixStat[0] / 200f, 1, 1);
+        GetText((int)Texts.TempGameTMP).text = Managers.Data._myPlayerData.SixStat[0].ToString();
     }
 
     private string GetInitialTextForType(Texts textType)
@@ -98,9 +105,9 @@ public class UI_MainBackUI : UI_Scene
             case Texts.StarTMP:
                 return GetNowConditionToString(Managers.Data._myPlayerData.NowStar);
             case Texts.MyMoneyTMP:
-                return Managers.Data._myPlayerData.nowGoldAmount.ToString();
+                return Util.FormatMoney(Managers.Data._myPlayerData.nowGoldAmount);
             case Texts.MySubsTMP:
-                return Managers.Data._myPlayerData.nowSubCount.ToString();
+                return Util.FormatMoney(Managers.Data._myPlayerData.nowSubCount);
             case Texts.NowWeekTMP:
                 return "방송 " +Managers.Data._myPlayerData.NowWeek.ToString()+"주차";
             default:
