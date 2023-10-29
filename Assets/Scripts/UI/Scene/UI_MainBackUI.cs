@@ -30,7 +30,8 @@ public class UI_MainBackUI : UI_Scene
         DrawStatBTN,
         StrStatBTN, 
         MentalStatBTN,
-        LuckStatBTN
+        LuckStatBTN,
+        SettingBTN
     }
 
     enum GameObjects
@@ -69,6 +70,8 @@ public class UI_MainBackUI : UI_Scene
         GetButton((int)Buttons.StrStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Health));
         GetButton((int)Buttons.MentalStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Mental));
         GetButton((int)Buttons.LuckStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Luck));
+
+        GetButton((int)Buttons.SettingBTN).onClick.AddListener(SettingBTN);
 
         UpdateUItexts();
     }
@@ -150,5 +153,10 @@ public class UI_MainBackUI : UI_Scene
     {
          Managers.UI_Manager.ShowPopupUI<UI_SchedulePopup>();
          Get<Button>((int)Buttons.CreateScheduleBTN).gameObject.SetActive(false);
+    }
+
+    public void SettingBTN()
+    {
+        Managers.UI_Manager.ShowPopupUI<UI_Setting>();
     }
 }
