@@ -10,6 +10,8 @@ public class UI_Setting : UI_Popup
         Googlelink, CloudSave, CloudLoad, Achievement, Credit, CloseBTN
     }
 
+    public Slider volumeSlider;
+
     private void Start()
     {
         Init();
@@ -24,10 +26,15 @@ public class UI_Setting : UI_Popup
         GetButton((int)Buttons.CloseBTN).onClick.AddListener(CloseBTN);
     }
 
-
-
     void CloseBTN()
     {
         Managers.UI_Manager.ClosePopupUI();
+    }
+
+    public void OnValueChange()
+    {
+        // 슬라이더 값에 따라 볼륨을 조절합니다.
+        float volume = volumeSlider.value;
+        AudioListener.volume = volume;
     }
 }
