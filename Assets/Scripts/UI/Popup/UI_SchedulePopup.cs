@@ -402,7 +402,6 @@ public class UI_SchedulePopup : UI_Popup
         SetSelectBox();
         UpdateBTN_Interactable();
         ClickLastDay_PlusOne();
-        UpdateColorAndSelected();
     }
 
     private void OnDisable()
