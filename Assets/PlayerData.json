@@ -1,20 +1,25 @@
 {
-    "NowWeek": 3,
-    "nowSubCount": 12037,
-    "nowGoldAmount": 23178,
-    "NowHeart": 39,
-    "NowStar": 61,
+    "NowWeek": 6,
+    "nowSubCount": 274006,
+    "nowGoldAmount": 61136,
+    "NowHeart": 93,
+    "NowStar": 23,
     "SixStat": [
-        23.0,
+        41.0,
+        3.0,
+        1.0,
         0.0,
-        0.0,
-        0.0,
-        13.0,
+        20.0,
         0.0
     ],
     "DoneEventNames": [
-        "고삼차 먹방",
-        "스카이 다이빙"
+        "스카이 다이빙",
+        "뮹뮹 다이어트",
+        "엘라 당근 사기",
+        "게임1"
     ],
-    "BoughtItems": []
+    "BoughtItems": [
+        "수상한 마우스",
+        "수상한 마이크"
+    ]
 }

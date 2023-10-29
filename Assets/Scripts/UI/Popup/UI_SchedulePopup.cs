@@ -387,17 +387,22 @@ public class UI_SchedulePopup : UI_Popup
 
     public void ResetSchedule()
     {
+        int temp = 0;
         for (int i = 0; i < 7; i++)
         {
+            if(_SevenDayScheduleDatas[i] != null) temp += _SevenDayScheduleDatas[i].MoneyCost;
             _SevenDayScheduleDatas[i] = null;
             _SeveDayScrollVarValue[i] = 0;
             Managers.Data._SevenDayScheduleDatas[i] = null;
             Managers.Data._SeveDayScrollVarValue[i] = 0;
-            SetSelectBox();
-            UpdateBTN_Interactable();
-            ClickLastDay_PlusOne();
-            UpdateColorAndSelected();
+            
         }
+        Managers.Data._myPlayerData.nowGoldAmount += temp;
+        UI_MainBackUI.instance.UpdateUItexts();
+        SetSelectBox();
+        UpdateBTN_Interactable();
+        ClickLastDay_PlusOne();
+        UpdateColorAndSelected();
     }
 
     private void OnDisable()
