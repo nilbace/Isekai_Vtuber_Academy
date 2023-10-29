@@ -64,6 +64,7 @@ public class UI_SchedulePopup : UI_Popup
     private void Start()
     {
         Init();
+        MM.instance.NowMMState = MM.MMState.OnSchedule;
     }
 
     /// <summary>
@@ -112,8 +113,8 @@ public class UI_SchedulePopup : UI_Popup
         _SeveDayScrollVarValue = Managers.Data._SeveDayScrollVarValue;
         _SevenDayScheduleDatas = Managers.Data._SevenDayScheduleDatas;
 
-        SetSelectImg();
-        UpdateInteractableButton();
+        SetSelectBox();
+        UpdateBTN_Interactable();
         ClickLastDay_PlusOne();
     }
 
@@ -130,7 +131,10 @@ public class UI_SchedulePopup : UI_Popup
         Managers.Data._SeveDayScrollVarValue = _SeveDayScrollVarValue;
     }
 
-    void SetSelectImg()
+    /// <summary>
+    /// 선택된 요일 표시
+    /// </summary>
+    void SetSelectBox()
     {
         int i = 0;
         for (; i < 7; i++)
@@ -142,6 +146,8 @@ public class UI_SchedulePopup : UI_Popup
             }
         }
         if (i == 7) i = 6;
+
+        //저장된 곳에서 선택박스 위치시키게 함
         GetImage(1).transform.DOMoveX(((int)_nowSelectedDay - 3) * 40, 0f);
     }
     
@@ -170,7 +176,10 @@ public class UI_SchedulePopup : UI_Popup
         UpdateColorAndSelected();
     }
 
-    void UpdateInteractableButton()
+    /// <summary>
+    /// 버튼이 interactable 갱신
+    /// </summary>
+    void UpdateBTN_Interactable()
     {
         int i = 0;
 
@@ -198,6 +207,7 @@ public class UI_SchedulePopup : UI_Popup
     }
     [SerializeField] Ease ease;
     [SerializeField] float moveDuration;
+    [SerializeField] Color[] baseTextColor;
     /// <summary>
     /// 색상 지정용 함수
     /// </summary>
@@ -205,14 +215,15 @@ public class UI_SchedulePopup : UI_Popup
     {
         for(int i = 0; i<7;i++)
         {
-            if(i == (int)_nowSelectedDay)
+            if (i == (int)_nowSelectedDay)
             {
                 GetImage(1).transform.DOMoveX((i - 3) * 40, moveDuration).SetEase(ease);
             }
 
-            if(_SevenDayScheduleDatas[i] == null)
+            if (_SevenDayScheduleDatas[i] == null)
             {
-                if(GetButton(i).interactable == true)
+                GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = baseTextColor[0];
+                if (GetButton(i).interactable == true)
                 {
                     GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[3];
                 }
@@ -224,18 +235,18 @@ public class UI_SchedulePopup : UI_Popup
             else if(_SevenDayScheduleDatas[i].scheduleType == ScheduleType.BroadCast)
             {
                 GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[0];
-                GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = new Color(0, 0, 0, 1);
+                GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = baseTextColor[1];
             }
             else if(_SevenDayScheduleDatas[i].scheduleType == ScheduleType.Rest)
             {
                 GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[1];
-                GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = new Color(0, 0, 0, 1);
+                GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = baseTextColor[2];
 
             }
             else
             {
                 GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[2];
-                GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = new Color(0, 0, 0, 1);
+                GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = baseTextColor[3];
             }
         }
     }
@@ -332,7 +343,7 @@ public class UI_SchedulePopup : UI_Popup
         _SevenDayScheduleDatas[(int)_nowSelectedDay] = data;
         Managers.Data._SevenDayScheduleDatas = _SevenDayScheduleDatas;
         
-        UpdateInteractableButton();
+        UpdateBTN_Interactable();
         ClickLastDay_PlusOne();
     }
     #endregion
@@ -373,5 +384,26 @@ public class UI_SchedulePopup : UI_Popup
             Managers.UI_Manager.ClosePopupUI();
         }
     }
+
+    public void ResetSchedule()
+    {
+        for (int i = 0; i < 7; i++)
+        {
+            _SevenDayScheduleDatas[i] = null;
+            _SeveDayScrollVarValue[i] = 0;
+            Managers.Data._SevenDayScheduleDatas[i] = null;
+            Managers.Data._SeveDayScrollVarValue[i] = 0;
+            SetSelectBox();
+            UpdateBTN_Interactable();
+            ClickLastDay_PlusOne();
+            UpdateColorAndSelected();
+        }
+    }
+
+    private void OnDisable()
+    {
+        MM.instance.NowMMState = MM.MMState.usual;
+    }
+
     #endregion
 }

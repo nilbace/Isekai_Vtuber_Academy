@@ -4,20 +4,35 @@ using UnityEngine;
 
 public class MM : MonoBehaviour
 {
+    public static MM instance;
+
+    
     Animator animator;
     
-    enum MMState { usual, OnSchedule, PushAni}
+    public enum MMState { usual, OnSchedule, PushAni}
 
-    MMState NowMMState = MMState.usual;
+    MMState _nowMMState = MMState.usual;
+
+    public MMState NowMMState { get { return _nowMMState; } set { _nowMMState = value; } }
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-
     }
 
     private void OnMouseDown()
     {
-        animator.Play("push");
+        if(_nowMMState == MMState.OnSchedule)
+        {
+            animator.Play("push");
+            UI_SchedulePopup.instance.ResetSchedule();
+        }
     }
+
+    
 }
