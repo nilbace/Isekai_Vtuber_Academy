@@ -58,7 +58,7 @@ public class ChattingManager : MonoBehaviour//
         }
         StartCoroutine(RequestListDatasFromSheet());
     }
-    
+
 
 
     IEnumerator RequestListDatasFromSheet()
@@ -81,6 +81,8 @@ public class ChattingManager : MonoBehaviour//
         yield return cookCorout;
         yield return ChallengeCorou;
 
+        StartCoroutine(StartGenerateChatting(GameChatList));
+
     }
 
     IEnumerator RequestAndSetDatas(string www, List<string> list)
@@ -91,7 +93,7 @@ public class ChattingManager : MonoBehaviour//
         string data = wwww.downloadHandler.text;
         string[] lines = data.Substring(0, data.Length - 1).Split('\n');
 
-        foreach(string line in lines)
+        foreach (string line in lines)
         {
             string templine = line.Substring(0, line.Length - 1);
             int count = 0;
@@ -111,7 +113,7 @@ public class ChattingManager : MonoBehaviour//
                     count = 0;
                 }
                 //11글자가 넘어가면 강제로 줄바꿈
-                else if(count > 11)
+                else if (count > 11)
                 {
                     modifiedLine += "\n";
                     count = 0;
@@ -174,8 +176,8 @@ public class ChattingManager : MonoBehaviour//
     IEnumerator StartGenerateChatting(List<string> messagelist)
     {
         int index = 0;
-        
-        while(true)
+
+        while (true)
         {
             //새 창 정보 세팅(사이즈 조절용)
             string tempMessage = GetRandomStringFromList(messagelist);
@@ -212,7 +214,10 @@ public class ChattingManager : MonoBehaviour//
 
     [Header("채팅이 커지는 시간")]
     [SerializeField] float TimeForChatGetBigger;
-    float ChatGenerateYPoz = -40.54f;
+
+    [Header("채팅 시작좌표")]
+    [SerializeField] float ChatBubbleYPos;
+    [SerializeField] float ChatBubbleXPos;
 
     /// <summary>
     /// qwer
@@ -220,6 +225,9 @@ public class ChattingManager : MonoBehaviour//
     /// <param name="index"></param>
     /// <param name="message"></param>
     /// <returns></returns>
+    /// 
+
+
     IEnumerator MakeRandomChat(int index, string message)
     {
         Vector3 targetScale = Vector3.one * _chatScale;
@@ -227,7 +235,7 @@ public class ChattingManager : MonoBehaviour//
 
         Go.SetActive(true);
         Go.transform.localScale = Vector3.zero;
-        Go.GetComponent<RectTransform>().anchoredPosition = new Vector3(-46f, ClearChatGO.transform.GetComponent<RectTransform>().sizeDelta.y/2f* _chatScale + ChatGenerateYPoz, 0);
+        Go.GetComponent<RectTransform>().anchoredPosition = new Vector3(ChatBubbleXPos, ClearChatGO.transform.GetComponent<RectTransform>().sizeDelta.y/2f* _chatScale + ChatBubbleYPos, 0);
 
         Go.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMPro.TMP_Text>().text = GetRandomStringFromList(ViewersNameList);
         Go.transform.GetChild(0).GetChild(0).GetComponent<TMPro.TMP_Text>().text = message;
