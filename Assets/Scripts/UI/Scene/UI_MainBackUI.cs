@@ -74,6 +74,8 @@ public class UI_MainBackUI : UI_Scene
         GetButton((int)Buttons.SettingBTN).onClick.AddListener(SettingBTN);
 
         UpdateUItexts();
+
+        Managers.Sound.Play("bgm1", Sound.Bgm);
     }
 
     void ShowStatProperty(StatName statName)

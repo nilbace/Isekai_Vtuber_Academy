@@ -32,6 +32,8 @@ public class MM : MonoBehaviour
             animator.Play("push");
             UI_SchedulePopup.instance.ResetSchedule();
         }
+
+        Managers.Sound.Play("power");
     }
 
     

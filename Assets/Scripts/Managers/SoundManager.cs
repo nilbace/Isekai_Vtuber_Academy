@@ -28,7 +28,6 @@ public class SoundManager
     }
 
     public void Clear()
-    //Call when Scene changed
     {
         foreach(AudioSource audioSource in _audioSources)
         {
@@ -58,12 +57,13 @@ public class SoundManager
 
             audioSource.pitch= pitch;
             audioSource.clip = audioClip;
+            audioSource.volume = 0.2f;
             audioSource.Play();
         }
         else
         {
             AudioSource audioSource = _audioSources[(int)Define.Sound.Effect];
-            audioSource.pitch=  pitch;
+            audioSource.pitch = pitch;
             audioSource.PlayOneShot(audioClip);
         }
 
@@ -94,6 +94,20 @@ public class SoundManager
 
         
         return audioClip;
+    }
+
+    public void ChangeVolume(Define.Sound type, float value)
+    {
+        if(type == Define.Sound.Bgm)
+        {
+            AudioSource audioSource = _audioSources[(int)Define.Sound.Bgm];
+            audioSource.volume = value;
+        }
+        else
+        {
+            AudioSource audioSource = _audioSources[(int)Define.Sound.Effect];
+            audioSource.volume = value;
+        }
     }
 
 }

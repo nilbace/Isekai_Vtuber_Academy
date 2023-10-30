@@ -10,7 +10,8 @@ public class UI_Setting : UI_Popup
         Googlelink, CloudSave, CloudLoad, Achievement, Credit, CloseBTN
     }
 
-    public Slider volumeSlider;
+    public Slider BGMSlider;
+    public Slider SFXSlider;
 
     private void Start()
     {
@@ -22,8 +23,13 @@ public class UI_Setting : UI_Popup
     {
         base.Init();
         Bind<Button>(typeof(Buttons));
-        
+        BGMSlider = GameObject.Find("BGMSlider").GetComponent<Slider>();
+        SFXSlider = GameObject.Find("SFXSlider").GetComponent<Slider>();
+
+
         GetButton((int)Buttons.CloseBTN).onClick.AddListener(CloseBTN);
+        BGMSlider.onValueChanged.AddListener(BGM_ValueChanged);
+        SFXSlider.onValueChanged.AddListener(SFX_ValueChanged);
     }
 
     void CloseBTN()
@@ -31,10 +37,13 @@ public class UI_Setting : UI_Popup
         Managers.UI_Manager.ClosePopupUI();
     }
 
-    public void OnValueChange()
+    void BGM_ValueChanged(float value)
     {
-        // 슬라이더 값에 따라 볼륨을 조절합니다.
-        float volume = volumeSlider.value;
-        AudioListener.volume = volume;
+        Managers.Sound.ChangeVolume(Define.Sound.Bgm, value*0.2f);
+    }
+
+    void SFX_ValueChanged(float value)
+    {
+        Managers.Sound.ChangeVolume(Define.Sound.Effect, value);
     }
 }
