@@ -6,38 +6,20 @@ using DG.Tweening;
 using static Define;
 public class ChattingManager : MonoBehaviour//
 {
-    #region URL&StringLists
-
-    const string NameURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&range=A2:A";
-    List<string> ViewersNameList = new List<string>();
-
-    const string GaneChatURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&range=B2:B";
-    List<string> GameChatList = new List<string>();
-
-    const string SingChatURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&range=C2:C";
-    List<string> SingChatList = new List<string>();
-
-    const string JustChatURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&range=D2:D";
-    List<string> JustChatList = new List<string>();
-
-    const string HorrorChatURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&range=E2:E";
-    List<string> HorrorChatList = new List<string>();
-
-    const string CookChatURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&range=F2:F";
-    List<string> CookChatList = new List<string>();
-
-    const string ChallengeChatURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&range=G2:G";
-    List<string> ChallengeChatList = new List<string>();
-
-    const string NewCloChatURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&range=H2:H";
-    List<string> NewCloChatList = new List<string>();
-
-    #endregion
+    const string Message_NameURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&gid=0&range=A2:K";
+    /// <summary>
+    /// 마지막은 이름들이 들어있음
+    /// </summary>
+    List<string>[] Message_NameListArray = new List<string>[(int)BroadCastType.MaxCount + 1];
 
     public static ChattingManager instance;
     private void Awake()
     {
         instance = this;
+        for(int i = 0; i<Message_NameListArray.Length; i++)
+        {
+            Message_NameListArray[i] = new List<string>();
+        }
     }
 
     List<GameObject> ChatGOs = new List<GameObject>();
@@ -64,55 +46,85 @@ public class ChattingManager : MonoBehaviour//
     IEnumerator RequestListDatasFromSheet()
     {
         //비동기 방식으로 서버에서 데이터를 읽어옴
-        Coroutine chatCoroutine = StartCoroutine(RequestAndSetDatas(GaneChatURL, GameChatList));
-        Coroutine nameCoroutine = StartCoroutine(RequestAndSetDatas(NameURL, ViewersNameList));
-        Coroutine singCoroutine = StartCoroutine(RequestAndSetDatas(SingChatURL, SingChatList));
-        Coroutine justchatcoroutine = StartCoroutine(RequestAndSetDatas(JustChatURL, JustChatList));
-        Coroutine horrorCoroutine = StartCoroutine(RequestAndSetDatas(HorrorChatURL, HorrorChatList));
-        Coroutine cookCorout = StartCoroutine(RequestAndSetDatas(CookChatURL, CookChatList));
-        Coroutine ChallengeCorou = StartCoroutine(RequestAndSetDatas(ChallengeChatURL, ChallengeChatList));
+        Coroutine chatCoroutine = StartCoroutine(RequestAndSetDatas(Message_NameURL));
 
         //코루틴이 모두 완료될 때까지 기다림
         yield return chatCoroutine;
-        yield return nameCoroutine;
-        yield return singCoroutine;
-        yield return justchatcoroutine;
-        yield return horrorCoroutine;
-        yield return cookCorout;
-        yield return ChallengeCorou;
 
-        StartCoroutine(StartGenerateChatting(GameChatList));
+        StartGenerateChattingByType(BroadCastType.Game);
 
     }
 
-    IEnumerator RequestAndSetDatas(string www, List<string> list)
+    IEnumerator RequestAndSetDatas(string www)
     {
         UnityWebRequest wwww = UnityWebRequest.Get(www);
         yield return wwww.SendWebRequest();
 
         string data = wwww.downloadHandler.text;
-        string[] lines = data.Substring(0, data.Length - 1).Split('\n');
+        string[] lines = data.Substring(0, data.Length).Split('\n');
+
+        foreach (string datas in lines)
+        {
+            LocateDataToMessageListArray(datas);
+        }
+
+        for (int i = 0; i < (int)BroadCastType.MaxCount; i++)
+        {
+            Message_NameListArray[i] = AutoLineBreak(Message_NameListArray[i]);
+        }
+
+        for (int i = 0; i < (int)BroadCastType.MaxCount; i++)
+        {
+            foreach(string str in Message_NameListArray[i])
+            {
+                Debug.Log(str);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 데이터를 올바른 List에 집어넣어둠
+    /// </summary>
+    /// <param name="datas"></param>
+    void LocateDataToMessageListArray(string datas)
+    {
+        string[] EachData = datas.Substring(0, datas.Length).Split('\t');
+        for (int i = 0; i < (int)BroadCastType.MaxCount + 1; i++)
+        {
+            if (EachData[i] != "")
+            {
+                Message_NameListArray[i].Add(EachData[i]);
+            }
+        }
+    }
+
+
+
+    /// <summary>
+    /// 채팅 메시지들 길면 엔터 쳐주는 함수
+    /// </summary>
+    /// <param name="lines"></param>
+    public List<string> AutoLineBreak(List<string> lines)
+    {
+        List<string> result = new List<string>();
 
         foreach (string line in lines)
         {
-            string templine = line.Substring(0, line.Length - 1);
+            string templine = line;
             int count = 0;
             string modifiedLine = "";
 
             foreach (char c in templine)
             {
                 modifiedLine += c;
-
                 count++;
 
-                //9글자 이상일때 띄어쓰기거나
                 if (count >= 9 && c == ' ')
                 {
-                    modifiedLine = modifiedLine.Substring(0, modifiedLine.Length - 1);
+                    modifiedLine = modifiedLine.TrimEnd();
                     modifiedLine += "\n";
                     count = 0;
                 }
-                //11글자가 넘어가면 강제로 줄바꿈
                 else if (count > 11)
                 {
                     modifiedLine += "\n";
@@ -120,49 +132,21 @@ public class ChattingManager : MonoBehaviour//
                 }
             }
 
-            // 마지막 글자가 줄바꿈 문자인 경우 제거
             if (modifiedLine.EndsWith("\n"))
             {
                 modifiedLine = modifiedLine.Substring(0, modifiedLine.Length - 1);
             }
-            list.Add(modifiedLine);
+            result.Add(modifiedLine);
         }
+
+        return result;
     }
+
 
     //방송 타입을 받아서 방송 시작함
     public void StartGenerateChattingByType(BroadCastType broadCastType)
     {
-        switch (broadCastType)
-        {
-            case BroadCastType.Game:
-                StartCoroutine(StartGenerateChatting(GameChatList));
-                break;
-
-            case BroadCastType.Song:
-                StartCoroutine(StartGenerateChatting(SingChatList));
-                break;
-
-            case BroadCastType.Draw:
-                StartCoroutine(StartGenerateChatting(JustChatList));
-                break;
-
-            case BroadCastType.Healing:
-                StartCoroutine(StartGenerateChatting(HorrorChatList));
-                break;
-
-            case BroadCastType.Cook:
-                StartCoroutine(StartGenerateChatting(CookChatList));
-                break;
-
-            case BroadCastType.PlayInst:
-                StartCoroutine(StartGenerateChatting(ChallengeChatList));
-                break;
-
-            case BroadCastType.Horror:
-                StartCoroutine(StartGenerateChatting(NewCloChatList));
-                break;
-        }
-
+        StartCoroutine(StartGenerateChatting(Message_NameListArray[(int)broadCastType]));
     }
 
     [Header("채팅 사이의 시간")]
@@ -220,14 +204,12 @@ public class ChattingManager : MonoBehaviour//
     [SerializeField] float ChatBubbleXPos;
 
     /// <summary>
-    /// qwer
+    /// 랜덤 채팅 만들기
     /// </summary>
     /// <param name="index"></param>
     /// <param name="message"></param>
     /// <returns></returns>
     /// 
-
-
     IEnumerator MakeRandomChat(int index, string message)
     {
         Vector3 targetScale = Vector3.one * _chatScale;
@@ -237,7 +219,7 @@ public class ChattingManager : MonoBehaviour//
         Go.transform.localScale = Vector3.zero;
         Go.GetComponent<RectTransform>().anchoredPosition = new Vector3(ChatBubbleXPos, ClearChatGO.transform.GetComponent<RectTransform>().sizeDelta.y/2f* _chatScale + ChatBubbleYPos, 0);
 
-        Go.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMPro.TMP_Text>().text = GetRandomStringFromList(ViewersNameList);
+        Go.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMPro.TMP_Text>().text = GetRandomStringFromList(Message_NameListArray[(int)BroadCastType.MaxCount]);
         Go.transform.GetChild(0).GetChild(0).GetComponent<TMPro.TMP_Text>().text = message;
         ClearChatGO.GetComponent<TMPro.TMP_Text>().text = Go.transform.GetChild(0).GetChild(0).GetComponent<TMPro.TMP_Text>().text;
 
