@@ -279,7 +279,7 @@ public class UI_SchedulePopup : UI_Popup
         switch (type)
         {
             case ScheduleType.BroadCast:
-                for (int i = 0; i < (int)BroadCastType.MaxCount; i++)
+                for (int i = 0; i < (int)BroadCastType.MaxCount_Name; i++)
                 {
                     nowSelectScheduleTypeList.Add(Managers.Data.GetOneDayDataByName((BroadCastType)i));
                     GameObject go = Instantiate(UISubContent, ParentTR, false);

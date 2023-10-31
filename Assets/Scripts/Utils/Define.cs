@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Define : MonoBehaviour
 {
-
     public enum Scene
     {
         Unknown,
@@ -72,7 +71,7 @@ public class Define : MonoBehaviour
 
     public enum BroadCastType
     {
-        Game, Song, Draw, Healing, Cook, PlayInst, Horror, Ringfit, Challenge, MagicShow, MaxCount
+        Game, Song, Draw, Healing, Cook, PlayInst, Horror, Ringfit, Challenge, MagicShow, MaxCount_Name
     }
 
     public enum RestType
@@ -123,7 +122,7 @@ public class Define : MonoBehaviour
         {
             KorName = "";
             this.scheduleType = ScheduleType.Null;
-            this.broadcastType = BroadCastType.MaxCount;
+            this.broadcastType = BroadCastType.MaxCount_Name;
             this.restType = RestType.MaxCount;
             this.goOutType = GoOutType.MaxCount;
             this.infotext = "";

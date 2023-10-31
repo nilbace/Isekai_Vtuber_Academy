@@ -164,7 +164,7 @@ public class DataManager
         }
 
 
-        for(int i = 0;i<(int)BroadCastType.MaxCount; i++)
+        for(int i = 0;i<(int)BroadCastType.MaxCount_Name; i++)
         {
             ProcessStringToList(ScheduleType.BroadCast, i, stringqueue.Dequeue());
         }

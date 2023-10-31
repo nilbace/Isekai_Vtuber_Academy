@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.Networking;
 using DG.Tweening;
 using static Define;
-public class ChattingManager : MonoBehaviour//
+public class ChattingManager : MonoBehaviour
 {
     const string Message_NameURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&gid=0&range=A2:K";
     /// <summary>
     /// 마지막은 이름들이 들어있음
     /// </summary>
-    List<string>[] Message_NameListArray = new List<string>[(int)BroadCastType.MaxCount + 1];
+    List<string>[] Message_NameListArray = new List<string>[(int)BroadCastType.MaxCount_Name + 1];
 
     public static ChattingManager instance;
     private void Awake()
@@ -51,7 +51,7 @@ public class ChattingManager : MonoBehaviour//
         //코루틴이 모두 완료될 때까지 기다림
         yield return chatCoroutine;
 
-        StartGenerateChattingByType(BroadCastType.Game);
+        StartGenerateChattingByType(BroadCastType.MagicShow);
 
     }
 
@@ -68,7 +68,7 @@ public class ChattingManager : MonoBehaviour//
             LocateDataToMessageListArray(datas);
         }
 
-        for (int i = 0; i < (int)BroadCastType.MaxCount; i++)
+        for (int i = 0; i < (int)BroadCastType.MaxCount_Name; i++)
         {
             Message_NameListArray[i] = AutoLineBreak(Message_NameListArray[i]);
         }
@@ -81,7 +81,7 @@ public class ChattingManager : MonoBehaviour//
     void LocateDataToMessageListArray(string datas)
     {
         string[] EachData = datas.Substring(0, datas.Length).Split('\t');
-        for (int i = 0; i < (int)BroadCastType.MaxCount + 1; i++)
+        for (int i = 0; i < (int)BroadCastType.MaxCount_Name + 1; i++)
         {
             if (EachData[i] != "")
             {
@@ -211,7 +211,7 @@ public class ChattingManager : MonoBehaviour//
         Go.transform.localScale = Vector3.zero;
         Go.GetComponent<RectTransform>().anchoredPosition = new Vector3(ChatBubbleXPos, ClearChatGO.transform.GetComponent<RectTransform>().sizeDelta.y/2f* _chatScale + ChatBubbleYPos, 0);
 
-        Go.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMPro.TMP_Text>().text = GetRandomStringFromList(Message_NameListArray[(int)BroadCastType.MaxCount]);
+        Go.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMPro.TMP_Text>().text = GetRandomStringFromList(Message_NameListArray[(int)BroadCastType.MaxCount_Name]);
         Go.transform.GetChild(0).GetChild(0).GetComponent<TMPro.TMP_Text>().text = message;
         ClearChatGO.GetComponent<TMPro.TMP_Text>().text = Go.transform.GetChild(0).GetChild(0).GetComponent<TMPro.TMP_Text>().text;
 
