@@ -72,14 +72,6 @@ public class ChattingManager : MonoBehaviour//
         {
             Message_NameListArray[i] = AutoLineBreak(Message_NameListArray[i]);
         }
-
-        for (int i = 0; i < (int)BroadCastType.MaxCount; i++)
-        {
-            foreach(string str in Message_NameListArray[i])
-            {
-                Debug.Log(str);
-            }
-        }
     }
 
     /// <summary>
