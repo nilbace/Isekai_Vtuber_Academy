@@ -51,7 +51,8 @@ public class ChattingManager : MonoBehaviour
         //코루틴이 모두 완료될 때까지 기다림
         yield return chatCoroutine;
 
-        StartGenerateChattingByType(BroadCastType.MagicShow);
+        //실제 실행 코드
+        //StartGenerateChattingByType(BroadCastType.MagicShow);
 
     }
 
