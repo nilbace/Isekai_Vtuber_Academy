@@ -31,7 +31,8 @@ public class UI_MainBackUI : UI_Scene
         StrStatBTN, 
         MentalStatBTN,
         LuckStatBTN,
-        SettingBTN
+        SettingBTN,
+        PlayerSB_BTN
     }
 
     enum GameObjects
