@@ -1,22 +1,19 @@
 {
-    "NowWeek": 5,
-    "nowSubCount": 27420,
-    "nowGoldAmount": 3368,
-    "NowHeart": 0,
-    "NowStar": 0,
+    "NowWeek": 2,
+    "nowSubCount": 151,
+    "nowGoldAmount": 0,
+    "NowHeart": 100,
+    "NowStar": 100,
     "SixStat": [
-        35.0,
+        5.0,
         0.0,
         0.0,
         0.0,
-        15.0,
-        0.0
+        0.0,
+        6.0
     ],
     "DoneEventNames": [
-        "TS 코스프레",
-        "진수성찬 먹방",
-        "헴릿 공연 난입",
-        "게임1"
+        "팬레터 읽기"
     ],
     "BoughtItems": []
 }

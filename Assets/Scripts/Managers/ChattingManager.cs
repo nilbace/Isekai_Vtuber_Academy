@@ -52,7 +52,7 @@ public class ChattingManager : MonoBehaviour
         yield return chatCoroutine;
 
         //실제 실행 코드
-        //StartGenerateChattingByType(BroadCastType.MagicShow);
+        StartGenerateChattingByType(BroadCastType.Game);
 
     }
 
