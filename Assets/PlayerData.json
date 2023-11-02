@@ -1,21 +1,21 @@
 {
-    "NowWeek": 6,
-    "nowSubCount": 40364,
-    "nowGoldAmount": 9844,
-    "NowHeart": 79,
-    "NowStar": 38,
+    "NowWeek": 5,
+    "nowSubCount": 27420,
+    "nowGoldAmount": 3368,
+    "NowHeart": 0,
+    "NowStar": 0,
     "SixStat": [
-        36.0,
-        2.0,
-        1.0,
+        35.0,
         0.0,
-        16.0,
+        0.0,
+        0.0,
+        15.0,
         0.0
     ],
     "DoneEventNames": [
-        "합체 로봇 사줘",
-        "헴릿 공연 난입",
+        "TS 코스프레",
         "진수성찬 먹방",
+        "헴릿 공연 난입",
         "게임1"
     ],
     "BoughtItems": []

@@ -14,6 +14,8 @@ public class DataManager
 { 
     public PlayerData _myPlayerData;
     float[] weekBounsMagnification = { 1.5f, 1.3f, 1.1f, 1f, 1f };
+    int[] MonthlyExpense = {1000, 3000, 5000, 10000, 10000 };
+
 
     public void Init()
     {
@@ -103,8 +105,6 @@ public class DataManager
 
     #region ScheduleData
 
-    
-
     //Schedule Popup데이터 관리용
     public OneDayScheduleData[] _SevenDayScheduleDatas = new OneDayScheduleData[7];
     public float[] _SeveDayScrollVarValue = new float[7];
@@ -115,6 +115,13 @@ public class DataManager
         int temp = _myPlayerData.NowWeek;
         int temp2 = (temp-1) / 4;
         return weekBounsMagnification[temp2];
+    }
+
+    public int GetNowMonthExpense()
+    {
+        int temp = _myPlayerData.NowWeek;
+        int temp2 = ((temp) / 4) - 1;
+        return MonthlyExpense[temp2];
     }
 
     List<OneDayScheduleData> oneDayDatasList = new List<OneDayScheduleData>();

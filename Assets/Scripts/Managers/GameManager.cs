@@ -23,6 +23,14 @@ public class GameManager
             UI_MainBackUI.instance.UpdateUItexts();
             yield return new WaitForSeconds(0.1f);
         }
+
+        //매 월 마지막 주차는 월세 나감
+        if (Managers.Data._myPlayerData.NowWeek % 4 == 0)
+        {
+            Managers.Data._myPlayerData.nowGoldAmount -= Managers.Data.GetNowMonthExpense();
+            Debug.Log($"월세 {Managers.Data.GetNowMonthExpense() } 원 차감");
+        }
+
         int aftersubsAmount = Managers.Data._myPlayerData.nowSubCount;
         int afterHeart = Managers.Data._myPlayerData.NowHeart;
         int afterStar = Managers.Data._myPlayerData.NowStar;
