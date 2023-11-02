@@ -6,6 +6,7 @@ using static Define;
 
 public class GameManager
 {
+    string[] daysOfWeek = { "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일" };
     public IEnumerator StartSchedule()
     {
         int beforeSubsAmount = Managers.Data._myPlayerData.nowSubCount;
@@ -14,11 +15,9 @@ public class GameManager
 
         // 월요일은 안아파
         isSick = false; SickDayOne = false;
-        string[] daysOfWeek = { "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일" };
         for (int i = 0; i < 7; i++)
         {
-            Debug.Log($"{daysOfWeek[i]} 스케줄 {Managers.Data._SevenDayScheduleDatas[i].KorName} 시작");
-            CarryOutOneDayWork(Managers.Data._SevenDayScheduleDatas[i]);
+            CarryOutOneDayWork(Managers.Data._SevenDayScheduleDatas[i], i);
             Debug.Log("-----------------------------------------");
             UI_MainBackUI.instance.UpdateUItexts();
             yield return new WaitForSeconds(0.1f);
@@ -50,7 +49,7 @@ public class GameManager
         else Managers.UI_Manager.ShowPopupUI<UI_Merchant>();
     }
 
-    void CarryOutOneDayWork(OneDayScheduleData oneDay)
+    void CarryOutOneDayWork(OneDayScheduleData oneDay, int Day)
     {
         //휴식 하는게 아니라면 아플 수 있음
         if(oneDay.scheduleType != ScheduleType.Rest)
@@ -61,62 +60,67 @@ public class GameManager
         //아프면 그냥 누워있을 거임
         if(isSick)
         {
+            Debug.Log($"{daysOfWeek[Day]} 아픔");
             CarryOutSickDay();
-            return;
         }
-
         //안아프면 모든 일정에 대해 대성공이 뜰 수 있음
-        float bonusMultiplier = 1.0f;
-        if (CheckPossibilityOfBigSuccess())
-        {
-            bonusMultiplier = 1.5f;// 50% 상승을 위한 상수값
-            Debug.Log("대성공");
-        }
-
-        float nowWeekmag = Managers.Data.GetNowWeekBonusMag();
-
-        int OneDayNewSubs = CalculateSubAfterDay(Managers.Data._myPlayerData.nowSubCount,
-            oneDay.FisSubsUpValue, oneDay.PerSubsUpValue, nowWeekmag * bonusMultiplier);
-
-        int OneDayIncome = Mathf.CeilToInt(Managers.Data._myPlayerData.nowSubCount * oneDay.InComeMag * bonusMultiplier);
-
-        if (oneDay.scheduleType == ScheduleType.BroadCast)
-        {
-            Managers.Data._myPlayerData.nowSubCount += OneDayNewSubs;
-            Managers.Data._myPlayerData.nowGoldAmount += OneDayIncome;
-            Debug.Log($"구독+ : {OneDayNewSubs}" + $" / 골드 + : {OneDayIncome}");
-        }
-
-        if (oneDay.broadcastType == BroadCastType.Game || oneDay.broadcastType == BroadCastType.Song || oneDay.broadcastType == BroadCastType.Draw)
-        {
-            CalculateBonus((StatName)Enum.Parse(typeof(StatName), oneDay.broadcastType.ToString()), OneDayNewSubs, OneDayIncome);
-        }
-
-        float HeartVariance; float StarVariance;
-        if (oneDay.scheduleType == ScheduleType.Rest)
-        {
-            HeartVariance = oneDay.HeartVariance * bonusMultiplier;
-            StarVariance = oneDay.StarVariance * bonusMultiplier;
-        }
         else
         {
-            HeartVariance = oneDay.HeartVariance * StrengthBonus();
-            StarVariance  = oneDay.StarVariance * MentalBonus();
-        }
-        Debug.Log($"건강 변화량 : ({Mathf.Clamp((HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100) - Managers.Data._myPlayerData.NowHeart}," +
+            Debug.Log($"{daysOfWeek[Day]} 스케줄 {Managers.Data._SevenDayScheduleDatas[Day].KorName} 시작");
+            float bonusMultiplier = 1.0f;
+            if (CheckPossibilityOfBigSuccess())
+            {
+                bonusMultiplier = 1.5f;// 50% 상승을 위한 상수값
+                Debug.Log("대성공");
+            }
+
+            float nowWeekmag = Managers.Data.GetNowWeekBonusMag();
+
+            int OneDayNewSubs = CalculateSubAfterDay(Managers.Data._myPlayerData.nowSubCount,
+                oneDay.FisSubsUpValue, oneDay.PerSubsUpValue, nowWeekmag * bonusMultiplier);
+
+            int OneDayIncome = Mathf.CeilToInt(Managers.Data._myPlayerData.nowSubCount * oneDay.InComeMag * bonusMultiplier);
+
+            if (oneDay.scheduleType == ScheduleType.BroadCast)
+            {
+                Managers.Data._myPlayerData.nowSubCount += OneDayNewSubs;
+                Managers.Data._myPlayerData.nowGoldAmount += OneDayIncome;
+                Debug.Log($"구독+ : {OneDayNewSubs}" + $" / 골드 + : {OneDayIncome}");
+            }
+
+            CalculateBonusWithType(oneDay.broadcastType, OneDayNewSubs, OneDayIncome);
+
+            float HeartVariance; float StarVariance;
+            if (oneDay.scheduleType == ScheduleType.Rest)
+            {
+                HeartVariance = oneDay.HeartVariance * bonusMultiplier;
+                StarVariance = oneDay.StarVariance * bonusMultiplier;
+            }
+            else
+            {
+                HeartVariance = oneDay.HeartVariance * StrengthBonus();
+                StarVariance = oneDay.StarVariance * MentalBonus();
+            }
+
+            Debug.Log($"건강 변화량 : ({Mathf.Clamp((HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100) - Managers.Data._myPlayerData.NowHeart}," +
             $" {Mathf.Clamp((StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100) - Managers.Data._myPlayerData.NowStar}), " +
             $"결과 ( {Mathf.Clamp((HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100)}, " +
             $"{Mathf.Clamp((StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100)})");
 
-        Managers.Data._myPlayerData.NowHeart = Mathf.Clamp(Mathf.CeilToInt(HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100);
-        Managers.Data._myPlayerData.NowStar = Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100);
+            Managers.Data._myPlayerData.NowHeart = Mathf.Clamp(Mathf.CeilToInt(HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100);
+            Managers.Data._myPlayerData.NowStar = Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100);
 
-        Managers.Data._myPlayerData.SixStat[0] += oneDay.Six_Stats[0] * bonusMultiplier;
-        Managers.Data._myPlayerData.SixStat[1] += oneDay.Six_Stats[1] * bonusMultiplier;
-        Managers.Data._myPlayerData.SixStat[2] += oneDay.Six_Stats[2] * bonusMultiplier;
-        Managers.Data._myPlayerData.SixStat[3] += oneDay.Six_Stats[3] * bonusMultiplier;
-        Managers.Data._myPlayerData.SixStat[4] += oneDay.Six_Stats[4] * bonusMultiplier;
-        Managers.Data._myPlayerData.SixStat[5] += oneDay.Six_Stats[5] * bonusMultiplier;
+            Managers.Data._myPlayerData.SixStat[0] += oneDay.Six_Stats[0] * bonusMultiplier;
+            Managers.Data._myPlayerData.SixStat[1] += oneDay.Six_Stats[1] * bonusMultiplier;
+            Managers.Data._myPlayerData.SixStat[2] += oneDay.Six_Stats[2] * bonusMultiplier;
+            Managers.Data._myPlayerData.SixStat[3] += oneDay.Six_Stats[3] * bonusMultiplier;
+            Managers.Data._myPlayerData.SixStat[4] += oneDay.Six_Stats[4] * bonusMultiplier;
+            Managers.Data._myPlayerData.SixStat[5] += oneDay.Six_Stats[5] * bonusMultiplier;
+        }
+        
+
+
+        
     }
 
 
@@ -127,6 +131,21 @@ public class GameManager
         int result = Mathf.CeilToInt(temp);
         return result - now;
     }
+
+    void CalculateBonusWithType(BroadCastType broadCastType, int DaySub, int DayIncome)
+    {
+        StatName temp;
+        if (broadCastType == BroadCastType.Healing || broadCastType == BroadCastType.LOL
+            || broadCastType == BroadCastType.Horror || broadCastType == BroadCastType.Challenge)
+            temp = StatName.Game;
+        else if (broadCastType == BroadCastType.Sing || broadCastType == BroadCastType.PlayInst || broadCastType == BroadCastType.Compose)
+            temp = StatName.Song;
+        else
+            temp = StatName.Draw;
+
+        CalculateBonus(temp, DaySub, DayIncome);
+    }
+
 
     void CalculateBonus(StatName statname, int DaySub, int DayIncome)
     {
@@ -226,6 +245,13 @@ public class GameManager
         {
             isSick = false;
         }
+        int RestHeartStarValue = 10;
+        Managers.Data._myPlayerData.NowHeart += RestHeartStarValue;
+        Managers.Data._myPlayerData.NowStar  += RestHeartStarValue;
+        Debug.Log($"건강 변화량 : ({Mathf.Clamp((RestHeartStarValue) + Managers.Data._myPlayerData.NowHeart, 0, 100) - Managers.Data._myPlayerData.NowHeart}," +
+            $" {Mathf.Clamp((RestHeartStarValue) + Managers.Data._myPlayerData.NowStar, 0, 100) - Managers.Data._myPlayerData.NowStar}), " +
+            $"결과 ( {Mathf.Clamp((RestHeartStarValue) + Managers.Data._myPlayerData.NowHeart, 0, 100)}, " +
+            $"{Mathf.Clamp((RestHeartStarValue) + Managers.Data._myPlayerData.NowStar, 0, 100)})");
 
         if (caughtCold)
         {
