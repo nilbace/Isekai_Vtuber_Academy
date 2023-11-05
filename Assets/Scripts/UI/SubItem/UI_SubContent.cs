@@ -187,6 +187,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     }
 
     bool OverOffset = false;
+    public static float DragMagnitude;
     public void OnDrag(PointerEventData eventData)
     {
         if (isPressed) eventData.pointerPress = gameObject;
@@ -199,7 +200,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         if (scrollRect != null && scrollRect.horizontalScrollbar != null && scrollRect.horizontalScrollbar.gameObject.activeInHierarchy)
         {
             float normalizedDeltaX = -eventData.delta.x / scrollRect.content.rect.width;
-            float newXPos = Mathf.Clamp(scrollRect.horizontalNormalizedPosition + normalizedDeltaX, 0f, 1f); 
+            float newXPos = Mathf.Clamp(scrollRect.horizontalNormalizedPosition + normalizedDeltaX * DragMagnitude, 0f, 1f); 
             scrollRect.horizontalNormalizedPosition = newXPos; 
         }
     }

@@ -252,7 +252,7 @@ public class DataManager
     {
         Queue<string> tempstrings = new Queue<string>();
 
-        string[] lines = data.Substring(0, data.Length - 1).Split('\t');
+        string[] lines = data.Substring(0, data.Length).Split('\t');
 
         foreach (string date in lines)
         {

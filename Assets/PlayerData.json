@@ -1,11 +1,11 @@
 {
-    "NowWeek": 3,
-    "nowSubCount": 7992,
-    "nowGoldAmount": 3042,
-    "NowHeart": 36,
-    "NowStar": 36,
+    "NowWeek": 4,
+    "nowSubCount": 17035,
+    "nowGoldAmount": 3471,
+    "NowHeart": 94,
+    "NowStar": 64,
     "SixStat": [
-        12.0,
+        14.0,
         0.0,
         0.0,
         0.0,
@@ -13,8 +13,9 @@
         0.0
     ],
     "DoneEventNames": [
-        "민트초코 먹기",
-        "술 헤롱헤롱"
+        "포카리 물만두",
+        "술 헤롱헤롱",
+        "고삼차 먹방"
     ],
     "BoughtItems": []
 }

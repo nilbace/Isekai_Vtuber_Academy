@@ -35,7 +35,6 @@ public class UI_SchedulePopup : UI_Popup
 
         StartScheduleBTN,
         BackBTN,
-
     }
     enum Texts
     {
@@ -256,17 +255,20 @@ public class UI_SchedulePopup : UI_Popup
 
     void ClickBroadCastBTN()
     {
+        UI_SubContent.DragMagnitude = 0.31f;
         State_SelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.BroadCast);
     }
     void ClickRestBTN()
     {
+        UI_SubContent.DragMagnitude = 0.39f;
         State_SelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.Rest);
     }
 
     void ClickGoOutBTN()
     {
+        UI_SubContent.DragMagnitude = 0.21f;
         State_SelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.GoOut);
     }

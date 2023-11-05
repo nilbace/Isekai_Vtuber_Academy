@@ -117,10 +117,6 @@ public class GameManager
             Managers.Data._myPlayerData.SixStat[4] += oneDay.Six_Stats[4] * bonusMultiplier;
             Managers.Data._myPlayerData.SixStat[5] += oneDay.Six_Stats[5] * bonusMultiplier;
         }
-        
-
-
-        
     }
 
 
