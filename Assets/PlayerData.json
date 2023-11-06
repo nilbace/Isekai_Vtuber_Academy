@@ -1,21 +1,19 @@
 {
-    "NowWeek": 4,
-    "nowSubCount": 17035,
-    "nowGoldAmount": 3471,
-    "NowHeart": 94,
-    "NowStar": 64,
+    "NowWeek": 2,
+    "nowSubCount": 18510,
+    "nowGoldAmount": 41177,
+    "NowHeart": 28,
+    "NowStar": 28,
     "SixStat": [
-        14.0,
+        7.0,
+        1.0,
+        4.0,
         0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
+        -3.0,
+        3.0
     ],
     "DoneEventNames": [
-        "포카리 물만두",
-        "술 헤롱헤롱",
-        "고삼차 먹방"
+        "잼민이 맞짱"
     ],
     "BoughtItems": []
 }

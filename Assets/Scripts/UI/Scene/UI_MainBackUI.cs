@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,9 +39,12 @@ public class UI_MainBackUI : UI_Scene
     enum GameObjects
     {
         HeartBar, StarBar, HeartCover, StarCover,
-        GameStat_Cover, SongStat_Cover, DrawStat_Cover, StrStat_Cover, MenStat_Cover, LuckStat_Cover
+        GameStat_Cover, SongStat_Cover, DrawStat_Cover, StrStat_Cover, MenStat_Cover, LuckStat_Cover,
+        Stats, Days7
     }
 
+    Animator[] IconBaseAnis = new Animator[6];
+    Image[] DayResultStamps = new Image[7];
 
     public static UI_MainBackUI instance;
 
@@ -72,10 +76,21 @@ public class UI_MainBackUI : UI_Scene
         GetButton((int)Buttons.MentalStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Mental));
         GetButton((int)Buttons.LuckStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Luck));
 
+        for(int i = 0;i<6;i++)
+        {
+            IconBaseAnis[i] = GetGameObject((int)GameObjects.Stats).transform.GetChild(i).GetChild(0).GetComponent<Animator>(); 
+        }
+        for (int i = 0; i < 7; i++)
+        {
+            DayResultStamps[i] = GetGameObject((int)GameObjects.Days7).transform.GetChild(i).GetChild(1).GetComponent<Image>();
+        }
         GetButton((int)Buttons.SettingBTN).onClick.AddListener(SettingBTN);
 
-        UpdateUItexts();
+        DayResultStamps[2].sprite = Managers.MSM.DayResultStamp[2];
+        DayResultStamps[1].sprite = Managers.MSM.DayResultStamp[1];
+        DayResultStamps[4].sprite = Managers.MSM.DayResultStamp[2];
 
+        UpdateUItexts();
         Managers.Sound.Play("bgm1", Sound.Bgm);
     }
 
@@ -145,6 +160,10 @@ public class UI_MainBackUI : UI_Scene
         }
         else temp = "½É°¢";
         return temp;
+    }
+    public void GlitterStat(int i)
+    {
+        IconBaseAnis[i].Play("Shine");
     }
 
     public void ShowCreateScheduleBTN()

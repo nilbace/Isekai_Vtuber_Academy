@@ -379,7 +379,6 @@ public class PlayerData
                 temp = SixStat[i];
             }
         }
-
         return temp;
     }
 
@@ -397,6 +396,15 @@ public class PlayerData
             }
         }
         return temp;
+    }
+
+    public void UpStat(float[] stats)
+    {
+        for(int i =0;i<6;i++)
+        {
+            SixStat[i] += stats[i];
+            if (stats[i] != 0) UI_MainBackUI.instance.GlitterStat(i);
+        }
     }
 }
 
