@@ -15,12 +15,13 @@ public class GameManager
 
         // 월요일은 안아파
         isSick = false; SickDayOne = false;
+
         for (int i = 0; i < 7; i++)
         {
             CarryOutOneDayWork(Managers.Data._SevenDayScheduleDatas[i], i);
             Debug.Log("-----------------------------------------");
             UI_MainBackUI.instance.UpdateUItexts();
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(3f);
         }
 
         //매 월 마지막 주차는 월세 나감
@@ -70,6 +71,7 @@ public class GameManager
             float bonusMultiplier = 1.0f;
             if (CheckPossibilityOfBigSuccess())
             {
+                BigSuccess = true;
                 bonusMultiplier = 1.5f;// 50% 상승을 위한 상수값
                 Debug.Log("대성공");
             }
@@ -118,6 +120,10 @@ public class GameManager
 
             Managers.Data._myPlayerData.UpStat(tempstat);
         }
+
+        if (isSick)         UI_MainBackUI.instance.StampSeal(Day, 2);
+        else if(BigSuccess) UI_MainBackUI.instance.StampSeal(Day, 0);
+        else                UI_MainBackUI.instance.StampSeal(Day, 1);
     }
 
 
@@ -259,6 +265,8 @@ public class GameManager
             Debug.Log("엘라 우울함");
         }
     }
+
+    bool BigSuccess = false;
 
     bool CheckPossibilityOfBigSuccess()
     {

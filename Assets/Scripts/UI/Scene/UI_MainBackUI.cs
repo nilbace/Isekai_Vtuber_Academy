@@ -44,7 +44,7 @@ public class UI_MainBackUI : UI_Scene
     }
 
     Animator[] IconBaseAnis = new Animator[6];
-    Image[] DayResultStamps = new Image[7];
+    Image[] DayResultSeals = new Image[7];
 
     public static UI_MainBackUI instance;
 
@@ -82,13 +82,11 @@ public class UI_MainBackUI : UI_Scene
         }
         for (int i = 0; i < 7; i++)
         {
-            DayResultStamps[i] = GetGameObject((int)GameObjects.Days7).transform.GetChild(i).GetChild(1).GetComponent<Image>();
+            DayResultSeals[i] = GetGameObject((int)GameObjects.Days7).transform.GetChild(i).GetChild(1).GetComponent<Image>();
         }
         GetButton((int)Buttons.SettingBTN).onClick.AddListener(SettingBTN);
+        CallenderBottom.instance.Init();
 
-        DayResultStamps[2].sprite = Managers.MSM.DayResultStamp[2];
-        DayResultStamps[1].sprite = Managers.MSM.DayResultStamp[1];
-        DayResultStamps[4].sprite = Managers.MSM.DayResultStamp[2];
 
         UpdateUItexts();
         Managers.Sound.Play("bgm1", Sound.Bgm);
@@ -164,6 +162,19 @@ public class UI_MainBackUI : UI_Scene
     public void GlitterStat(int i)
     {
         IconBaseAnis[i].Play("Shine");
+    }
+
+    public void CleanSeals()
+    {
+        for(int i = 0; i<7;i++)
+        {
+            DayResultSeals[i].sprite = null;
+        }
+    }
+
+    public void StampSeal(int day, int SealType)
+    {
+        DayResultSeals[day].sprite = Managers.MSM.DayResultSeal[SealType];
     }
 
     public void ShowCreateScheduleBTN()

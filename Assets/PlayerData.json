@@ -1,19 +1,19 @@
 {
     "NowWeek": 2,
-    "nowSubCount": 18510,
-    "nowGoldAmount": 41177,
-    "NowHeart": 28,
-    "NowStar": 28,
+    "nowSubCount": 8217,
+    "nowGoldAmount": 21718,
+    "NowHeart": 86,
+    "NowStar": 86,
     "SixStat": [
         7.0,
-        1.0,
-        4.0,
+        0.0,
+        0.0,
         0.0,
         -3.0,
-        3.0
+        0.0
     ],
     "DoneEventNames": [
-        "잼민이 맞짱"
+        "컨텐츠 표절 논란"
     ],
     "BoughtItems": []
 }
