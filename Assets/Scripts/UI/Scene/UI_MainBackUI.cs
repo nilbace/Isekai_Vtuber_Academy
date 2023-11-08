@@ -254,7 +254,6 @@ public class UI_MainBackUI : UI_Scene
 
     IEnumerator EndScheduleAndSetUICor()
     {
-        CleanSealsOnCallenderBottom();
         GetButton((int)Buttons.CreateScheduleBTN).gameObject.SetActive(true);
         GetButton((int)Buttons.StartScheduleBTN).gameObject.SetActive(false);
 
@@ -290,7 +289,17 @@ public class UI_MainBackUI : UI_Scene
     public void StampSeal(int day, int SealType)
     {
         DayResultSeals[day].color = new Color(1, 1, 1, 1);
-        DayResultSeals[day].sprite = Managers.MSM.DayResultSeal[SealType];
+
+        Debug.Log(SealType);
+        if (SealType == 0)
+            DayResultSeals[day].GetComponent<Animator>().SetTrigger("StarAni");
+        else if(SealType == 1)
+            DayResultSeals[day].GetComponent<Animator>().SetTrigger("OAni");
+        else
+        {
+            Debug.Log("XXXXX");
+            DayResultSeals[day].GetComponent<Animator>().SetTrigger("XAni");
+        }
     }
 
     public void ShowSchedulePopup()

@@ -52,6 +52,7 @@ public class GameManager
 
     void CarryOutOneDayWork(OneDayScheduleData oneDay, int Day)
     {
+        bool tempSick = false;
         //휴식 하는게 아니라면 아플 수 있음
         if(oneDay.scheduleType != ScheduleType.Rest)
         {
@@ -62,6 +63,7 @@ public class GameManager
         if(isSick)
         {
             Debug.Log($"{daysOfWeek[Day]} 아픔");
+            tempSick = true;
             CarryOutSickDay();
         }
         //안아프면 모든 일정에 대해 대성공이 뜰 수 있음
@@ -121,9 +123,9 @@ public class GameManager
             Managers.Data._myPlayerData.UpStat(tempstat);
         }
 
-        if (isSick)         UI_MainBackUI.instance.StampSeal(Day, 2);
-        else if(BigSuccess) UI_MainBackUI.instance.StampSeal(Day, 0);
-        else                UI_MainBackUI.instance.StampSeal(Day, 1);
+        if(tempSick || isSick) UI_MainBackUI.instance.StampSeal(Day, 2);
+        else if (BigSuccess) UI_MainBackUI.instance.StampSeal(Day, 0);
+        else UI_MainBackUI.instance.StampSeal(Day, 1);
     }
 
 
