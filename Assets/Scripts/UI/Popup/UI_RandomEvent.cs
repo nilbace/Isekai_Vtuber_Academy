@@ -72,12 +72,13 @@ public class UI_RandomEvent : UI_Popup
         Managers.Data._myPlayerData.NowStar += _eventData.Change[3];
 
         //½ºÅÝ º¯È­·®
-        Managers.Data._myPlayerData.SixStat[0] += _eventData.Change[4];
-        Managers.Data._myPlayerData.SixStat[1] += _eventData.Change[5];
-        Managers.Data._myPlayerData.SixStat[2] += _eventData.Change[6];
-        Managers.Data._myPlayerData.SixStat[3] += _eventData.Change[7];
-        Managers.Data._myPlayerData.SixStat[4] += _eventData.Change[8];
-        Managers.Data._myPlayerData.SixStat[5] += _eventData.Change[9];
+        float[] eventStatValues = new float[6];
+        for(int i = 0; i<6;i++)
+        {
+            eventStatValues[i] = _eventData.Change[i + 4];
+        }
+
+        Managers.Data._myPlayerData.UpStat(eventStatValues);
     }
    
 }

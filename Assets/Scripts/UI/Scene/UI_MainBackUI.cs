@@ -89,10 +89,14 @@ public class UI_MainBackUI : UI_Scene
             DayResultSeals[i] = GetGameObject((int)GameObjects.Days7).transform.GetChild(i).GetChild(1).GetComponent<Image>();
         }
         GetButton((int)Buttons.SettingBTN).onClick.AddListener(SettingBTN);
-       
+
+        //방송 타이틀 오른쪽으로 뺴고 시작
+        Transform BroadCastTitle_tr = GetGameObject((int)GameObjects.BroadCastTitle).transform;
+        var tween = BroadCastTitle_tr.DOMoveX(BroadCastTitle_tr.localPosition.x + XOffset, 0);
+
+
         UpdateUItexts();
         Managers.Sound.Play("bgm1", Sound.Bgm);
-        StartScheduleAndSetUI();
     }
 
     void ShowStatProperty(StatName statName)
@@ -163,14 +167,13 @@ public class UI_MainBackUI : UI_Scene
         return temp;
     }
 
+    
+    float moveDuration = 0.52f;
+    float XOffset = 350;
     [Header("닷트윈 애니메이션")]
-    [SerializeField] float moveDuration;
-    [SerializeField] float XOffset;
     [SerializeField] Ease ease;
-    [SerializeField] Ease rollEase;
     /// <summary>
-    /// 방송 제목, 프로필 및 캘린더 올라오고
-    /// 플레이어 대화창 내려감
+    /// 스케쥴 진행 시작시 호출되어 UI들 바꿔줌
     /// </summary>
     public void StartScheduleAndSetUI()
     {
@@ -179,22 +182,44 @@ public class UI_MainBackUI : UI_Scene
 
     IEnumerator StartScheduleAndSetUICor()
     {
-        Transform BroadCastTitle_tr = GetGameObject((int)GameObjects.BroadCastTitle).transform;
-        var tween = BroadCastTitle_tr.DOMoveX(BroadCastTitle_tr.localPosition.x + XOffset, 0);
-        yield return new WaitForSeconds(0.5f);
-
-        Transform callenderB_tr = GetGameObject((int)GameObjects.CallenderBottom).transform;
-        callenderB_tr.DOMoveY(callenderB_tr.localPosition.y + 55, moveDuration).SetEase(ease);
         CleanSealsOnCallenderBottom();
 
+        Transform BroadCastTitle_tr = GetGameObject((int)GameObjects.BroadCastTitle).transform;
+        Transform callenderB_tr = GetGameObject((int)GameObjects.CallenderBottom).transform;
         Transform PlayerSB_BTN_tr = GetButton((int)Buttons.PlayerSB_BTN).transform;
-        PlayerSB_BTN_tr.DOMoveY(PlayerSB_BTN_tr.localPosition.y - 55, moveDuration).SetEase(ease);
-
         Transform CreateScheduleBTN_tr = GetButton((int)Buttons.CreateScheduleBTN).transform;
-      
+
+        callenderB_tr.DOMoveY(callenderB_tr.localPosition.y + 55, moveDuration).SetEase(ease);
+        PlayerSB_BTN_tr.DOMoveY(PlayerSB_BTN_tr.localPosition.y - 55, moveDuration).SetEase(ease);
+        CreateScheduleBTN_tr.DOMoveX(CreateScheduleBTN_tr.localPosition.x - XOffset, moveDuration).SetEase(ease);
+        var tween = BroadCastTitle_tr.DOMoveX(BroadCastTitle_tr.localPosition.x - XOffset, moveDuration).SetEase(ease);
+
         yield return tween;
-        CreateScheduleBTN_tr.DOMoveX(CreateScheduleBTN_tr.localPosition.x - XOffset, moveDuration).SetEase(rollEase);
-        BroadCastTitle_tr.DOMoveX(BroadCastTitle_tr.localPosition.x - XOffset, moveDuration).SetEase(rollEase);
+    }
+
+    /// <summary>
+    /// 스케쥴 종료시 UI들 다시 전환
+    /// </summary>
+    public void EndScheduleAndSetUI()
+    {
+        StartCoroutine(EndScheduleAndSetUICor());
+    }
+
+    IEnumerator EndScheduleAndSetUICor()
+    {
+        CleanSealsOnCallenderBottom();
+
+        Transform BroadCastTitle_tr = GetGameObject((int)GameObjects.BroadCastTitle).transform;
+        Transform callenderB_tr = GetGameObject((int)GameObjects.CallenderBottom).transform;
+        Transform PlayerSB_BTN_tr = GetButton((int)Buttons.PlayerSB_BTN).transform;
+        Transform CreateScheduleBTN_tr = GetButton((int)Buttons.CreateScheduleBTN).transform;
+
+        callenderB_tr.DOMoveY(callenderB_tr.localPosition.y - 55, moveDuration).SetEase(ease);
+        PlayerSB_BTN_tr.DOMoveY(PlayerSB_BTN_tr.localPosition.y + 55, moveDuration).SetEase(ease);
+        CreateScheduleBTN_tr.DOMoveX(CreateScheduleBTN_tr.localPosition.x + XOffset, moveDuration).SetEase(ease);
+        var tween = BroadCastTitle_tr.DOMoveX(BroadCastTitle_tr.localPosition.x + XOffset, moveDuration).SetEase(ease);
+
+        yield return tween;
     }
 
     public void GlitterStat(int i)
@@ -207,11 +232,13 @@ public class UI_MainBackUI : UI_Scene
         for(int i = 0; i<7;i++)
         {
             DayResultSeals[i].sprite = null;
+            DayResultSeals[i].color = new Color(0, 0, 0, 0);
         }
     }
 
     public void StampSeal(int day, int SealType)
     {
+        DayResultSeals[day].color = new Color(1, 1, 1, 1);
         DayResultSeals[day].sprite = Managers.MSM.DayResultSeal[SealType];
     }
 

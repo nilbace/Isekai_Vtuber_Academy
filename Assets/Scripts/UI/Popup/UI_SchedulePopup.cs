@@ -369,6 +369,7 @@ public class UI_SchedulePopup : UI_Popup
 
     void StartScheduleBTN()
     {
+        UI_MainBackUI.instance.StartScheduleAndSetUI();
         Managers.instance.StartSchedule();
         Managers.UI_Manager.ClosePopupUI();
     }
