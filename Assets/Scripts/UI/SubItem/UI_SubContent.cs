@@ -171,6 +171,8 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
             tr.localPosition += new Vector3(0, -offset, 0);
         }
         pressedPosition = eventData.position; // 눌린 위치 저장
+
+        scrollRect.OnBeginDrag(eventData);
     }
     
     
@@ -183,6 +185,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         {
             tr.localPosition += new Vector3(0, offset, 0);
         }
+        scrollRect.OnEndDrag(eventData);
         UI_SchedulePopup.instance.StoreScrollVarValue(scrollRect.horizontalScrollbar.value);
     }
 
@@ -190,19 +193,21 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     public static float DragMagnitude;
     public void OnDrag(PointerEventData eventData)
     {
-        if (isPressed) eventData.pointerPress = gameObject;
-        float deltaX = Mathf.Abs(eventData.position.x - pressedPosition.x);
+        PointerEventData temp = new PointerEventData(EventSystem.current);
+        if (isPressed) temp.pointerPress = gameObject;
+        float deltaX = Mathf.Abs(temp.position.x - pressedPosition.x);
         if (deltaX > Offset)
         {
             OverOffset = true;
         }
 
-        if (scrollRect != null && scrollRect.horizontalScrollbar != null && scrollRect.horizontalScrollbar.gameObject.activeInHierarchy)
-        {
-            float normalizedDeltaX = -eventData.delta.x / scrollRect.content.rect.width;
-            float newXPos = Mathf.Clamp(scrollRect.horizontalNormalizedPosition + normalizedDeltaX * DragMagnitude, 0f, 1f); 
-            scrollRect.horizontalNormalizedPosition = newXPos; 
-        }
+        //if (scrollRect != null && scrollRect.horizontalScrollbar != null && scrollRect.horizontalScrollbar.gameObject.activeInHierarchy)
+        //{
+        //    float normalizedDeltaX = -eventData.delta.x / scrollRect.content.rect.width;
+        //    float newXPos = Mathf.Clamp(scrollRect.horizontalNormalizedPosition + normalizedDeltaX * DragMagnitude, 0f, 1f); 
+        //    scrollRect.horizontalNormalizedPosition = newXPos; 
+        //}
+        scrollRect.OnDrag(eventData);
     }
 
     void LikePressed()
