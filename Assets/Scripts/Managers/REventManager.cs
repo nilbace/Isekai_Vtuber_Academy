@@ -50,6 +50,10 @@ public class REventManager
 
     EventData tempConditionEvent;
     
+    /// <summary>
+    /// 주차나 조건에 알맞은 이벤트를 호출
+    /// </summary>
+    /// <returns></returns>
     public EventData GetProperEvent()
     {
         EventData temp = new EventData();
@@ -83,6 +87,11 @@ public class REventManager
         return temp;
     }
 
+    /// <summary>
+    /// 4주차마다 메인 이벤트
+    /// </summary>
+    /// <param name="eventlist">넘겨받는 이벤트</param>
+    /// <returns></returns>
     EventData GetMainEvent(List<EventData> eventlist)
     {
         EventData temp = new EventData();
@@ -210,6 +219,7 @@ public class REventManager
         public EventData()
         {
             Change = new int[10];
+            EventInfoString = "빈 이벤트";
         }
 
         public void PrintData()

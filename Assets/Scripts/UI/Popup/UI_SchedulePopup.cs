@@ -16,7 +16,7 @@ public class UI_SchedulePopup : UI_Popup
     public static UI_SchedulePopup instance;
     public Transform ParentTR;
     public GameObject UISubContent;
-    bool SubContentSelectPhase = false;
+    public bool SubContentSelectPhase = false;
     private ScrollRect scrollRect;
 
     enum Buttons
@@ -32,10 +32,10 @@ public class UI_SchedulePopup : UI_Popup
         BroadCastBTN,
         RestBTN,
         GoOutBTN,
-
-        StartScheduleBTN,
-        BackBTN,
     }
+
+    Button StartScheduleBTN_Main;
+    Button BackBTN_Main;
     enum Texts
     {
         PointText,
@@ -92,7 +92,8 @@ public class UI_SchedulePopup : UI_Popup
         Bind<GameObject>(typeof(GameObjects));
         Bind<Button>(typeof(Buttons));
         Bind<Image>(typeof(Images));
-
+        StartScheduleBTN_Main = UI_MainBackUI.instance.GetStartScheduleBTN();
+        BackBTN_Main = UI_MainBackUI.instance.GetBackBTN();
 
         for (int i = 0; i<7; i++)
         {
@@ -106,8 +107,8 @@ public class UI_SchedulePopup : UI_Popup
         GetButton((int)Buttons.BroadCastBTN).onClick.       AddListener(ClickBroadCastBTN);
         GetButton((int)Buttons.RestBTN).onClick.            AddListener(ClickRestBTN);
         GetButton((int)Buttons.GoOutBTN).onClick.           AddListener(ClickGoOutBTN);
-        GetButton((int)Buttons.StartScheduleBTN).onClick.   AddListener(StartScheduleBTN);
-        GetButton((int)Buttons.BackBTN).onClick.            AddListener(BackBTN);
+        //GetButton((int)Buttons.StartScheduleBTN).onClick.   AddListener(StartScheduleBTN);
+        //GetButton((int)Buttons.BackBTN).onClick.            AddListener(BackBTN);
 
         _SeveDayScrollVarValue = Managers.Data._SeveDayScrollVarValue;
         _SevenDayScheduleDatas = Managers.Data._SevenDayScheduleDatas;
@@ -184,8 +185,8 @@ public class UI_SchedulePopup : UI_Popup
 
         for(;i<7;i++)
         {
-            GetButton((int)Buttons.StartScheduleBTN).interactable = false;
-            GetButton((int)Buttons.StartScheduleBTN).GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
+            StartScheduleBTN_Main.interactable = false;
+            StartScheduleBTN_Main.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
             if (_SevenDayScheduleDatas[i] == null)
             {
                 _nowSelectedDay = (SevenDays)i;
@@ -193,8 +194,8 @@ public class UI_SchedulePopup : UI_Popup
             }
             if (i == 6)
             {
-                GetButton((int)Buttons.StartScheduleBTN).interactable = true;
-                GetButton((int)Buttons.StartScheduleBTN).GetComponent<Image>().color = new Color(1, 1, 1, 1f);
+                StartScheduleBTN_Main.interactable = true;
+                StartScheduleBTN_Main.GetComponent<Image>().color = new Color(1, 1, 1, 1f);
             }
         }
         if (i == 7) i = 6;
@@ -248,6 +249,13 @@ public class UI_SchedulePopup : UI_Popup
                 GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = baseTextColor[3];
             }
         }
+    }
+
+    public void Show3Contents()
+    {
+        UI_SchedulePopup.instance.SubContentSelectPhase = false;
+        GetGameObject((int)GameObjects.Contents3).SetActive(true);
+        GetGameObject((int)GameObjects.SubContents).SetActive(false);
     }
 
 
@@ -383,7 +391,7 @@ public class UI_SchedulePopup : UI_Popup
         }
         else
         {
-            UI_MainBackUI.instance.ShowCreateScheduleBTN();
+            UI_MainBackUI.instance.EndScheduleAndSetUI();
             Managers.UI_Manager.ClosePopupUI();
         }
     }

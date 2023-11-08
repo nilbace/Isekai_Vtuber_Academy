@@ -1,19 +1,29 @@
 {
-    "NowWeek": 2,
-    "nowSubCount": 1708,
-    "nowGoldAmount": 3788,
+    "NowWeek": 6,
+    "nowSubCount": 24077,
+    "nowGoldAmount": 225059,
     "NowHeart": 86,
     "NowStar": 86,
     "SixStat": [
-        7.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
+        26.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        6.0
     ],
     "DoneEventNames": [
-        "합체 로봇 사줘"
+        "자르반 84세와 만남",
+        "뮹뮹 다이어트",
+        "밀웜 먹방",
+        ""
     ],
-    "BoughtItems": []
+    "BoughtItems": [
+        "수상한 마우스",
+        "수상한 물약",
+        "수상한 마이크",
+        "수상한 덤벨",
+        "수상한 책",
+        "수상한 부적"
+    ]
 }

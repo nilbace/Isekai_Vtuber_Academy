@@ -35,7 +35,8 @@ public class UI_MainBackUI : UI_Scene
         MentalStatBTN,
         LuckStatBTN,
         SettingBTN,
-        PlayerSB_BTN
+        PlayerSB_BTN,
+        StartScheduleBTN, BackBTN
     }
 
     enum GameObjects
@@ -78,8 +79,12 @@ public class UI_MainBackUI : UI_Scene
         GetButton((int)Buttons.StrStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Health));
         GetButton((int)Buttons.MentalStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Mental));
         GetButton((int)Buttons.LuckStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Luck));
+        GetButton((int)Buttons.StartScheduleBTN).onClick.AddListener(StartScheduleBTN);
+        GetButton((int)Buttons.BackBTN).onClick.AddListener(BackBTN);
+        GetButton((int)Buttons.StartScheduleBTN).gameObject.SetActive(false);
+        GetButton((int)Buttons.BackBTN).gameObject.SetActive(false);
 
-        for(int i = 0;i<6;i++)
+        for (int i = 0;i<6;i++)
         {
             IconBaseAnis[i] = GetGameObject((int)GameObjects.Stats).transform.GetChild(i).GetChild(0).GetComponent<Animator>();
             IconBaseAnis[i].speed = AniSpeed;
@@ -91,8 +96,7 @@ public class UI_MainBackUI : UI_Scene
         GetButton((int)Buttons.SettingBTN).onClick.AddListener(SettingBTN);
 
         //방송 타이틀 오른쪽으로 뺴고 시작
-        Transform BroadCastTitle_tr = GetGameObject((int)GameObjects.BroadCastTitle).transform;
-        var tween = BroadCastTitle_tr.DOMoveX(BroadCastTitle_tr.localPosition.x + XOffset, 0);
+        GetGameObject((int)GameObjects.BroadCastTitle).transform.localPosition += new Vector3(XOffset,0,0);
 
 
         UpdateUItexts();
@@ -188,10 +192,12 @@ public class UI_MainBackUI : UI_Scene
         Transform callenderB_tr = GetGameObject((int)GameObjects.CallenderBottom).transform;
         Transform PlayerSB_BTN_tr = GetButton((int)Buttons.PlayerSB_BTN).transform;
         Transform CreateScheduleBTN_tr = GetButton((int)Buttons.CreateScheduleBTN).transform;
+        Transform StartScheduleBTN_TR = GetButton((int)Buttons.StartScheduleBTN).transform;
 
         callenderB_tr.DOMoveY(callenderB_tr.localPosition.y + 55, moveDuration).SetEase(ease);
         PlayerSB_BTN_tr.DOMoveY(PlayerSB_BTN_tr.localPosition.y - 55, moveDuration).SetEase(ease);
         CreateScheduleBTN_tr.DOMoveX(CreateScheduleBTN_tr.localPosition.x - XOffset, moveDuration).SetEase(ease);
+        StartScheduleBTN_TR.DOMoveX(StartScheduleBTN_TR.localPosition.x - XOffset, moveDuration).SetEase(ease);
         var tween = BroadCastTitle_tr.DOMoveX(BroadCastTitle_tr.localPosition.x - XOffset, moveDuration).SetEase(ease);
 
         yield return tween;
@@ -208,15 +214,19 @@ public class UI_MainBackUI : UI_Scene
     IEnumerator EndScheduleAndSetUICor()
     {
         CleanSealsOnCallenderBottom();
+        GetButton((int)Buttons.CreateScheduleBTN).gameObject.SetActive(true);
+        GetButton((int)Buttons.StartScheduleBTN).gameObject.SetActive(false);
 
         Transform BroadCastTitle_tr = GetGameObject((int)GameObjects.BroadCastTitle).transform;
         Transform callenderB_tr = GetGameObject((int)GameObjects.CallenderBottom).transform;
         Transform PlayerSB_BTN_tr = GetButton((int)Buttons.PlayerSB_BTN).transform;
         Transform CreateScheduleBTN_tr = GetButton((int)Buttons.CreateScheduleBTN).transform;
+        Transform StartScheduleBTN_TR = GetButton((int)Buttons.StartScheduleBTN).transform;
 
         callenderB_tr.DOMoveY(callenderB_tr.localPosition.y - 55, moveDuration).SetEase(ease);
         PlayerSB_BTN_tr.DOMoveY(PlayerSB_BTN_tr.localPosition.y + 55, moveDuration).SetEase(ease);
         CreateScheduleBTN_tr.DOMoveX(CreateScheduleBTN_tr.localPosition.x + XOffset, moveDuration).SetEase(ease);
+        StartScheduleBTN_TR.DOMoveX(StartScheduleBTN_TR.localPosition.x + XOffset, moveDuration).SetEase(ease);
         var tween = BroadCastTitle_tr.DOMoveX(BroadCastTitle_tr.localPosition.x + XOffset, moveDuration).SetEase(ease);
 
         yield return tween;
@@ -242,15 +252,44 @@ public class UI_MainBackUI : UI_Scene
         DayResultSeals[day].sprite = Managers.MSM.DayResultSeal[SealType];
     }
 
-    public void ShowCreateScheduleBTN()
-    {
-        Get<Button>((int)Buttons.CreateScheduleBTN).gameObject.SetActive(true);
-    }
-
     public void ShowSchedulePopup()
     {
-         Managers.UI_Manager.ShowPopupUI<UI_SchedulePopup>();
-         Get<Button>((int)Buttons.CreateScheduleBTN).gameObject.SetActive(false);
+        Managers.UI_Manager.ShowPopupUI<UI_SchedulePopup>();
+        GetButton((int)Buttons.StartScheduleBTN).gameObject.SetActive(true);
+        GetButton((int)Buttons.BackBTN).gameObject.SetActive(true);
+        Get<Button>((int)Buttons.CreateScheduleBTN).gameObject.SetActive(false);
+    }
+
+    void StartScheduleBTN()
+    {
+        StartScheduleAndSetUI();
+        Managers.instance.StartSchedule();
+        Managers.UI_Manager.ClosePopupUI();
+    }
+    void BackBTN()
+    {
+        if (UI_SchedulePopup.instance.SubContentSelectPhase)
+        {
+            UI_SchedulePopup.instance.Show3Contents();
+        }
+        else
+        {
+            Get<Button>((int)Buttons.CreateScheduleBTN).gameObject.SetActive(true);
+            GetButton((int)Buttons.StartScheduleBTN).gameObject.SetActive(false);
+            GetButton((int)Buttons.BackBTN).gameObject.SetActive(false);
+            Managers.UI_Manager.ClosePopupUI();
+
+        }
+    }
+
+    public Button GetStartScheduleBTN()
+    {
+        return GetButton((int)Buttons.StartScheduleBTN);
+    }
+
+    public Button GetBackBTN()
+    {
+        return GetButton((int)Buttons.BackBTN);
     }
 
     public void SettingBTN()
