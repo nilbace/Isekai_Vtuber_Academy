@@ -42,8 +42,9 @@ public class UI_MainBackUI : UI_Scene
     {
         HeartBar, StarBar, HeartCover, StarCover,
         GameStat_Cover, SongStat_Cover, DrawStat_Cover, StrStat_Cover, MenStat_Cover, LuckStat_Cover,
-        Stats, Days7
+        Stats, Days7, CallenderBottom, BroadCastTitle
     }
+
 
     Animator[] IconBaseAnis = new Animator[6];
     Image[] DayResultSeals = new Image[7];
@@ -91,6 +92,8 @@ public class UI_MainBackUI : UI_Scene
        
         UpdateUItexts();
         Managers.Sound.Play("bgm1", Sound.Bgm);
+
+        StartScheduleAndSetUI();
     }
 
     void ShowStatProperty(StatName statName)
@@ -161,22 +164,29 @@ public class UI_MainBackUI : UI_Scene
         return temp;
     }
 
-
+    [Header("닷트윈 애니메이션")]
+    [SerializeField] float moveDuration;
+    [SerializeField] Ease ease;
     /// <summary>
     /// 방송 제목, 프로필 및 캘린더 올라오고
     /// 플레이어 대화창 내려감
     /// </summary>
     public void StartScheduleAndSetUI()
     {
-        CallenderBottom.instance.Init();
-        GetButton((int)Buttons.PlayerSB_BTN).transform.DOMoveY(transform.position.y - 55, 0.5f);
+        Transform callenderB_tr = GetGameObject((int)GameObjects.CallenderBottom).transform;
+        callenderB_tr.DOMoveY(callenderB_tr.localPosition.y + 55, moveDuration).SetEase(ease);
+        CleanSealsOnCallenderBottom();
+
+        Transform PlayerSB_BTN_tr = GetButton((int)Buttons.PlayerSB_BTN).transform;
+        PlayerSB_BTN_tr.DOMoveY(PlayerSB_BTN_tr.localPosition.y -55, moveDuration).SetEase(ease);
+
     }
     public void GlitterStat(int i)
     {
         IconBaseAnis[i].CrossFade("Shine", 0);
     }
 
-    public void CleanSeals()
+    public void CleanSealsOnCallenderBottom()
     {
         for(int i = 0; i<7;i++)
         {
