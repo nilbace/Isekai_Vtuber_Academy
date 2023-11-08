@@ -92,7 +92,6 @@ public class UI_MainBackUI : UI_Scene
        
         UpdateUItexts();
         Managers.Sound.Play("bgm1", Sound.Bgm);
-
         StartScheduleAndSetUI();
     }
 
@@ -166,21 +165,38 @@ public class UI_MainBackUI : UI_Scene
 
     [Header("닷트윈 애니메이션")]
     [SerializeField] float moveDuration;
+    [SerializeField] float XOffset;
     [SerializeField] Ease ease;
+    [SerializeField] Ease rollEase;
     /// <summary>
     /// 방송 제목, 프로필 및 캘린더 올라오고
     /// 플레이어 대화창 내려감
     /// </summary>
     public void StartScheduleAndSetUI()
     {
+        StartCoroutine(StartScheduleAndSetUICor());
+    }
+
+    IEnumerator StartScheduleAndSetUICor()
+    {
+        Transform BroadCastTitle_tr = GetGameObject((int)GameObjects.BroadCastTitle).transform;
+        var tween = BroadCastTitle_tr.DOMoveX(BroadCastTitle_tr.localPosition.x + XOffset, 0);
+        yield return new WaitForSeconds(0.5f);
+
         Transform callenderB_tr = GetGameObject((int)GameObjects.CallenderBottom).transform;
         callenderB_tr.DOMoveY(callenderB_tr.localPosition.y + 55, moveDuration).SetEase(ease);
         CleanSealsOnCallenderBottom();
 
         Transform PlayerSB_BTN_tr = GetButton((int)Buttons.PlayerSB_BTN).transform;
-        PlayerSB_BTN_tr.DOMoveY(PlayerSB_BTN_tr.localPosition.y -55, moveDuration).SetEase(ease);
+        PlayerSB_BTN_tr.DOMoveY(PlayerSB_BTN_tr.localPosition.y - 55, moveDuration).SetEase(ease);
 
+        Transform CreateScheduleBTN_tr = GetButton((int)Buttons.CreateScheduleBTN).transform;
+      
+        yield return tween;
+        CreateScheduleBTN_tr.DOMoveX(CreateScheduleBTN_tr.localPosition.x - XOffset, moveDuration).SetEase(rollEase);
+        BroadCastTitle_tr.DOMoveX(BroadCastTitle_tr.localPosition.x - XOffset, moveDuration).SetEase(rollEase);
     }
+
     public void GlitterStat(int i)
     {
         IconBaseAnis[i].CrossFade("Shine", 0);
