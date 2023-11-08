@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static Define;
+using DG.Tweening;
 
 public class UI_MainBackUI : UI_Scene
 {
@@ -85,9 +86,7 @@ public class UI_MainBackUI : UI_Scene
             DayResultSeals[i] = GetGameObject((int)GameObjects.Days7).transform.GetChild(i).GetChild(1).GetComponent<Image>();
         }
         GetButton((int)Buttons.SettingBTN).onClick.AddListener(SettingBTN);
-        CallenderBottom.instance.Init();
-
-
+       
         UpdateUItexts();
         Managers.Sound.Play("bgm1", Sound.Bgm);
     }
@@ -158,6 +157,17 @@ public class UI_MainBackUI : UI_Scene
         }
         else temp = "심각";
         return temp;
+    }
+
+
+    /// <summary>
+    /// 방송 제목, 프로필 및 캘린더 올라오고
+    /// 플레이어 대화창 내려감
+    /// </summary>
+    public void StartScheduleAndSetUI()
+    {
+        CallenderBottom.instance.Init();
+        GetButton((int)Buttons.PlayerSB_BTN).transform.DOMoveY(transform.position.y - 55, 0.5f);
     }
     public void GlitterStat(int i)
     {

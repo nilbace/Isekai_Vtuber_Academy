@@ -13,7 +13,7 @@ using static Define;
 public class DataManager
 { 
     public PlayerData _myPlayerData;
-    float[] weekBounsMagnification = { 1.5f, 1.3f, 1.1f, 1f, 1f };
+    float[] weekBounsMagnification = { 1.2f, 1f, 1f, 1f, 1f };
     int[] MonthlyExpense = {1000, 3000, 5000, 10000, 10000 };
 
 
