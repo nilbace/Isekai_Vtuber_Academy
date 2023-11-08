@@ -403,7 +403,10 @@ public class PlayerData
         for(int i =0;i<6;i++)
         {
             SixStat[i] += stats[i];
-            if (stats[i] != 0) UI_MainBackUI.instance.GlitterStat(i);
+            if (stats[i] != 0)
+            {
+                UI_MainBackUI.instance.GlitterStat(i);
+            }
         }
     }
 }

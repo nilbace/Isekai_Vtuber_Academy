@@ -9,6 +9,7 @@ using DG.Tweening;
 
 public class UI_MainBackUI : UI_Scene
 {
+    [SerializeField] float AniSpeed;
     enum Texts
     {
         HeartTMP,  //현재 건강 상태
@@ -79,7 +80,8 @@ public class UI_MainBackUI : UI_Scene
 
         for(int i = 0;i<6;i++)
         {
-            IconBaseAnis[i] = GetGameObject((int)GameObjects.Stats).transform.GetChild(i).GetChild(0).GetComponent<Animator>(); 
+            IconBaseAnis[i] = GetGameObject((int)GameObjects.Stats).transform.GetChild(i).GetChild(0).GetComponent<Animator>();
+            IconBaseAnis[i].speed = AniSpeed;
         }
         for (int i = 0; i < 7; i++)
         {
@@ -171,7 +173,7 @@ public class UI_MainBackUI : UI_Scene
     }
     public void GlitterStat(int i)
     {
-        IconBaseAnis[i].Play("Shine");
+        IconBaseAnis[i].CrossFade("Shine", 0);
     }
 
     public void CleanSeals()

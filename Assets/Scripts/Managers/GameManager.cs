@@ -21,7 +21,7 @@ public class GameManager
             CarryOutOneDayWork(Managers.Data._SevenDayScheduleDatas[i], i);
             Debug.Log("-----------------------------------------");
             UI_MainBackUI.instance.UpdateUItexts();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(3f);
         }
 
         //매 월 마지막 주차는 월세 나감
