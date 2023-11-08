@@ -14834,7 +14834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AniSpeed: 0.43
   NowSelectStatProperty: 0
-  moveDuration: 0.15
+  moveDuration: 0.91
   XOffset: 350
   ease: 3
   rollEase: 3
