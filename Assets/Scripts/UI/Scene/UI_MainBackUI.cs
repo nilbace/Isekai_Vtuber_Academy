@@ -46,6 +46,11 @@ public class UI_MainBackUI : UI_Scene
         Stats, Days7, CallenderBottom, BroadCastTitle
     }
 
+    enum Images
+    {
+        HeartBar, StarBar
+    }
+
 
     Animator[] IconBaseAnis = new Animator[6];
     Image[] DayResultSeals = new Image[7];
@@ -57,18 +62,19 @@ public class UI_MainBackUI : UI_Scene
         instance = this;
     }
 
-    void Start()
+    private void Start()
     {
         Init();
     }
 
     public StatName NowSelectStatProperty;
-    private void Init()
+    public void Init()
     {
         base.Init();
         Bind<TMPro.TMP_Text>(typeof(Texts));
         Bind<Button>(typeof(Buttons));
         Bind<GameObject>(typeof(GameObjects));
+        Bind<Image>(typeof(Images));
 
         Button CreateScheduleBTN = Get<Button>((int)Buttons.CreateScheduleBTN);
 
@@ -120,12 +126,25 @@ public class UI_MainBackUI : UI_Scene
             tmpText.text = GetInitialTextForType(textType);
         }
 
+        int nowHeart = Managers.Data._myPlayerData.NowHeart;
+        int nowStar = Managers.Data._myPlayerData.NowStar;
+
+        GetImage((int)Images.HeartBar).sprite =
+            Managers.MSM.StatusBar[GetStatusBarImageIndex(nowHeart)];
+        GetImage((int)Images.StarBar).sprite =
+            Managers.MSM.StatusBar[GetStatusBarImageIndex(nowStar)];
+
         GetGameObject((int)GameObjects.HeartCover).transform.localScale =
             new Vector3( 1 - (float)Managers.Data._myPlayerData.NowHeart/100f, 1, 1);
         GetGameObject((int)GameObjects.StarCover).transform.localScale =
             new Vector3( 1 - (float)Managers.Data._myPlayerData.NowStar / 100f, 1, 1);
 
-        for(int i = 0; i<6;i++)
+        GetText((int)Texts.HeartTMP).color =
+            HeartStarTextColors[GetStatusBarImageIndex(nowHeart)];
+        GetText((int)Texts.StarTMP).color =
+            HeartStarTextColors[GetStatusBarImageIndex(nowStar)];
+
+        for (int i = 0; i<6;i++)
         {
             GetGameObject((int)GameObjects.GameStat_Cover+i).transform.localScale =
            new Vector3(1 - (float)Managers.Data._myPlayerData.SixStat[i] / 200f, 1, 1);
@@ -152,6 +171,8 @@ public class UI_MainBackUI : UI_Scene
         }
     }
 
+    [Header("건강 상태 색")]
+    [SerializeField] Color[] HeartStarTextColors;
     string GetNowConditionToString(int n)
     {
         string temp = "";
@@ -170,6 +191,26 @@ public class UI_MainBackUI : UI_Scene
         else temp = "심각";
         return temp;
     }
+
+    int GetStatusBarImageIndex(int n)
+    {
+        int temp = -1;
+        if (n >= 75)
+        {
+            temp = 0;
+        }
+        else if (n >= 50)
+        {
+            temp = 1;
+        }
+        else if (n >= 25)
+        {
+            temp = 2;
+        }
+        else temp = 3;
+        return temp;
+    }
+
 
     
     float moveDuration = 0.52f;

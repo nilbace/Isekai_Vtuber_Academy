@@ -14986,6 +14986,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AniSpeed: 0.43
   NowSelectStatProperty: 0
+  HeartStarTextColors:
+  - {r: 0, g: 0.36862746, b: 0.27058825, a: 1}
+  - {r: 0.24313727, g: 0.36862746, b: 0, a: 1}
+  - {r: 0.44705886, g: 0.24313727, b: 0, a: 1}
+  - {r: 0.5019608, g: 0, b: 0.07450981, a: 1}
   ease: 3
 --- !u!1 &1964050193
 GameObject:
