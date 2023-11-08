@@ -14847,6 +14847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1560ad4cce6d6da44a606a2ba505086b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AniSpeed: 0.43
   NowSelectStatProperty: 0
 --- !u!1 &1964050193
 GameObject:
