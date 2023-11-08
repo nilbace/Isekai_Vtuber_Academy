@@ -1,19 +1,22 @@
 {
-    "NowWeek": 2,
-    "nowSubCount": 1708,
-    "nowGoldAmount": 3788,
-    "NowHeart": 86,
-    "NowStar": 86,
+    "NowWeek": 5,
+    "nowSubCount": 6986,
+    "nowGoldAmount": 27042,
+    "NowHeart": 100,
+    "NowStar": 100,
     "SixStat": [
-        7.0,
+        12.0,
         0.0,
         0.0,
         0.0,
-        0.0,
-        0.0
+        3.0,
+        5.0
     ],
     "DoneEventNames": [
-        "TS 코스프레"
+        "뮹뮹 다이어트",
+        "포카리 물만두",
+        "스카이 다이빙",
+        ""
     ],
     "BoughtItems": []
 }
