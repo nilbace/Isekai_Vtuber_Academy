@@ -10,8 +10,8 @@ public class GameManager
     public IEnumerator StartSchedule()
     {
         int beforeSubsAmount = Managers.Data._myPlayerData.nowSubCount;
-        int beforeHeart = Managers.Data._myPlayerData.NowHeart;
-        int beforeStar = Managers.Data._myPlayerData.NowStar;
+        float beforeHeart = Managers.Data._myPlayerData.NowHeart;
+        float beforeStar = Managers.Data._myPlayerData.NowStar;
 
         // 월요일은 안아파
         isSick = false; SickDayOne = false;
@@ -32,8 +32,8 @@ public class GameManager
         }
 
         int aftersubsAmount = Managers.Data._myPlayerData.nowSubCount;
-        int afterHeart = Managers.Data._myPlayerData.NowHeart;
-        int afterStar = Managers.Data._myPlayerData.NowStar;
+        float afterHeart = Managers.Data._myPlayerData.NowHeart;
+        float afterStar = Managers.Data._myPlayerData.NowStar;
         Debug.Log($"1주일 총 구독자 변화량 :     {aftersubsAmount - beforeSubsAmount}");
         Debug.Log($"1주일 하트 구독자 변화량 :   {afterHeart - beforeHeart}");
         Debug.Log($"1주일 별 구독자 변화량 :     {afterStar - beforeStar}");
@@ -122,7 +122,7 @@ public class GameManager
                 tempstat[i] = oneDay.Six_Stats[i] * bonusMultiplier;
             }
 
-            Managers.Data._myPlayerData.UpStat(tempstat);
+            Managers.Data._myPlayerData.ChangeStat(tempstat);
         }
 
         if(_todaySick || isSick) UI_MainBackUI.instance.StampSeal(Day, 2);
@@ -279,7 +279,6 @@ public class GameManager
     bool CheckPossibilityOfBigSuccess()
     {
         int LuckGrade = ((int)Managers.Data._myPlayerData.SixStat[5]) / 10;
-        Debug.Log(LuckGrade);
         if (UnityEngine.Random.Range(0, 100) < (LuckGrade*5))
         {
             return true;

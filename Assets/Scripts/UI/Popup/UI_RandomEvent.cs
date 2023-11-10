@@ -68,8 +68,8 @@ public class UI_RandomEvent : UI_Popup
         Managers.Data._myPlayerData.nowSubCount = Mathf.CeilToInt((0.01f)*(float)(_eventData.Change[1]+100)*Managers.Data._myPlayerData.nowSubCount);
 
         //하트 별 변화량
-        Managers.Data._myPlayerData.NowHeart += _eventData.Change[2];
-        Managers.Data._myPlayerData.NowStar += _eventData.Change[3];
+        Managers.Data._myPlayerData.ChangeHeart(_eventData.Change[2]);
+        Managers.Data._myPlayerData.ChangeHeart(_eventData.Change[3]);
 
         //스텟 변화량
         float[] eventStatValues = new float[6];
@@ -78,7 +78,7 @@ public class UI_RandomEvent : UI_Popup
             eventStatValues[i] = _eventData.Change[i + 4];
         }
 
-        Managers.Data._myPlayerData.UpStat(eventStatValues);
+        Managers.Data._myPlayerData.ChangeStat(eventStatValues);
     }
    
 }

@@ -126,8 +126,8 @@ public class UI_MainBackUI : UI_Scene
             tmpText.text = GetInitialTextForType(textType);
         }
 
-        int nowHeart = Managers.Data._myPlayerData.NowHeart;
-        int nowStar = Managers.Data._myPlayerData.NowStar;
+        float nowHeart = Managers.Data._myPlayerData.NowHeart;
+        float nowStar = Managers.Data._myPlayerData.NowStar;
 
         GetImage((int)Images.HeartBar).sprite =
             Managers.MSM.StatusBar[GetStatusBarImageIndex(nowHeart)];
@@ -173,7 +173,7 @@ public class UI_MainBackUI : UI_Scene
 
     [Header("건강 상태 색")]
     [SerializeField] Color[] HeartStarTextColors;
-    string GetNowConditionToString(int n)
+    string GetNowConditionToString(float n)
     {
         string temp = "";
         if (n >= 75)
@@ -192,7 +192,7 @@ public class UI_MainBackUI : UI_Scene
         return temp;
     }
 
-    int GetStatusBarImageIndex(int n)
+    int GetStatusBarImageIndex(float n)
     {
         int temp = -1;
         if (n >= 75)

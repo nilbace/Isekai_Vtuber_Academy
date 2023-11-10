@@ -112,11 +112,14 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         }
         thisBTN.interactable = true;
 
+        //외출, 휴식이라면
         if(scheduleData.scheduleType != ScheduleType.BroadCast)
         {
+            //먼저 선택된 것이 없다면
             if(settedData == null)
             {
-                if(Managers.Data._myPlayerData.nowGoldAmount < scheduleData.MoneyCost)
+                //현재 소지 금액이 비용보다 많다거나 혹은 무료라면
+                if(Managers.Data._myPlayerData.nowGoldAmount < scheduleData.MoneyCost && scheduleData.MoneyCost != 0)
                 {
                     thisBTN.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
                     thisBTN.interactable = false;
@@ -124,7 +127,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
             }
             else
             {
-                if (Managers.Data._myPlayerData.nowGoldAmount + settedData.MoneyCost < scheduleData.MoneyCost)
+                if (Managers.Data._myPlayerData.nowGoldAmount + settedData.MoneyCost < scheduleData.MoneyCost && scheduleData.MoneyCost != 0)
                 {
                     thisBTN.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
                     thisBTN.interactable = false;

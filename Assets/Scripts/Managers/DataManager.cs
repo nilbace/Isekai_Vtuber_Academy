@@ -351,8 +351,8 @@ public class PlayerData
     public int NowWeek;
     public int nowSubCount;
     public int nowGoldAmount;
-    public int NowHeart;
-    public int NowStar;
+    public float NowHeart;
+    public float NowStar;
     public float[] SixStat;
     public List<string> DoneEventNames;
     public List<string> BoughtItems;
@@ -382,6 +382,20 @@ public class PlayerData
         return temp;
     }
 
+    public void ChangeHeart(float value)
+    {
+        NowHeart += value;
+        NowHeart = Mathf.Clamp(NowHeart, 0, 100);
+    }
+
+
+    public void ChangeStar(float value)
+    {
+        NowStar += value;
+        NowStar = Mathf.Clamp(NowStar, 0, 100);
+    }
+
+
     public Define.StatName GetHigestStatName()
     {
         Define.StatName temp = Define.StatName.Game;
@@ -398,7 +412,7 @@ public class PlayerData
         return temp;
     }
 
-    public void UpStat(float[] stats)
+    public void ChangeStat(float[] stats)
     {
         for(int i =0;i<6;i++)
         {
