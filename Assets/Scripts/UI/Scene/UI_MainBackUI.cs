@@ -290,7 +290,6 @@ public class UI_MainBackUI : UI_Scene
     {
         DayResultSeals[day].color = new Color(1, 1, 1, 1);
 
-        Debug.Log(SealType);
         if (SealType == 0)
             DayResultSeals[day].GetComponent<Animator>().SetTrigger("StarAni");
         else if(SealType == 1)

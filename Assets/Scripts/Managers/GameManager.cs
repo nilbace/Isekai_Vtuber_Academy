@@ -52,9 +52,10 @@ public class GameManager
 
     void CarryOutOneDayWork(OneDayScheduleData oneDay, int Day)
     {
-        bool tempSick = false;
+        bool _todaySick = false;
+        BigSuccess = false;
         //휴식 하는게 아니라면 아플 수 있음
-        if(oneDay.scheduleType != ScheduleType.Rest)
+        if(oneDay.scheduleType != ScheduleType.Rest && !isSick)
         {
             CheckPossibilityOfCatching_Aya();
         }
@@ -62,8 +63,9 @@ public class GameManager
         //아프면 그냥 누워있을 거임
         if(isSick)
         {
+            //무슨 요일 아픔 로그
             Debug.Log($"{daysOfWeek[Day]} 아픔");
-            tempSick = true;
+            _todaySick = true;
             CarryOutSickDay();
         }
         //안아프면 모든 일정에 대해 대성공이 뜰 수 있음
@@ -92,7 +94,7 @@ public class GameManager
                 Debug.Log($"구독+ : {OneDayNewSubs}" + $" / 골드 + : {OneDayIncome}");
             }
 
-            CalculateBonusWithType(oneDay.broadcastType, OneDayNewSubs, OneDayIncome);
+            if(oneDay.scheduleType == ScheduleType.BroadCast) CalculateBonusWithType(oneDay.broadcastType, OneDayNewSubs, OneDayIncome);
 
             float HeartVariance; float StarVariance;
             if (oneDay.scheduleType == ScheduleType.Rest)
@@ -123,7 +125,7 @@ public class GameManager
             Managers.Data._myPlayerData.UpStat(tempstat);
         }
 
-        if(tempSick || isSick) UI_MainBackUI.instance.StampSeal(Day, 2);
+        if(_todaySick || isSick) UI_MainBackUI.instance.StampSeal(Day, 2);
         else if (BigSuccess) UI_MainBackUI.instance.StampSeal(Day, 0);
         else UI_MainBackUI.instance.StampSeal(Day, 1);
     }
@@ -132,9 +134,13 @@ public class GameManager
     #region Calculate
     int CalculateSubAfterDay(int now, float fix, float per, float bonus)
     {
-        float temp = (now + fix) * ((float)(100 + per) / 100f) * bonus;
+        float temp = (now + fix) * ((float)(100 + per) / 100f);
         int result = Mathf.CeilToInt(temp);
-        return result - now;
+        result -= now;
+
+        float result2 = result * bonus;
+
+        return Mathf.CeilToInt(result2);
     }
 
     void CalculateBonusWithType(BroadCastType broadCastType, int DaySub, int DayIncome)
@@ -157,9 +163,9 @@ public class GameManager
         Bonus tempBonus = Managers.Data.GetProperty(statname);
 
         Managers.Data._myPlayerData.nowGoldAmount += Mathf.CeilToInt(DayIncome * (tempBonus.IncomeBonus) / 100f);
-
         Managers.Data._myPlayerData.nowSubCount += Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f);
-        Debug.Log($"특성 골드 보너스 : {Mathf.CeilToInt(DayIncome * (tempBonus.IncomeBonus) / 100f)} 특성 구독자 보너스 증가량 : {Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f)}");
+
+        Debug.Log($"특성 구독자 보너스 증가량 : {Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f)} 특성 골드 보너스 : {Mathf.CeilToInt(DayIncome * (tempBonus.IncomeBonus) / 100f)} ");
     }
 
     float StrengthBonus()
@@ -273,6 +279,7 @@ public class GameManager
     bool CheckPossibilityOfBigSuccess()
     {
         int LuckGrade = ((int)Managers.Data._myPlayerData.SixStat[5]) / 10;
+        Debug.Log(LuckGrade);
         if (UnityEngine.Random.Range(0, 100) < (LuckGrade*5))
         {
             return true;
