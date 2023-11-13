@@ -168,7 +168,7 @@ public class REventManager
                     break;
                 case StatName.Draw:
                     break;
-                case StatName.Health:
+                case StatName.Strength:
                     break;
                 case StatName.Mental:
                     break;

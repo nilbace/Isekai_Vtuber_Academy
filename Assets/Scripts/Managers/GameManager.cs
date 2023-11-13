@@ -72,6 +72,8 @@ public class GameManager
         else
         {
             Debug.Log($"{daysOfWeek[Day]} 스케줄 {Managers.Data._SevenDayScheduleDatas[Day].KorName} 시작");
+
+            //대성공 체크
             float bonusMultiplier = 1.0f;
             if (CheckPossibilityOfBigSuccess())
             {
@@ -80,21 +82,12 @@ public class GameManager
                 Debug.Log("대성공");
             }
 
-            float nowWeekmag = Managers.Data.GetNowWeekBonusMag();
-
-            int OneDayNewSubs = CalculateSubAfterDay(Managers.Data._myPlayerData.nowSubCount,
-                oneDay.FisSubsUpValue, oneDay.PerSubsUpValue, nowWeekmag * bonusMultiplier);
-
-            int OneDayIncome = Mathf.CeilToInt(Managers.Data._myPlayerData.nowSubCount * oneDay.InComeMag * bonusMultiplier);
-
+            //방송을 진행했다면 돈 구독자 증가
             if (oneDay.scheduleType == ScheduleType.BroadCast)
             {
-                Managers.Data._myPlayerData.nowSubCount += OneDayNewSubs;
-                Managers.Data._myPlayerData.nowGoldAmount += OneDayIncome;
-                Debug.Log($"구독+ : {OneDayNewSubs}" + $" / 골드 + : {OneDayIncome}");
+                IncreaseSubsAndMoney(oneDay, bonusMultiplier);
             }
 
-            if(oneDay.scheduleType == ScheduleType.BroadCast) CalculateBonusWithType(oneDay.broadcastType, OneDayNewSubs, OneDayIncome);
 
             float HeartVariance; float StarVariance;
             if (oneDay.scheduleType == ScheduleType.Rest)
@@ -104,8 +97,8 @@ public class GameManager
             }
             else
             {
-                HeartVariance = oneDay.HeartVariance * StrengthBonus();
-                StarVariance = oneDay.StarVariance * MentalBonus();
+                HeartVariance = oneDay.HeartVariance * GetSubStatProperty(StatName.Strength);
+                StarVariance  = oneDay.StarVariance  * GetSubStatProperty(StatName.Mental);
             }
 
             Debug.Log($"건강 변화량 : ({Mathf.Clamp((HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100) - Managers.Data._myPlayerData.NowHeart}," +
@@ -131,64 +124,9 @@ public class GameManager
     }
 
 
-    #region Calculate
-    int CalculateSubAfterDay(int now, float fix, float per, float bonus)
-    {
-        float temp = (now + fix) * ((float)(100 + per) / 100f);
-        int result = Mathf.CeilToInt(temp);
-        result -= now;
-
-        float result2 = result * bonus;
-
-        return Mathf.CeilToInt(result2);
-    }
-
-    void CalculateBonusWithType(BroadCastType broadCastType, int DaySub, int DayIncome)
-    {
-        StatName temp;
-        if (broadCastType == BroadCastType.Healing || broadCastType == BroadCastType.LOL
-            || broadCastType == BroadCastType.Horror || broadCastType == BroadCastType.Challenge)
-            temp = StatName.Game;
-        else if (broadCastType == BroadCastType.Sing || broadCastType == BroadCastType.PlayInst || broadCastType == BroadCastType.Compose)
-            temp = StatName.Song;
-        else
-            temp = StatName.Draw;
-
-        CalculateBonus(temp, DaySub, DayIncome);
-    }
 
 
-    void CalculateBonus(StatName statname, int DaySub, int DayIncome)
-    {
-        Bonus tempBonus = Managers.Data.GetProperty(statname);
-
-        Managers.Data._myPlayerData.nowGoldAmount += Mathf.CeilToInt(DayIncome * (tempBonus.IncomeBonus) / 100f);
-        Managers.Data._myPlayerData.nowSubCount += Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f);
-
-        Debug.Log($"특성 구독자 보너스 증가량 : {Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f)} 특성 골드 보너스 : {Mathf.CeilToInt(DayIncome * (tempBonus.IncomeBonus) / 100f)} ");
-    }
-
-    float StrengthBonus()
-    {
-        int temp = (int)Math.Floor(Managers.Data._myPlayerData.SixStat[3]);
-        float result = (float)(temp / 10);
-        result *= 0.05f;
-        result = 1 - result;
-        return result;
-    }
-
-    float MentalBonus()
-    {
-        int temp = (int)Math.Floor(Managers.Data._myPlayerData.SixStat[4]);
-        float result = (float)(temp / 10);
-        result *= 0.05f;
-        result = 1 - result;
-        return result;
-    }
-
-    #endregion
-
-    #region SuccessAndFail
+    #region Sick__BigSuccess
     bool isSick = false;        bool SickDayOne = false;
     bool caughtCold = false;    bool caughtDepression = false;
 
@@ -288,4 +226,90 @@ public class GameManager
     }
 
     #endregion
+
+
+
+
+    #region DoOneDaySchedule
+
+
+    void IncreaseSubsAndMoney(OneDayScheduleData oneDay, float bonusMultiplier)
+    {
+        int OneDayNewSubs = CalculateSubAfterDay(Managers.Data._myPlayerData.nowSubCount,
+                oneDay.FisSubsUpValue, oneDay.PerSubsUpValue, bonusMultiplier);
+
+        int OneDayIncome = Mathf.CeilToInt(Managers.Data._myPlayerData.nowSubCount * oneDay.InComeMag * bonusMultiplier);
+
+        Managers.Data._myPlayerData.nowSubCount += OneDayNewSubs;
+        Managers.Data._myPlayerData.nowGoldAmount += OneDayIncome;
+        Debug.Log($"구독+ : {OneDayNewSubs}" + $" / 골드 + : {OneDayIncome}");
+
+        CalculateBonus(oneDay.broadcastType, OneDayNewSubs, OneDayIncome);
+    }
+
+
+    /// <summary>
+    /// 구독자 상승 법칙 시트에 있음
+    /// </summary>
+    /// <param name="now"></param>
+    /// <param name="fix"></param>
+    /// <param name="per"></param>
+    /// <param name="bonus"></param>
+    /// <returns></returns>
+    int CalculateSubAfterDay(int now, float fix, float per, float bonus)
+    {
+        float temp = (now + fix) * ((float)(100 + per) / 100f);
+        int result = Mathf.CeilToInt(temp);
+        result -= now;
+
+        float result2 = result * bonus;
+
+        return Mathf.CeilToInt(result2);
+    }
+
+    //호출부
+    void CalculateBonus(BroadCastType broadCastType, int DaySub, int DayIncome)
+    {
+        StatName temp;
+        if (broadCastType == BroadCastType.Healing || broadCastType == BroadCastType.LOL
+            || broadCastType == BroadCastType.Horror || broadCastType == BroadCastType.Challenge)
+            temp = StatName.Game;
+        else if (broadCastType == BroadCastType.Sing || broadCastType == BroadCastType.PlayInst || broadCastType == BroadCastType.Compose)
+            temp = StatName.Song;
+        else
+            temp = StatName.Draw;
+
+        CalculateBonus(temp, DaySub, DayIncome);
+    }
+
+    //실행부
+    void CalculateBonus(StatName statname, int DaySub, int DayIncome)
+    {
+        Bonus tempBonus = Managers.Data.GetMainProperty(statname);
+
+        Managers.Data._myPlayerData.nowGoldAmount += Mathf.CeilToInt(DayIncome * (tempBonus.IncomeBonus) / 100f);
+        Managers.Data._myPlayerData.nowSubCount += Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f);
+
+        Debug.Log($"특성 구독자 보너스 증가량 : {Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f)} 특성 골드 보너스 : {Mathf.CeilToInt(DayIncome * (tempBonus.IncomeBonus) / 100f)} ");
+    }
+
+    float GetSubStatProperty(StatName statName)
+    {
+        int temp = 0;
+        if (statName == StatName.Strength)
+            temp = (int)Math.Floor(Managers.Data._myPlayerData.SixStat[3]);
+
+        else if(statName == StatName.Mental)
+            temp = (int)Math.Floor(Managers.Data._myPlayerData.SixStat[4]);
+
+        float result = (float)(temp / 10);
+        result *= Managers.instance.Str_Men_ValuePerLevel;
+        result = 1 - result;
+        return result;
+    }
+
+   
+    #endregion
+
+
 }

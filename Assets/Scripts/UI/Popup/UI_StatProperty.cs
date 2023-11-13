@@ -29,19 +29,19 @@ public class UI_StatProperty : UI_Popup
         GetText((int)Texts.StatTMP).text = UI_MainBackUI.instance.NowSelectStatProperty.ToString();
         if(UI_MainBackUI.instance.NowSelectStatProperty == StatName.Game)
         {
-            Bonus temp = Managers.Data.GetProperty(StatName.Game);
+            Bonus temp = Managers.Data.GetMainProperty(StatName.Game);
             GetText((int)Texts.StatTMP).text += "\n구독자 보너스 : "  + temp.SubBonus.ToString();
             GetText((int)Texts.StatTMP).text += "\n수익 보너스 : "    + temp.IncomeBonus.ToString();
         }
         else if (UI_MainBackUI.instance.NowSelectStatProperty == StatName.Song)
         {
-            Bonus temp = Managers.Data.GetProperty(StatName.Song);
+            Bonus temp = Managers.Data.GetMainProperty(StatName.Song);
             GetText((int)Texts.StatTMP).text += "\n구독자 보너스 : " + temp.SubBonus.ToString();
             GetText((int)Texts.StatTMP).text += "\n수익 보너스 : " + temp.IncomeBonus.ToString();
         }
         else if (UI_MainBackUI.instance.NowSelectStatProperty == StatName.Draw)
         {
-            Bonus temp = Managers.Data.GetProperty(StatName.Draw);
+            Bonus temp = Managers.Data.GetMainProperty(StatName.Draw);
             GetText((int)Texts.StatTMP).text += "\n구독자 보너스 : " + temp.SubBonus.ToString();
             GetText((int)Texts.StatTMP).text += "\n수익 보너스 : " + temp.IncomeBonus.ToString();
         }

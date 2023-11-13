@@ -15,6 +15,11 @@ public class Managers : MonoBehaviour
     SoundManager _sound = new SoundManager();
     PoolManager _pool = new PoolManager();
     DataManager _data = new DataManager();
+
+    [Header("½ºÅİ °ü·Ã")]
+    public int MainStat_ValuePerLevel;
+    public float Str_Men_ValuePerLevel;
+
     REventManager _RE = new REventManager();
     GameManager _Gm = new GameManager();
     MultiSpriteManager _MSM = new MultiSpriteManager();

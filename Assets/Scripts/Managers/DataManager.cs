@@ -13,8 +13,7 @@ using static Define;
 public class DataManager
 { 
     public PlayerData _myPlayerData;
-    float[] weekBounsMagnification = { 1.2f, 1f, 1f, 1f, 1f };
-    int[] MonthlyExpense = {1000, 3000, 5000, 10000, 10000 };
+    int[] MonthlyExpense = {0, 0, 0, 0, 0 };
 
 
     public void Init()
@@ -110,12 +109,6 @@ public class DataManager
     public float[] _SeveDayScrollVarValue = new float[7];
 
 
-    public float GetNowWeekBonusMag()
-    {
-        int temp = _myPlayerData.NowWeek;
-        int temp2 = (temp-1) / 4;
-        return weekBounsMagnification[temp2];
-    }
 
     public int GetNowMonthExpense()
     {
@@ -283,64 +276,19 @@ public class DataManager
 
     #region StatProperty
 
-    public Bonus GetProperty(StatName statName)
+
+    public Bonus GetMainProperty(StatName statName)
     {
         float highestStat = Managers.Data._myPlayerData.SixStat[(int)statName];
         Bonus bonus = new Bonus();
 
-        if (highestStat >= 200)
-        {
-            bonus.SubBonus = 25;
-            bonus.IncomeBonus = 25;
-        }
-        else if (highestStat >= 180)
-        {
-            bonus.SubBonus = 25;
-            bonus.IncomeBonus = 20;
-        }
-        else if (highestStat >= 160)
-        {
-            bonus.SubBonus = 20;
-            bonus.IncomeBonus = 20;
-        }
-        else if (highestStat >= 140)
-        {
-            bonus.SubBonus = 20;
-            bonus.IncomeBonus = 15;
-        }
-        else if (highestStat >= 120)
-        {
-            bonus.SubBonus = 15;
-            bonus.IncomeBonus = 15;
-        }
-        else if (highestStat >= 100)
-        {
-            bonus.SubBonus = 15;
-            bonus.IncomeBonus = 10;
-        }
-        else if (highestStat >= 80)
-        {
-            bonus.SubBonus = 10;
-            bonus.IncomeBonus = 10;
-        }
-        else if (highestStat >= 60)
-        {
-            bonus.SubBonus = 10;
-            bonus.IncomeBonus = 5;
-        }
-        else if (highestStat >= 40)
-        {
-            bonus.SubBonus = 5;
-            bonus.IncomeBonus = 5;
-        }
-        else if (highestStat >= 20)
-        {
-            bonus.SubBonus = 5;
-            bonus.IncomeBonus = 0;
-        }
+        int bonusValue = Mathf.FloorToInt(highestStat) / 20;
+        bonus.SubBonus = Math.Max(5, bonusValue) * Managers.instance.MainStat_ValuePerLevel;
+        bonus.IncomeBonus = Math.Max(0, bonusValue - 1) * Managers.instance.MainStat_ValuePerLevel;
+
+
         return bonus;
     }
-
 
     #endregion
 }
@@ -394,7 +342,6 @@ public class PlayerData
         NowStar += value;
         NowStar = Mathf.Clamp(NowStar, 0, 100);
     }
-
 
     public Define.StatName GetHigestStatName()
     {

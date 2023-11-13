@@ -94,8 +94,8 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 
         GetText((int)Texts.NameTMP).text    = thisSubSchedleData.KorName;
         GetText((int)Texts.InfoTMP).text    = thisSubSchedleData.infotext;
-        GetText((int)Texts.SubTMP).text      = thisSubSchedleData.KorName;
-        GetText((int)Texts.GoldTMP).text     =  (-thisSubSchedleData.MoneyCost).ToString();
+        GetText((int)Texts.SubTMP).text     = thisSubSchedleData.KorName;
+        GetText((int)Texts.GoldTMP).text    =  (-thisSubSchedleData.MoneyCost).ToString();
 
         if(scheduleData.scheduleType == ScheduleType.BroadCast)
         {
@@ -251,11 +251,11 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     int ExpectedSub(int SubCount, OneDayScheduleData oneDayScheduleData)
     {
         if(oneDayScheduleData.scheduleType == ScheduleType.BroadCast)
-            return CalculateSubAfterDay(SubCount, oneDayScheduleData.FisSubsUpValue, oneDayScheduleData.PerSubsUpValue, Managers.Data.GetNowWeekBonusMag());
+            return CalculateSubAfterDay(SubCount, oneDayScheduleData.FisSubsUpValue, oneDayScheduleData.PerSubsUpValue);
         return 0;
     }
 
-    int CalculateSubAfterDay(int now, float fix, float per, float bonus)
+    int CalculateSubAfterDay(int now, float fix, float per, float bonus = 1)
     {
         float temp = (now + fix) * ((float)(100 + per) / 100f) * bonus;
         int result = Mathf.CeilToInt(temp);

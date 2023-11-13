@@ -33,7 +33,7 @@ public class Define : MonoBehaviour
     }
 
     public enum StatName {
-        Game, Song, Draw, Health, Mental, Luck, FALSE, Subs, Week
+        Game, Song, Draw, Strength, Mental, Luck, FALSE, Subs, Week
     }
 
     public enum EventDataType {
