@@ -1,20 +1,19 @@
 {
-    "NowWeek": 3,
-    "nowSubCount": 407,
-    "nowGoldAmount": 241,
-    "NowHeart": 64.0,
-    "NowStar": 44.0,
+    "NowWeek": 2,
+    "nowSubCount": 171,
+    "nowGoldAmount": 51,
+    "NowHeart": 72.0,
+    "NowStar": 72.0,
     "SixStat": [
-        14.0,
+        7.0,
         0.0,
         0.0,
-        0.0,
-        0.0,
+        3.0,
+        5.0,
         0.0
     ],
     "DoneEventNames": [
-        "현실부정",
-        "자르반 84세와 만남"
+        "잼민이 맞짱"
     ],
     "BoughtItems": []
 }
