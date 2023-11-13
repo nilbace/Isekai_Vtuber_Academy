@@ -9,7 +9,7 @@ using static REventManager;
 public class UI_RandomEvent : UI_Popup
 {
     public static UI_RandomEvent instance;
-    EventData _eventData;
+    WeekEventData _eventData;
     enum Buttons
     {
         ResultBTN,
@@ -62,20 +62,20 @@ public class UI_RandomEvent : UI_Popup
     void ProcessData()
     {
         //돈 변화
-        Managers.Data._myPlayerData.nowGoldAmount += _eventData.Change[0];
+        Managers.Data._myPlayerData.nowGoldAmount += _eventData.Option1[0];
 
         //구독자 변화
-        Managers.Data._myPlayerData.nowSubCount = Mathf.CeilToInt((0.01f)*(float)(_eventData.Change[1]+100)*Managers.Data._myPlayerData.nowSubCount);
+        Managers.Data._myPlayerData.nowSubCount = Mathf.CeilToInt((0.01f)*(float)(_eventData.Option1[1]+100)*Managers.Data._myPlayerData.nowSubCount);
 
         //하트 별 변화량
-        Managers.Data._myPlayerData.ChangeHeart(_eventData.Change[2]);
-        Managers.Data._myPlayerData.ChangeHeart(_eventData.Change[3]);
+        Managers.Data._myPlayerData.ChangeHeart(_eventData.Option1[2]);
+        Managers.Data._myPlayerData.ChangeHeart(_eventData.Option1[3]);
 
         //스텟 변화량
         float[] eventStatValues = new float[6];
         for(int i = 0; i<6;i++)
         {
-            eventStatValues[i] = _eventData.Change[i + 4];
+            eventStatValues[i] = _eventData.Option1[i + 4];
         }
 
         Managers.Data._myPlayerData.ChangeStat(eventStatValues);

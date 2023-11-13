@@ -21,7 +21,7 @@ public class DataManager
         LoadData();
     }
 
-    #region Part_DataSave&Load
+    #region DataSave&Load
 
     void LoadData()
     {

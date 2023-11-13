@@ -6,6 +6,7 @@ using static Define;
 
 public class UI_StatProperty : UI_Popup
 {
+    public static UI_StatProperty instance;
     enum Buttons
     {
         CloseBTN,
@@ -18,6 +19,7 @@ public class UI_StatProperty : UI_Popup
  
     private void Start()
     {
+        instance = this;
         Init();
     }
 
@@ -48,6 +50,11 @@ public class UI_StatProperty : UI_Popup
 
 
         GetButton((int)Buttons.CloseBTN).onClick.AddListener(Close);
+    }
+
+    public void SetInfo(StatName statName)
+    {
+
     }
 
  
