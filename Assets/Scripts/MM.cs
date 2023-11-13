@@ -49,7 +49,7 @@ public class MM : MonoBehaviour
 
         foreach (string line in lines)
         {
-            Debug.Log(line);
+
         }
     }
 }

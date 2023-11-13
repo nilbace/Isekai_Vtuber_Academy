@@ -15,7 +15,7 @@ public class REventManager
         string[] lines = data.Substring(0, data.Length).Split('\t');
         Queue<string> tempstrings = new Queue<string>();
         foreach (string temp in lines)
-            tempstrings.Enqueue(temp);
+        { tempstrings.Enqueue(temp);}
 
         WeekEventData tempEventData = new WeekEventData();
         tempEventData.EventName = tempstrings.Dequeue();
@@ -42,21 +42,22 @@ public class REventManager
         }
         tempEventData.Option1 = floatArray;
 
-        for(int i = 0;i<8;i++)
+        float[] floatArray2 = new float[8];
+        for (int i = 0; i < 8; i++)
         {
             string item = tempstrings.Dequeue();
             float parsedInt;
 
             if (float.TryParse(item, out parsedInt))
             {
-                floatArray[i] = parsedInt;
+                floatArray2[i] = parsedInt;
             }
             else
             {
                 Debug.Log($"Failed to parse item at index {i}: {item}");
             }
         }
-        tempEventData.Option2 = floatArray;
+        tempEventData.Option2 = floatArray2;
 
 
         tempEventData.EventInfoString = tempstrings.Dequeue();

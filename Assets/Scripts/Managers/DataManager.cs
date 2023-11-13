@@ -91,7 +91,7 @@ public class DataManager
         yield return wwww.SendWebRequest();
 
         string data = wwww.downloadHandler.text;
-        string[] lines = data.Substring(0, data.Length - 1).Split('\n');
+        string[] lines = data.Substring(0, data.Length).Split('\n');
 
         foreach (string temp in lines)
         {
