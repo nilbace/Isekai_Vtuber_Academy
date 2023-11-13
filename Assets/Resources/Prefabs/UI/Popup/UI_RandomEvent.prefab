@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 2791049281744731860}
   - component: {fileID: 7099472895694609277}
   m_Layer: 5
-  m_Name: ResultBTN (1)
+  m_Name: ResultBTN2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

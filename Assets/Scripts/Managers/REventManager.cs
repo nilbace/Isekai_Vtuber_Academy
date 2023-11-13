@@ -6,18 +6,18 @@ using static Define;
 
 public class REventManager
 {
-    public List<EventData> EventDatasList = new List<EventData>();
+    public List<WeekEventData> EventDatasList = new List<WeekEventData>();
 
     
 
     public void ProcessData(string data)
     {
-        string[] lines = data.Substring(0, data.Length - 1).Split('\t');
+        string[] lines = data.Substring(0, data.Length).Split('\t');
         Queue<string> tempstrings = new Queue<string>();
         foreach (string temp in lines)
-            tempstrings.Enqueue(temp);
+        { tempstrings.Enqueue(temp);}
 
-        EventData tempEventData = new EventData();
+        WeekEventData tempEventData = new WeekEventData();
         tempEventData.EventName = tempstrings.Dequeue();
         tempEventData.StatName = (StatName)Enum.Parse(typeof(StatName), tempstrings.Dequeue());
         tempEventData.ReqStat = int.Parse(tempstrings.Dequeue());
@@ -25,46 +25,63 @@ public class REventManager
         tempEventData.OccurableWeek = int.Parse(tempstrings.Dequeue());
         tempEventData.CutSceneName = tempstrings.Dequeue();
 
-        int[] intArray = new int[10];
-        for(int i =0;i<10;i++)
+        float[] floatArray = new float[8];
+        for(int i =0;i<8;i++)
         {
             string item = tempstrings.Dequeue();
-            int parsedInt;
+            float parsedInt;
 
-            if (int.TryParse(item, out parsedInt))
+            if (float.TryParse(item, out parsedInt))
             {
-                intArray[i] = parsedInt;
+                floatArray[i] = parsedInt;
             }
             else
             {
-                // 변환 실패 시 예외 처리 또는 기본값 할당 등의 로직을 추가할 수 있습니다.
-                // 예를 들면, intArray[i] = defaultValue; 등
                 Debug.Log($"Failed to parse item at index {i}: {item}");
             }
         }
-        tempEventData.Change = intArray;
+        tempEventData.Option1 = floatArray;
+
+        float[] floatArray2 = new float[8];
+        for (int i = 0; i < 8; i++)
+        {
+            string item = tempstrings.Dequeue();
+            float parsedInt;
+
+            if (float.TryParse(item, out parsedInt))
+            {
+                floatArray2[i] = parsedInt;
+            }
+            else
+            {
+                Debug.Log($"Failed to parse item at index {i}: {item}");
+            }
+        }
+        tempEventData.Option2 = floatArray2;
+
+
         tempEventData.EventInfoString = tempstrings.Dequeue();
 
         EventDatasList.Add(tempEventData);
     }
 
-    EventData tempConditionEvent;
+    WeekEventData tempConditionEvent;
     
     /// <summary>
     /// 주차나 조건에 알맞은 이벤트를 호출
     /// </summary>
     /// <returns></returns>
-    public EventData GetProperEvent()
+    public WeekEventData GetProperEvent()
     {
-        EventData temp = new EventData();
+        WeekEventData temp = new WeekEventData();
 
-        List<EventData> tempEventDatasList = new List<EventData>(EventDatasList);
+        List<WeekEventData> tempEventDatasList = new List<WeekEventData>(EventDatasList);
         RemoveDoneEvent(tempEventDatasList);
 
 
         foreach(string name in Managers.Data._myPlayerData.DoneEventNames)
         {
-            foreach(EventData each in tempEventDatasList)
+            foreach(WeekEventData each in tempEventDatasList)
             {
                 if (each.EventName == name) tempEventDatasList.Remove(each);
             }
@@ -92,14 +109,14 @@ public class REventManager
     /// </summary>
     /// <param name="eventlist">넘겨받는 이벤트</param>
     /// <returns></returns>
-    EventData GetMainEvent(List<EventData> eventlist)
+    WeekEventData GetMainEvent(List<WeekEventData> eventlist)
     {
-        EventData temp = new EventData();
+        WeekEventData temp = new WeekEventData();
         
         switch (Managers.Data._myPlayerData.GetHigestStatName())
         {
             case StatName.Game:
-                foreach(EventData temp2 in eventlist)
+                foreach(WeekEventData temp2 in eventlist)
                 {
                     if (temp2.OccurableWeek == Managers.Data._myPlayerData.NowWeek 
                         && temp2.ReqStat <= Managers.Data._myPlayerData.SixStat[0] 
@@ -108,7 +125,7 @@ public class REventManager
                 }
                 break;
             case StatName.Song:
-                EventData foundEvent2 = eventlist.Find(eventData => eventData.StatName == StatName.Song && eventData.OccurableWeek == Managers.Data._myPlayerData.NowWeek);
+                WeekEventData foundEvent2 = eventlist.Find(eventData => eventData.StatName == StatName.Song && eventData.OccurableWeek == Managers.Data._myPlayerData.NowWeek);
                 if (foundEvent2 != null)
                 {
                     Debug.Log("코딩 망했다");
@@ -119,7 +136,7 @@ public class REventManager
                 }
                 break;
             case StatName.Draw:
-                EventData foundEvent3 = eventlist.Find(eventData => eventData.StatName == StatName.Draw && eventData.OccurableWeek == Managers.Data._myPlayerData.NowWeek);
+                WeekEventData foundEvent3 = eventlist.Find(eventData => eventData.StatName == StatName.Draw && eventData.OccurableWeek == Managers.Data._myPlayerData.NowWeek);
                 if (foundEvent3 != null)
                 {
                     Debug.Log("코딩 망했다");
@@ -134,10 +151,10 @@ public class REventManager
         return temp;
     }
 
-    EventData GetRandEvent(List<EventData> eventlist)
+    WeekEventData GetRandEvent(List<WeekEventData> eventlist)
     {
-        List<EventData> tempEventDatasList = new List<EventData>();
-        foreach (EventData even in eventlist)
+        List<WeekEventData> tempEventDatasList = new List<WeekEventData>();
+        foreach (WeekEventData even in eventlist)
         {
             if (even.EventDataType == EventDataType.Random)
                 tempEventDatasList.Add(even);
@@ -149,16 +166,16 @@ public class REventManager
         return tempEventDatasList[rand];
     }
 
-    bool IsOnCondition(List<EventData> eventlist)
+    bool IsOnCondition(List<WeekEventData> eventlist)
     {
-        List<EventData> tempEventDatasList = new List<EventData>();
-        foreach (EventData even in eventlist)
+        List<WeekEventData> tempEventDatasList = new List<WeekEventData>();
+        foreach (WeekEventData even in eventlist)
         {
             if (even.EventDataType == EventDataType.Conditioned)
                 tempEventDatasList.Add(even);
         }
 
-        foreach (EventData even in tempEventDatasList)
+        foreach (WeekEventData even in tempEventDatasList)
         {
             switch (even.StatName)
             {
@@ -198,14 +215,14 @@ public class REventManager
         return false;
     }
 
-    void RemoveDoneEvent(List<EventData> eventlist)
+    void RemoveDoneEvent(List<WeekEventData> eventlist)
     {
         eventlist.RemoveAll(eventdata => Managers.Data._myPlayerData.DoneEventNames.Contains(eventdata.EventName));
     }
 
 
     //이벤트 하나의 정보
-    public class EventData
+    public class WeekEventData
     {
         public string EventName;
         public StatName StatName;
@@ -213,12 +230,14 @@ public class REventManager
         public EventDataType EventDataType;
         public int OccurableWeek;
         public string CutSceneName;
-        public int[] Change;
+        public float[] Option1;
+        public float[] Option2;
         public string EventInfoString;
 
-        public EventData()
+        public WeekEventData()
         {
-            Change = new int[10];
+            Option1 = new float[8];
+            Option2 = new float[8];
             EventInfoString = "빈 이벤트";
         }
 

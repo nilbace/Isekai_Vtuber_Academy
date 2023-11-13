@@ -9,10 +9,10 @@ using static REventManager;
 public class UI_RandomEvent : UI_Popup
 {
     public static UI_RandomEvent instance;
-    EventData _eventData;
+    WeekEventData _eventData;
     enum Buttons
     {
-        ResultBTN,
+        ResultBTN, ResultBTN2
     }
     enum Texts
     {
@@ -43,42 +43,61 @@ public class UI_RandomEvent : UI_Popup
         Bind<Button>(typeof(Buttons));
         Bind<TMPro.TMP_Text>(typeof(Texts));
 
-        Debug.Log(_eventData.EventName);
+        //Debug.Log(_eventData.EventName);
 
         GetText((int)Texts.EventText).text = _eventData.EventInfoString;
-        GetButton((int)Buttons.ResultBTN).onClick.AddListener(Close);
+        GetButton((int)Buttons.ResultBTN).onClick.AddListener(ChooseBTN1);
+        GetButton((int)Buttons.ResultBTN2).onClick.AddListener(ChooseBTN2);
+        if (_eventData.EventDataType == EventDataType.Main) GetButton((int)Buttons.ResultBTN2).interactable = false;
     }
 
-    void Close()
+    void ChooseBTN1()
+    {
+        DoOption(true);
+        ProcessData();
+    }
+
+    void ChooseBTN2()
+    {
+        DoOption(false);
+        ProcessData();
+    }
+
+    void ProcessData()
     {
         Managers.Data._myPlayerData.NowWeek++;
-        ProcessData();
         UI_MainBackUI.instance.UpdateUItexts();
         UI_MainBackUI.instance.EndScheduleAndSetUI();
         Managers.Data.SaveData();
         Managers.UI_Manager.ClosePopupUI();
     }
 
-    void ProcessData()
+    void DoOption(bool isOption1)
     {
-        //돈 변화
-        Managers.Data._myPlayerData.nowGoldAmount += _eventData.Change[0];
-
-        //구독자 변화
-        Managers.Data._myPlayerData.nowSubCount = Mathf.CeilToInt((0.01f)*(float)(_eventData.Change[1]+100)*Managers.Data._myPlayerData.nowSubCount);
+        float[] optionArray;
+        if (isOption1) optionArray = _eventData.Option1;
+        else
+        {
+            optionArray = _eventData.Option2;
+        }
+        
 
         //하트 별 변화량
-        Managers.Data._myPlayerData.ChangeHeart(_eventData.Change[2]);
-        Managers.Data._myPlayerData.ChangeHeart(_eventData.Change[3]);
-
+        Managers.Data._myPlayerData.ChangeHeart(optionArray[0]);
+        if (optionArray[0] != 0) Debug.Log($"하트{optionArray[0]} 변화 ");
+        Managers.Data._myPlayerData.ChangeHeart(optionArray[1]);
+        if (optionArray[1] != 0) Debug.Log($"별{optionArray[1]} 변화");
         //스텟 변화량
         float[] eventStatValues = new float[6];
         for(int i = 0; i<6;i++)
         {
-            eventStatValues[i] = _eventData.Change[i + 4];
+            eventStatValues[i] = optionArray[i + 2];
+            if(optionArray[i+2] != 0)
+            {
+                Debug.Log($"{(StatName)(i)} 스텟 {optionArray[i + 2]} 증가");
+            }
         }
 
         Managers.Data._myPlayerData.ChangeStat(eventStatValues);
     }
-   
 }

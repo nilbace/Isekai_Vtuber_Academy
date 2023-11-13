@@ -19,24 +19,24 @@ public class GameManager
         for (int i = 0; i < 7; i++)
         {
             CarryOutOneDayWork(Managers.Data._SevenDayScheduleDatas[i], i);
-            Debug.Log("-----------------------------------------");
+            //Debug.Log("-----------------------------------------");
             UI_MainBackUI.instance.UpdateUItexts();
             yield return new WaitForSeconds(0.2f);
         }
 
         //매 월 마지막 주차는 월세 나감
-        if (Managers.Data._myPlayerData.NowWeek % 4 == 0)
-        {
-            Managers.Data._myPlayerData.nowGoldAmount -= Managers.Data.GetNowMonthExpense();
-            Debug.Log($"월세 {Managers.Data.GetNowMonthExpense() } 원 차감");
-        }
+        //if (Managers.Data._myPlayerData.NowWeek % 4 == 0)
+        //{
+        //    Managers.Data._myPlayerData.nowGoldAmount -= Managers.Data.GetNowMonthExpense();
+        //    Debug.Log($"월세 {Managers.Data.GetNowMonthExpense() } 원 차감");
+        //}
 
         int aftersubsAmount = Managers.Data._myPlayerData.nowSubCount;
         float afterHeart = Managers.Data._myPlayerData.NowHeart;
         float afterStar = Managers.Data._myPlayerData.NowStar;
-        Debug.Log($"1주일 총 구독자 변화량 :     {aftersubsAmount - beforeSubsAmount}");
-        Debug.Log($"1주일 하트 구독자 변화량 :   {afterHeart - beforeHeart}");
-        Debug.Log($"1주일 별 구독자 변화량 :     {afterStar - beforeStar}");
+        //Debug.Log($"1주일 총 구독자 변화량 :     {aftersubsAmount - beforeSubsAmount}");
+        //Debug.Log($"1주일 하트 구독자 변화량 :   {afterHeart - beforeHeart}");
+        //Debug.Log($"1주일 별 구독자 변화량 :     {afterStar - beforeStar}");
 
         for(int i =0;i<7;i++)
         {
@@ -64,14 +64,14 @@ public class GameManager
         if(isSick)
         {
             //무슨 요일 아픔 로그
-            Debug.Log($"{daysOfWeek[Day]} 아픔");
+            //Debug.Log($"{daysOfWeek[Day]} 아픔");
             _todaySick = true;
             CarryOutSickDay();
         }
         //안아프면 모든 일정에 대해 대성공이 뜰 수 있음
         else
         {
-            Debug.Log($"{daysOfWeek[Day]} 스케줄 {Managers.Data._SevenDayScheduleDatas[Day].KorName} 시작");
+            //Debug.Log($"{daysOfWeek[Day]} 스케줄 {Managers.Data._SevenDayScheduleDatas[Day].KorName} 시작");
 
             //대성공 체크
             float bonusMultiplier = 1.0f;
@@ -79,7 +79,7 @@ public class GameManager
             {
                 BigSuccess = true;
                 bonusMultiplier = 1.5f;// 50% 상승을 위한 상수값
-                Debug.Log("대성공");
+                //Debug.Log("대성공");
             }
 
             //방송을 진행했다면 돈 구독자 증가
@@ -101,10 +101,10 @@ public class GameManager
                 StarVariance  = oneDay.StarVariance  * GetSubStatProperty(StatName.Mental);
             }
 
-            Debug.Log($"건강 변화량 : ({Mathf.Clamp((HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100) - Managers.Data._myPlayerData.NowHeart}," +
-            $" {Mathf.Clamp((StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100) - Managers.Data._myPlayerData.NowStar}), " +
-            $"결과 ( {Mathf.Clamp((HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100)}, " +
-            $"{Mathf.Clamp((StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100)})");
+            //Debug.Log($"건강 변화량 : ({Mathf.Clamp((HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100) - Managers.Data._myPlayerData.NowHeart}," +
+            //$" {Mathf.Clamp((StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100) - Managers.Data._myPlayerData.NowStar}), " +
+            //$"결과 ( {Mathf.Clamp((HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100)}, " +
+            //$"{Mathf.Clamp((StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100)})");
 
             Managers.Data._myPlayerData.NowHeart = Mathf.Clamp(Mathf.CeilToInt(HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100);
             Managers.Data._myPlayerData.NowStar = Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100);
@@ -242,7 +242,7 @@ public class GameManager
 
         Managers.Data._myPlayerData.nowSubCount += OneDayNewSubs;
         Managers.Data._myPlayerData.nowGoldAmount += OneDayIncome;
-        Debug.Log($"구독+ : {OneDayNewSubs}" + $" / 골드 + : {OneDayIncome}");
+        //Debug.Log($"구독+ : {OneDayNewSubs}" + $" / 골드 + : {OneDayIncome}");
 
         CalculateBonus(oneDay.broadcastType, OneDayNewSubs, OneDayIncome);
     }
@@ -290,7 +290,7 @@ public class GameManager
         Managers.Data._myPlayerData.nowGoldAmount += Mathf.CeilToInt(DayIncome * (tempBonus.IncomeBonus) / 100f);
         Managers.Data._myPlayerData.nowSubCount += Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f);
 
-        Debug.Log($"특성 구독자 보너스 증가량 : {Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f)} 특성 골드 보너스 : {Mathf.CeilToInt(DayIncome * (tempBonus.IncomeBonus) / 100f)} ");
+        //Debug.Log($"특성 구독자 보너스 증가량 : {Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f)} 특성 골드 보너스 : {Mathf.CeilToInt(DayIncome * (tempBonus.IncomeBonus) / 100f)} ");
     }
 
     float GetSubStatProperty(StatName statName)
