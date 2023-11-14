@@ -244,21 +244,34 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
             tempSub += ExpectedSub(tempSub, Managers.Data._SevenDayScheduleDatas[i]);
         }
 
-        GetText((int)Texts.SubTMP).text = ExpectedSub(tempSub, thisSubSchedleData).ToString();
-        GetText((int)Texts.GoldTMP).text = Mathf.CeilToInt(tempSub * thisSubSchedleData.InComeMag).ToString();
+        GetText((int)Texts.SubTMP).text  = ExpectedSub(tempSub, thisSubSchedleData).ToString();
+        GetText((int)Texts.GoldTMP).text = ExpectedInCome(tempSub, thisSubSchedleData).ToString();
     }
 
     int ExpectedSub(int SubCount, OneDayScheduleData oneDayScheduleData)
     {
         if(oneDayScheduleData.scheduleType == ScheduleType.BroadCast)
-            return CalculateSubAfterDay(SubCount, oneDayScheduleData.FisSubsUpValue, oneDayScheduleData.PerSubsUpValue);
+        {
+            Bonus temp = Managers.Data.GetMainProperty(GetStatNameByBroadCastType(oneDayScheduleData.broadcastType));
+            int newSubs = Managers.GM.CalculateSubAfterDay(SubCount, oneDayScheduleData.FisSubsUpValue, oneDayScheduleData.PerSubsUpValue, 1);
+            int bonus = Mathf.CeilToInt(newSubs * (temp.SubBonus) / 100f);
+
+            return newSubs + bonus;
+        }
         return 0;
     }
 
-    int CalculateSubAfterDay(int now, float fix, float per, float bonus = 1)
+    int ExpectedInCome(int SubCount, OneDayScheduleData oneDayScheduleData)
     {
-        float temp = (now + fix) * ((float)(100 + per) / 100f) * bonus;
-        int result = Mathf.CeilToInt(temp);
-        return result - now;
+        if (oneDayScheduleData.scheduleType == ScheduleType.BroadCast)
+        {
+            Bonus temp = Managers.Data.GetMainProperty(GetStatNameByBroadCastType(oneDayScheduleData.broadcastType));
+
+            int Income = Mathf.CeilToInt(SubCount * oneDayScheduleData.InComeMag);
+            int bonus = Mathf.CeilToInt(Income * (temp.IncomeBonus) / 100f);
+
+            return Income + bonus;
+        }
+        return 0;
     }
 }

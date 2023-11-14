@@ -256,7 +256,7 @@ public class GameManager
     /// <param name="per"></param>
     /// <param name="bonus"></param>
     /// <returns></returns>
-    int CalculateSubAfterDay(int now, float fix, float per, float bonus)
+    public int CalculateSubAfterDay(int now, float fix, float per, float bonus)
     {
         float temp = (now + fix) * ((float)(100 + per) / 100f);
         int result = Mathf.CeilToInt(temp);
@@ -268,18 +268,9 @@ public class GameManager
     }
 
     //호출부
-    void CalculateBonus(BroadCastType broadCastType, int DaySub, int DayIncome)
+    public void CalculateBonus(BroadCastType broadCastType, int DaySub, int DayIncome)
     {
-        StatName temp;
-        if (broadCastType == BroadCastType.Healing || broadCastType == BroadCastType.LOL
-            || broadCastType == BroadCastType.Horror || broadCastType == BroadCastType.Challenge)
-            temp = StatName.Game;
-        else if (broadCastType == BroadCastType.Sing || broadCastType == BroadCastType.PlayInst || broadCastType == BroadCastType.Compose)
-            temp = StatName.Song;
-        else
-            temp = StatName.Draw;
-
-        CalculateBonus(temp, DaySub, DayIncome);
+        CalculateBonus(GetStatNameByBroadCastType(broadCastType), DaySub, DayIncome);
     }
 
     //실행부

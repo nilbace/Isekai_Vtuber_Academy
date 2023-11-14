@@ -74,6 +74,21 @@ public class Define : MonoBehaviour
         Healing, LOL, Horror, Challenge, Sing, PlayInst, Compose, Sketch, Commission, MaxCount_Name
     }
 
+    public static StatName GetStatNameByBroadCastType(BroadCastType broadCastType)
+    {
+        StatName temp;
+
+        if (broadCastType == BroadCastType.Healing || broadCastType == BroadCastType.LOL
+            || broadCastType == BroadCastType.Horror || broadCastType == BroadCastType.Challenge)
+            temp = StatName.Game;
+        else if (broadCastType == BroadCastType.Sing || broadCastType == BroadCastType.PlayInst || broadCastType == BroadCastType.Compose)
+            temp = StatName.Song;
+        else
+            temp = StatName.Draw;
+
+        return temp;
+    }
+
     public enum RestType
     {
         hea1, hea2, hea3, men1, men2, men3, MaxCount

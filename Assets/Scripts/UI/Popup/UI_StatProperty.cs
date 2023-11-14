@@ -62,7 +62,9 @@ public class UI_StatProperty : UI_Popup
         {
             if (i == indexofEmptyText)
             {
-                StatInfoTexts[i].text = ""; continue; 
+                StatInfoTexts[i].text = "";
+                StatInfoTexts[i].rectTransform.sizeDelta = new Vector2(200, 10);
+                continue; 
             }
             StatInfoTexts[i].text = GetMainStatText(tempTier);
             tempTier++;
@@ -83,11 +85,10 @@ public class UI_StatProperty : UI_Popup
 
     string GetMainStatText(int tier)
     {
-        int subBonus = Math.Max(5, tier) * Managers.instance.MainStat_ValuePerLevel;
-        int incomeBonus = Math.Max(0, tier) * Managers.instance.MainStat_ValuePerLevel;
         int nowgrade = tier * 20;
+        Bonus temp2 = Managers.Data.GetMainProperty(tier * 20);
 
-        string temp = $"{nowgrade} : ±¸µ¶ÀÚ ¼ö + {subBonus}%, µ· È¹µæ·® +{incomeBonus}%";
+        string temp = $"{nowgrade} : ±¸µ¶ÀÚ ¼ö + {temp2.SubBonus}%, µ· È¹µæ·® +{temp2.IncomeBonus}%";
 
         return temp;
     }

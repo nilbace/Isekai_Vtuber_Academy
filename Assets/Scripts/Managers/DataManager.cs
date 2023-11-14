@@ -280,9 +280,14 @@ public class DataManager
     public Bonus GetMainProperty(StatName statName)
     {
         float highestStat = Managers.Data._myPlayerData.SixStat[(int)statName];
+        return GetMainProperty(highestStat);
+    }
+
+    public Bonus GetMainProperty(float Value)
+    {
         Bonus bonus = new Bonus();
 
-        int bonusValue = Mathf.FloorToInt(highestStat) / 20;
+        int bonusValue = Mathf.FloorToInt(Value) / 20;
         bonus.SubBonus = ((bonusValue + 1) / 2) * Managers.instance.MainStat_ValuePerLevel;
         bonus.IncomeBonus = ((bonusValue) / 2) * Managers.instance.MainStat_ValuePerLevel;
 

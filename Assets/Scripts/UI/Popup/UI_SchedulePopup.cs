@@ -374,28 +374,6 @@ public class UI_SchedulePopup : UI_Popup
         UpdateColorAndSelected();
     }
 
-
-    void StartScheduleBTN()
-    {
-        UI_MainBackUI.instance.StartScheduleAndSetUI();
-        Managers.instance.StartSchedule();
-        Managers.UI_Manager.ClosePopupUI();
-    }
-    void BackBTN()
-    {
-        if(SubContentSelectPhase)
-        {
-            SubContentSelectPhase = false;
-            GetGameObject((int)GameObjects.Contents3).SetActive(true);
-            GetGameObject((int)GameObjects.SubContents).SetActive(false);
-        }
-        else
-        {
-            UI_MainBackUI.instance.EndScheduleAndSetUI();
-            Managers.UI_Manager.ClosePopupUI();
-        }
-    }
-
     public void ResetSchedule()
     {
         int temp = 0;

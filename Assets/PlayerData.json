@@ -1,25 +1,19 @@
 {
-    "NowWeek": 7,
-    "nowSubCount": 1137,
-    "nowGoldAmount": 1147,
-    "NowHeart": 48.0,
-    "NowStar": 58.0,
+    "NowWeek": 2,
+    "nowSubCount": 234,
+    "nowGoldAmount": 56,
+    "NowHeart": 75.0,
+    "NowStar": 56.0,
     "SixStat": [
-        43,
-        23,
-        3,
+        62.0,
+        0.0,
+        0.0,
         0.0,
         4.0,
-        7.0
+        0.0
     ],
     "DoneEventNames": [
-        "엘라 당근 사기",
-        "포카리 물만두",
-        "몰루2",
-        "게임1",
-        "자르반 84세와 만남"
+        "엘라 당근 사기"
     ],
-    "BoughtItems": [
-        "수상한 마우스"
-    ]
+    "BoughtItems": []
 }
