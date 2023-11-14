@@ -25,33 +25,33 @@ public class DataManager
 
     void LoadData()
     {
-        _myPlayerData = new PlayerData();
+        //_myPlayerData = new PlayerData();
 
         //기존 코드
 
-        //string path;
-        //if (Application.platform == RuntimePlatform.Android)
-        //{
-        //    path = Path.Combine(Application.persistentDataPath, "PlayerData.json");
-        //}
-        //else
-        //{
-        //    path = Path.Combine(Application.dataPath, "PlayerData.json");
-        //}
+        string path;
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            path = Path.Combine(Application.persistentDataPath, "PlayerData.json");
+        }
+        else
+        {
+            path = Path.Combine(Application.dataPath, "PlayerData.json");
+        }
 
-        //if (!File.Exists(path))
-        //{
-        //    _myPlayerData = new PlayerData();
-        //    SaveData();
-        //}
+        if (!File.Exists(path))
+        {
+            _myPlayerData = new PlayerData();
+            SaveData();
+        }
 
-        //FileStream fileStream = new FileStream(path, FileMode.Open);
-        //byte[] data = new byte[fileStream.Length];
-        //fileStream.Read(data, 0, data.Length);
-        //fileStream.Close();
-        //string jsonData = Encoding.UTF8.GetString(data);
+        FileStream fileStream = new FileStream(path, FileMode.Open);
+        byte[] data = new byte[fileStream.Length];
+        fileStream.Read(data, 0, data.Length);
+        fileStream.Close();
+        string jsonData = Encoding.UTF8.GetString(data);
 
-        //_myPlayerData = JsonUtility.FromJson<PlayerData>(jsonData);
+        _myPlayerData = JsonUtility.FromJson<PlayerData>(jsonData);
     }
 
     public void SaveData()
@@ -283,9 +283,8 @@ public class DataManager
         Bonus bonus = new Bonus();
 
         int bonusValue = Mathf.FloorToInt(highestStat) / 20;
-        bonus.SubBonus = Math.Max(5, bonusValue) * Managers.instance.MainStat_ValuePerLevel;
-        bonus.IncomeBonus = Math.Max(0, bonusValue - 1) * Managers.instance.MainStat_ValuePerLevel;
-
+        bonus.SubBonus = ((bonusValue + 1) / 2) * Managers.instance.MainStat_ValuePerLevel;
+        bonus.IncomeBonus = ((bonusValue) / 2) * Managers.instance.MainStat_ValuePerLevel;
 
         return bonus;
     }
@@ -364,6 +363,7 @@ public class PlayerData
         for(int i =0;i<6;i++)
         {
             SixStat[i] += stats[i];
+            SixStat[i] = Mathf.Clamp(SixStat[i], 0, 200);
             if (stats[i] != 0)
             {
                 UI_MainBackUI.instance.GlitterStat(i);

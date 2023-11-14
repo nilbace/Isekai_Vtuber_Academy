@@ -125,14 +125,12 @@ public class REventManager
                 }
                 break;
             case StatName.Song:
-                WeekEventData foundEvent2 = eventlist.Find(eventData => eventData.StatName == StatName.Song && eventData.OccurableWeek == Managers.Data._myPlayerData.NowWeek);
-                if (foundEvent2 != null)
+                foreach (WeekEventData temp4 in eventlist)
                 {
-                    Debug.Log("ÄÚµù ¸ÁÇß´Ù");
-                }
-                else
-                {
-                    temp = foundEvent2;
+                    if (temp4.OccurableWeek == Managers.Data._myPlayerData.NowWeek
+                        && temp4.ReqStat <= Managers.Data._myPlayerData.SixStat[1]
+                        && temp4.StatName == StatName.Song)
+                        temp = temp4;
                 }
                 break;
             case StatName.Draw:

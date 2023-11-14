@@ -249,7 +249,7 @@ public class UI_MainBackUI : UI_Scene
     /// </summary>
     public void EndScheduleAndSetUI()
     {
-        Debug.Log($"{Managers.Data._myPlayerData.NowWeek -1 } / 구독자_{Managers.Data._myPlayerData.nowSubCount} / 그림 스텟_{Managers.Data._myPlayerData.SixStat[2]}");
+        Debug.Log($"{Managers.Data._myPlayerData.NowWeek -1 } / 구독자_{Managers.Data._myPlayerData.nowSubCount} / 노래 스텟_{Managers.Data._myPlayerData.SixStat[1]}");
         StartCoroutine(EndScheduleAndSetUICor());
     }
 
