@@ -127,19 +127,22 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
             //먼저 선택된 것이 없다면
             if(settedData == null)
             {
-                //현재 소지 금액이 비용보다 많다거나 혹은 무료라면
+                //내 소지금보다 비싼 활동이라면 안눌림
                 if(Managers.Data._myPlayerData.nowGoldAmount < scheduleData.MoneyCost && scheduleData.MoneyCost != 0)
                 {
                     thisBTN.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
                     thisBTN.interactable = false;
+                    TruelyInteractable = false;
                 }
             }
+            //선택된것이 있고, 비싸다면 안눌림
             else
             {
                 if (Managers.Data._myPlayerData.nowGoldAmount + settedData.MoneyCost < scheduleData.MoneyCost && scheduleData.MoneyCost != 0)
                 {
                     thisBTN.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
                     thisBTN.interactable = false;
+                    TruelyInteractable = false;
                 }
             }
             
@@ -169,15 +172,17 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 
     [SerializeField] float offset = 5.5f;
     private bool isPressed = false;
-    bool TruelyInteractable =  false;
+    bool TruelyInteractable =  true;
     Vector2 pressedPosition;
-    [SerializeField] float Offset;
+    [SerializeField] float MouseDragOffset;
 
     public void OnPointerDown(PointerEventData eventData)
     {
         OverOffset = false;
-        if (TruelyInteractable) { Debug.Log("넘어가"); return; }
+
+        if (!TruelyInteractable) { scrollRect.OnBeginDrag(eventData); return; }
         isPressed = true;
+        
         foreach (Transform tr in GetComponentsInChildren<Transform>())
         {
             tr.localPosition += new Vector3(0, -offset, 0);
@@ -190,7 +195,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (TruelyInteractable) return;
+        if (!TruelyInteractable) { scrollRect.OnBeginDrag(eventData); return; }
         isPressed = false;
 
         foreach (Transform tr in GetComponentsInChildren<Transform>())
@@ -207,24 +212,19 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     {
         PointerEventData temp = new PointerEventData(EventSystem.current);
         if (isPressed) temp.pointerPress = gameObject;
-        float deltaX = Mathf.Abs(temp.position.x - pressedPosition.x);
-        if (deltaX > Offset)
+        float deltaX = Mathf.Abs(eventData.position.x - pressedPosition.x);
+        if (deltaX > MouseDragOffset)
         {
+            Debug.Log("멀어짐");
             OverOffset = true;
         }
 
-        //if (scrollRect != null && scrollRect.horizontalScrollbar != null && scrollRect.horizontalScrollbar.gameObject.activeInHierarchy)
-        //{
-        //    float normalizedDeltaX = -eventData.delta.x / scrollRect.content.rect.width;
-        //    float newXPos = Mathf.Clamp(scrollRect.horizontalNormalizedPosition + normalizedDeltaX * DragMagnitude, 0f, 1f); 
-        //    scrollRect.horizontalNormalizedPosition = newXPos; 
-        //}
         scrollRect.OnDrag(eventData);
     }
 
     void LikePressed()
     {
-        TruelyInteractable = true;
+        TruelyInteractable = false;
         thisBTN.interactable = false;
         switch (thisSubSchedleData.scheduleType)
         {

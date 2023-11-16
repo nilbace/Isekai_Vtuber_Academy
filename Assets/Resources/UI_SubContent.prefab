@@ -300,7 +300,7 @@ MonoBehaviour:
     GoldTextPoz: {x: 3.5, y: -36.5, z: 0}
     StatTextPoz: {x: 7.1, y: -24.5, z: 0}
   offset: 6
-  Offset: 70
+  MouseDragOffset: 100
 --- !u!1 &3889826550822649576
 GameObject:
   m_ObjectHideFlags: 0
