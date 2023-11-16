@@ -19,10 +19,9 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         public Vector3 HeartPoz;
         public Vector3 StarPoz;
         public Vector3 StatIconPoz;
-        public Vector3 StatUDPoz;
         public Vector3 SubTextPoz;
         public Vector3 GoldTextPoz;
-        
+        public Vector3 StatTextPoz;
     }
 
     public Pozs BroadCastpoz = new Pozs();
@@ -31,24 +30,27 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 
     void SetPozition(Pozs pozs)
     {
-        GetImage((int)Images.HeartUD).transform.localPosition = pozs.HeartPoz;
-        GetImage((int)Images.StarUD).transform.localPosition = pozs.StarPoz;
         GetImage((int)Images.StatIcon).transform.localPosition = pozs.StatIconPoz;
-        GetImage((int)Images.StatUD).transform.localPosition = pozs.StatUDPoz;
+        GetText((int)Texts.HeartTMP).transform.localPosition = pozs.HeartPoz;
+        GetText((int)Texts.StarTMP).transform.localPosition = pozs.StarPoz;
         GetText((int)Texts.SubTMP).transform.localPosition = pozs.SubTextPoz;
         GetText((int)Texts.GoldTMP).transform.localPosition = pozs.GoldTextPoz;
+        GetText((int)Texts.StatTMP).transform.localPosition = pozs.StatTextPoz;
     }
  
     enum Images
     {
-        HeartUD, StarUD, StatIcon, StatUD
+        StatIcon
     }
     enum Texts
     { 
         NameTMP,
         InfoTMP,
         SubTMP,
-        GoldTMP
+        GoldTMP,
+        HeartTMP,
+        StarTMP,
+        StatTMP
     }
 
     private void Awake()
@@ -69,25 +71,25 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     {
         thisSubSchedleData = scheduleData;
         thisBTNDay = nowDay;    
-        SpriteState spriteState = new SpriteState();
+        SpriteState ButtonBackImage = new SpriteState();
         switch (scheduleData.scheduleType)
         {
             case ScheduleType.BroadCast:
                 GetComponent<Image>().sprite = Managers.MSM.DaysPannel[0];
-                spriteState.pressedSprite = Managers.MSM.DaysPannel[1];
-                thisBTN.spriteState = spriteState;
+                ButtonBackImage.pressedSprite = Managers.MSM.DaysPannel[1];
+                thisBTN.spriteState = ButtonBackImage;
                 SetPozition(BroadCastpoz);
                 break;
             case ScheduleType.Rest:
                 GetComponent<Image>().sprite = Managers.MSM.DaysPannel[2];
-                spriteState.pressedSprite = Managers.MSM.DaysPannel[3];
-                thisBTN.spriteState = spriteState;
+                ButtonBackImage.pressedSprite = Managers.MSM.DaysPannel[3];
+                thisBTN.spriteState = ButtonBackImage;
                 SetPozition(Restpoz);
                 break;
             case ScheduleType.GoOut:
                 GetComponent<Image>().sprite = Managers.MSM.DaysPannel[4];
-                spriteState.pressedSprite = Managers.MSM.DaysPannel[5];
-                thisBTN.spriteState = spriteState;
+                ButtonBackImage.pressedSprite = Managers.MSM.DaysPannel[5];
+                thisBTN.spriteState = ButtonBackImage;
                 SetPozition(GOoutpoz);
                 break;
         }
@@ -96,8 +98,15 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         GetText((int)Texts.InfoTMP).text    = thisSubSchedleData.infotext;
         GetText((int)Texts.SubTMP).text     = thisSubSchedleData.KorName;
         GetText((int)Texts.GoldTMP).text    =  (-thisSubSchedleData.MoneyCost).ToString();
+        GetText((int)Texts.HeartTMP).text   = thisSubSchedleData.HeartVariance.ToString();
+        GetText((int)Texts.StarTMP).text    = thisSubSchedleData.StarVariance.ToString();
+        if(scheduleData.scheduleType == ScheduleType.GoOut)
+        {
+            Debug.Log(thisSubSchedleData.Six_Stats[(int)statName]);
+            GetText((int)Texts.StatTMP).text = thisSubSchedleData.Six_Stats[(int)statName].ToString();
+        }
 
-        if(scheduleData.scheduleType == ScheduleType.BroadCast)
+        if (scheduleData.scheduleType == ScheduleType.BroadCast)
         {
             SetMoneyAndSubData_BroadCast();
         }
@@ -167,7 +176,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     public void OnPointerDown(PointerEventData eventData)
     {
         OverOffset = false;
-        if (TruelyInteractable) return;
+        if (TruelyInteractable) { Debug.Log("�Ѿ"); return; }
         isPressed = true;
         foreach (Transform tr in GetComponentsInChildren<Transform>())
         {
