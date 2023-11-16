@@ -51,6 +51,8 @@ public class UI_StatProperty : UI_Popup
 
     public void Setting(StatName stat)
     {
+        GetGameObject((int)GameObjects.TextGroup).transform.localPosition = new Vector3(-49.5f, -111.8f, 0);
+        GetGameObject((int)GameObjects.StatInfo_SelectBox).transform.localPosition = new Vector3(0, -52.6f, 0);
         GetText((int)Texts.StatInfoTMP).text = stat.ToString();
 
         float nowStatValue = Managers.Data._myPlayerData.SixStat[(int)stat];
@@ -86,7 +88,12 @@ public class UI_StatProperty : UI_Popup
             tempTier++;
         }
 
-        if (SelectedStatTier == 0)
+        if (SelectedStatTier != 0)
+        {
+            GetGameObject((int)GameObjects.StatInfo_SelectBox).SetActive(true);
+            GetGameObject((int)GameObjects.TextGroup).transform.localPosition = new Vector3(-49.5f, -117.3f, 0);
+        }
+        else
         {
             GetGameObject((int)GameObjects.StatInfo_SelectBox).SetActive(false);
             GetGameObject((int)GameObjects.TextGroup).transform.localPosition = new Vector3(-49.5f, -111.8f, 0);
