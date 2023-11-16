@@ -148,7 +148,7 @@ public class UI_MainBackUI : UI_Scene
         {
             GetGameObject((int)GameObjects.GameStat_Cover+i).transform.localScale =
            new Vector3(1 - (float)Managers.Data._myPlayerData.SixStat[i] / 200f, 1, 1);
-            GetText((int)Texts.TempGameTMP+i).text = Managers.Data._myPlayerData.SixStat[i].ToString("F1");
+            GetText((int)Texts.TempGameTMP+i).text = Managers.Data._myPlayerData.SixStat[i].ToString("F0");
         }
     }
 

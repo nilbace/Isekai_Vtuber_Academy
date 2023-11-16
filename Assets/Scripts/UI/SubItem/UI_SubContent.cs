@@ -97,10 +97,10 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         GetText((int)Texts.NameTMP).text    = thisSubSchedleData.KorName;
         GetText((int)Texts.InfoTMP).text    = thisSubSchedleData.infotext;
         GetText((int)Texts.SubTMP).text     = thisSubSchedleData.KorName;
-        GetText((int)Texts.GoldTMP).text    =  (-thisSubSchedleData.MoneyCost).ToString();
-        GetText((int)Texts.HeartTMP).text   = thisSubSchedleData.HeartVariance.ToString();
-        GetText((int)Texts.StarTMP).text    = thisSubSchedleData.StarVariance.ToString();
-        if(scheduleData.scheduleType == ScheduleType.GoOut)
+        GetText((int)Texts.GoldTMP).text    = (-thisSubSchedleData.MoneyCost).ToString();
+        GetText((int)Texts.HeartTMP).text = HeartStarVarianceToString(scheduleData, StatName.Strength);
+        GetText((int)Texts.StarTMP).text  = HeartStarVarianceToString(scheduleData, StatName.Mental);
+        if (scheduleData.scheduleType == ScheduleType.GoOut)
         {
             Debug.Log(thisSubSchedleData.Six_Stats[(int)statName]);
             GetText((int)Texts.StatTMP).text = thisSubSchedleData.Six_Stats[(int)statName].ToString();
@@ -282,5 +282,22 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
             return Income + bonus;
         }
         return 0;
+    }
+
+
+    string HeartStarVarianceToString(OneDayScheduleData oneDayScheduleData, StatName HeartOrStar)
+    {
+        string temp = "";
+        float value;
+        if (HeartOrStar == StatName.Strength)
+            value = oneDayScheduleData.HeartVariance;
+        else
+            value = oneDayScheduleData.StarVariance;
+        
+        if(oneDayScheduleData.scheduleType != ScheduleType.Rest)value = value * Managers.GM.GetSubStatProperty(HeartOrStar);
+
+        temp = value.ToString("F0");
+
+        return temp;
     }
 }

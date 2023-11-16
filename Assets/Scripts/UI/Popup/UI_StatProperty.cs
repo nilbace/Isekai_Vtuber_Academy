@@ -70,7 +70,11 @@ public class UI_StatProperty : UI_Popup
             tempTier++;
         }
 
-
+        if(SelectedStatTier == 0)
+        {
+            GetGameObject((int)GameObjects.StatInfo_SelectBox).SetActive(false);
+            GetGameObject((int)GameObjects.TextGroup).transform.localPosition = new Vector3(-49.5f, -111.8f, 0);
+        }
         
 
         GetButton((int)Buttons.CloseBTN).onClick.AddListener(Close);

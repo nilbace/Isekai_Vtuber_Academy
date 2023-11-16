@@ -284,7 +284,7 @@ public class GameManager
         //Debug.Log($"특성 구독자 보너스 증가량 : {Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f)} 특성 골드 보너스 : {Mathf.CeilToInt(DayIncome * (tempBonus.IncomeBonus) / 100f)} ");
     }
 
-    float GetSubStatProperty(StatName statName)
+    public float GetSubStatProperty(StatName statName)
     {
         int temp = 0;
         if (statName == StatName.Strength)
