@@ -67,7 +67,6 @@ public class UI_MainBackUI : UI_Scene
         Init();
     }
 
-    public StatName NowSelectStatProperty;
     public void Init()
     {
         base.Init();
@@ -79,12 +78,12 @@ public class UI_MainBackUI : UI_Scene
         Button CreateScheduleBTN = Get<Button>((int)Buttons.CreateScheduleBTN);
 
         CreateScheduleBTN.onClick.AddListener(ShowSchedulePopup);
-        GetButton((int)Buttons.GameStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Game));
-        GetButton((int)Buttons.SongStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Song));
-        GetButton((int)Buttons.DrawStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Draw));
-        GetButton((int)Buttons.StrStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Strength));
-        GetButton((int)Buttons.MentalStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Mental));
-        GetButton((int)Buttons.LuckStatBTN).onClick.AddListener(() => ShowStatProperty(StatName.Luck));
+        GetButton((int)Buttons.GameStatBTN).onClick.AddListener(() => ShowStatPropertyUI(StatName.Game));
+        GetButton((int)Buttons.SongStatBTN).onClick.AddListener(() => ShowStatPropertyUI(StatName.Song));
+        GetButton((int)Buttons.DrawStatBTN).onClick.AddListener(() => ShowStatPropertyUI(StatName.Draw));
+        GetButton((int)Buttons.StrStatBTN).onClick.AddListener(() => ShowStatPropertyUI(StatName.Strength));
+        GetButton((int)Buttons.MentalStatBTN).onClick.AddListener(() => ShowStatPropertyUI(StatName.Mental));
+        GetButton((int)Buttons.LuckStatBTN).onClick.AddListener(() => ShowStatPropertyUI(StatName.Luck));
         GetButton((int)Buttons.StartScheduleBTN).onClick.AddListener(StartScheduleBTN);
         GetButton((int)Buttons.BackBTN).onClick.AddListener(BackBTN);
         GetButton((int)Buttons.StartScheduleBTN).gameObject.SetActive(false);
@@ -109,10 +108,23 @@ public class UI_MainBackUI : UI_Scene
         Managers.Sound.Play("bgm1", Sound.Bgm);
     }
 
-    void ShowStatProperty(StatName statName)
+    void ShowStatPropertyUI(StatName statName)
     {
-        var Go = Managers.UI_Manager.ShowPopupUI<UI_StatProperty>();
-        NowSelectStatProperty = statName;
+        StartCoroutine(ShowStatProperty(statName));
+    }
+
+    IEnumerator ShowStatProperty(StatName statName)
+    {
+        if(UI_StatProperty.instance == null)
+        {
+            var Go = Managers.UI_Manager.ShowPopupUI<UI_StatProperty>();
+            yield return new WaitForEndOfFrame();
+            Go.Setting(statName);
+        }
+        else
+        {
+            UI_StatProperty.instance.Setting(statName);
+        }
     }
 
     /// <summary>

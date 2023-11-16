@@ -1,28 +1,19 @@
 {
-    "NowWeek": 7,
-    "nowSubCount": 2605,
-    "nowGoldAmount": 1031,
-    "NowHeart": 95.0,
-    "NowStar": 66.0,
+    "NowWeek": 2,
+    "nowSubCount": 168,
+    "nowGoldAmount": 51,
+    "NowHeart": 67.0,
+    "NowStar": 72.0,
     "SixStat": [
-        38.0,
+        7.0,
         0.0,
         0.0,
-        8.0,
-        13.0,
-        5.0
+        0.0,
+        4.0,
+        0.0
     ],
     "DoneEventNames": [
-        "잼민이 맞짱",
-        "술 헤롱헤롱",
-        "몰루2",
-        "게임1",
         "포카리 물만두"
     ],
-    "BoughtItems": [
-        "오거의 힘줄",
-        "수상한 책",
-        "수상한 부적",
-        "해골군주의 손"
-    ]
+    "BoughtItems": []
 }

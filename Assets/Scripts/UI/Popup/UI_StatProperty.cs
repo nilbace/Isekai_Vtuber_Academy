@@ -14,15 +14,20 @@ public class UI_StatProperty : UI_Popup
     }
     enum Texts
     {
-        BigStatValueTMP, StatInfoTMP
+        BigStatValueTMP, StatInfoTMP, StatValueTMP
     }
 
     enum GameObjects
     { 
-        //Empty와 나머지 글자들 정렬을 정리해야함
         TextGroup,
         StatInfo_SelectBox
     }
+
+    enum Images
+    {
+        StatIcon, Stat_Cover
+    }
+
 
 
 
@@ -39,45 +44,53 @@ public class UI_StatProperty : UI_Popup
         Bind<Button>(typeof(Buttons));
         Bind<TMPro.TMP_Text>(typeof(Texts));
         Bind<GameObject>(typeof(GameObjects));
-        GetText((int)Texts.StatInfoTMP).text = UI_MainBackUI.instance.NowSelectStatProperty.ToString();
+        Bind<Image>(typeof(Images));
 
-        StatName SelectedStat = UI_MainBackUI.instance.NowSelectStatProperty;
-        float nowStatValue = Managers.Data._myPlayerData.SixStat[(int)SelectedStat];
+        GetButton((int)Buttons.CloseBTN).onClick.AddListener(Close);
+    }
+
+    public void Setting(StatName stat)
+    {
+        GetText((int)Texts.StatInfoTMP).text = stat.ToString();
+
+        float nowStatValue = Managers.Data._myPlayerData.SixStat[(int)stat];
         int SelectedStatTier = GetStatTier_div_20(nowStatValue);
-        Bonus nowBonus = Managers.Data.GetMainProperty(SelectedStat);
+        Bonus nowBonus = Managers.Data.GetMainProperty(stat);
+
+        //아이콘 세팅
+        GetImage((int)Images.StatIcon).sprite = Resources.Load<Sprite>($"Icon/{stat}");
+        GetText((int)Texts.StatValueTMP).text = Managers.Data._myPlayerData.SixStat[(int)stat].ToString("F0");
+        GetImage((int)Images.Stat_Cover).transform.localScale = new Vector3(1 - (float)Managers.Data._myPlayerData.SixStat[(int)stat] / 200f, 1, 1);
 
 
         //위치 조절
         GetGameObject((int)GameObjects.StatInfo_SelectBox).transform.localPosition += new Vector3(0, -14 * SelectedStatTier, 0);
         //내부 글자 조절
         GetText((int)Texts.BigStatValueTMP).text = (SelectedStatTier * 20).ToString();
-        if (SelectedStat == StatName.Game || SelectedStat == StatName.Song || SelectedStat == StatName.Draw)
+        if (stat == StatName.Game || stat == StatName.Song || stat == StatName.Draw)
             GetText((int)Texts.StatInfoTMP).text = $"구독자 수 + {nowBonus.SubBonus}%, 돈 획득량 +{nowBonus.IncomeBonus}%";
 
 
-        int tempTier = 1; 
+        int tempTier = 1;
         int indexofEmptyText = IndexofEmptyPlace(SelectedStatTier);
         TMPro.TMP_Text[] StatInfoTexts = GetGameObject((int)GameObjects.TextGroup).GetComponentsInChildren<TMPro.TMP_Text>();
-        for (int i = 0;i<11;i++)
+        for (int i = 0; i < 11; i++)
         {
             if (i == indexofEmptyText)
             {
                 StatInfoTexts[i].text = "";
                 StatInfoTexts[i].rectTransform.sizeDelta = new Vector2(200, 10);
-                continue; 
+                continue;
             }
             StatInfoTexts[i].text = GetMainStatText(tempTier);
             tempTier++;
         }
 
-        if(SelectedStatTier == 0)
+        if (SelectedStatTier == 0)
         {
             GetGameObject((int)GameObjects.StatInfo_SelectBox).SetActive(false);
             GetGameObject((int)GameObjects.TextGroup).transform.localPosition = new Vector3(-49.5f, -111.8f, 0);
         }
-        
-
-        GetButton((int)Buttons.CloseBTN).onClick.AddListener(Close);
     }
 
  
