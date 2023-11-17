@@ -51,7 +51,6 @@ public class UI_StatProperty : UI_Popup
 
     public void Setting(StatName stat)
     {
-        GetGameObject((int)GameObjects.TextGroup).transform.localPosition = new Vector3(-49.5f, -111.8f, 0);
         GetGameObject((int)GameObjects.StatInfo_SelectBox).transform.localPosition = new Vector3(0, -52.6f, 0);
         GetText((int)Texts.StatInfoTMP).text = stat.ToString();
 
@@ -96,7 +95,7 @@ public class UI_StatProperty : UI_Popup
         else
         {
             GetGameObject((int)GameObjects.StatInfo_SelectBox).SetActive(false);
-            GetGameObject((int)GameObjects.TextGroup).transform.localPosition = new Vector3(-49.5f, -111.8f, 0);
+            GetGameObject((int)GameObjects.TextGroup).transform.localPosition = new Vector3(-46f, -121.4f, 0);
         }
     }
 
