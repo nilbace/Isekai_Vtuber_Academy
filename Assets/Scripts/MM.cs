@@ -35,7 +35,7 @@ public class MM : MonoBehaviour
             UI_SchedulePopup.instance.ResetSchedule();
         }
 
-        Managers.Sound.Play("power");
+        Managers.Sound.Play("MM");
     }
 
     const string MerchantURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&gid=1725059436&range=A2:D4";

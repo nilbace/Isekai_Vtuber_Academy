@@ -15,6 +15,8 @@ public class Define : MonoBehaviour
     public enum Sound
     {
         Bgm,
+        MM,
+        BigBTN, SmallBTN,
         Effect,
         MaxCount,
     }

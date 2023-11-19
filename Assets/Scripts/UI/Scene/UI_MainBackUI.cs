@@ -110,6 +110,7 @@ public class UI_MainBackUI : UI_Scene
 
     void ShowStatPropertyUI(StatName statName)
     {
+        Managers.Sound.Play("SmallBTN", Sound.Effect);
         StartCoroutine(ShowStatProperty(statName));
     }
 
@@ -326,12 +327,14 @@ public class UI_MainBackUI : UI_Scene
 
     void StartScheduleBTN()
     {
+        Managers.Sound.Play("BigBTN", Sound.Effect);
         StartScheduleAndSetUI();
         Managers.instance.StartSchedule();
         Managers.UI_Manager.ClosePopupUI();
     }
     void BackBTN()
     {
+        Managers.Sound.Play("SmallBTN", Sound.Effect);
         if (UI_SchedulePopup.instance.SubContentSelectPhase)
         {
             UI_SchedulePopup.instance.Show3Contents();
@@ -358,6 +361,7 @@ public class UI_MainBackUI : UI_Scene
 
     public void SettingBTN()
     {
+        Managers.Sound.Play("SmallBTN", Sound.Effect);
         Managers.UI_Manager.ShowPopupUI<UI_Setting>();
     }
 }

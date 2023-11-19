@@ -107,8 +107,6 @@ public class UI_SchedulePopup : UI_Popup
         GetButton((int)Buttons.BroadCastBTN).onClick.       AddListener(ClickBroadCastBTN);
         GetButton((int)Buttons.RestBTN).onClick.            AddListener(ClickRestBTN);
         GetButton((int)Buttons.GoOutBTN).onClick.           AddListener(ClickGoOutBTN);
-        //GetButton((int)Buttons.StartScheduleBTN).onClick.   AddListener(StartScheduleBTN);
-        //GetButton((int)Buttons.BackBTN).onClick.            AddListener(BackBTN);
 
         _SeveDayScrollVarValue = Managers.Data._SeveDayScrollVarValue;
         _SevenDayScheduleDatas = Managers.Data._SevenDayScheduleDatas;
@@ -263,20 +261,20 @@ public class UI_SchedulePopup : UI_Popup
 
     void ClickBroadCastBTN()
     {
-        UI_SubContent.DragMagnitude = 0.31f;
+        Managers.Sound.Play("SmallBTN", Sound.Effect);
         State_SelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.BroadCast);
     }
     void ClickRestBTN()
     {
-        UI_SubContent.DragMagnitude = 0.39f;
+        Managers.Sound.Play("SmallBTN", Sound.Effect);
         State_SelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.Rest);
     }
 
     void ClickGoOutBTN()
     {
-        UI_SubContent.DragMagnitude = 0.21f;
+        Managers.Sound.Play("SmallBTN", Sound.Effect);
         State_SelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.GoOut);
     }

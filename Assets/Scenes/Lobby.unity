@@ -15671,7 +15671,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AniSpeed: 0.43
-  NowSelectStatProperty: 0
   HeartStarTextColors:
   - {r: 0, g: 0.36862746, b: 0.27058825, a: 1}
   - {r: 0.24313727, g: 0.36862746, b: 0, a: 1}

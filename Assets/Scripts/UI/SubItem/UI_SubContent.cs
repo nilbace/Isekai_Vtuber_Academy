@@ -161,6 +161,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 
     void SetSchedule(int nowCost)
     {
+        Managers.Sound.Play("SmallBTN", Sound.Effect);
         if (OverOffset) return;
         Managers.Data._myPlayerData.nowGoldAmount += nowCost;
         Managers.Data._myPlayerData.nowGoldAmount -= thisSubSchedleData.MoneyCost;
@@ -207,7 +208,6 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     }
 
     bool OverOffset = false;
-    public static float DragMagnitude;
     public void OnDrag(PointerEventData eventData)
     {
         PointerEventData temp = new PointerEventData(EventSystem.current);
