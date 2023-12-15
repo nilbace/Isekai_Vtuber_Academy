@@ -335,7 +335,7 @@ public class UI_MainBackUI : UI_Scene
     void BackBTN()
     {
         Managers.Sound.Play("SmallBTN", Sound.Effect);
-        if (UI_SchedulePopup.instance.SubContentSelectPhase)
+        if (UI_SchedulePopup.instance.IsShowing3Contents())
         {
             UI_SchedulePopup.instance.Show3Contents();
         }
@@ -348,6 +348,8 @@ public class UI_MainBackUI : UI_Scene
 
         }
     }
+
+    
 
     public Button GetStartScheduleBTN()
     {

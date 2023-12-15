@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static DataManager;
 using static Define;
 using DG.Tweening;
 
@@ -16,7 +15,6 @@ public class UI_SchedulePopup : UI_Popup
     public static UI_SchedulePopup instance;
     public Transform ParentTR;
     public GameObject UISubContent;
-    public bool SubContentSelectPhase = false;
     private ScrollRect scrollRect;
 
     enum Buttons
@@ -51,7 +49,7 @@ public class UI_SchedulePopup : UI_Popup
     enum Images
     {
         ItemIcon,
-        ScheduleSlotSelected,
+        NowDayFrame,
     }
 
     private void Awake()
@@ -66,22 +64,14 @@ public class UI_SchedulePopup : UI_Popup
         MM.instance.NowMMState = MM.MMState.OnSchedule;
     }
 
-    /// <summary>
-    /// 방송 휴식 외출 선택
-    /// </summary>
-    void State_SelectType()
+    void TransitionToThreeContents()
     {
-        SubContentSelectPhase = false;
         GetGameObject((int)GameObjects.Contents3).SetActive(true);
         GetGameObject((int)GameObjects.SubContents).SetActive(false);
     }
 
-    /// <summary>
-    /// 하위 컨텐츠 선택
-    /// </summary>
-    void State_SelectSubContent()
+    void TransitionToSelectSubContent()
     {
-        SubContentSelectPhase = true;
         GetGameObject((int)GameObjects.Contents3).SetActive(false);
         GetGameObject((int)GameObjects.SubContents).SetActive(true);
     }
@@ -99,7 +89,7 @@ public class UI_SchedulePopup : UI_Popup
         {
             int inttemp = i;
             Button temp = GetButton(i);
-            temp.onClick.AddListener( () => ClickDay(inttemp));
+            temp.onClick.AddListener( () => ClickDayBTN(inttemp));
         }
 
         scrollRect = GetComponentInChildren<ScrollRect>();
@@ -123,19 +113,15 @@ public class UI_SchedulePopup : UI_Popup
     OneDayScheduleData[] _SevenDayScheduleDatas = new OneDayScheduleData[7];
     float[] _SeveDayScrollVarValue =  new float[7];
 
-    public void StoreScrollVarValue(float value)
+    public void SetScrollVarValue(float value)
     {
         _SeveDayScrollVarValue[(int)_nowSelectedDay] = value;
         Managers.Data._SeveDayScrollVarValue = _SeveDayScrollVarValue;
     }
 
-    /// <summary>
-    /// 선택된 요일 표시
-    /// </summary>
     void SetSelectBox()
     {
-        int i = 0;
-        for (; i < 7; i++)
+        for (int i = 0; i < 7; i++)
         {
             if (_SevenDayScheduleDatas[i] == null)
             {
@@ -143,18 +129,20 @@ public class UI_SchedulePopup : UI_Popup
                 break;
             }
         }
-        if (i == 7) i = 6;
 
-        //저장된 곳에서 선택박스 위치시키게 함
-        GetImage(1).transform.DOMoveX(((int)_nowSelectedDay - 3) * 40, 0f);
+        GetImage((int)Images.NowDayFrame).transform.DOMoveX(((int)_nowSelectedDay - 3) * 40, 0f);
     }
     
-    void ClickDay(int i)
+    void ClickDayBTN(int dayIndex)
     {
-        _nowSelectedDay = (SevenDays)i;
-        if (_SevenDayScheduleDatas[(int)_nowSelectedDay] != null)
+        _nowSelectedDay = (SevenDays)dayIndex;
+        if (_SevenDayScheduleDatas[(int)_nowSelectedDay] == null)
         {
-            if(_SevenDayScheduleDatas[(int)_nowSelectedDay].scheduleType == ScheduleType.BroadCast)
+            TransitionToThreeContents();
+        }
+        else
+        {
+            if (_SevenDayScheduleDatas[(int)_nowSelectedDay].scheduleType == ScheduleType.BroadCast)
             {
                 ClickBroadCastBTN();
             }
@@ -167,16 +155,10 @@ public class UI_SchedulePopup : UI_Popup
                 ClickGoOutBTN();
             }
         }
-        else
-        {
-            State_SelectType();
-        }
         UpdateColorAndSelected();
     }
 
-    /// <summary>
-    /// 버튼이 interactable 갱신
-    /// </summary>
+
     void UpdateBTN_Interactable()
     {
         int i = 0;
@@ -206,9 +188,7 @@ public class UI_SchedulePopup : UI_Popup
     [SerializeField] Ease ease;
     [SerializeField] float moveDuration;
     [SerializeField] Color[] baseTextColor;
-    /// <summary>
-    /// 색상 지정용 함수
-    /// </summary>
+
     void UpdateColorAndSelected()
     {
         for(int i = 0; i<7;i++)
@@ -251,7 +231,6 @@ public class UI_SchedulePopup : UI_Popup
 
     public void Show3Contents()
     {
-        UI_SchedulePopup.instance.SubContentSelectPhase = false;
         GetGameObject((int)GameObjects.Contents3).SetActive(true);
         GetGameObject((int)GameObjects.SubContents).SetActive(false);
     }
@@ -262,20 +241,20 @@ public class UI_SchedulePopup : UI_Popup
     void ClickBroadCastBTN()
     {
         Managers.Sound.Play("SmallBTN", Sound.Effect);
-        State_SelectSubContent();
+        TransitionToSelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.BroadCast);
     }
     void ClickRestBTN()
     {
         Managers.Sound.Play("SmallBTN", Sound.Effect);
-        State_SelectSubContent();
+        TransitionToSelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.Rest);
     }
 
     void ClickGoOutBTN()
     {
         Managers.Sound.Play("SmallBTN", Sound.Effect);
-        State_SelectSubContent();
+        TransitionToSelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.GoOut);
     }
 
@@ -332,9 +311,6 @@ public class UI_SchedulePopup : UI_Popup
         }
     }
 
-    /// <summary>
-    /// 세부 컨텐츠들 전부 삭제 > 다시 만들기 전에
-    /// </summary>
     public void DeleteAllChildren()
     {
         int childCount = ParentTR.childCount;
@@ -347,7 +323,6 @@ public class UI_SchedulePopup : UI_Popup
 
     public void SetDaySchedule(OneDayScheduleData data)
     {
-        //저장소 저장
         _SevenDayScheduleDatas[(int)_nowSelectedDay] = data;
         Managers.Data._SevenDayScheduleDatas = _SevenDayScheduleDatas;
         
@@ -368,7 +343,7 @@ public class UI_SchedulePopup : UI_Popup
             }
         }
         if (i == 7) i = (int)_nowSelectedDay;
-        ClickDay(i);
+        ClickDayBTN(i);
         UpdateColorAndSelected();
     }
 
@@ -394,6 +369,13 @@ public class UI_SchedulePopup : UI_Popup
     private void OnDisable()
     {
         MM.instance.NowMMState = MM.MMState.usual;
+    }
+
+    public bool IsShowing3Contents()
+    {
+        if (GetGameObject((int)GameObjects.Contents3).activeSelf)
+            return true;
+        return false;
     }
 
     #endregion

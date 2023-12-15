@@ -204,7 +204,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
             tr.localPosition += new Vector3(0, offset, 0);
         }
         scrollRect.OnEndDrag(eventData);
-        UI_SchedulePopup.instance.StoreScrollVarValue(scrollRect.horizontalScrollbar.value);
+        UI_SchedulePopup.instance.SetScrollVarValue(scrollRect.horizontalScrollbar.value);
     }
 
     bool OverOffset = false;
