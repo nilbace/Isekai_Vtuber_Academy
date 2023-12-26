@@ -10,6 +10,12 @@ using DG.Tweening;
 public class UI_MainBackUI : UI_Scene
 {
     [SerializeField] float AniSpeed;
+
+    //메인 화면 애니메이션
+    public Animator ScreenAnimator;
+    public float ScreenAniSpeed;
+
+    public Sprite[] TempStampImg;
     enum Texts
     {
         HeartTMP,  //현재 건강 상태
@@ -48,7 +54,7 @@ public class UI_MainBackUI : UI_Scene
 
     enum Images
     {
-        HeartBar, StarBar
+        HeartBar, StarBar, StampIMG
     }
 
 
@@ -103,7 +109,8 @@ public class UI_MainBackUI : UI_Scene
         //방송 타이틀 오른쪽으로 뺴고 시작
         GetGameObject((int)GameObjects.BroadCastTitle).transform.localPosition += new Vector3(XOffset,0,0);
 
-
+        ScreenAnimator.speed = ScreenAniSpeed;
+        SetStamp(-1);
         UpdateUItexts();
         Managers.Sound.Play("bgm1", Sound.Bgm);
     }
@@ -302,7 +309,7 @@ public class UI_MainBackUI : UI_Scene
         }
     }
 
-    public void StampSeal(int day, int SealType)
+    public void BottomSeal(int day, int SealType)
     {
         DayResultSeals[day].color = new Color(1, 1, 1, 1);
 
@@ -310,7 +317,7 @@ public class UI_MainBackUI : UI_Scene
             DayResultSeals[day].GetComponent<Animator>().SetTrigger("StarAni");
         else if(SealType == 1)
             DayResultSeals[day].GetComponent<Animator>().SetTrigger("OAni");
-        else
+        else if(SealType == 2)
         {
             Debug.Log("XXXXX");
             DayResultSeals[day].GetComponent<Animator>().SetTrigger("XAni");
@@ -366,4 +373,48 @@ public class UI_MainBackUI : UI_Scene
         Managers.Sound.Play("SmallBTN", Sound.Effect);
         Managers.UI_Manager.ShowPopupUI<UI_Setting>();
     }
+
+
+    #region ScheduleAnimation
+
+    public void StartScreenAnimation(string KorName)
+    {
+        ScreenAnimator.StopPlayback();
+        if(KorName == "")
+        {
+            Debug.Log("개발중");
+        }
+        else
+        {
+            ScreenAnimator.SetTrigger(KorName);
+        }
+    }
+    /// <summary>
+    /// -1빈칸 0실패 1보통 2대성공 
+    /// </summary>
+    /// <param name="Result"></param>
+    public void SetStamp(int Result)
+    {
+        switch (Result)
+        {
+            case -1:
+                GetImage((int)Images.StampIMG).gameObject.SetActive(false);
+                break;
+            case 0:
+                GetImage((int)Images.StampIMG).gameObject.SetActive(true);
+                GetImage((int)Images.StampIMG).sprite = TempStampImg[0];
+                break;
+            case 1:
+                GetImage((int)Images.StampIMG).gameObject.SetActive(true);
+                GetImage((int)Images.StampIMG).sprite = TempStampImg[1];
+                break;
+            case 2:
+                GetImage((int)Images.StampIMG).gameObject.SetActive(true);
+                GetImage((int)Images.StampIMG).sprite = TempStampImg[2];
+                break;
+        }
+
+    }
+
+    #endregion
 }

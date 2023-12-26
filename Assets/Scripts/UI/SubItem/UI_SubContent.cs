@@ -102,7 +102,6 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         GetText((int)Texts.StarTMP).text  = HeartStarVarianceToString(scheduleData, StatName.Mental);
         if (scheduleData.scheduleType == ScheduleType.GoOut)
         {
-            Debug.Log(thisSubSchedleData.Six_Stats[(int)statName]);
             GetText((int)Texts.StatTMP).text = thisSubSchedleData.Six_Stats[(int)statName].ToString();
         }
 
@@ -262,7 +261,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         if(oneDayScheduleData.scheduleType == ScheduleType.BroadCast)
         {
             Bonus temp = Managers.Data.GetMainProperty(GetStatNameByBroadCastType(oneDayScheduleData.broadcastType));
-            int newSubs = Managers.GM.CalculateSubAfterDay(SubCount, oneDayScheduleData.FisSubsUpValue, oneDayScheduleData.PerSubsUpValue, 1);
+            int newSubs = ScheduleExecuter.Inst.CalculateSubAfterDay(SubCount, oneDayScheduleData.FisSubsUpValue, oneDayScheduleData.PerSubsUpValue, 1);
             int bonus = Mathf.CeilToInt(newSubs * (temp.SubBonus) / 100f);
 
             return newSubs + bonus;
@@ -294,7 +293,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         else
             value = oneDayScheduleData.StarVariance;
         
-        if(oneDayScheduleData.scheduleType != ScheduleType.Rest)value = value * Managers.GM.GetSubStatProperty(HeartOrStar);
+        if(oneDayScheduleData.scheduleType != ScheduleType.Rest)value = value * ScheduleExecuter.Inst.GetSubStatProperty(HeartOrStar);
 
         temp = value.ToString("F0");
 

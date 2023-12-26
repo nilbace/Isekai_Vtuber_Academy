@@ -1,25 +1,21 @@
 {
-    "NowWeek": 7,
-    "nowSubCount": 2125,
-    "nowGoldAmount": 2600,
-    "NowHeart": 36.0,
-    "NowStar": 38.0,
+    "NowWeek": 4,
+    "nowSubCount": 646,
+    "nowGoldAmount": 100000000,
+    "NowHeart": 96.0,
+    "NowStar": 57.0,
     "SixStat": [
-        155.0,
-        34.0,
-        7.0,
-        20.0,
-        35.0,
-        4.0
+        21.0,
+        0.0,
+        0.0,
+        3.0,
+        0.0,
+        0.0
     ],
     "DoneEventNames": [
-        "몰루3",
-        "도수치료 직캠",
-        "고삼차 먹방",
-        "게임1",
-        "포카리 물만두"
+        "팬레터 읽기",
+        "화내는 엘라",
+        "잼민이 맞짱"
     ],
-    "BoughtItems": [
-        "해골군주의 손"
-    ]
+    "BoughtItems": []
 }

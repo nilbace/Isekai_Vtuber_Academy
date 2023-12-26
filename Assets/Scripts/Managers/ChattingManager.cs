@@ -4,22 +4,21 @@ using UnityEngine;
 using UnityEngine.Networking;
 using DG.Tweening;
 using static Define;
-public class ChattingManager : MonoBehaviour
+public class ChattingManager : MonoSingleton<ChattingManager>
 {
-    const string Message_NameURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&gid=0&range=A2:K";
-    /// <summary>
-    /// 마지막은 이름들이 들어있음
-    /// </summary>
+    const string Message_NameURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&gid=0&range=A2:J";
+
     List<string>[] Message_NameListArray = new List<string>[(int)BroadCastType.MaxCount_Name + 1];
 
-    public static ChattingManager instance;
+    [Header("채팅 사이의 시간")]
+    [SerializeField] float minChatDelayTime;
+    [SerializeField] float maxChatDelayTime;
+    [Header("채팅 사이 간격")]
+    [SerializeField] float SpaceBetweenChats;
+
     private void Awake()
     {
-        instance = this;
-        for(int i = 0; i<Message_NameListArray.Length; i++)
-        {
-            Message_NameListArray[i] = new List<string>();
-        }
+        base.Awake();
     }
 
     List<GameObject> ChatGOs = new List<GameObject>();
@@ -29,6 +28,11 @@ public class ChattingManager : MonoBehaviour
 
     void Start()
     {
+        for (int i = 0; i < Message_NameListArray.Length; i++)
+        {
+            Message_NameListArray[i] = new List<string>();
+        }
+
         //배열에 집어넣고 비활성화
         int childCount = gameObject.transform.childCount;
         for (int i = 0; i < childCount; i++)
@@ -36,24 +40,25 @@ public class ChattingManager : MonoBehaviour
             Transform childTransform = gameObject.transform.GetChild(i);
             GameObject childObject = childTransform.gameObject;
             ChatGOs.Add(childObject);
-            childObject.SetActive(false);
         }
         StartCoroutine(RequestListDatasFromSheet());
     }
 
+    private void OnEnable()
+    {
+        foreach(GameObject ChatGO in ChatGOs)
+        {
+            ChatGO.SetActive(false);
+        }
+    }
 
 
     IEnumerator RequestListDatasFromSheet()
     {
-        //비동기 방식으로 서버에서 데이터를 읽어옴
         Coroutine chatCoroutine = StartCoroutine(RequestAndSetDatas(Message_NameURL));
 
-        //코루틴이 모두 완료될 때까지 기다림
         yield return chatCoroutine;
-
-        //실제 실행 코드
-        StartGenerateChattingByType(BroadCastType.Healing);
-
+        gameObject.SetActive(false);
     }
 
     IEnumerator RequestAndSetDatas(string www)
@@ -75,10 +80,6 @@ public class ChattingManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 데이터를 올바른 List에 집어넣어둠
-    /// </summary>
-    /// <param name="datas"></param>
     void LocateDataToMessageListArray(string datas)
     {
         string[] EachData = datas.Substring(0, datas.Length).Split('\t');
@@ -92,11 +93,6 @@ public class ChattingManager : MonoBehaviour
     }
 
 
-
-    /// <summary>
-    /// 채팅 메시지들 길면 엔터 쳐주는 함수
-    /// </summary>
-    /// <param name="lines"></param>
     public List<string> AutoLineBreak(List<string> lines)
     {
         List<string> result = new List<string>();
@@ -136,17 +132,12 @@ public class ChattingManager : MonoBehaviour
     }
 
 
-    //방송 타입을 받아서 방송 시작함
     public void StartGenerateChattingByType(BroadCastType broadCastType)
     {
         StartCoroutine(StartGenerateChatting(Message_NameListArray[(int)broadCastType]));
     }
 
-    [Header("채팅 사이의 시간")]
-    [SerializeField] float minChatDelayTime;
-    [SerializeField] float maxChatDelayTime;
-    [Header("채팅 사이 간격")]
-    [SerializeField] float SpaceBetweenChats;
+    
 
 
     //채팅 시작 구현

@@ -21,7 +21,6 @@ public class Managers : MonoBehaviour
     public float Str_Men_ValuePerLevel;
 
     REventManager _RE = new REventManager();
-    GameManager _Gm = new GameManager();
     MultiSpriteManager _MSM = new MultiSpriteManager();
     public static InputManager Input {get {return instance._input;}}
     public static ResourceManager Resource{get{return instance._resource;}}
@@ -30,7 +29,6 @@ public class Managers : MonoBehaviour
     public static PoolManager Pool{get{return instance._pool;}}
     public static DataManager Data { get { return instance._data; } }
     public static REventManager RandEvent { get { return instance._RE; } }
-    public static GameManager GM { get { return instance._Gm; } }
     public static MultiSpriteManager MSM { get { return instance._MSM; } }
     
     void Awake()
@@ -93,6 +91,6 @@ public class Managers : MonoBehaviour
 
     public void StartSchedule()
     {
-        StartCoroutine(_Gm.StartSchedule());
+        StartCoroutine(ScheduleExecuter.Inst.StartSchedule());
     }
 }

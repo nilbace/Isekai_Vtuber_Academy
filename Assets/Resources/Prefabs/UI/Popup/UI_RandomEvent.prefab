@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 6624864114915773686}
   - component: {fileID: 6271162161481339738}
   m_Layer: 5
-  m_Name: CutScene
+  m_Name: CutSceneIMG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -848,7 +848,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5501035149407559673
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ public class UI_RandomEvent : UI_Popup
 
     enum Images
     {
-        CutScene,
+        CutSceneIMG,
     }
 
     private void Awake()
@@ -44,11 +44,27 @@ public class UI_RandomEvent : UI_Popup
         Bind<TMPro.TMP_Text>(typeof(Texts));
 
         //Debug.Log(_eventData.EventName);
+        GetImage((int)Images.CutSceneIMG).sprite = LoadIMG(_eventData);
 
         GetText((int)Texts.EventText).text = _eventData.EventInfoString;
         GetButton((int)Buttons.ResultBTN).onClick.AddListener(ChooseBTN1);
         GetButton((int)Buttons.ResultBTN2).onClick.AddListener(ChooseBTN2);
         if (_eventData.EventDataType == EventDataType.Main) GetButton((int)Buttons.ResultBTN2).interactable = false;
+    }
+
+    Sprite LoadIMG(WeekEventData Data)
+    {
+        Sprite sprite = null;
+        if(Data.CutSceneName == "")
+        {
+            Debug.Log("¹Ì¿Ï¼º");
+        }
+        else
+        {
+            sprite = Resources.Load<Sprite>("CutScene/" + Data.CutSceneName);
+        }
+
+        return sprite;
     }
 
     void ChooseBTN1()

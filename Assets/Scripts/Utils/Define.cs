@@ -134,6 +134,7 @@ public class Define : MonoBehaviour
         public float InComeMag;
         public int MoneyCost;
         public float[] Six_Stats;
+        public string PathName;
 
         public OneDayScheduleData()
         {

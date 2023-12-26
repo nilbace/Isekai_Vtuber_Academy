@@ -217,6 +217,7 @@ public class DataManager
         {
             temp.Six_Stats[j] = float.Parse(tempstringQueue.Dequeue());
         }
+        temp.PathName = tempstringQueue.Dequeue();
         temp.infotext = tempstringQueue.Dequeue();
         oneDayDatasList.Add(temp);
     }
@@ -224,7 +225,6 @@ public class DataManager
     #endregion
 
    
-
     #region Merchant
     public List<Item> ItemList = new List<Item>();
     public IEnumerator RequestAndSetItemDatas(string www)
@@ -374,6 +374,12 @@ public class PlayerData
                 UI_MainBackUI.instance.GlitterStat(i);
             }
         }
+    }
+
+    public bool MerchantAppearanceWeek()
+    {
+        if (NowWeek == 5 || NowWeek == 10 || NowWeek == 15) return true;
+        return false;
     }
 }
 
