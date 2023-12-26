@@ -371,7 +371,7 @@ public class UI_SchedulePopup : UI_Popup
         MM.instance.NowMMState = MM.MMState.usual;
     }
 
-    public bool IsShowing3Contents()
+    public bool IsShowing3ContentsUI()
     {
         if (GetGameObject((int)GameObjects.Contents3).activeSelf)
             return true;

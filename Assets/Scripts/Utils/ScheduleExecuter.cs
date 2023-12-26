@@ -22,8 +22,10 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         for (int i = 0; i < 7; i++)
         {
             yield return StartCoroutine(ExecuteOneDayWork(Managers.Data._SevenDayScheduleDatas[i], i));
+            
             UI_MainBackUI.instance.UpdateUItexts();
             yield return new WaitForSeconds(TimeStampToNext);
+            ChattingManager.Inst.gameObject.SetActive(false);
         }
 
         //스케쥴 데이터 초기화
@@ -50,7 +52,6 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         bool todaySick = false;
         BigSuccess = false;
         UI_MainBackUI.instance.SetStamp(-1);
-
         //휴식 하는게 아니라면 아플 수 있음
         if (oneDay.scheduleType != ScheduleType.Rest && !isSick)
         {

@@ -44,7 +44,7 @@ public class ChattingManager : MonoSingleton<ChattingManager>
         StartCoroutine(RequestListDatasFromSheet());
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
         foreach(GameObject ChatGO in ChatGOs)
         {

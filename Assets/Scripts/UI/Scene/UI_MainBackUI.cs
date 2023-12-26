@@ -16,6 +16,8 @@ public class UI_MainBackUI : UI_Scene
     public float ScreenAniSpeed;
 
     public Sprite[] TempStampImg;
+    public float StampResetTime;
+    public Ease StampEase;
     enum Texts
     {
         HeartTMP,  //현재 건강 상태
@@ -326,6 +328,7 @@ public class UI_MainBackUI : UI_Scene
 
     public void ShowSchedulePopup()
     {
+        Managers.Sound.Play(Sound.BigBTN);
         Managers.UI_Manager.ShowPopupUI<UI_SchedulePopup>();
         GetButton((int)Buttons.StartScheduleBTN).gameObject.SetActive(true);
         GetButton((int)Buttons.BackBTN).gameObject.SetActive(true);
@@ -334,7 +337,7 @@ public class UI_MainBackUI : UI_Scene
 
     void StartScheduleBTN()
     {
-        Managers.Sound.Play("BigBTN", Sound.Effect);
+        Managers.Sound.Play(Sound.ScheduleBTN);
         StartScheduleAndSetUI();
         Managers.instance.StartSchedule();
         Managers.UI_Manager.ClosePopupUI();
@@ -342,21 +345,19 @@ public class UI_MainBackUI : UI_Scene
     void BackBTN()
     {
         Managers.Sound.Play("SmallBTN", Sound.Effect);
-        if (UI_SchedulePopup.instance.IsShowing3Contents())
-        {
-            UI_SchedulePopup.instance.Show3Contents();
-        }
-        else
+        if (UI_SchedulePopup.instance.IsShowing3ContentsUI())
         {
             Get<Button>((int)Buttons.CreateScheduleBTN).gameObject.SetActive(true);
             GetButton((int)Buttons.StartScheduleBTN).gameObject.SetActive(false);
             GetButton((int)Buttons.BackBTN).gameObject.SetActive(false);
             Managers.UI_Manager.ClosePopupUI();
-
+        }
+        else
+        {
+            UI_SchedulePopup.instance.Show3Contents();
         }
     }
 
-    
 
     public Button GetStartScheduleBTN()
     {
@@ -413,7 +414,8 @@ public class UI_MainBackUI : UI_Scene
                 GetImage((int)Images.StampIMG).sprite = TempStampImg[2];
                 break;
         }
-
+        GetImage((int)Images.StampIMG).transform.localScale = Vector3.one * 10f;
+        GetImage((int)Images.StampIMG).transform.DOScale(1, StampResetTime).SetEase(StampEase);
     }
 
     #endregion

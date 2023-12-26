@@ -16,7 +16,7 @@ public class Define : MonoBehaviour
     {
         Bgm,
         MM,
-        BigBTN, SmallBTN,
+        ScheduleBTN,BigBTN, SmallBTN,
         Effect,
         MaxCount,
     }
