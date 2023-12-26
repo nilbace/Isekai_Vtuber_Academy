@@ -16,6 +16,8 @@ public class UI_MainBackUI : UI_Scene
     public float ScreenAniSpeed;
 
     public Sprite[] TempStampImg;
+    public float StampResetTime;
+    public Ease StampEase;
     enum Texts
     {
         HeartTMP,  //현재 건강 상태
@@ -412,7 +414,8 @@ public class UI_MainBackUI : UI_Scene
                 GetImage((int)Images.StampIMG).sprite = TempStampImg[2];
                 break;
         }
-
+        GetImage((int)Images.StampIMG).transform.localScale = Vector3.one * 10f;
+        GetImage((int)Images.StampIMG).transform.DOScale(1, StampResetTime).SetEase(StampEase);
     }
 
     #endregion
