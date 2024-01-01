@@ -1,17 +1,29 @@
 {
-    "NowWeek": 1,
-    "nowSubCount": 0,
-    "nowGoldAmount": 1000000,
+    "NowWeek": 6,
+    "nowSubCount": 777,
+    "nowGoldAmount": 994933,
     "NowHeart": 100.0,
     "NowStar": 100.0,
     "SixStat": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
+        33.0,
+        5.0,
+        9.0,
+        5.0,
+        9.0,
+        7.0
     ],
-    "DoneEventNames": [],
-    "BoughtItems": []
+    "DoneEventNames": [
+        "포카리 물만두",
+        "스카이 다이빙",
+        "민트초코 먹기",
+        "게임1"
+    ],
+    "BoughtItems": [
+        "해골군주의 손",
+        "세이렌의 보주",
+        "오거의 힘줄",
+        "페어리의 마법가루",
+        "수상한 책",
+        "수상한 부적"
+    ]
 }
