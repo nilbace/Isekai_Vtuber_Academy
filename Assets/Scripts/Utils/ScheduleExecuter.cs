@@ -8,6 +8,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 {
     public float TimeToStamp;
     public float TimeStampToNext;
+
     private void Awake()
     {
         base.Awake();
@@ -21,10 +22,12 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         //스케쥴 실행
         for (int i = 0; i < 7; i++)
         {
-            yield return StartCoroutine(ExecuteOneDayWork(Managers.Data._SevenDayScheduleDatas[i], i));
+            bool isFastMode = UI_MainBackUI.instance.IsFastMode;
+            yield return StartCoroutine(ExecuteOneDayWork(Managers.Data._SevenDayScheduleDatas[i], i, isFastMode));
             
             UI_MainBackUI.instance.UpdateUItexts();
-            yield return new WaitForSeconds(TimeStampToNext);
+            float waitTime = isFastMode ? TimeStampToNext / 2 : TimeStampToNext;
+            yield return new WaitForSeconds(waitTime);
             ChattingManager.Inst.gameObject.SetActive(false);
         }
 
@@ -46,12 +49,28 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
     }
 
-    public IEnumerator ExecuteOneDayWork(OneDayScheduleData oneDay, int DayIndex)
+    public IEnumerator ExecuteOneDayWork(OneDayScheduleData oneDay, int DayIndex, bool isFastMode)
     {
         //초기화
         bool todaySick = false;
         BigSuccess = false;
         UI_MainBackUI.instance.SetStamp(-1);
+        
+        if(isFastMode)
+        {
+            UI_MainBackUI.instance.ScreenAnimator.speed = UI_MainBackUI.instance.ScreenAniSpeed * 2;
+            ChattingManager.Inst.maxChatDelayTime = 0.05f;
+            ChattingManager.Inst.TimeForChatGetBigger = 0.04f;
+            ChattingManager.Inst.ChatBubbleRiseDuration = 0.15f;
+        }
+        else
+        {
+            UI_MainBackUI.instance.ScreenAnimator.speed = UI_MainBackUI.instance.ScreenAniSpeed;
+            ChattingManager.Inst.maxChatDelayTime = 0.1f;
+            ChattingManager.Inst.TimeForChatGetBigger = 0.08f;
+            ChattingManager.Inst.ChatBubbleRiseDuration = 0.3f;
+        }
+
         //휴식 하는게 아니라면 아플 수 있음
         if (oneDay.scheduleType != ScheduleType.Rest && !isSick)
         {
@@ -117,7 +136,8 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             Managers.Data._myPlayerData.ChangeStat(tempstat);
         }
 
-        yield return new WaitForSeconds(TimeToStamp);
+        float waitTime = isFastMode ? TimeToStamp / 2 : TimeToStamp;
+        yield return new WaitForSeconds(waitTime);
 
         //UI하단 씰 붙이기
         if (todaySick || isSick)

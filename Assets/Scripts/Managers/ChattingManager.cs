@@ -12,7 +12,7 @@ public class ChattingManager : MonoSingleton<ChattingManager>
 
     [Header("채팅 사이의 시간")]
     [SerializeField] float minChatDelayTime;
-    [SerializeField] float maxChatDelayTime;
+    public float maxChatDelayTime;
     [Header("채팅 사이 간격")]
     [SerializeField] float SpaceBetweenChats;
 
@@ -137,8 +137,8 @@ public class ChattingManager : MonoSingleton<ChattingManager>
         StartCoroutine(StartGenerateChatting(Message_NameListArray[(int)broadCastType]));
     }
 
-    
 
+    public float ChatBubbleRiseDuration = 0.3f;
 
     //채팅 시작 구현
     IEnumerator StartGenerateChatting(List<string> messagelist)
@@ -164,10 +164,10 @@ public class ChattingManager : MonoSingleton<ChattingManager>
                 {
                     var rectTransform = go.GetComponent<RectTransform>();
                     var targetPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + newYoffset);
-                    rectTransform.DOAnchorPos(targetPosition, 0.3f);
+                    rectTransform.DOAnchorPos(targetPosition, ChatBubbleRiseDuration);
                 }
             }
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(ChatBubbleRiseDuration);
 
             //새 메시지 밑에 생성
             yield return StartCoroutine(MakeRandomChat(index, tempMessage));
@@ -181,7 +181,7 @@ public class ChattingManager : MonoSingleton<ChattingManager>
     }
 
     [Header("채팅이 커지는 시간")]
-    [SerializeField] float TimeForChatGetBigger;
+    public float TimeForChatGetBigger;
 
     [Header("채팅 시작좌표")]
     [SerializeField] float ChatBubbleYPos;

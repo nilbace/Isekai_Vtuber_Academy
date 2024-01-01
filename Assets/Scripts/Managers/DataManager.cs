@@ -313,7 +313,11 @@ public class PlayerData
     {
         NowWeek = 1;
         nowSubCount = 0;
+#if UNITY_EDITOR
+        nowGoldAmount = 1000000;
+#else
         nowGoldAmount = 0;
+#endif
         NowHeart = 100;
         NowStar = 100;
         SixStat = new float[6];

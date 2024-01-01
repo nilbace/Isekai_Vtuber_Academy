@@ -214,7 +214,6 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         float deltaX = Mathf.Abs(eventData.position.x - pressedPosition.x);
         if (deltaX > MouseDragOffset)
         {
-            Debug.Log("¸Ö¾îÁü");
             OverOffset = true;
         }
 

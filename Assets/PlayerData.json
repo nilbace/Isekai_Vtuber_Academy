@@ -1,21 +1,17 @@
 {
-    "NowWeek": 4,
-    "nowSubCount": 646,
-    "nowGoldAmount": 100000000,
-    "NowHeart": 96.0,
-    "NowStar": 57.0,
+    "NowWeek": 1,
+    "nowSubCount": 0,
+    "nowGoldAmount": 1000000,
+    "NowHeart": 100.0,
+    "NowStar": 100.0,
     "SixStat": [
-        21.0,
         0.0,
         0.0,
-        3.0,
+        0.0,
+        0.0,
         0.0,
         0.0
     ],
-    "DoneEventNames": [
-        "팬레터 읽기",
-        "화내는 엘라",
-        "잼민이 맞짱"
-    ],
+    "DoneEventNames": [],
     "BoughtItems": []
 }

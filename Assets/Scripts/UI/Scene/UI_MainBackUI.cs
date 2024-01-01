@@ -14,7 +14,10 @@ public class UI_MainBackUI : UI_Scene
     //메인 화면 애니메이션
     public Animator ScreenAnimator;
     public float ScreenAniSpeed;
+    public bool IsFastMode = false;
+    public Sprite[] SpeedBTNSprite;
 
+    //하단 스템프 애니메이션
     public Sprite[] TempStampImg;
     public float StampResetTime;
     public Ease StampEase;
@@ -44,7 +47,9 @@ public class UI_MainBackUI : UI_Scene
         LuckStatBTN,
         SettingBTN,
         PlayerSB_BTN,
-        StartScheduleBTN, BackBTN
+        StartScheduleBTN, BackBTN,
+        SpeedBTN
+
     }
 
     enum GameObjects
@@ -96,6 +101,8 @@ public class UI_MainBackUI : UI_Scene
         GetButton((int)Buttons.BackBTN).onClick.AddListener(BackBTN);
         GetButton((int)Buttons.StartScheduleBTN).gameObject.SetActive(false);
         GetButton((int)Buttons.BackBTN).gameObject.SetActive(false);
+        SpeedBTNInit();
+        GetButton((int)Buttons.SpeedBTN).onClick.AddListener(SpeedBTN);
 
         for (int i = 0;i<6;i++)
         {
@@ -116,6 +123,47 @@ public class UI_MainBackUI : UI_Scene
         UpdateUItexts();
         Managers.Sound.Play("bgm1", Sound.Bgm);
     }
+
+    #region SpeedBTN
+    void SpeedBTNInit()
+    {
+        if (PlayerPrefs.HasKey("IsFastModeKey"))
+        {
+            IsFastMode = PlayerPrefs.GetInt("IsFastModeKey") == 1;
+        }
+
+        if (!IsFastMode)
+        {
+            GetButton((int)Buttons.SpeedBTN).GetComponent<Image>().sprite = SpeedBTNSprite[0];
+        }
+        else
+        {
+            GetButton((int)Buttons.SpeedBTN).GetComponent<Image>().sprite = SpeedBTNSprite[1];
+        }
+    }
+
+    void SpeedBTN()
+    {
+        IsFastMode = !IsFastMode;
+        SaveIsFastMode();
+        if (!IsFastMode)
+        {
+            GetButton((int)Buttons.SpeedBTN).GetComponent<Image>().sprite = SpeedBTNSprite[0];
+        }
+        else
+        {
+            GetButton((int)Buttons.SpeedBTN).GetComponent<Image>().sprite = SpeedBTNSprite[1];
+        }
+    }
+    void SaveIsFastMode()
+    {
+        // true는 1로, false는 0으로 저장
+        PlayerPrefs.SetInt("IsFastModeKey", IsFastMode ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
+    #endregion
+
 
     void ShowStatPropertyUI(StatName statName)
     {
