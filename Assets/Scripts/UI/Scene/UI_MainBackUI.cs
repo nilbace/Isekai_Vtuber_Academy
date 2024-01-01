@@ -462,7 +462,7 @@ public class UI_MainBackUI : UI_Scene
                 GetImage((int)Images.StampIMG).sprite = TempStampImg[2];
                 break;
         }
-        GetImage((int)Images.StampIMG).transform.localScale = Vector3.one * 10f;
+        GetImage((int)Images.StampIMG).transform.localScale = Vector3.one * 5f;
         GetImage((int)Images.StampIMG).transform.DOScale(1, StampResetTime).SetEase(StampEase);
     }
 
