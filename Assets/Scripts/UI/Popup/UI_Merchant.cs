@@ -68,11 +68,7 @@ public class UI_Merchant : UI_Popup
 
     void Close()
     {
-        Managers.Data._myPlayerData.NowWeek++;
-        UI_MainBackUI.instance.EndScheduleAndSetUI();
-        UI_MainBackUI.instance.UpdateUItexts();
-        Managers.Data.SaveData();
-        Managers.UI_Manager.ClosePopupUI();
+        Managers.instance.ShowReceipt();
     }
 
     public void UpdateTexts()

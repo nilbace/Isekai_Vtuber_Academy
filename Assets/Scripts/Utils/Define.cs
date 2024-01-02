@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -153,6 +154,38 @@ public class Define : MonoBehaviour
             Six_Stats = new float[6];
         }
     }
+
+    public class WeekReceiptData
+    {
+        public int Subs;
+        public int Gold;
+
+        public float[] SixStat;
+
+        public void ResetData()
+        {
+            Subs = 0;
+            for (int i = 0; i < 6; i++)
+            {
+                SixStat[i] = 0;
+            }
+        }
+
+        public void FillDatas()
+        {
+            Subs = Managers.Data._myPlayerData.nowSubCount;
+            Gold = Managers.Data._myPlayerData.nowGoldAmount;
+            for (int i = 0; i < 7; i++)
+            {
+                Gold += Managers.Data._SevenDayScheduleDatas[i].MoneyCost;
+            }
+
+
+            SixStat = new float[Managers.Data._myPlayerData.SixStat.Length];
+            Array.Copy(Managers.Data._myPlayerData.SixStat, SixStat, SixStat.Length);
+        }
+    }
+
 
 
 

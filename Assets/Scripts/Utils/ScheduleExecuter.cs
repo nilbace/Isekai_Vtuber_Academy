@@ -8,6 +8,11 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 {
     public float TimeToStamp;
     public float TimeStampToNext;
+    public WeekReceiptData BeforeScheduleData = new WeekReceiptData();
+    public int BeforeGold = 0;
+
+    //0대성공 1성공 2실패
+    public int[] SuccessTime = new int[3];
 
     private void Awake()
     {
@@ -16,8 +21,14 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
     public IEnumerator StartSchedule()
     {
-        //아프지 않게 건강 상태 초기화
+        //상태 초기화
         isSick = false; SickDayOne = false;
+        BeforeScheduleData.FillDatas();
+        for (int i = 0; i < 3; i++)
+        {
+            SuccessTime[i] = 0;
+        }
+     
 
         //스케쥴 실행
         for (int i = 0; i < 7; i++)
@@ -82,6 +93,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         {
             todaySick = true;
             ExecuteSickDay();
+            SuccessTime[2]++;
         }
         //아프지 않다면 모든 일정에 대해 대성공이 뜰 수 있음
         else
@@ -103,6 +115,11 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             {
                 BigSuccess = true;
                 bonusMultiplier = 1.5f;// 50% 상승을 위한 상수값
+                SuccessTime[0]++;
+            }
+            else
+            {
+                SuccessTime[1]++;
             }
 
             //방송을 진행했다면 돈 구독자 증가
@@ -212,10 +229,6 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         }
     }
 
-
-    /// <summary>
-    /// 아픈 날 진행
-    /// </summary>
     void ExecuteSickDay()
     {
         if (SickDayOne)
@@ -229,19 +242,6 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         int RestHeartStarValue = 10;
         Managers.Data._myPlayerData.NowHeart += RestHeartStarValue;
         Managers.Data._myPlayerData.NowStar += RestHeartStarValue;
-        Debug.Log($"건강 변화량 : ({Mathf.Clamp((RestHeartStarValue) + Managers.Data._myPlayerData.NowHeart, 0, 100) - Managers.Data._myPlayerData.NowHeart}," +
-            $" {Mathf.Clamp((RestHeartStarValue) + Managers.Data._myPlayerData.NowStar, 0, 100) - Managers.Data._myPlayerData.NowStar}), " +
-            $"결과 ( {Mathf.Clamp((RestHeartStarValue) + Managers.Data._myPlayerData.NowHeart, 0, 100)}, " +
-            $"{Mathf.Clamp((RestHeartStarValue) + Managers.Data._myPlayerData.NowStar, 0, 100)})");
-
-        if (caughtCold)
-        {
-            Debug.Log("엘라 감기 걸림");
-        }
-        else
-        {
-            Debug.Log("엘라 우울함");
-        }
     }
 
     bool BigSuccess = false;
@@ -274,7 +274,6 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
         Managers.Data._myPlayerData.nowSubCount += OneDayNewSubs;
         Managers.Data._myPlayerData.nowGoldAmount += OneDayIncome;
-        //Debug.Log($"구독+ : {OneDayNewSubs}" + $" / 골드 + : {OneDayIncome}");
 
         CalculateBonus(oneDay.broadcastType, OneDayNewSubs, OneDayIncome);
     }
@@ -291,7 +290,6 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         return Mathf.CeilToInt(result2);
     }
 
-    //호출부
     public void CalculateBonus(BroadCastType broadCastType, int DaySub, int DayIncome)
     {
         CalculateBonus(GetStatNameByBroadCastType(broadCastType), DaySub, DayIncome);
@@ -304,8 +302,6 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
         Managers.Data._myPlayerData.nowGoldAmount += Mathf.CeilToInt(DayIncome * (tempBonus.IncomeBonus) / 100f);
         Managers.Data._myPlayerData.nowSubCount += Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f);
-
-        //Debug.Log($"특성 구독자 보너스 증가량 : {Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f)} 특성 골드 보너스 : {Mathf.CeilToInt(DayIncome * (tempBonus.IncomeBonus) / 100f)} ");
     }
 
     public float GetSubStatProperty(StatName statName)
