@@ -43,7 +43,7 @@ public class UI_Reciept : UI_Popup
         WeekReceiptData temp = ScheduleExecuter.Inst.BeforeScheduleData;
 
         int sub = Managers.Data._myPlayerData.nowSubCount - temp.Subs;
-        int income = Managers.Data._myPlayerData.nowGoldAmount - PlayerPrefs.GetInt("BeforeGold");
+        int income = Managers.Data._myPlayerData.nowGoldAmount - temp.Gold;
         float[] stats = new float[6];
         for (int i = 0; i < 6; i++)
         {
@@ -75,8 +75,6 @@ public class UI_Reciept : UI_Popup
     void FinishBTN()
     {
         Managers.Data._myPlayerData.NowWeek++;
-        PlayerPrefs.SetInt("BeforeGold", Managers.Data._myPlayerData.nowGoldAmount);
-        PlayerPrefs.Save();
         UI_MainBackUI.instance.UpdateUItexts();
         UI_MainBackUI.instance.EndScheduleAndSetUI();
         Managers.Data.SaveData();
