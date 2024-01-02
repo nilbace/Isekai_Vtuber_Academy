@@ -88,7 +88,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &132624208217058514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +120,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ParentTR: {fileID: 4696267244477151876}
   UISubContent: {fileID: 2381185299945047613, guid: a75effdf7e7a94745a382aab515d4e1b, type: 3}
-  SubContentSelectPhase: 0
   ease: 3
   moveDuration: 0.18
   baseTextColor:
