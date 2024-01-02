@@ -33,6 +33,5 @@ public class UI_Ending : UI_Popup
         Bind<Image>(typeof(Images));
         Bind<TMPro.TMP_Text>(typeof(Texts));
 
-        
     }
 }
