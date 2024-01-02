@@ -323,6 +323,7 @@ public class PlayerData
         SixStat = new float[6];
         DoneEventNames = new List<string>();
         BoughtItems = new List<string>();
+      
     }
 
     public float GetHighestStat()

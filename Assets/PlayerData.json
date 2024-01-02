@@ -1,29 +1,19 @@
 {
-    "NowWeek": 6,
-    "nowSubCount": 777,
-    "nowGoldAmount": 994933,
-    "NowHeart": 100.0,
-    "NowStar": 100.0,
+    "NowWeek": 2,
+    "nowSubCount": 168,
+    "nowGoldAmount": 1000051,
+    "NowHeart": 72.0,
+    "NowStar": 72.0,
     "SixStat": [
-        33.0,
-        5.0,
-        9.0,
-        5.0,
-        9.0,
-        7.0
+        10.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
     ],
     "DoneEventNames": [
-        "포카리 물만두",
-        "스카이 다이빙",
-        "민트초코 먹기",
-        "게임1"
+        "표절논란"
     ],
-    "BoughtItems": [
-        "해골군주의 손",
-        "세이렌의 보주",
-        "오거의 힘줄",
-        "페어리의 마법가루",
-        "수상한 책",
-        "수상한 부적"
-    ]
+    "BoughtItems": []
 }

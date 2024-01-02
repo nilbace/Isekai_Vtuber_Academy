@@ -70,23 +70,15 @@ public class UI_RandomEvent : UI_Popup
     void ChooseBTN1()
     {
         DoOption(true);
-        ProcessData();
+        Managers.instance.ShowReceipt();
     }
 
     void ChooseBTN2()
     {
         DoOption(false);
-        ProcessData();
+        Managers.instance.ShowReceipt();
     }
 
-    void ProcessData()
-    {
-        Managers.Data._myPlayerData.NowWeek++;
-        UI_MainBackUI.instance.UpdateUItexts();
-        UI_MainBackUI.instance.EndScheduleAndSetUI();
-        Managers.Data.SaveData();
-        Managers.UI_Manager.ClosePopupUI();
-    }
 
     void DoOption(bool isOption1)
     {
