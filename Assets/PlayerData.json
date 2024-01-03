@@ -1,17 +1,21 @@
 {
-    "NowWeek": 1,
-    "nowSubCount": 0,
-    "nowGoldAmount": 1000000,
-    "NowHeart": 100.0,
-    "NowStar": 100.0,
+    "NowWeek": 4,
+    "nowSubCount": 601,
+    "nowGoldAmount": 999831,
+    "NowHeart": 36.0,
+    "NowStar": 36.0,
     "SixStat": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
+        15.69999885559082,
+        3.0,
+        3.0,
+        4.0,
         0.0,
         0.0
     ],
-    "DoneEventNames": [],
+    "DoneEventNames": [
+        "밀웜 먹방",
+        "TS 코스프레",
+        "고삼차 먹방"
+    ],
     "BoughtItems": []
 }
