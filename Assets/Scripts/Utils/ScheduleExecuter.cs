@@ -6,6 +6,7 @@ using static Define;
 
 public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 {
+    public bool isDev;
     public float TimeToStamp;
     public float TimeStampToNext;
     public WeekReceiptData BeforeScheduleData = new WeekReceiptData();
@@ -154,6 +155,8 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         }
 
         float waitTime = isFastMode ? TimeToStamp / 2 : TimeToStamp;
+
+        if (isDev) waitTime = 0;
         yield return new WaitForSeconds(waitTime);
 
         //UI하단 씰 붙이기

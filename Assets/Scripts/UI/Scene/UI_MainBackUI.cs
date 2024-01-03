@@ -48,7 +48,8 @@ public class UI_MainBackUI : UI_Scene
         SettingBTN,
         PlayerSB_BTN,
         StartScheduleBTN, BackBTN,
-        SpeedBTN
+        SpeedBTN,
+        ArchiveBTN
 
     }
 
@@ -99,6 +100,7 @@ public class UI_MainBackUI : UI_Scene
         GetButton((int)Buttons.LuckStatBTN).onClick.AddListener(() => ShowStatPropertyUI(StatName.Luck));
         GetButton((int)Buttons.StartScheduleBTN).onClick.AddListener(StartScheduleBTN);
         GetButton((int)Buttons.BackBTN).onClick.AddListener(BackBTN);
+        GetButton((int)Buttons.ArchiveBTN).onClick.AddListener(ArchiveBTN);
         GetButton((int)Buttons.StartScheduleBTN).gameObject.SetActive(false);
         GetButton((int)Buttons.BackBTN).gameObject.SetActive(false);
         SpeedBTNInit();
@@ -122,6 +124,12 @@ public class UI_MainBackUI : UI_Scene
         SetStamp(-1);
         UpdateUItexts();
         Managers.Sound.Play("bgm1", Sound.Bgm);
+    }
+
+    void ArchiveBTN()
+    {
+        Managers.Sound.Play(Define.Sound.SmallBTN);
+        Managers.UI_Manager.ShowPopupUI<UI_Archive>();
     }
 
     #region SpeedBTN

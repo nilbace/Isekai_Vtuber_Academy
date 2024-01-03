@@ -386,6 +386,23 @@ public class PlayerData
         if (NowWeek == 5 || NowWeek == 10 || NowWeek == 15) return true;
         return false;
     }
+
+    public void ResetData()
+    {
+        NowWeek = 1;
+        nowSubCount = 0;
+#if UNITY_EDITOR
+        nowGoldAmount = 1000000;
+#else
+        nowGoldAmount = 0;
+#endif
+        NowHeart = 100;
+        NowStar = 100;
+        SixStat = new float[6];
+        DoneEventNames = new List<string>();
+        BoughtItems = new List<string>();
+    }
+
 }
 
 

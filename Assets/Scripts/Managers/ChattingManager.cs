@@ -10,11 +10,21 @@ public class ChattingManager : MonoSingleton<ChattingManager>
 
     List<string>[] Message_NameListArray = new List<string>[(int)BroadCastType.MaxCount_Name + 1];
 
+    public float ChatBubbleRiseDuration = 0.3f;
     [Header("채팅 사이의 시간")]
     [SerializeField] float minChatDelayTime;
     public float maxChatDelayTime;
     [Header("채팅 사이 간격")]
     [SerializeField] float SpaceBetweenChats;
+
+    
+
+    [Header("채팅이 커지는 시간")]
+    public float TimeForChatGetBigger;
+
+    [Header("채팅 시작좌표")]
+    [SerializeField] float ChatBubbleYPos;
+    [SerializeField] float ChatBubbleXPos;
 
     private void Awake()
     {
@@ -138,16 +148,15 @@ public class ChattingManager : MonoSingleton<ChattingManager>
     }
 
 
-    public float ChatBubbleRiseDuration = 0.3f;
+    
 
-    //채팅 시작 구현
     IEnumerator StartGenerateChatting(List<string> messagelist)
     {
         int index = 0;
 
         while (true)
         {
-            //새 창 정보 세팅(사이즈 조절용)
+            //투명 창 정보 세팅(사이즈 조절용)
             string tempMessage = GetRandomStringFromList(messagelist);
             ClearChatGO.GetComponent<TMPro.TMP_Text>().text = tempMessage;
             yield return new WaitForEndOfFrame();
@@ -180,20 +189,8 @@ public class ChattingManager : MonoSingleton<ChattingManager>
         }
     }
 
-    [Header("채팅이 커지는 시간")]
-    public float TimeForChatGetBigger;
+    
 
-    [Header("채팅 시작좌표")]
-    [SerializeField] float ChatBubbleYPos;
-    [SerializeField] float ChatBubbleXPos;
-
-    /// <summary>
-    /// 랜덤 채팅 만들기
-    /// </summary>
-    /// <param name="index"></param>
-    /// <param name="message"></param>
-    /// <returns></returns>
-    /// 
     IEnumerator MakeRandomChat(int index, string message)
     {
         Vector3 targetScale = Vector3.one * _chatScale;
