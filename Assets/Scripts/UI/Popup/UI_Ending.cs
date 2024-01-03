@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UI_Ending : UI_Popup
 {
+    public float MoveTime;
+    public float TargetY;
+    public float ElasticScale;
+    public float PeriodScale;
+
     enum Buttons
     {
         NextBTN,
@@ -33,5 +39,6 @@ public class UI_Ending : UI_Popup
         Bind<Image>(typeof(Images));
         Bind<TMPro.TMP_Text>(typeof(Texts));
 
+        transform.DOLocalMoveY(TargetY, MoveTime).SetEase(Ease.OutElastic, ElasticScale, PeriodScale);
     }
 }
