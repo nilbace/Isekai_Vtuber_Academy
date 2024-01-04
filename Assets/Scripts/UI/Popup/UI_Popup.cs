@@ -13,4 +13,10 @@ public class UI_Popup : UI_Base
     {
         Managers.UI_Manager.ClosePopupUI(this);
     }
+
+    public void CloseBTN()
+    {
+        Managers.Sound.Play(Define.Sound.SmallBTN);
+        Managers.UI_Manager.ClosePopupUI();
+    }
 }

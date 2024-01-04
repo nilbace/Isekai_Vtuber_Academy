@@ -7,6 +7,10 @@ using static Define;
 
 public class UI_StatProperty : UI_Popup
 {
+    public float Tier0Poz;
+    public float Tier1to10Poz;
+    public float StatInfoPoz;
+
     public static UI_StatProperty instance;
     enum Buttons
     {
@@ -65,7 +69,7 @@ public class UI_StatProperty : UI_Popup
 
 
         //위치 조절
-        GetGameObject((int)GameObjects.StatInfo_SelectBox).transform.localPosition += new Vector3(0, -14 * SelectedStatTier, 0);
+        GetGameObject((int)GameObjects.StatInfo_SelectBox).transform.localPosition += new Vector3(0, StatInfoPoz * SelectedStatTier, 0);
         //내부 글자 조절
         GetText((int)Texts.BigStatValueTMP).text = (SelectedStatTier * 20).ToString();
         if (stat == StatName.Game || stat == StatName.Song || stat == StatName.Draw)
@@ -90,12 +94,12 @@ public class UI_StatProperty : UI_Popup
         if (SelectedStatTier != 0)
         {
             GetGameObject((int)GameObjects.StatInfo_SelectBox).SetActive(true);
-            GetGameObject((int)GameObjects.TextGroup).transform.localPosition = new Vector3(-49.5f, -117.3f, 0);
+            GetGameObject((int)GameObjects.TextGroup).transform.localPosition = new Vector3(-46, Tier1to10Poz, 0);
         }
         else
         {
             GetGameObject((int)GameObjects.StatInfo_SelectBox).SetActive(false);
-            GetGameObject((int)GameObjects.TextGroup).transform.localPosition = new Vector3(-46f, -121.4f, 0);
+            GetGameObject((int)GameObjects.TextGroup).transform.localPosition = new Vector3(-46, Tier0Poz, 0);
         }
     }
 

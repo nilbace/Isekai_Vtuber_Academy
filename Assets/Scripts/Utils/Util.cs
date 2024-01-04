@@ -70,6 +70,25 @@ public class Util{
             result = won.ToString() + "만 " + rest.ToString();
         }
 
-        return result;
+        return result + "원";
+    }
+
+    public static string FormatSubs(int amount)
+    {
+        // 만 단위로 나누기
+        int won = amount / 10000;
+
+        // 만 단위 이하의 금액
+        int rest = amount % 10000;
+
+        // 결과 문자열 생성
+        string result = rest.ToString();
+
+        if (won > 0)
+        {
+            result = won.ToString() + "만 " + rest.ToString() ;
+        }
+
+        return result + "명";
     }
 }

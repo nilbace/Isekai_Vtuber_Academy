@@ -241,7 +241,7 @@ public class UI_MainBackUI : UI_Scene
             case Texts.MyMoneyTMP:
                 return Util.FormatMoney(Managers.Data._myPlayerData.nowGoldAmount);
             case Texts.MySubsTMP:
-                return Util.FormatMoney(Managers.Data._myPlayerData.nowSubCount);
+                return Util.FormatSubs(Managers.Data._myPlayerData.nowSubCount);
             case Texts.NowWeekTMP:
                 return "방송 " +Managers.Data._myPlayerData.NowWeek.ToString()+"주차";
             default:

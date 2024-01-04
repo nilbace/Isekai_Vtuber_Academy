@@ -1,22 +1,23 @@
 {
-    "NowWeek": 5,
-    "nowSubCount": 742,
-    "nowGoldAmount": 1000027,
-    "NowHeart": 64.0,
-    "NowStar": 64.0,
+    "NowWeek": 7,
+    "nowSubCount": 1927,
+    "nowGoldAmount": 10138,
+    "NowHeart": 88.0,
+    "NowStar": 67.0,
     "SixStat": [
-        18.69999885559082,
-        3.0,
-        3.0,
-        4.0,
+        45.95000076293945,
+        2.0,
         0.0,
-        0.0
+        22.0,
+        18.0,
+        51.0
     ],
     "DoneEventNames": [
+        "팬레터 읽기",
+        "자르반 84세와 만남",
         "밀웜 먹방",
-        "TS 코스프레",
-        "고삼차 먹방",
-        ""
+        "",
+        "고삼차 먹방"
     ],
     "BoughtItems": []
 }
