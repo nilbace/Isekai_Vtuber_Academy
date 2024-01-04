@@ -31,18 +31,13 @@ public class UI_Archive : UI_Popup
     void EltubeBTN()
     {
         Managers.Sound.Play(Define.Sound.SmallBTN);
-        //Managers.UI_Manager.ShowPopupUI<>;
+        Managers.UI_Manager.ShowPopupUI<UI_Eltube>();
     }
 
     void InstaBTN()
     {
         Managers.Sound.Play(Define.Sound.SmallBTN);
-        //Managers.UI_Manager.ShowPopupUI<>;
+        Managers.UI_Manager.ShowPopupUI<UI_Insta>();
     }
 
-    void CloseBTN()
-    {
-        Managers.Sound.Play(Define.Sound.SmallBTN);
-        Managers.UI_Manager.ClosePopupUI();
-    }
 }
