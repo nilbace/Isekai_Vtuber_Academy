@@ -186,7 +186,13 @@ public class Define : MonoBehaviour
         }
     }
 
-
+    [System.Serializable]
+    public struct Dialogue
+    {
+        public string name; // 캐릭터 이름
+        public string sentence; // 대사
+        public bool isLeft;
+    }
 
 
 }
