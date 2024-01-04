@@ -1,16 +1,16 @@
 {
-    "NowWeek": 10,
-    "nowSubCount": 9168,
-    "nowGoldAmount": 26330,
-    "NowHeart": 100.0,
-    "NowStar": 68.0,
+    "NowWeek": 16,
+    "nowSubCount": 229570,
+    "nowGoldAmount": 572915,
+    "NowHeart": 110.0,
+    "NowStar": 59.0,
     "SixStat": [
         200.0,
         25.0,
-        0.0,
+        3.0,
         200.0,
-        69.0,
-        155.0
+        70.0,
+        159.0
     ],
     "DoneEventNames": [
         "팬레터 읽기",
@@ -20,7 +20,11 @@
         "고삼차 먹방",
         "합체로봇사줘",
         "",
-        "현실부정"
+        "현실부정",
+        "도수치료 직캠",
+        "",
+        "몰루2",
+        "실버 버튼 언박싱"
     ],
     "BoughtItems": []
 }
