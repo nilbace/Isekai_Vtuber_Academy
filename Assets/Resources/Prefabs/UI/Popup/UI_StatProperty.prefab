@@ -2120,9 +2120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8475f320e711ff344848dd2ffb98bf73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tier0Poz: -116.2
-  Tier1to10Poz: -217.2
-  StatInfoPoz: -14.17
+  Tier0Poz: -121
+  Tier1to10Poz: -126
+  StatInfoPoz: -19.5
 --- !u!1 &5670539760089914895
 GameObject:
   m_ObjectHideFlags: 0
