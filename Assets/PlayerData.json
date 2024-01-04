@@ -1,15 +1,15 @@
 {
-    "NowWeek": 7,
-    "nowSubCount": 1927,
-    "nowGoldAmount": 10138,
-    "NowHeart": 88.0,
-    "NowStar": 67.0,
+    "NowWeek": 10,
+    "nowSubCount": 9168,
+    "nowGoldAmount": 26330,
+    "NowHeart": 100.0,
+    "NowStar": 68.0,
     "SixStat": [
-        196,
-        22.0,
+        200.0,
+        25.0,
         0.0,
         200.0,
-        66.0,
+        69.0,
         155.0
     ],
     "DoneEventNames": [
@@ -17,7 +17,10 @@
         "자르반 84세와 만남",
         "밀웜 먹방",
         "",
-        "고삼차 먹방"
+        "고삼차 먹방",
+        "합체로봇사줘",
+        "",
+        "현실부정"
     ],
     "BoughtItems": []
 }
