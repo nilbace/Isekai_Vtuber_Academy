@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Define : MonoBehaviour
+public class Define
 {
     public enum Scene
     {
@@ -186,6 +186,9 @@ public class Define : MonoBehaviour
         }
     }
 
+    public static Color alpha0 = new Color(1, 1, 1, 0);
+    public static Color alpha1 = new Color(1, 1, 1, 1);
+
     public enum MMState { usual, OnSchedule }
 
     [System.Serializable]
@@ -196,5 +199,10 @@ public class Define : MonoBehaviour
         public bool isLeft;
     }
 
+    public static string GetIconString(StatName stat)
+    {
+        string temp = $"  <sprite={(int)stat}>";
+        return temp;
+    }
 
 }

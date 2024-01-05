@@ -372,7 +372,8 @@ public class UI_SchedulePopup : UI_Popup
 
     private void OnDisable()
     {
-        MM.Inst.SetState(MMState.usual);
+        if(MM.Inst != null)
+            MM.Inst.SetState(MMState.usual);
     }
 
     public bool IsShowing3ContentsUI()

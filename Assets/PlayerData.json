@@ -1,17 +1,19 @@
 {
-    "NowWeek": 1,
-    "nowSubCount": 0,
-    "nowGoldAmount": 1000000,
+    "NowWeek": 2,
+    "nowSubCount": 96,
+    "nowGoldAmount": 988030,
     "NowHeart": 100.0,
-    "NowStar": 100.0,
+    "NowStar": 91.0,
     "SixStat": [
-        20.0,
+        23.0,
         40.0,
-        60.0,
+        62.0,
         80.0,
         0.0,
         0.0
     ],
-    "DoneEventNames": [],
+    "DoneEventNames": [
+        "진수성찬 먹방"
+    ],
     "BoughtItems": []
 }

@@ -25,10 +25,6 @@ public class DataManager
 
     void LoadData()
     {
-        //_myPlayerData = new PlayerData();
-
-        //기존 코드
-
         string path;
         if (Application.platform == RuntimePlatform.Android)
         {

@@ -12,6 +12,8 @@ public class UI_StatProperty : UI_Popup
     public float StatInfoInitalPoz;
     public float StatInfoInterval;
 
+    
+
     public static UI_StatProperty instance;
     enum Buttons
     {
@@ -30,7 +32,7 @@ public class UI_StatProperty : UI_Popup
 
     enum Images
     {
-        StatIcon, Stat_Cover
+        UpperStatIcon, Stat_Cover, LowerStatIcon
     }
 
 
@@ -57,14 +59,13 @@ public class UI_StatProperty : UI_Popup
     public void Setting(StatName stat)
     {
         GetGameObject((int)GameObjects.StatInfo_SelectBox).transform.localPosition = new Vector3(0, StatInfoInitalPoz, 0);
-        GetText((int)Texts.StatInfoTMP).text = stat.ToString();
 
         float nowStatValue = Managers.Data._myPlayerData.SixStat[(int)stat];
         int SelectedStatTier = GetStatTier_div_20(nowStatValue);
         Bonus nowBonus = Managers.Data.GetMainProperty(stat);
 
         //¾ÆÀÌÄÜ ¼¼ÆÃ
-        GetImage((int)Images.StatIcon).sprite = Resources.Load<Sprite>($"Icon/{stat}");
+        GetImage((int)Images.UpperStatIcon).sprite = Resources.Load<Sprite>($"Icon/{stat}");
         GetText((int)Texts.StatValueTMP).text = Managers.Data._myPlayerData.SixStat[(int)stat].ToString("F0");
         GetImage((int)Images.Stat_Cover).transform.localScale = new Vector3(1 - (float)Managers.Data._myPlayerData.SixStat[(int)stat] / 200f, 1, 1);
 
@@ -74,8 +75,15 @@ public class UI_StatProperty : UI_Popup
         //³»ºÎ ±ÛÀÚ Á¶Àý
         GetText((int)Texts.BigStatValueTMP).text = (SelectedStatTier * 20).ToString();
         if (stat == StatName.Game || stat == StatName.Song || stat == StatName.Draw)
+        {
             GetText((int)Texts.StatInfoTMP).text = $"±¸µ¶ÀÚ ¼ö + {nowBonus.SubBonus}%, µ· È¹µæ·® +{nowBonus.IncomeBonus}%";
-
+            //GetImage((int)Images.LowerStatIcon).color = alpha0;
+        }
+        else if(stat == StatName.Strength || stat == StatName.Mental)
+        {
+            GetText((int)Texts.StatInfoTMP).text = $"°¨¼Ò·® -{SelectedStatTier * 10}%";
+            //GetImage((int)Images.LowerStatIcon).color = alpha1;
+        }
 
         int tempTier = 1;
         int indexofEmptyText = IndexofEmptyPlace(SelectedStatTier);
@@ -88,7 +96,7 @@ public class UI_StatProperty : UI_Popup
                 StatInfoTexts[i].rectTransform.sizeDelta = new Vector2(200, 10);
                 continue;
             }
-            StatInfoTexts[i].text = GetMainStatText(tempTier);
+            StatInfoTexts[i].text = GetMainStatText(tempTier, stat);
             tempTier++;
         }
 
@@ -111,12 +119,18 @@ public class UI_StatProperty : UI_Popup
         return (int)(Math.Floor(Value / 20));
     }
 
-    string GetMainStatText(int tier)
+    string GetMainStatText(int tier, StatName stat)
     {
         int nowgrade = tier * 20;
         Bonus temp2 = Managers.Data.GetMainProperty(tier * 20);
 
-        string temp = $"{nowgrade} : ±¸µ¶ÀÚ ¼ö + {temp2.SubBonus}%, µ· È¹µæ·® +{temp2.IncomeBonus}%";
+        string temp = "";
+        if (stat == StatName.Game || stat == StatName.Song || stat == StatName.Draw)
+            temp = $"{nowgrade} : ±¸µ¶ÀÚ ¼ö + {temp2.SubBonus}%, µ· È¹µæ·® +{temp2.IncomeBonus}%";
+        else if (stat == StatName.Strength || stat == StatName.Mental)
+            temp = $"{nowgrade} : {GetIconString(StatName.Strength)} °¨¼Ò·® -{tier*10}%";
+        else
+            temp = $"{nowgrade} : ´ë¼º°ø È®·ü{tier * 10}%";
 
         return temp;
     }
