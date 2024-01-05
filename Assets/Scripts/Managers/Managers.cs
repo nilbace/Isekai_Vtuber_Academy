@@ -89,6 +89,8 @@ public class Managers : MonoBehaviour
         Debug.Log("시작 가능");
     }
 
+
+    #region UI
     public void ShowReceipt()
     {
         StartCoroutine(ShowReceiptCor());
@@ -104,4 +106,18 @@ public class Managers : MonoBehaviour
     {
         StartCoroutine(ScheduleExecuter.Inst.StartSchedule());
     }
+
+    public void ShowDefualtPopUP(string Text)
+    {
+        StartCoroutine(ShowDefaultPopupCor(Text));
+    }
+
+    IEnumerator ShowDefaultPopupCor(string Text)
+    {
+        UI_Manager.ShowPopupUI<UI_DefaultPopup>();
+        yield return new WaitForEndOfFrame();
+        UI_DefaultPopup.instance.SetText(Text);
+    }
+
+    #endregion
 }

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,27 +7,52 @@ using static Define;
 
 public class UI_Communication : UI_Popup
 {
+    public static UI_Communication instance;
+
     public Sprite[] BubbleIMGs;
     public Sprite[] CharIMGs;
     TMPro.TMP_Text dialogueText;
-    public Dialogue[] dialogues;
+    public List<Dialogue> dialogues;
     private bool isTyping = false;
     private Coroutine typingCoroutine;
     public float TypingDelay;
     private WaitForSeconds typingDelay;
     private int currentDialogueIndex = 0;
-    
-    enum Texts { sentenceTMP }
+
+    public float TargetX;
+    public float MoveTime;
+    public float PeriodScale;
+
+    bool isEnd;
+
+    enum Texts { sentenceTMP, Option1TMP, Option2TMP }
     enum Images 
     { LeftIMG, RightIMG,
-        ChatBubbleIMG }
+        ChatBubbleIMG
+    }
 
+    enum Buttons
+    {
+        Option1BTN,
+        Option2BTN
+    }
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         Init();
         typingDelay = new WaitForSeconds(TypingDelay);
-        ShowDialogue(dialogues[currentDialogueIndex]);
 
+    }
+
+    public void StartDiagloue(List<Dialogue> DiaList)
+    {
+        dialogues = DiaList;
+        ShowDialogue(dialogues[0]);
     }
 
     public override void Init()
@@ -34,6 +60,7 @@ public class UI_Communication : UI_Popup
         base.Init();
         Bind<TMPro.TMP_Text>(typeof(Texts));
         Bind<Image>(typeof(Images));
+        Bind<Button>(typeof(Buttons));
 
         GetImage((int)Images.LeftIMG).gameObject.SetActive(false);
         GetImage((int)Images.RightIMG).gameObject.SetActive(false);
@@ -69,24 +96,33 @@ public class UI_Communication : UI_Popup
 
     void NextDialogue()
     {
-        // 다음 대사 인덱스로 이동
-        currentDialogueIndex++;
-
-        // 대사가 모두 끝났을 경우 대화 종료
-        if (currentDialogueIndex >= dialogues.Length)
+        if(!isEnd)
         {
-            EndDialogue();
-            return;
-        }
+            // 다음 대사 인덱스로 이동
+            currentDialogueIndex++;
 
-        // 다음 대사 출력
-        ShowDialogue(dialogues[currentDialogueIndex]);
+            // 대사가 모두 끝났을 경우 대화 종료
+            if (currentDialogueIndex >= dialogues.Count)
+            {
+                EndDialogue();
+                return;
+            }
+
+            //버튼이면 버튼 출력
+            if (dialogues[currentDialogueIndex].name == "1")
+            {
+                ShowOptionBTN();
+                return;
+            }
+
+            // 다음 대사 출력
+            ShowDialogue(dialogues[currentDialogueIndex]);
+        }
     }
 
     void EndDialogue()
     {
-        Debug.Log("HI");
-        Managers.UI_Manager.CloseALlPopupUI();
+        Debug.Log("End");
     }
 
     IEnumerator TypeSentence(Dialogue dialogue)
@@ -162,5 +198,28 @@ public class UI_Communication : UI_Popup
             GetImage((int)Images.LeftIMG).color = Color.gray;
             GetImage((int)Images.RightIMG).color = Color.white;
         }
+    }
+
+    void ShowOptionBTN()
+    {
+        isEnd = true;
+        GetButton((int)Buttons.Option1BTN).transform.DOLocalMoveX(TargetX, MoveTime).SetEase(Ease.OutElastic, 0, PeriodScale);
+        GetButton((int)Buttons.Option2BTN).transform.DOLocalMoveX(TargetX, MoveTime).SetEase(Ease.OutElastic, 0, PeriodScale);
+        GetText((int)Texts.Option1TMP).text = dialogues[currentDialogueIndex].sentence;
+        GetText((int)Texts.Option2TMP).text = dialogues[currentDialogueIndex + 1].sentence;
+
+
+        void ShowOption1()
+        {
+            Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 2].sentence);
+        }
+
+        void ShowOption2()
+        {
+            Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 3].sentence);
+        }
+
+        GetButton((int)Buttons.Option1BTN).onClick.AddListener(ShowOption1);
+        GetButton((int)Buttons.Option2BTN).onClick.AddListener(ShowOption2);
     }
 }

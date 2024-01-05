@@ -36,7 +36,7 @@ public class Define
     }
 
     public enum StatName {
-        Game, Song, Draw, Strength, Mental, Luck, FALSE, Subs, Week
+        Game, Song, Draw, Strength, Mental, Luck, FALSE, Subs, Week, Karma
     }
 
     public enum StatNameKor { 
@@ -126,6 +126,8 @@ public class Define
         Sunday,
     }
 
+    public enum MainStory { Game1, Game2, Game3, Game4, Song1, Song2, Song3, Song4, Draw1, Draw2, Draw3, Draw4}
+
     public enum ScheduleType
     {
         Null, BroadCast, Rest, GoOut
@@ -203,11 +205,37 @@ public class Define
     public enum MMState { usual, OnSchedule }
 
     [System.Serializable]
-    public struct Dialogue
+    public class Dialogue
     {
-        public string name; // 캐릭터 이름
-        public string sentence; // 대사
+        public string name;
+        public string sentence;
         public bool isLeft;
+        public bool isButton;
+        public int CostGold;
+        public List<RewardStat> rewardStats;
+
+        public Dialogue(string name = "", string sentence = "", bool isLeft = false, bool isButton = false, int costGold = 0)
+        {
+            this.name = name;
+            this.sentence = sentence;
+            this.isLeft = isLeft;
+            this.isButton = isButton;
+            this.CostGold = costGold;
+            this.rewardStats = new List<RewardStat>();
+        }
+    }
+
+    [System.Serializable]
+    public struct RewardStat
+    {
+        public StatName StatName { get; set; }
+        public int Value { get; set; }
+
+        public RewardStat(StatName name = StatName.FALSE, int Value = 0)
+        {
+            this.StatName = name;
+            this.Value = 0;
+        }
     }
 
     public static string GetIconString(StatName stat)
@@ -223,4 +251,112 @@ public class Define
         return temp;
     }
 
+    [System.Serializable]
+    public class PlayerData
+    {
+        public int NowWeek;
+        public int nowSubCount;
+        public int nowGoldAmount;
+        public int RubiaKarma;
+        public float NowHeart;
+        public float NowStar;
+        public float[] SixStat;
+        public List<string> DoneEventNames;
+        public List<string> BoughtItems;
+
+        public PlayerData()
+        {
+            NowWeek = 1;
+            nowSubCount = 0;
+#if UNITY_EDITOR
+            nowGoldAmount = 1000000;
+#else
+        nowGoldAmount = 0;
+#endif
+            NowHeart = 100;
+            NowStar = 100;
+            SixStat = new float[6];
+            DoneEventNames = new List<string>();
+            BoughtItems = new List<string>();
+
+        }
+
+        public float GetHighestStat()
+        {
+            float temp = 0;
+            for (int i = 0; i < 6; i++)
+            {
+                if (temp < SixStat[i])
+                {
+                    temp = SixStat[i];
+                }
+            }
+            return temp;
+        }
+
+        public void ChangeHeart(float value)
+        {
+            NowHeart += value;
+            NowHeart = Mathf.Clamp(NowHeart, 0, 100);
+        }
+
+
+        public void ChangeStar(float value)
+        {
+            NowStar += value;
+            NowStar = Mathf.Clamp(NowStar, 0, 100);
+        }
+
+        public Define.StatName GetHigestStatName()
+        {
+            Define.StatName temp = Define.StatName.Game;
+            float temp2 = 0;
+
+            for (int i = 0; i < 6; i++)
+            {
+                if (temp2 < SixStat[i])
+                {
+                    temp2 = SixStat[i];
+                    temp = (Define.StatName)i;
+                }
+            }
+            return temp;
+        }
+
+        public void ChangeStat(float[] stats)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                SixStat[i] += stats[i];
+                SixStat[i] = Mathf.Clamp(SixStat[i], 0, 200);
+                if (stats[i] != 0)
+                {
+                    UI_MainBackUI.instance.GlitterStat(i);
+                }
+            }
+        }
+
+        public bool MerchantAppearanceWeek()
+        {
+            if (NowWeek == 5 || NowWeek == 10 || NowWeek == 15) return true;
+            return false;
+        }
+
+        public void ResetData()
+        {
+            NowWeek = 1;
+            nowSubCount = 0;
+#if UNITY_EDITOR
+            nowGoldAmount = 1000000;
+#else
+        nowGoldAmount = 0;
+#endif
+            NowHeart = 100;
+            NowStar = 100;
+            SixStat = new float[6];
+            DoneEventNames = new List<string>();
+            BoughtItems = new List<string>();
+        }
+
+    }
 }
