@@ -39,6 +39,17 @@ public class Define
         Game, Song, Draw, Strength, Mental, Luck, FALSE, Subs, Week
     }
 
+    public enum StatNameKor { 
+        게임, 노래, 그림, 근력, 멘탈, 행운
+    }
+
+    public static string GetStatKorName(StatName statName)
+    {
+        string temp = "";
+        temp += ((StatNameKor)((int)statName)).ToString();
+        return temp;
+    }
+
     public enum EventDataType {
         Main, Random, Conditioned
     }
@@ -200,6 +211,13 @@ public class Define
     }
 
     public static string GetIconString(StatName stat)
+    {
+        string temp = $"  <sprite={(int)stat}>";
+        return temp;
+    }
+
+    public enum StatIcons { Game, Song, Draw, Strength, Mental, Luck, Sub, Gold, BigSuccess, Success, Fail, Heart, Star, Ruby }
+    public static string GetIconString(StatIcons stat)
     {
         string temp = $"  <sprite={(int)stat}>";
         return temp;

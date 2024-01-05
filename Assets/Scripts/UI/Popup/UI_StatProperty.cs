@@ -21,7 +21,7 @@ public class UI_StatProperty : UI_Popup
     }
     enum Texts
     {
-        BigStatValueTMP, StatInfoTMP, StatValueTMP
+        BigStatValueTMP, StatInfoTMP, StatValueTMP, StatNameTMP, ExtraInfoTMP
     }
 
     enum GameObjects
@@ -32,7 +32,7 @@ public class UI_StatProperty : UI_Popup
 
     enum Images
     {
-        UpperStatIcon, Stat_Cover, LowerStatIcon
+        UpperStatIcon, Stat_Cover
     }
 
 
@@ -76,14 +76,25 @@ public class UI_StatProperty : UI_Popup
         GetText((int)Texts.BigStatValueTMP).text = (SelectedStatTier * 20).ToString();
         if (stat == StatName.Game || stat == StatName.Song || stat == StatName.Draw)
         {
-            GetText((int)Texts.StatInfoTMP).text = $"구독자 수 + {nowBonus.SubBonus}%, 돈 획득량 +{nowBonus.IncomeBonus}%";
-            //GetImage((int)Images.LowerStatIcon).color = alpha0;
+            GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.Sub)} + {nowBonus.SubBonus}%, {GetIconString(StatIcons.Gold)} +{nowBonus.IncomeBonus}%";
+            GetText((int)Texts.StatNameTMP).text = GetStatKorName(stat) + " 실력";
         }
-        else if(stat == StatName.Strength || stat == StatName.Mental)
+        else if(stat == StatName.Strength)
         {
-            GetText((int)Texts.StatInfoTMP).text = $"감소량 -{SelectedStatTier * 10}%";
-            //GetImage((int)Images.LowerStatIcon).color = alpha1;
+            GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.Heart)} 감소량 -{SelectedStatTier * 10}%";
+            GetText((int)Texts.StatNameTMP).text = GetStatKorName(stat);
         }
+        else if(stat == StatName.Mental)
+        {
+            GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.Star)} 감소량 -{SelectedStatTier * 10}%";
+            GetText((int)Texts.StatNameTMP).text = GetStatKorName(stat);
+        }
+        else
+        {
+            GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.BigSuccess)}대성공 확률 {SelectedStatTier * 10}%";
+            GetText((int)Texts.StatNameTMP).text = GetStatKorName(stat);
+        }
+        GetText((int)Texts.ExtraInfoTMP).text = SetExtraInfoTMP(stat);
 
         int tempTier = 1;
         int indexofEmptyText = IndexofEmptyPlace(SelectedStatTier);
@@ -96,7 +107,7 @@ public class UI_StatProperty : UI_Popup
                 StatInfoTexts[i].rectTransform.sizeDelta = new Vector2(200, 10);
                 continue;
             }
-            StatInfoTexts[i].text = GetMainStatText(tempTier, stat);
+            StatInfoTexts[i].text = GetStatText(tempTier, stat);
             tempTier++;
         }
 
@@ -110,27 +121,58 @@ public class UI_StatProperty : UI_Popup
             GetGameObject((int)GameObjects.StatInfo_SelectBox).SetActive(false);
             GetGameObject((int)GameObjects.TextGroup).transform.localPosition = new Vector3(-46, Tier0Poz, 0);
         }
+
+        
     }
 
- 
+    string SetExtraInfoTMP(StatName stat)
+    {
+        string temp = "";
+        switch (stat)
+        {
+            case StatName.Game:
+                temp = "힐링 게임, 대전 게임, 공포 게임, 켠김에 왕까지 방송 진행시 아래에 표기된 보너스 수치를 획득합니다.";
+                break;
+            case StatName.Song:
+                temp = "노래 부르기, 악기 연주, 작곡 방송 진행시 아래에 표기된 보너스 수치를 획득합니다.";
+                break;
+            case StatName.Draw:
+                temp = "낙서 방송, 커미션 방송 진행시 아래에 표기된 보너스 수치를 획득합니다.";
+                break;
+            case StatName.Strength:
+                temp = "일정 진행시 아래에 표기된 수치만큼 <sprite=11>의 소모량이 감소합니다.";
+                break;
+            case StatName.Mental:
+                temp = "일정 진행시 아래에 표기된 수치만큼 <sprite=12>의 소모량이 감소합니다.";
+                break;
+            case StatName.Luck:
+                temp = "일정 진행시 아래에 표기된 수치의 확률로 대성공합니다. 대성공시 얻는 모든 수치가 50% 추가됩니다.";
+                break;
+        }
+
+        return temp;
+    }
+
 
     int GetStatTier_div_20(float Value)
     {
         return (int)(Math.Floor(Value / 20));
     }
 
-    string GetMainStatText(int tier, StatName stat)
+    string GetStatText(int tier, StatName stat)
     {
         int nowgrade = tier * 20;
         Bonus temp2 = Managers.Data.GetMainProperty(tier * 20);
 
         string temp = "";
         if (stat == StatName.Game || stat == StatName.Song || stat == StatName.Draw)
-            temp = $"{nowgrade} : 구독자 수 + {temp2.SubBonus}%, 돈 획득량 +{temp2.IncomeBonus}%";
-        else if (stat == StatName.Strength || stat == StatName.Mental)
-            temp = $"{nowgrade} : {GetIconString(StatName.Strength)} 감소량 -{tier*10}%";
+            temp = $"{nowgrade} :{GetIconString(StatIcons.Sub)}+ {temp2.SubBonus}%,{GetIconString(StatIcons.Gold)} +{temp2.IncomeBonus}%";
+        else if (stat == StatName.Strength )
+            temp = $"{nowgrade} :{GetIconString(StatIcons.Heart)} 감소량 -{tier*10}%";
+        else if (stat == StatName.Mental)
+            temp = $"{nowgrade} :{GetIconString(StatIcons.Star)} 감소량 -{tier * 10}%";
         else
-            temp = $"{nowgrade} : 대성공 확률{tier * 10}%";
+            temp = $"{nowgrade} :{GetIconString(StatIcons.BigSuccess)}대성공 확률 {tier * 10}%";
 
         return temp;
     }
@@ -148,5 +190,5 @@ public class UI_StatProperty : UI_Popup
         Managers.UI_Manager.ClosePopupUI();
     }
 
-   
+
 }
