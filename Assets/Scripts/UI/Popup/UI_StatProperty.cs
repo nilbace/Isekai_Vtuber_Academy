@@ -73,7 +73,7 @@ public class UI_StatProperty : UI_Popup
         //선택 박스 내 글귀
         if (stat == StatName.Game || stat == StatName.Song || stat == StatName.Draw)
         {
-            GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.Sub)} + {nowBonus.SubBonus}%, {GetIconString(StatIcons.Gold)} +{nowBonus.IncomeBonus}%";
+            GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.Sub)} +{nowBonus.SubBonus}%, {GetIconString(StatIcons.Gold)} +{nowBonus.IncomeBonus}%";
             GetText((int)Texts.StatNameTMP).text = GetStatKorName(stat) + " 실력";
         }
         else if(stat == StatName.Strength)
@@ -131,22 +131,22 @@ public class UI_StatProperty : UI_Popup
         switch (stat)
         {
             case StatName.Game:
-                temp = "힐링 게임, 대전 게임, 공포 게임, 켠김에 왕까지 방송 진행시 아래에 표기된 보너스 수치를 획득합니다.";
+                temp = "<sprite=0>게임 관련 방송 진행 시\n아래에 표기된 보너스 수치를 획득합니다.";
                 break;
             case StatName.Song:
-                temp = "노래 부르기, 악기 연주, 작곡 방송 진행시 아래에 표기된 보너스 수치를 획득합니다.";
+                temp = "<sprite=1>노래 관련 방송 진행 시\n아래에 표기된 보너스 수치를 획득합니다.";
                 break;
             case StatName.Draw:
-                temp = "낙서 방송, 커미션 방송 진행시 아래에 표기된 보너스 수치를 획득합니다.";
+                temp = "<sprite=2>그림 관련 방송 진행 시\n아래에 표기된 보너스 수치를 획득합니다.";
                 break;
             case StatName.Strength:
-                temp = "일정 진행시 아래에 표기된 수치만큼 <sprite=11>의 소모량이 감소합니다.";
+                temp = "일정 진행 시 아래에 표기된 수치만큼\n<sprite=11>의 소모량이 감소합니다.";
                 break;
             case StatName.Mental:
-                temp = "일정 진행시 아래에 표기된 수치만큼 <sprite=12>의 소모량이 감소합니다.";
+                temp = "일정 진행 시 아래에 표기된 수치만큼\n<sprite=12>의 소모량이 감소합니다.";
                 break;
             case StatName.Luck:
-                temp = "일정 진행시 아래에 표기된 수치의 확률로 대성공합니다. 대성공시 얻는 모든 수치가 50% 추가됩니다.";
+                temp = "일정 진행 시 아래의 확률로 <sprite=8>대성공합니다.\n<sprite=8>대성공 시 얻는 모든 수치가 50% 추가됩니다.";
                 break;
         }
 
@@ -166,7 +166,7 @@ public class UI_StatProperty : UI_Popup
 
         string temp = "";
         if (stat == StatName.Game || stat == StatName.Song || stat == StatName.Draw)
-            temp = $"{nowgrade} :{GetIconString(StatIcons.Sub)}+ {temp2.SubBonus}%,{GetIconString(StatIcons.Gold)} +{temp2.IncomeBonus}%";
+            temp = $"{nowgrade} :{GetIconString(StatIcons.Sub)} +{temp2.SubBonus}%,{GetIconString(StatIcons.Gold)} +{temp2.IncomeBonus}%";
         else if (stat == StatName.Strength )
             temp = $"{nowgrade} :{GetIconString(StatIcons.Heart)} 감소량 -{tier*10}%";
         else if (stat == StatName.Mental)
