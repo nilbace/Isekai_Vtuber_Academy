@@ -186,6 +186,8 @@ public class Define : MonoBehaviour
         }
     }
 
+    public enum MMState { usual, OnSchedule }
+
     [System.Serializable]
     public struct Dialogue
     {

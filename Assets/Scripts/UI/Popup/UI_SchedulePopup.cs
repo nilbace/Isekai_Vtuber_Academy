@@ -61,9 +61,13 @@ public class UI_SchedulePopup : UI_Popup
     private void Start()
     {
         Init();
-        MM.instance.NowMMState = MM.MMState.OnSchedule;
-    }
 
+        MM.Inst.SetState(MMState.OnSchedule);
+
+        Canvas canvas = Util.GetOrAddComponent<Canvas>(gameObject);
+        canvas.sortingOrder = 1;
+    }
+   
     void TransitionToThreeContents()
     {
         GetGameObject((int)GameObjects.Contents3).SetActive(true);
@@ -368,7 +372,7 @@ public class UI_SchedulePopup : UI_Popup
 
     private void OnDisable()
     {
-        MM.instance.NowMMState = MM.MMState.usual;
+        MM.Inst.SetState(MMState.usual);
     }
 
     public bool IsShowing3ContentsUI()

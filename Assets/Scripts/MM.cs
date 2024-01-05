@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Networking;
+using static Define;
 
-public class MM : MonoBehaviour
+public class MM : MonoSingleton<MM>, IPointerClickHandler
 {
-    public static MM instance;
-
+    public float AniSpeed;
     
     Animator animator;
     
-    public enum MMState { usual, OnSchedule, PushAni}
+    
 
     MMState _nowMMState = MMState.usual;
 
@@ -18,38 +19,37 @@ public class MM : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        base.Awake();
     }
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        StartCoroutine(RequestAndSetDayDatas(MerchantURL));
+        animator.speed = AniSpeed;
     }
 
-    private void OnMouseDown()
+    public void SetState(MMState mmState)
     {
-        if(_nowMMState == MMState.OnSchedule)
+        if(mmState == MMState.usual)
         {
-            animator.Play("push");
+            animator.SetTrigger("Hat");
+            _nowMMState = MMState.usual;
+        }
+        else if(mmState == MMState.OnSchedule)
+        {
+            animator.SetTrigger("BTN");
+            _nowMMState = MMState.OnSchedule;
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (_nowMMState == MMState.OnSchedule)
+        {
+            animator.SetTrigger("Push");
             UI_SchedulePopup.instance.ResetSchedule();
         }
 
         Managers.Sound.Play("MM");
-    }
-
-    const string MerchantURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&gid=1725059436&range=A2:D4";
-    public IEnumerator RequestAndSetDayDatas(string www)
-    {
-        UnityWebRequest wwww = UnityWebRequest.Get(www);
-        yield return wwww.SendWebRequest();
-
-        string data = wwww.downloadHandler.text;
-        string[] lines = data.Substring(0, data.Length).Split('\n');
-
-        foreach (string line in lines)
-        {
-
-        }
     }
 }
