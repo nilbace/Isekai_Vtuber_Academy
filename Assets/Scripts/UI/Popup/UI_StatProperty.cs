@@ -64,16 +64,13 @@ public class UI_StatProperty : UI_Popup
         int SelectedStatTier = GetStatTier_div_20(nowStatValue);
         Bonus nowBonus = Managers.Data.GetMainProperty(stat);
 
-        //아이콘 세팅
         GetImage((int)Images.UpperStatIcon).sprite = Resources.Load<Sprite>($"Icon/{stat}");
         GetText((int)Texts.StatValueTMP).text = Managers.Data._myPlayerData.SixStat[(int)stat].ToString("F0");
         GetImage((int)Images.Stat_Cover).transform.localScale = new Vector3(1 - (float)Managers.Data._myPlayerData.SixStat[(int)stat] / 200f, 1, 1);
-
-
-        //위치 조절
         GetGameObject((int)GameObjects.StatInfo_SelectBox).transform.localPosition += new Vector3(0, StatInfoInterval * SelectedStatTier, 0);
-        //내부 글자 조절
         GetText((int)Texts.BigStatValueTMP).text = (SelectedStatTier * 20).ToString();
+
+        //선택 박스 내 글귀
         if (stat == StatName.Game || stat == StatName.Song || stat == StatName.Draw)
         {
             GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.Sub)} + {nowBonus.SubBonus}%, {GetIconString(StatIcons.Gold)} +{nowBonus.IncomeBonus}%";
@@ -94,11 +91,14 @@ public class UI_StatProperty : UI_Popup
             GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.BigSuccess)}대성공 확률 {SelectedStatTier * 10}%";
             GetText((int)Texts.StatNameTMP).text = GetStatKorName(stat);
         }
+
         GetText((int)Texts.ExtraInfoTMP).text = SetExtraInfoTMP(stat);
 
         int tempTier = 1;
         int indexofEmptyText = IndexofEmptyPlace(SelectedStatTier);
         TMPro.TMP_Text[] StatInfoTexts = GetGameObject((int)GameObjects.TextGroup).GetComponentsInChildren<TMPro.TMP_Text>();
+
+        //하단 글귀들 글자 및 위치 조절
         for (int i = 0; i < 11; i++)
         {
             if (i == indexofEmptyText)
