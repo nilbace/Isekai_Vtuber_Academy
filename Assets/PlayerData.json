@@ -1,32 +1,18 @@
 {
-    "NowWeek": 17,
-    "nowSubCount": 11647,
-    "nowGoldAmount": 25002,
-    "RubiaKarma": 6,
-    "NowHeart": 92.0,
-    "NowStar": 46.0,
+    "NowWeek": 1,
+    "nowSubCount": 0,
+    "nowGoldAmount": 1000000,
+    "RubiaKarma": 10,
+    "NowHeart": 100.0,
+    "NowStar": 100.0,
     "SixStat": [
-        170.5,
         0.0,
-        8.0,
-        6.0,
-        10.0,
-        37.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
     ],
-    "DoneEventNames": [
-        "표절논란",
-        "몰루3",
-        "진수성찬 먹방",
-        "TS 코스프레",
-        "합체로봇사줘",
-        "엘라 당근 사기",
-        "도수치료 직캠",
-        "뮹뮹 다이어트",
-        "고삼차 먹방"
-    ],
-    "BoughtItems": [
-        "수상한 악보",
-        "세이렌의 보주",
-        "척추교정기"
-    ]
+    "DoneEventNames": [],
+    "BoughtItems": []
 }
