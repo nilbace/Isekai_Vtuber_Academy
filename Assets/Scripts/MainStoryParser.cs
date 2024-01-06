@@ -22,12 +22,10 @@ public class MainStoryParser : MonoSingleton<MainStoryParser>
   
     public void StartStory(MainStory mainStory)
     {
-        int index = 0;
         string[] lines = LoadMainStory(mainStory).text.Split('\n');
         for (int i = 0; i < lines.Length; i++)
         {
             Dialogues.Add(DebugSetence(lines[i]));
-            index++;
         }
 
         UI_Communication.instance.StartDiagloue(Dialogues);

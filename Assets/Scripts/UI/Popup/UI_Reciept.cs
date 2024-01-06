@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static Define;
+using DG.Tweening;
 
 public class UI_Reciept : UI_Popup
 {
+    public Ease EaseStatus;
+    public float periodScale;
+    public float Duration;
     enum Buttons
     {
         FinishBTN
@@ -30,7 +34,7 @@ public class UI_Reciept : UI_Popup
         Bind<TMPro.TMP_Text>(typeof(Texts));
         Managers.Sound.Play(Define.Sound.Receipt);
         SetReceipt();
-
+        transform.DOLocalMoveY(0, Duration).SetEase(EaseStatus, 0, periodScale);
         GetButton((int)Buttons.FinishBTN).onClick.AddListener(FinishBTN);
     }
 

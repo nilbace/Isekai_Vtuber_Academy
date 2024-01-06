@@ -1,18 +1,20 @@
 {
-    "NowWeek": 1,
-    "nowSubCount": 0,
-    "nowGoldAmount": 1000000,
+    "NowWeek": 2,
+    "nowSubCount": 168,
+    "nowGoldAmount": 1000051,
     "RubiaKarma": 2,
-    "NowHeart": 100.0,
-    "NowStar": 100.0,
+    "NowHeart": 72.0,
+    "NowStar": 72.0,
     "SixStat": [
+        7.0,
         0.0,
-        0.0,
-        0.0,
+        3.0,
         0.0,
         0.0,
         0.0
     ],
-    "DoneEventNames": [],
+    "DoneEventNames": [
+        "표절논란"
+    ],
     "BoughtItems": []
 }

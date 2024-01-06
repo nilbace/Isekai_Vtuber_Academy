@@ -496,7 +496,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5501035149407559673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,6 +569,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a31d1ebbf1ed63e48b1572af25c239d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Stories: []
+  Dialogues: []
 --- !u!1 &5776415541015255019
 GameObject:
   m_ObjectHideFlags: 0
