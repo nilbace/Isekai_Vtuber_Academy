@@ -420,6 +420,7 @@ GameObject:
   - component: {fileID: 5501035149407559673}
   - component: {fileID: 2164725105731168713}
   - component: {fileID: 7221598937047955787}
+  - component: {fileID: 5370034411043526705}
   m_Layer: 5
   m_Name: UI_Communication
   m_TagString: Untagged
@@ -495,7 +496,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5501035149407559673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,6 +542,7 @@ MonoBehaviour:
   TargetX: 0
   MoveTime: 1.29
   PeriodScale: 0.75
+  SoundSwitchMode: 0
 --- !u!114 &7221598937047955787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,6 +557,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stories: []
   Dialogues: []
+--- !u!114 &5370034411043526705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5501035149407559674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a31d1ebbf1ed63e48b1572af25c239d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5776415541015255019
 GameObject:
   m_ObjectHideFlags: 0

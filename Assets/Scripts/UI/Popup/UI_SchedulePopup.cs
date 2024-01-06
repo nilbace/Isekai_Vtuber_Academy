@@ -282,7 +282,7 @@ public class UI_SchedulePopup : UI_Popup
     void ClickGoOutBTN()
     {
         Managers.Sound.Play(Define.Sound.TaskBTN);
-        ClickGoOutBTN();
+        ClickGoOutBTNWithoutSound();
     }
 
     List<OneDayScheduleData> nowSelectScheduleTypeList = new List<OneDayScheduleData>();

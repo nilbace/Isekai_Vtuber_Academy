@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Define;
 
-public class MainStoryParser : MonoSingleton<MainStoryParser>
+public class SubStoryParser : MonoSingleton<SubStoryParser>
 {
     public TextAsset[] Stories;
 
@@ -13,13 +12,13 @@ public class MainStoryParser : MonoSingleton<MainStoryParser>
     {
         base.Awake();
     }
- 
+
     TextAsset LoadMainStory(MainStory main)
     {
         TextAsset text = Resources.Load<TextAsset>($"MainStory/{main}");
         return text;
     }
-  
+
     public void StartStory(MainStory mainStory)
     {
         int index = 0;
@@ -48,23 +47,6 @@ public class MainStoryParser : MonoSingleton<MainStoryParser>
 
         temp.sentence = lines[2];
 
-        int tempGold;
-        StatName tempStatName;
-        for(int i = 3; i<lines.Length;i++)
-        {
-            if (lines[i] == "") continue;
-            else if (int.TryParse(lines[i], out tempGold)) temp.CostGold = tempGold;
-            else if (Enum.TryParse(lines[i], out tempStatName))
-            {
-                RewardStat tempRewardStat = new RewardStat();
-                tempRewardStat.StatName = tempStatName;
-                tempRewardStat.Value = int.Parse(lines[i + 1]);
-                temp.rewardStats.Add(tempRewardStat);
-                i++;
-            }
-        }
-
         return temp;
     }
-
 }

@@ -124,6 +124,8 @@ public class UI_Communication : UI_Popup
         Debug.Log("End");
     }
 
+    
+
     IEnumerator TypeSentence(Dialogue dialogue)
     {
         ChooseBubbleIMG(dialogue);
@@ -135,15 +137,39 @@ public class UI_Communication : UI_Popup
         // 대사 초기화
         dialogueText.text = "";
 
-        // 한 글자씩 출력
+        int chatIndex = 0; 
+
         foreach (char letter in dialogue.sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return typingDelay; // 밖에서 선언한 WaitForSeconds 변수 재사용
+            yield return typingDelay;
+
+            Managers.Sound.Play(GetChatSound(chatIndex));
+            chatIndex++;
         }
 
         // 글자 출력 완료 후 대사 정보 업데이트
         isTyping = false;
+    }
+
+    public bool SoundSwitchMode = false;
+
+    Define.Sound GetChatSound(int index)
+    {
+
+        if (!SoundSwitchMode) return Define.Sound.Chat1;
+
+        switch (index % 3)
+        {
+            case 0:
+                return Define.Sound.Chat1;
+            case 1:
+                return Define.Sound.Chat2;
+            case 2:
+                return Define.Sound.Chat3;
+            default:
+                return Define.Sound.Bgm;
+        }
     }
 
     void ChooseBubbleIMG(Dialogue dialogue)

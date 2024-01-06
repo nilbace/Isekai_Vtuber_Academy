@@ -25,6 +25,7 @@ public class Define
         Fail,
         Buy,
         Receipt,
+        Chat1, Chat2, Chat3,
 
         MaxCount,
     }
@@ -224,16 +225,14 @@ public class Define
         public string name;
         public string sentence;
         public bool isLeft;
-        public bool isButton;
         public int CostGold;
         public List<RewardStat> rewardStats;
 
-        public Dialogue(string name = "", string sentence = "", bool isLeft = false, bool isButton = false, int costGold = 0)
+        public Dialogue(string name = "", string sentence = "", bool isLeft = false, int costGold = 0)
         {
             this.name = name;
             this.sentence = sentence;
             this.isLeft = isLeft;
-            this.isButton = isButton;
             this.CostGold = costGold;
             this.rewardStats = new List<RewardStat>();
         }
