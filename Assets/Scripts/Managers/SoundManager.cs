@@ -63,7 +63,6 @@ public class SoundManager
 
             audioSource.pitch= pitch;
             audioSource.clip = audioClip;
-            audioSource.volume = 0.2f;
             audioSource.Play();
         }
         else

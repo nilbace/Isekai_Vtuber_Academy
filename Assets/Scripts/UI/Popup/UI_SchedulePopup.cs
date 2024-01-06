@@ -65,7 +65,7 @@ public class UI_SchedulePopup : UI_Popup
         MM.Inst.SetState(MMState.OnSchedule);
 
         Canvas canvas = Util.GetOrAddComponent<Canvas>(gameObject);
-        canvas.sortingOrder = 1;
+        canvas.sortingOrder = -3;
     }
    
     void TransitionToThreeContents()
@@ -137,8 +137,9 @@ public class UI_SchedulePopup : UI_Popup
         GetImage((int)Images.NowDayFrame).transform.DOMoveX(((int)_nowSelectedDay - 3) * 40, 0f);
     }
     
-    void ClickDayBTN(int dayIndex)
+    void ClickDayBTNWithoutSound(int dayIndex)
     {
+        
         _nowSelectedDay = (SevenDays)dayIndex;
         if (_SevenDayScheduleDatas[(int)_nowSelectedDay] == null)
         {
@@ -148,18 +149,24 @@ public class UI_SchedulePopup : UI_Popup
         {
             if (_SevenDayScheduleDatas[(int)_nowSelectedDay].scheduleType == ScheduleType.BroadCast)
             {
-                ClickBroadCastBTN();
+                ClickBroadCastBTNWithoutSound();
             }
             else if (_SevenDayScheduleDatas[(int)_nowSelectedDay].scheduleType == ScheduleType.Rest)
             {
-                ClickRestBTN();
+                ClickRestBTNWithoutSound();
             }
             else
             {
-                ClickGoOutBTN();
+                ClickGoOutBTNWithoutSound();
             }
         }
         UpdateColorAndSelected();
+    }
+
+    void ClickDayBTN(int dayindex)
+    {
+        Managers.Sound.Play(Define.Sound.SmallBTN);
+        ClickDayBTNWithoutSound(dayindex);
     }
 
 
@@ -242,24 +249,40 @@ public class UI_SchedulePopup : UI_Popup
 
     #region Schedules
 
-    void ClickBroadCastBTN()
+    void ClickBroadCastBTNWithoutSound()
     {
-        Managers.Sound.Play("SmallBTN", Sound.Effect);
         TransitionToSelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.BroadCast);
     }
-    void ClickRestBTN()
+
+    void ClickBroadCastBTN()
     {
-        Managers.Sound.Play("SmallBTN", Sound.Effect);
+        Managers.Sound.Play(Define.Sound.TaskBTN);
+        ClickBroadCastBTNWithoutSound();
+    }
+
+    void ClickRestBTNWithoutSound()
+    {
         TransitionToSelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.Rest);
     }
 
-    void ClickGoOutBTN()
+    void ClickRestBTN()
     {
-        Managers.Sound.Play("SmallBTN", Sound.Effect);
+        Managers.Sound.Play(Define.Sound.TaskBTN);
+        ClickRestBTNWithoutSound();
+    }
+
+    void ClickGoOutBTNWithoutSound()
+    {
         TransitionToSelectSubContent();
         ChooseScheduleTypeAndFillList(ScheduleType.GoOut);
+    }
+
+    void ClickGoOutBTN()
+    {
+        Managers.Sound.Play(Define.Sound.TaskBTN);
+        ClickGoOutBTN();
     }
 
     List<OneDayScheduleData> nowSelectScheduleTypeList = new List<OneDayScheduleData>();
@@ -347,7 +370,7 @@ public class UI_SchedulePopup : UI_Popup
             }
         }
         if (i == 7) i = (int)_nowSelectedDay;
-        ClickDayBTN(i);
+        ClickDayBTNWithoutSound(i);
         UpdateColorAndSelected();
     }
 

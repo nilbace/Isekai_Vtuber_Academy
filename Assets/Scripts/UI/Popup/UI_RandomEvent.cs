@@ -43,7 +43,6 @@ public class UI_RandomEvent : UI_Popup
         Bind<Button>(typeof(Buttons));
         Bind<TMPro.TMP_Text>(typeof(Texts));
 
-        //Debug.Log(_eventData.EventName);
         GetImage((int)Images.CutSceneIMG).sprite = LoadIMG(_eventData);
 
         GetText((int)Texts.EventText).text = _eventData.EventInfoString;

@@ -38,11 +38,12 @@ public class UI_Setting : UI_Popup
     void CloseBTN()
     {
         Managers.UI_Manager.ClosePopupUI();
+        Managers.Sound.Play(Define.Sound.SmallBTN);
     }
 
     void BGM_ValueChanged(float value)
     {
-        Managers.Sound.ChangeVolume(Define.Sound.Bgm, value*0.2f);
+        Managers.Sound.ChangeVolume(Define.Sound.Bgm, value);
     }
 
     void SFX_ValueChanged(float value)
@@ -53,6 +54,7 @@ public class UI_Setting : UI_Popup
     void ResetBTN()
     {
         StartCoroutine(ResetGame());
+        Managers.Sound.Play(Define.Sound.ReturnBTN);
     }
 
     IEnumerator ResetGame()

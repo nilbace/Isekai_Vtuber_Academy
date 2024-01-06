@@ -188,6 +188,7 @@ public class UI_StatProperty : UI_Popup
     void Close()
     {
         Managers.UI_Manager.ClosePopupUI();
+        Managers.Sound.Play(Define.Sound.SmallBTN);
     }
 
 

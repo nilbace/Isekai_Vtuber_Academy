@@ -15,10 +15,17 @@ public class Define
 
     public enum Sound
     {
-        Bgm,
+        Bgm, Effect,
         MM,
         ScheduleBTN,BigBTN, SmallBTN,
-        Effect,
+        ReturnBTN, TaskBTN, SubcontentBTN,
+        NextWeekBTN,
+        BigSuccess,
+        Success,
+        Fail,
+        Buy,
+        Receipt,
+
         MaxCount,
     }
     public enum UIEvent
@@ -41,6 +48,13 @@ public class Define
 
     public enum StatNameKor { 
         게임, 노래, 그림, 근력, 멘탈, 행운
+    }
+
+    public enum EndingName
+    {
+        GameGood,GameEvil,GameFail,
+        SongGood,SongEvil,SongFail,
+        DrawGood,DrawEvil,DrawFail
     }
 
     public static string GetStatKorName(StatName statName)

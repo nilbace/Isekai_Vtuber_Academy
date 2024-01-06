@@ -166,16 +166,19 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         {
             UI_MainBackUI.instance.BottomSeal(DayIndex, 2);
             UI_MainBackUI.instance.SetStamp(0);
+            Managers.Sound.Play(Define.Sound.Fail);
         }
         else if (BigSuccess)
         {
             UI_MainBackUI.instance.BottomSeal(DayIndex, 0);
             UI_MainBackUI.instance.SetStamp(2);
+            Managers.Sound.Play(Define.Sound.BigSuccess);
         }
         else
         {
             UI_MainBackUI.instance.BottomSeal(DayIndex, 1);
             UI_MainBackUI.instance.SetStamp(1);
+            Managers.Sound.Play(Define.Sound.Success);
         }
     }
 

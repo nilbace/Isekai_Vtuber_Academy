@@ -1,23 +1,18 @@
 {
-    "NowWeek": 4,
-    "nowSubCount": 2347,
-    "nowGoldAmount": 2212,
+    "NowWeek": 1,
+    "nowSubCount": 0,
+    "nowGoldAmount": 1000000,
     "RubiaKarma": 2,
-    "NowHeart": 59.0,
+    "NowHeart": 100.0,
     "NowStar": 100.0,
     "SixStat": [
         0.0,
         0.0,
-        22.0,
-        40.0,
-        200.0,
-        63.0
+        0.0,
+        0.0,
+        0.0,
+        0.0
     ],
-    "DoneEventNames": [
-        "도수치료 직캠",
-        "몰루3",
-        "표절논란",
-        ""
-    ],
+    "DoneEventNames": [],
     "BoughtItems": []
 }

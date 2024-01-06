@@ -160,7 +160,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 
     void SetSchedule(int nowCost)
     {
-        Managers.Sound.Play("SmallBTN", Sound.Effect);
+        Managers.Sound.Play(Define.Sound.SubcontentBTN);
         if (OverOffset) return;
         Managers.Data._myPlayerData.nowGoldAmount += nowCost;
         Managers.Data._myPlayerData.nowGoldAmount -= thisSubSchedleData.MoneyCost;

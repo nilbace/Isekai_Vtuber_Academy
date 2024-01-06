@@ -28,7 +28,7 @@ public class UI_Reciept : UI_Popup
         base.Init();
         Bind<Button>(typeof(Buttons));
         Bind<TMPro.TMP_Text>(typeof(Texts));
-
+        Managers.Sound.Play(Define.Sound.Receipt);
         SetReceipt();
 
         GetButton((int)Buttons.FinishBTN).onClick.AddListener(FinishBTN);
@@ -79,5 +79,6 @@ public class UI_Reciept : UI_Popup
         UI_MainBackUI.instance.EndScheduleAndSetUI();
         Managers.Data.SaveData();
         Managers.UI_Manager.CloseALlPopupUI();
+        Managers.Sound.Play(Define.Sound.NextWeekBTN);
     }
 }
