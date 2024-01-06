@@ -46,7 +46,6 @@ public class UI_Communication : UI_Popup
     {
         Init();
         typingDelay = new WaitForSeconds(TypingDelay);
-
     }
 
     public void StartDiagloue(List<Dialogue> DiaList)
@@ -208,14 +207,52 @@ public class UI_Communication : UI_Popup
         GetText((int)Texts.Option1TMP).text = dialogues[currentDialogueIndex].sentence;
         GetText((int)Texts.Option2TMP).text = dialogues[currentDialogueIndex + 1].sentence;
 
+        if (Managers.Data._myPlayerData.nowGoldAmount >= dialogues[currentDialogueIndex].CostGold)
+        {
+            Debug.Log(dialogues[currentDialogueIndex].CostGold);
+            GetButton((int)Buttons.Option1BTN).interactable = true;
+        }
+        else
+        {
+            GetButton((int)Buttons.Option1BTN).interactable = false;
+            GetButton((int)Buttons.Option1BTN).GetComponent<Image>().sprite = GetButton((int)Buttons.Option1BTN).spriteState.pressedSprite;
+        }
+
+        if (Managers.Data._myPlayerData.nowGoldAmount >= dialogues[currentDialogueIndex + 1].CostGold)
+        {
+            GetButton((int)Buttons.Option2BTN).interactable = true;
+        }
+        else
+        {
+            GetButton((int)Buttons.Option2BTN).interactable = false;
+            GetButton((int)Buttons.Option1BTN).GetComponent<Image>().sprite = GetButton((int)Buttons.Option1BTN).spriteState.pressedSprite;
+        }
 
         void ShowOption1()
         {
+            if (dialogues[currentDialogueIndex].CostGold > 0)
+            {
+                Managers.Data._myPlayerData.nowGoldAmount -= dialogues[currentDialogueIndex].CostGold;
+                for (int i = 0; i < dialogues[currentDialogueIndex+2].rewardStats.Count; i++)
+                {
+                    Managers.Data._myPlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 2].rewardStats[i]);
+                }
+            }
+
             Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 2].sentence);
         }
 
         void ShowOption2()
         {
+            if (dialogues[currentDialogueIndex + 1].CostGold > 0)
+            {
+                Managers.Data._myPlayerData.nowGoldAmount -= dialogues[currentDialogueIndex + 1].CostGold;
+                for (int i = 0; i < dialogues[currentDialogueIndex + 3].rewardStats.Count; i++)
+                {
+                    Managers.Data._myPlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 3].rewardStats[i]);
+                }
+            }
+
             Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 3].sentence);
         }
 

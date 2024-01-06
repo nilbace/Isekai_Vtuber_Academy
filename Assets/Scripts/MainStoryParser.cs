@@ -13,15 +13,17 @@ public class MainStoryParser : MonoSingleton<MainStoryParser>
     {
         base.Awake();
     }
-    void Start()
+ 
+    TextAsset LoadMainStory(MainStory main)
     {
-        StartStory(0);
+        TextAsset text = Resources.Load<TextAsset>($"MainStory/{main}");
+        return text;
     }
   
-    public void StartStory(int n)
+    public void StartStory(MainStory mainStory)
     {
         int index = 0;
-        string[] lines = Stories[n].text.Split('\n');
+        string[] lines = LoadMainStory(mainStory).text.Split('\n');
         for (int i = 0; i < lines.Length; i++)
         {
             Dialogues.Add(DebugSetence(lines[i]));

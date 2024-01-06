@@ -57,6 +57,8 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
         if (Managers.Data._myPlayerData.MerchantAppearanceWeek())
             Managers.UI_Manager.ShowPopupUI<UI_Merchant>();
+        else if (Managers.Data._myPlayerData.MainStoryApperanceWeek())
+            Managers.instance.ShowMainStory();
         else
             Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
     }

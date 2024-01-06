@@ -281,19 +281,6 @@ public class Define
 
         }
 
-        public float GetHighestStat()
-        {
-            float temp = 0;
-            for (int i = 0; i < 6; i++)
-            {
-                if (temp < SixStat[i])
-                {
-                    temp = SixStat[i];
-                }
-            }
-            return temp;
-        }
-
         public void ChangeHeart(float value)
         {
             NowHeart += value;
@@ -312,7 +299,7 @@ public class Define
             Define.StatName temp = Define.StatName.Game;
             float temp2 = 0;
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 3; i++)
             {
                 if (temp2 < SixStat[i])
                 {
@@ -334,11 +321,45 @@ public class Define
                     UI_MainBackUI.instance.GlitterStat(i);
                 }
             }
+            UI_MainBackUI.instance.UpdateUItexts();
+        }
+
+        public void StatUpByDialogue(RewardStat rewardStat)
+        {
+            if(rewardStat.StatName == StatName.Karma)
+            {
+                Managers.Data._myPlayerData.RubiaKarma += rewardStat.Value;
+            }
+            else
+            {
+                ChangeStat(rewardStat.StatName, rewardStat.Value);
+            }
+        }
+
+        public void ChangeStat(StatName statName, float value)
+        {
+            if ((int)statName >= 6) Debug.LogError("6½ºÅÝ ¾Æ´Ô!");
+            int index = (int)statName; 
+
+            SixStat[index] += value;
+            SixStat[index] = Mathf.Clamp(SixStat[index], 0, 200);
+
+            if (value != 0)
+            {
+                UI_MainBackUI.instance.GlitterStat(index);
+            }
+            UI_MainBackUI.instance.UpdateUItexts();
         }
 
         public bool MerchantAppearanceWeek()
         {
             if (NowWeek == 5 || NowWeek == 10 || NowWeek == 15) return true;
+            return false;
+        }
+
+        public bool MainStoryApperanceWeek()
+        {
+            if (NowWeek == 4 || NowWeek == 8 || NowWeek == 12 || NowWeek == 16) return true;
             return false;
         }
 

@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using static Define;
 
 public class Managers : MonoBehaviour
 {
@@ -118,6 +120,30 @@ public class Managers : MonoBehaviour
         yield return new WaitForEndOfFrame();
         UI_DefaultPopup.instance.SetText(Text);
     }
+
+    public void ShowMainStory()
+    {
+        StartCoroutine(ShowMainStoryCor());
+    }
+    IEnumerator ShowMainStoryCor()
+    {
+        UI_Manager.ShowPopupUI<UI_Communication>();
+        yield return new WaitForEndOfFrame();
+        MainStoryParser.Inst.StartStory(ChooseMainStory());
+    }
+
+    public MainStory ChooseMainStory()
+    {
+        MainStory mainStory;
+        string temp = Data._myPlayerData.GetHigestStatName().ToString();
+        temp += (Data._myPlayerData.NowWeek / 4).ToString();
+
+        Debug.Log(temp);
+        Enum.TryParse(temp, out mainStory);
+
+        return mainStory;
+    }
+
 
     #endregion
 }
