@@ -13,7 +13,7 @@ public class SubStoryParser : MonoSingleton<SubStoryParser>
         base.Awake();
     }
 
-    TextAsset LoadMainStory(int storyindex)
+    TextAsset LoadSubStory(int storyindex)
     {
         TextAsset text = Resources.Load<TextAsset>($"SubStory/{storyindex}");
         return text;
@@ -21,7 +21,7 @@ public class SubStoryParser : MonoSingleton<SubStoryParser>
 
     public void StartStory(int storyindex)
     {
-        string[] lines = LoadMainStory(storyindex).text.Split('\n');
+        string[] lines = LoadSubStory(storyindex).text.Split('\n');
         for (int i = 0; i < lines.Length; i++)
         {
             Dialogues.Add(DebugSetence(lines[i]));

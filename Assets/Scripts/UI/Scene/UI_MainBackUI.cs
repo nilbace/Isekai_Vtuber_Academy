@@ -46,7 +46,7 @@ public class UI_MainBackUI : UI_Scene
         MentalStatBTN,
         LuckStatBTN,
         SettingBTN,
-        PlayerSB_BTN,
+        CommuiBTN,
         StartScheduleBTN, BackBTN,
         SpeedBTN,
         ArchiveBTN
@@ -101,6 +101,7 @@ public class UI_MainBackUI : UI_Scene
         GetButton((int)Buttons.StartScheduleBTN).onClick.AddListener(StartScheduleBTN);
         GetButton((int)Buttons.BackBTN).onClick.AddListener(BackBTN);
         GetButton((int)Buttons.ArchiveBTN).onClick.AddListener(ArchiveBTN);
+        GetButton((int)Buttons.CommuiBTN).onClick.AddListener(CommunicationBTN);
         GetButton((int)Buttons.StartScheduleBTN).gameObject.SetActive(false);
         GetButton((int)Buttons.BackBTN).gameObject.SetActive(false);
         SpeedBTNInit();
@@ -309,7 +310,7 @@ public class UI_MainBackUI : UI_Scene
 
         Transform BroadCastTitle_tr = GetGameObject((int)GameObjects.BroadCastTitle).transform;
         Transform callenderB_tr = GetGameObject((int)GameObjects.CallenderBottom).transform;
-        Transform PlayerSB_BTN_tr = GetButton((int)Buttons.PlayerSB_BTN).transform;
+        Transform PlayerSB_BTN_tr = GetButton((int)Buttons.CommuiBTN).transform;
         Transform CreateScheduleBTN_tr = GetButton((int)Buttons.CreateScheduleBTN).transform;
         Transform StartScheduleBTN_TR = GetButton((int)Buttons.StartScheduleBTN).transform;
 
@@ -340,7 +341,7 @@ public class UI_MainBackUI : UI_Scene
 
         Transform BroadCastTitle_tr = GetGameObject((int)GameObjects.BroadCastTitle).transform;
         Transform callenderB_tr = GetGameObject((int)GameObjects.CallenderBottom).transform;
-        Transform PlayerSB_BTN_tr = GetButton((int)Buttons.PlayerSB_BTN).transform;
+        Transform PlayerSB_BTN_tr = GetButton((int)Buttons.CommuiBTN).transform;
         Transform CreateScheduleBTN_tr = GetButton((int)Buttons.CreateScheduleBTN).transform;
         Transform StartScheduleBTN_TR = GetButton((int)Buttons.StartScheduleBTN).transform;
 
@@ -397,6 +398,18 @@ public class UI_MainBackUI : UI_Scene
         StartScheduleAndSetUI();
         Managers.instance.StartSchedule();
         Managers.UI_Manager.ClosePopupUI();
+    }
+
+    void CommunicationBTN()
+    {
+        StartCoroutine(ShowSubStoryCor());
+    }
+
+    IEnumerator ShowSubStoryCor()
+    {
+        Managers.UI_Manager.ShowPopupUI<UI_Communication>();
+        yield return new WaitForEndOfFrame();
+        SubStoryParser.Inst.StartStory(0);
     }
     void BackBTN()
     {

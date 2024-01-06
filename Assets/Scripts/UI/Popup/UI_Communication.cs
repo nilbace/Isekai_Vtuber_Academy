@@ -121,7 +121,7 @@ public class UI_Communication : UI_Popup
 
     void EndDialogue()
     {
-        Debug.Log("End");
+        Managers.UI_Manager.ClosePopupUI();
     }
 
     
