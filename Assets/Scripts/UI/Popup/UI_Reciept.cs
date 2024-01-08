@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Define;
 using DG.Tweening;
+using System;
 
 public class UI_Reciept : UI_Popup
 {
@@ -74,10 +75,11 @@ public class UI_Reciept : UI_Popup
 
     }
 
-    
+
 
     void FinishBTN()
     {
+        Managers.FinishWeek();
         Managers.Data._myPlayerData.NowWeek++;
         UI_MainBackUI.instance.UpdateUItexts();
         UI_MainBackUI.instance.EndScheduleAndSetUI();

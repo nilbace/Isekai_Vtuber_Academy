@@ -47,9 +47,10 @@ public class MM : MonoSingleton<MM>, IPointerClickHandler
         if (_nowMMState == MMState.OnSchedule)
         {
             animator.SetTrigger("Push");
+            Managers.Sound.Play("MM");
             UI_SchedulePopup.instance.ResetSchedule();
         }
 
-        Managers.Sound.Play("MM");
+        
     }
 }

@@ -1,18 +1,26 @@
 {
-    "NowWeek": 1,
-    "nowSubCount": 0,
-    "nowGoldAmount": 1000000,
-    "RubiaKarma": 10,
+    "NowWeek": 13,
+    "nowSubCount": 21454,
+    "nowGoldAmount": 32346,
+    "RubiaKarma": 11,
     "NowHeart": 100.0,
-    "NowStar": 100.0,
+    "NowStar": 84.0,
     "SixStat": [
+        82.94999694824219,
         0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
+        5.0,
+        19.0,
+        15.0,
+        63.0
     ],
-    "DoneEventNames": [],
+    "DoneEventNames": [
+        "진수성찬 먹방",
+        "고삼차 먹방",
+        "합체로봇사줘",
+        "잼민이 맞짱",
+        "몰루2",
+        "몰루3",
+        "표절논란"
+    ],
     "BoughtItems": []
 }

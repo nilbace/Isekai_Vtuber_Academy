@@ -400,17 +400,23 @@ public class UI_MainBackUI : UI_Scene
         Managers.UI_Manager.ClosePopupUI();
     }
 
+    #region Communication
+
     void CommunicationBTN()
     {
-        StartCoroutine(ShowSubStoryCor());
+        StartCoroutine(ShowSubStoryCor(0));
     }
 
-    IEnumerator ShowSubStoryCor()
+    IEnumerator ShowSubStoryCor(int index)
     {
         Managers.UI_Manager.ShowPopupUI<UI_Communication>();
         yield return new WaitForEndOfFrame();
-        SubStoryParser.Inst.StartStory(0);
+        SubStoryParser.Inst.StartStory(index);
     }
+
+    #endregion
+
+
     void BackBTN()
     {
         Managers.Sound.Play("SmallBTN", Sound.Effect);

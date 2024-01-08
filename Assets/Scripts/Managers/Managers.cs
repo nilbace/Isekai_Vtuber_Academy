@@ -32,7 +32,8 @@ public class Managers : MonoBehaviour
     public static DataManager Data { get { return instance._data; } }
     public static REventManager RandEvent { get { return instance._RE; } }
     public static MultiSpriteManager MSM { get { return instance._MSM; } }
-    
+
+
     void Awake()
     {
         Init();
@@ -145,5 +146,18 @@ public class Managers : MonoBehaviour
     }
 
 
+    #endregion
+
+
+    #region Event
+
+    public delegate void WeekEnd();
+
+    public static event WeekEnd OnWeekEnd;
+
+    public static void FinishWeek()
+    {
+        OnWeekEnd?.Invoke();
+    }
     #endregion
 }
