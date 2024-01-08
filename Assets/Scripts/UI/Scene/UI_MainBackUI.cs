@@ -34,6 +34,7 @@ public class UI_MainBackUI : UI_Scene
         TempStrTMP,
         TempMenTMP,
         TempLuckTMP,
+        CommunicationTMP
     }
 
     enum Buttons
@@ -121,6 +122,21 @@ public class UI_MainBackUI : UI_Scene
         //방송 타이틀 오른쪽으로 뺴고 시작
         GetGameObject((int)GameObjects.BroadCastTitle).transform.localPosition += new Vector3(XOffset,0,0);
 
+        //서브스토리 셋팅
+        if(Managers.Data._myPlayerData.NowWeek != Managers.Data._myPlayerData.SubStoryIndex.Count)
+        {
+            //보통 1주차에 발생됨
+            SetSubStoryIndex();
+        }
+        else
+        {
+            //다른 주차라면 저장된 서브스토리 인덱스 셋팅
+            NowWeekSubStoryIndex = Managers.Data._myPlayerData.SubStoryIndex[Managers.Data._myPlayerData.NowWeek-1];
+        }
+
+        Managers.instance.WeekOverAction -= SetSubStoryIndex;
+        Managers.instance.WeekOverAction += SetSubStoryIndex;
+
         ScreenAnimator.speed = ScreenAniSpeed;
         SetStamp(-1);
         UpdateUItexts();
@@ -194,9 +210,7 @@ public class UI_MainBackUI : UI_Scene
         }
     }
 
-    /// <summary>
-    /// 메인화면 텍스트들 갱신
-    /// </summary>
+
     public void UpdateUItexts()
     {
         foreach (Texts textType in System.Enum.GetValues(typeof(Texts)))
@@ -229,6 +243,9 @@ public class UI_MainBackUI : UI_Scene
            new Vector3(1 - (float)Managers.Data._myPlayerData.SixStat[i] / 200f, 1, 1);
             GetText((int)Texts.TempGameTMP+i).text = Managers.Data._myPlayerData.SixStat[i].ToString("F0");
         }
+
+        GetText((int)Texts.CommunicationTMP).text =
+            NowWeekSubStoryIndex.ToString() +" . "+ ((SubStoryName)NowWeekSubStoryIndex).ToString();
     }
 
     private string GetInitialTextForType(Texts textType)
@@ -402,9 +419,26 @@ public class UI_MainBackUI : UI_Scene
 
     #region Communication
 
+    int NowWeekSubStoryIndex;
+
+    public void SetSubStoryIndex()
+    {
+        int temp;
+        while(true)
+        {
+            temp = Random.Range(0, (int)SubStoryName.Max);
+            Debug.Log(temp);
+            if (!Managers.Data._myPlayerData.SubStoryIndex.Contains(temp)) break;
+        }
+        Managers.Data._myPlayerData.SubStoryIndex.Add(temp);
+        NowWeekSubStoryIndex = temp;
+        UpdateUItexts();
+        Managers.Data.SaveData();
+    }
+
     void CommunicationBTN()
     {
-        StartCoroutine(ShowSubStoryCor(0));
+        StartCoroutine(ShowSubStoryCor(NowWeekSubStoryIndex));
     }
 
     IEnumerator ShowSubStoryCor(int index)

@@ -58,6 +58,41 @@ public class Define
         DrawGood,DrawEvil,DrawFail
     }
 
+    public enum SubStoryName
+    {
+        밥줘_벅벅,
+        방송,
+        황금_올리브,
+        인사,
+        옷,
+        말투,
+        탈부착,
+        아침점심저녁,
+        외동,
+        빨간불,
+        구독자_애칭,
+        꼬리,
+        출처,
+        뿔,
+        구리빛_피부와금발,
+        뮹뮹어,
+        비하인드,
+        휴방,
+        이게_뭐야,
+        반려,
+        강아지,
+        쾅,
+        요리,
+        가스비,
+        마법,
+        겐신_임팍또,
+        리그오브레잔도,
+        은밀한_취향,
+        공포게임,
+        폭발_애호가,
+        Max
+    }
+
     public static string GetStatKorName(StatName statName)
     {
         string temp = "";
@@ -276,6 +311,7 @@ public class Define
         public float[] SixStat;
         public List<string> DoneEventNames;
         public List<string> BoughtItems;
+        public List<int> SubStoryIndex;
 
         public PlayerData()
         {
@@ -291,7 +327,7 @@ public class Define
             SixStat = new float[6];
             DoneEventNames = new List<string>();
             BoughtItems = new List<string>();
-
+            SubStoryIndex = new List<int>();
         }
 
         public void ChangeHeart(float value)
@@ -390,6 +426,7 @@ public class Define
             SixStat = new float[6];
             DoneEventNames = new List<string>();
             BoughtItems = new List<string>();
+            SubStoryIndex = new List<int>();
         }
 
     }

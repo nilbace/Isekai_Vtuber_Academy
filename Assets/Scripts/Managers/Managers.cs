@@ -151,13 +151,13 @@ public class Managers : MonoBehaviour
 
     #region Event
 
-    public delegate void WeekEnd();
+    public Action WeekOverAction;
 
-    public static event WeekEnd OnWeekEnd;
-
-    public static void FinishWeek()
+    public void FinishWeek()
     {
-        OnWeekEnd?.Invoke();
+        WeekOverAction?.Invoke();
+        Data.SaveData();
+        UI_MainBackUI.instance.UpdateUItexts();
     }
     #endregion
 }

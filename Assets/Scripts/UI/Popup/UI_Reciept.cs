@@ -79,11 +79,9 @@ public class UI_Reciept : UI_Popup
 
     void FinishBTN()
     {
-        Managers.FinishWeek();
+        Managers.instance.FinishWeek();
         Managers.Data._myPlayerData.NowWeek++;
-        UI_MainBackUI.instance.UpdateUItexts();
         UI_MainBackUI.instance.EndScheduleAndSetUI();
-        Managers.Data.SaveData();
         Managers.UI_Manager.CloseALlPopupUI();
         Managers.Sound.Play(Define.Sound.NextWeekBTN);
     }

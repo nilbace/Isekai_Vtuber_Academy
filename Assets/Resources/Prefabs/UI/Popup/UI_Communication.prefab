@@ -496,7 +496,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5501035149407559673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,9 +534,9 @@ MonoBehaviour:
   - {fileID: -3465840152752843057, guid: 489bee8bc4499fb498cc1071c63bb2e9, type: 3}
   - {fileID: -3866584542801386842, guid: 489bee8bc4499fb498cc1071c63bb2e9, type: 3}
   CharIMGs:
-  - {fileID: 4471102127428283841, guid: de61d239f2215504c990c62e2722a38d, type: 3}
-  - {fileID: 572975475737285071, guid: de61d239f2215504c990c62e2722a38d, type: 3}
-  - {fileID: -82417923766175998, guid: de61d239f2215504c990c62e2722a38d, type: 3}
+  - {fileID: 21300000, guid: 7621377675082f1488b66c0490ccbf8f, type: 3}
+  - {fileID: 21300000, guid: bd34ca46e9f17d64784510bf82fb2d61, type: 3}
+  - {fileID: 21300000, guid: 88eaab7460f3d6447a00b95d214cf4a0, type: 3}
   dialogues: []
   TypingDelay: 0.1
   TargetX: 0
@@ -813,8 +813,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.29
-  m_fontSizeBase: 30.29
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
