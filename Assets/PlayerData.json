@@ -1,29 +1,41 @@
 {
-    "NowWeek": 5,
-    "nowSubCount": 764,
-    "nowGoldAmount": 0,
-    "RubiaKarma": 1,
-    "NowHeart": 96.0,
-    "NowStar": 96.0,
+    "NowWeek": 11,
+    "nowSubCount": 2316,
+    "nowGoldAmount": 26421,
+    "RubiaKarma": 3,
+    "NowHeart": 91.0,
+    "NowStar": 94.0,
     "SixStat": [
-        34.0,
+        170.89999389648438,
+        13.0,
         0.0,
-        2.0,
-        4.0,
-        0.0,
-        3.0
+        12.0,
+        38.0,
+        27.0
     ],
     "DoneEventNames": [
-        "진수성찬 먹방",
-        "고삼차 먹방",
-        "몰루3"
+        "술 헤롱헤롱",
+        "현실부정",
+        "팬레터 읽기",
+        "몰루3",
+        "포카리 물만두",
+        "뮹뮹 다이어트"
     ],
-    "BoughtItems": [],
+    "BoughtItems": [
+        "멘드레이크 쥬스",
+        "사탄의 혀"
+    ],
     "SubStoryIndex": [
-        5,
-        2,
-        24,
-        9,
-        23
+        23,
+        21,
+        27,
+        6,
+        28,
+        10,
+        4,
+        8,
+        3,
+        1,
+        15
     ]
 }
