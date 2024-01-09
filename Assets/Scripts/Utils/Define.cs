@@ -43,6 +43,7 @@ public class Define
         QuaterView,
     }
 
+    #region StatName
     public enum StatName {
         Game, Song, Draw, Strength, Mental, Luck, FALSE, Subs, Week, Karma
     }
@@ -50,6 +51,14 @@ public class Define
     public enum StatNameKor { 
         게임, 노래, 그림, 근력, 멘탈, 행운
     }
+
+    public static string GetStatKorName(StatName statName)
+    {
+        string temp = "";
+        temp += ((StatNameKor)((int)statName)).ToString();
+        return temp;
+    }
+    #endregion
 
     public enum EndingName
     {
@@ -93,12 +102,7 @@ public class Define
         Max
     }
 
-    public static string GetStatKorName(StatName statName)
-    {
-        string temp = "";
-        temp += ((StatNameKor)((int)statName)).ToString();
-        return temp;
-    }
+   
 
     public enum EventDataType {
         Main, Random, Conditioned
@@ -111,19 +115,23 @@ public class Define
         public float[] SixStats;
         public string ItemImageName;
         public int EntWeek;
+        public int Karma;
+        public string ItemInfoText;
 
-        public Item(string itemName = "", int cost = 0, string itemImageName = "", int entWeek = 0)
-            : this(itemName, cost, itemImageName, entWeek, new float[6])
+        public Item(string itemName = "", int cost = 0, string itemImageName = "", int entWeek = 0, int Karma = 0, string IteminfoText = "")
+            : this(itemName, cost, itemImageName, entWeek, new float[6], Karma, IteminfoText)
         {
         }
 
-        public Item(string itemName, int cost, string itemImageName, int entWeek, float[] sixStats)
+        public Item(string itemName, int cost, string itemImageName, int entWeek, float[] sixStats, int karma, string itemInfo)
         {
             ItemName = itemName;
             Cost = cost;
             SixStats = sixStats;
             ItemImageName = itemImageName;
             EntWeek = entWeek;
+            Karma = karma;
+            ItemInfoText = itemInfo;
         }
     }
 

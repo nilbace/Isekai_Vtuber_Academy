@@ -44,7 +44,22 @@ public class MainStoryParser : MonoSingleton<MainStoryParser>
         else
             temp.isLeft = false;
 
-        temp.sentence = lines[2];
+        string tempSentence = lines[2];
+        string newSentence = "";
+
+        for (int i = 0; i < tempSentence.Length; i++)
+        {
+            newSentence += tempSentence[i];
+
+            if ((i + 1) % 14 == 0)
+            {
+                newSentence += "\n";
+            }
+        }
+
+        temp.sentence = newSentence;
+        if (!(lines[0] == "루비아" || lines[0] == "유저" || lines[0] == "뮹뮹" || lines[0] == "나레이션"))
+            temp.sentence = lines[2];
 
         int tempGold;
         StatName tempStatName;

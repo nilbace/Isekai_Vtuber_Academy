@@ -77,7 +77,7 @@ public class Managers : MonoBehaviour
 
     const string DayDatasURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&gid=1890750354&range=B2:Q";
     const string RandEventURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&gid=185260022&range=A2:W";
-    const string MerchantURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&gid=1267834452&range=A2:J";
+    const string MerchantURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&gid=1267834452&range=A2:L";
 
     IEnumerator LoadDatas()
     {
@@ -110,16 +110,16 @@ public class Managers : MonoBehaviour
         StartCoroutine(ScheduleExecuter.Inst.StartSchedule());
     }
 
-    public void ShowDefualtPopUP(string Text)
+    public void ShowDefualtPopUP(string EventInfoText, string ResultInfoText)
     {
-        StartCoroutine(ShowDefaultPopupCor(Text));
+        StartCoroutine(ShowDefaultPopupCor(EventInfoText, ResultInfoText));
     }
 
-    IEnumerator ShowDefaultPopupCor(string Text)
+    IEnumerator ShowDefaultPopupCor(string EventInfoText, string ResultInfoText)
     {
         UI_Manager.ShowPopupUI<UI_DefaultPopup>();
         yield return new WaitForEndOfFrame();
-        UI_DefaultPopup.instance.SetText(Text);
+        UI_DefaultPopup.instance.SetText(EventInfoText, ResultInfoText);
     }
 
     public void ShowMainStory()
@@ -149,15 +149,14 @@ public class Managers : MonoBehaviour
     #endregion
 
 
-    #region Event
 
     public Action WeekOverAction;
 
     public void FinishWeek()
     {
         WeekOverAction?.Invoke();
+        Data._myPlayerData.NowWeek++;
         Data.SaveData();
         UI_MainBackUI.instance.UpdateUItexts();
     }
-    #endregion
 }

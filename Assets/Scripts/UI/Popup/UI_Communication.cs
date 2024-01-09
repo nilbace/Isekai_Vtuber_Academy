@@ -144,7 +144,7 @@ public class UI_Communication : UI_Popup
             dialogueText.text += letter;
             yield return typingDelay;
 
-            Managers.Sound.Play(GetChatSound(chatIndex));
+            Managers.Sound.Play(Define.Sound.Chat1);
             chatIndex++;
         }
 
@@ -152,25 +152,6 @@ public class UI_Communication : UI_Popup
         isTyping = false;
     }
 
-    public bool SoundSwitchMode = false;
-
-    Define.Sound GetChatSound(int index)
-    {
-
-        if (!SoundSwitchMode) return Define.Sound.Chat1;
-
-        switch (index % 3)
-        {
-            case 0:
-                return Define.Sound.Chat1;
-            case 1:
-                return Define.Sound.Chat2;
-            case 2:
-                return Define.Sound.Chat3;
-            default:
-                return Define.Sound.Bgm;
-        }
-    }
 
     void ChooseBubbleIMG(Dialogue dialogue)
     {
@@ -265,7 +246,7 @@ public class UI_Communication : UI_Popup
                 }
             }
 
-            Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 2].sentence);
+            //Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 2].sentence);
         }
 
         void ShowOption2()
@@ -279,7 +260,7 @@ public class UI_Communication : UI_Popup
                 }
             }
 
-            Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 3].sentence);
+            //Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 3].sentence);
         }
 
         GetButton((int)Buttons.Option1BTN).onClick.AddListener(ShowOption1);

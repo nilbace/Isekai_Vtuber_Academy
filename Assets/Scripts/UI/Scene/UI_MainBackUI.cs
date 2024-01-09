@@ -122,8 +122,10 @@ public class UI_MainBackUI : UI_Scene
         //방송 타이틀 오른쪽으로 뺴고 시작
         GetGameObject((int)GameObjects.BroadCastTitle).transform.localPosition += new Vector3(XOffset,0,0);
 
+        Debug.Log($"Week{Managers.Data._myPlayerData.NowWeek}");
+        Debug.Log($"Story{Managers.Data._myPlayerData.SubStoryIndex.Count}");
         //서브스토리 셋팅
-        if(Managers.Data._myPlayerData.NowWeek != Managers.Data._myPlayerData.SubStoryIndex.Count)
+        if (Managers.Data._myPlayerData.NowWeek != Managers.Data._myPlayerData.SubStoryIndex.Count)
         {
             //보통 1주차에 발생됨
             SetSubStoryIndex();
@@ -244,8 +246,7 @@ public class UI_MainBackUI : UI_Scene
             GetText((int)Texts.TempGameTMP+i).text = Managers.Data._myPlayerData.SixStat[i].ToString("F0");
         }
 
-        GetText((int)Texts.CommunicationTMP).text =
-            NowWeekSubStoryIndex.ToString() +" . "+ ((SubStoryName)NowWeekSubStoryIndex).ToString();
+        GetText((int)Texts.CommunicationTMP).text = ((SubStoryName)NowWeekSubStoryIndex).ToString();
     }
 
     private string GetInitialTextForType(Texts textType)
@@ -313,9 +314,7 @@ public class UI_MainBackUI : UI_Scene
     float XOffset = 350;
     [Header("닷트윈 애니메이션")]
     [SerializeField] Ease ease;
-    /// <summary>
-    /// 스케쥴 진행 시작시 호출되어 UI들 바꿔줌
-    /// </summary>
+
     public void StartScheduleAndSetUI()
     {
         StartCoroutine(StartScheduleAndSetUICor());

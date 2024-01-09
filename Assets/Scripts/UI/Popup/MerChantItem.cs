@@ -16,7 +16,7 @@ public class MerChantItem : MonoBehaviour
 
         if(_thisItem.Cost <= Managers.Data._myPlayerData.nowGoldAmount && !IsBought(_thisItem))
         {
-            NameTmp.text = _thisItem.ItemName + "     /" + _thisItem.Cost;
+            NameTmp.text = _thisItem.ItemName + "\n" + _thisItem.Cost+"골드";
             InfoTmp.text = "게임 : " + _thisItem.SixStats[0].ToString() + " /";
             InfoTmp.text += "노래 : " + _thisItem.SixStats[1].ToString() + " /";
             InfoTmp.text += "저챗 : " + _thisItem.SixStats[2].ToString() + "\n";
@@ -27,13 +27,13 @@ public class MerChantItem : MonoBehaviour
         }
         else if(IsBought(_thisItem))
         {
-            NameTmp.text = _thisItem.ItemName + "구매 완료";
+            NameTmp.text = _thisItem.ItemName + " 구매 완료";
             InfoTmp.text = "";
             GetComponent<Button>().interactable = false;
         }
         else
         {
-            NameTmp.text = _thisItem.ItemName + "구매 불가";
+            NameTmp.text = _thisItem.ItemName + " 구매 불가";
             InfoTmp.text = "";
             GetComponent<Button>().interactable = false;
         }

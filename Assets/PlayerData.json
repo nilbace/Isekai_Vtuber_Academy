@@ -1,12 +1,12 @@
 {
     "NowWeek": 2,
-    "nowSubCount": 353,
-    "nowGoldAmount": 1000198,
-    "RubiaKarma": 0,
-    "NowHeart": 58.0,
-    "NowStar": 58.0,
+    "nowSubCount": 96,
+    "nowGoldAmount": 998430,
+    "RubiaKarma": 1,
+    "NowHeart": 100.0,
+    "NowStar": 89.0,
     "SixStat": [
-        16.0,
+        3.0,
         0.0,
         0.0,
         2.0,
@@ -14,13 +14,11 @@
         1.0
     ],
     "DoneEventNames": [
-        "도수치료 직캠",
-        "몰루2"
+        "도수치료 직캠"
     ],
     "BoughtItems": [],
     "SubStoryIndex": [
-        22,
-        18,
-        9
+        12,
+        23
     ]
 }

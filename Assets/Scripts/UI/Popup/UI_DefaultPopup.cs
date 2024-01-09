@@ -17,8 +17,8 @@ public class UI_DefaultPopup : UI_Popup
     }
     enum Texts
     {
-        EventText,
-        
+        EventText, resultbtnTMP
+
     }
 
     private void Start()
@@ -35,9 +35,10 @@ public class UI_DefaultPopup : UI_Popup
         GetButton(0).onClick.AddListener(ResultBTN);
     }
 
-    public void SetText(string Text)
+    public void SetText(string EventInfoText, string ResultInfoText)
     {
-        GetText(0).text = Text;
+        GetText(0).text = EventInfoText;
+        GetText(0).text = ResultInfoText;
     }
 
     void ResultBTN()

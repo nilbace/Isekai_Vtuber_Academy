@@ -259,10 +259,15 @@ public class DataManager
         float[] tempint = new float[6];
         for (int j = 0; j < 6; j++)
         {
-            tempint[j] = float.Parse(tempstrings.Dequeue());
+            tempint[j] = string.IsNullOrEmpty(tempstrings.Peek()) ? 0 : int.Parse(tempstrings.Peek());
+            tempstrings.Dequeue();
         }
 
         tempitem.SixStats = tempint;
+
+        tempitem.Karma = string.IsNullOrEmpty(tempstrings.Peek()) ? 0 : int.Parse(tempstrings.Peek());
+        tempstrings.Dequeue();
+        tempitem.ItemInfoText = tempstrings.Dequeue();
         ItemList.Add(tempitem);
     }
 
