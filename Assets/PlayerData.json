@@ -1,24 +1,29 @@
 {
-    "NowWeek": 2,
-    "nowSubCount": 96,
-    "nowGoldAmount": 998430,
-    "RubiaKarma": 1,
-    "NowHeart": 100.0,
-    "NowStar": 89.0,
+    "NowWeek": 6,
+    "nowSubCount": 829,
+    "nowGoldAmount": 1000311,
+    "RubiaKarma": 2,
+    "NowHeart": 44.0,
+    "NowStar": 44.0,
     "SixStat": [
-        3.0,
-        0.0,
-        0.0,
+        38.0,
         2.0,
         0.0,
-        1.0
+        0.0,
+        0.0,
+        0.0
     ],
     "DoneEventNames": [
-        "도수치료 직캠"
+        "팬레터 읽기",
+        "스카이 다이빙"
     ],
     "BoughtItems": [],
     "SubStoryIndex": [
-        12,
-        23
+        13,
+        27,
+        20,
+        23,
+        6,
+        15
     ]
 }

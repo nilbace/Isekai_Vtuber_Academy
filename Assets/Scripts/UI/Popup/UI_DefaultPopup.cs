@@ -38,7 +38,7 @@ public class UI_DefaultPopup : UI_Popup
     public void SetText(string EventInfoText, string ResultInfoText)
     {
         GetText(0).text = EventInfoText;
-        GetText(0).text = ResultInfoText;
+        GetText(1).text = ResultInfoText;
     }
 
     void ResultBTN()

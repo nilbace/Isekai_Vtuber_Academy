@@ -68,7 +68,7 @@ public class UI_Merchant : UI_Popup
 
     void Close()
     {
-        Managers.instance.ShowReceipt();
+        Managers.UI_Manager.ShowPopupUI<UI_CloseMerChant>();
     }
 
     public void UpdateTexts()

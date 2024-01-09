@@ -246,7 +246,7 @@ public class UI_Communication : UI_Popup
                 }
             }
 
-            //Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 2].sentence);
+            Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 2].sentence, "임시");
         }
 
         void ShowOption2()
@@ -260,7 +260,7 @@ public class UI_Communication : UI_Popup
                 }
             }
 
-            //Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 3].sentence);
+            Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 3].sentence, "임시");
         }
 
         GetButton((int)Buttons.Option1BTN).onClick.AddListener(ShowOption1);

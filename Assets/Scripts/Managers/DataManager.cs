@@ -267,6 +267,7 @@ public class DataManager
 
         tempitem.Karma = string.IsNullOrEmpty(tempstrings.Peek()) ? 0 : int.Parse(tempstrings.Peek());
         tempstrings.Dequeue();
+
         tempitem.ItemInfoText = tempstrings.Dequeue();
         ItemList.Add(tempitem);
     }

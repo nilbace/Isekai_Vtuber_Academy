@@ -9,6 +9,7 @@ public class MerChantItem : MonoBehaviour
     public TMPro.TMP_Text NameTmp;
     public TMPro.TMP_Text InfoTmp;
     public Item _thisItem;
+    public static Item BuyUIItem;
 
     public void Setting(Item item)
     {
@@ -39,7 +40,7 @@ public class MerChantItem : MonoBehaviour
         }
 
         GetComponent<Button>().onClick.RemoveAllListeners();
-        GetComponent<Button>().onClick.AddListener(Buy);
+        GetComponent<Button>().onClick.AddListener(ShowBuyUI);
     }
 
     bool IsBought(Item item)
@@ -51,18 +52,10 @@ public class MerChantItem : MonoBehaviour
         return false;
     }
 
-    void Buy()
+    void ShowBuyUI()
     {
-        Managers.Data._myPlayerData.nowGoldAmount -= _thisItem.Cost;
-
-        for(int i = 0;i<6;i++)
-        {
-            Managers.Data._myPlayerData.SixStat[i] += _thisItem.SixStats[i];
-        }
-
-        UI_MainBackUI.instance.UpdateUItexts();
-        Managers.Data._myPlayerData.BoughtItems.Add(_thisItem.ItemName);
-        UI_Merchant.instance.UpdateTexts();
+        BuyUIItem = _thisItem;
+        Managers.UI_Manager.ShowPopupUI<UI_Buy>();
     }
     
 }

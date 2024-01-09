@@ -122,8 +122,6 @@ public class UI_MainBackUI : UI_Scene
         //방송 타이틀 오른쪽으로 뺴고 시작
         GetGameObject((int)GameObjects.BroadCastTitle).transform.localPosition += new Vector3(XOffset,0,0);
 
-        Debug.Log($"Week{Managers.Data._myPlayerData.NowWeek}");
-        Debug.Log($"Story{Managers.Data._myPlayerData.SubStoryIndex.Count}");
         //서브스토리 셋팅
         if (Managers.Data._myPlayerData.NowWeek != Managers.Data._myPlayerData.SubStoryIndex.Count)
         {
