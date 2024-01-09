@@ -2370,7 +2370,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AniSpeed: 0.2
-  SmallTalkTextAsset: {fileID: 0}
+  SmallTalkTextAsset: {fileID: 4900000, guid: d2d752ab79cbc8c428ecee6649ac3f4e, type: 3}
+  MMTalkTMP: {fileID: 1916315218}
 --- !u!114 &231607956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16028,7 +16029,7 @@ MonoBehaviour:
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 6.97
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
