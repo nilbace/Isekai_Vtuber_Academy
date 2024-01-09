@@ -11299,8 +11299,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.1462, y: 7.5408}
-  m_SizeDelta: {x: 276.7627, y: 34.9184}
+  m_AnchoredPosition: {x: 0, y: 8.5}
+  m_SizeDelta: {x: 276.7627, y: 34.2718}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1288189213
 MonoBehaviour:
@@ -11322,12 +11322,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774 \uD14D\uC2A4\uD2B8\uB294<sprite=13> <color=red>\uBE68\uAC04\uC0C9</color>\uACFC
-    <size=30>\uD06C\uAE30 30</size>\uACFC <b>\uAD75\uC740</b> \uD45C\uC2DC\uB97C
-    \uD3EC\uD568\uD569\uB2C8\uB2E4."
+  m_text: "<size=15><sprite=13></size> <color=red>\uBE68\uAC04\uC0C9</color> \uAE00\uC790\uB3C4
+    \uB4E4\uC5B4\uAC00\uC694"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: deb0c02a3ea2cf04582e30cd94b6b1a1, type: 2}
-  m_sharedMaterial: {fileID: 8319061566712679608, guid: deb0c02a3ea2cf04582e30cd94b6b1a1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8bae00d3f38bac44ca17df61f33b456e, type: 2}
+  m_sharedMaterial: {fileID: -3381243541127260742, guid: 8bae00d3f38bac44ca17df61f33b456e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11351,10 +11350,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -15975,8 +15974,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -137.9913, y: 24.6327}
-  m_SizeDelta: {x: 233.0174, y: 28.7345}
+  m_AnchoredPosition: {x: -138.14041, y: 23.4}
+  m_SizeDelta: {x: 225.5542, y: 28.7345}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1916315218
 MonoBehaviour:
@@ -15998,7 +15997,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC601\uC900\uC544 \uB9DE\uCDB0\uB194\uC57C\uACA0\uC9C0?"
+  m_text: "\uC601\uC900\uC544 \uB9DE\uCDB0\uB194\uC57C\uACA0\uC9C0?\uC601\uC900\uC544
+    \uB9DE\uCDB0\uB194\uC57C\uACA0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 55fd8658d54b9b5419c8d25476bdc5dc, type: 2}
   m_sharedMaterial: {fileID: -3065034633096218605, guid: 55fd8658d54b9b5419c8d25476bdc5dc, type: 2}
@@ -16025,10 +16025,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23
-  m_fontSizeBase: 24
+  m_fontSize: 11
+  m_fontSizeBase: 11
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 6.97
   m_fontSizeMax: 72
   m_fontStyle: 0
