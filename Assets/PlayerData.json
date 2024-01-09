@@ -1,29 +1,21 @@
 {
-    "NowWeek": 5,
-    "nowSubCount": 764,
-    "nowGoldAmount": 0,
-    "RubiaKarma": 1,
-    "NowHeart": 96.0,
-    "NowStar": 96.0,
+    "NowWeek": 1,
+    "nowSubCount": 0,
+    "nowGoldAmount": 1000000,
+    "RubiaKarma": 0,
+    "NowHeart": 100.0,
+    "NowStar": 100.0,
     "SixStat": [
-        34.0,
         0.0,
-        2.0,
-        4.0,
         0.0,
-        3.0
+        0.0,
+        0.0,
+        0.0,
+        0.0
     ],
-    "DoneEventNames": [
-        "진수성찬 먹방",
-        "고삼차 먹방",
-        "몰루3"
-    ],
+    "DoneEventNames": [],
     "BoughtItems": [],
     "SubStoryIndex": [
-        5,
-        2,
-        24,
-        9,
-        23
+        9
     ]
 }

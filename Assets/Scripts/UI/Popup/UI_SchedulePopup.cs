@@ -82,7 +82,7 @@ public class UI_SchedulePopup : UI_Popup
     public override void Init()
     {
         base.Init();
-
+        Under7dayIMGs = UI_MainBackUI.instance.Under7Imges;
         Bind<GameObject>(typeof(GameObjects));
         Bind<Button>(typeof(Buttons));
         Bind<Image>(typeof(Images));
@@ -199,7 +199,7 @@ public class UI_SchedulePopup : UI_Popup
     [SerializeField] Ease ease;
     [SerializeField] float moveDuration;
     [SerializeField] Color[] baseTextColor;
-
+    Image[] Under7dayIMGs;
     void UpdateColorAndSelected()
     {
         for(int i = 0; i<7;i++)
@@ -215,27 +215,34 @@ public class UI_SchedulePopup : UI_Popup
                 if (GetButton(i).interactable == true)
                 {
                     GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[3];
+                    Under7dayIMGs[i].sprite = Managers.MSM.Days[3];
                 }
                 else
                 {
                     GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[4];
+                    Under7dayIMGs[i].sprite = Managers.MSM.Days[4];
                 }
             }
             else if(_SevenDayScheduleDatas[i].scheduleType == ScheduleType.BroadCast)
             {
                 GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[0];
+                Under7dayIMGs[i].sprite = Managers.MSM.Days[0];
                 GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = baseTextColor[1];
+                Under7dayIMGs[i].GetComponentInChildren<TMP_Text>().color = baseTextColor[1];
             }
             else if(_SevenDayScheduleDatas[i].scheduleType == ScheduleType.Rest)
             {
                 GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[1];
+                Under7dayIMGs[i].sprite = Managers.MSM.Days[1];
                 GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = baseTextColor[2];
-
+                Under7dayIMGs[i].GetComponentInChildren<TMP_Text>().color = baseTextColor[2];
             }
             else
             {
                 GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[2];
+                Under7dayIMGs[i].sprite = Managers.MSM.Days[2];
                 GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = baseTextColor[3];
+                Under7dayIMGs[i].GetComponentInChildren<TMP_Text>().color = baseTextColor[3];
             }
         }
     }

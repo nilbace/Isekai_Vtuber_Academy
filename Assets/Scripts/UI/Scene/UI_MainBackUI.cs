@@ -21,6 +21,9 @@ public class UI_MainBackUI : UI_Scene
     public Sprite[] TempStampImg;
     public float StampResetTime;
     public Ease StampEase;
+
+    //하단 버튼들
+    public Image[] Under7Imges;
     enum Texts
     {
         HeartTMP,  //현재 건강 상태
