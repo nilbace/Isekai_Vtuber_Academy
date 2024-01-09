@@ -1,29 +1,29 @@
 {
-    "NowWeek": 6,
-    "nowSubCount": 829,
-    "nowGoldAmount": 1000311,
-    "RubiaKarma": 2,
-    "NowHeart": 44.0,
-    "NowStar": 44.0,
+    "NowWeek": 5,
+    "nowSubCount": 764,
+    "nowGoldAmount": 0,
+    "RubiaKarma": 1,
+    "NowHeart": 96.0,
+    "NowStar": 96.0,
     "SixStat": [
-        38.0,
+        34.0,
+        0.0,
         2.0,
+        4.0,
         0.0,
-        0.0,
-        0.0,
-        0.0
+        3.0
     ],
     "DoneEventNames": [
-        "팬레터 읽기",
-        "스카이 다이빙"
+        "진수성찬 먹방",
+        "고삼차 먹방",
+        "몰루3"
     ],
     "BoughtItems": [],
     "SubStoryIndex": [
-        13,
-        27,
-        20,
-        23,
-        6,
-        15
+        5,
+        2,
+        24,
+        9,
+        23
     ]
 }

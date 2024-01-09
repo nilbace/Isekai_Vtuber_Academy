@@ -34,9 +34,10 @@ public class MerChantItem : MonoBehaviour
         }
         else
         {
-            NameTmp.text = _thisItem.ItemName + " 구매 불가";
+            NameTmp.text = _thisItem.ItemName+$" <sprite=7><color=red>{_thisItem.Cost}</color>" + " 구매 불가";
             InfoTmp.text = "";
             GetComponent<Button>().interactable = false;
+            GetComponent<Image>().sprite = GetComponent<Button>().spriteState.pressedSprite;
         }
 
         GetComponent<Button>().onClick.RemoveAllListeners();

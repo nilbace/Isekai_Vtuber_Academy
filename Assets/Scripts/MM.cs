@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.Networking;
 using static Define;
 
-public class MM : MonoSingleton<MM>, IPointerClickHandler
+public class MM : MonoSingleton<MM>
 {
     public float AniSpeed;
     public TextAsset SmallTalkTextAsset;
@@ -47,7 +45,7 @@ public class MM : MonoSingleton<MM>, IPointerClickHandler
         }
         else if(mMState == MMState.OnSchedule)
         {
-            MMTalkTMP.text = "일정은 내가 확실히 기억해주겠다뮹!";
+            MMTalkTMP.text = "일정은 내가 확실히 기억해주겠다뮹! 절대 머리 위의 버튼을 누르지 말라뮹";
         }
     }
 
@@ -66,21 +64,23 @@ public class MM : MonoSingleton<MM>, IPointerClickHandler
         TalkSomething(mmState);
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+
+
+    private void OnMouseDown()
     {
         if (_nowMMState == MMState.OnSchedule)
         {
             animator.SetTrigger("Push");
             Managers.Sound.Play("MM");
             UI_SchedulePopup.instance.ResetSchedule();
-            if(ResetTalkCor!=null) StopCoroutine(ResetTalkCor); 
+            if (ResetTalkCor != null) StopCoroutine(ResetTalkCor);
             ResetTalkCor = StartCoroutine(ForgetTalk());
         }
     }
 
     IEnumerator ForgetTalk()
     {
-        MMTalkTMP.text = "앗...까먹었다뮹...";
+        MMTalkTMP.text = "<size=21.5>앗...까먹었다뮹...";
         yield return new WaitForSeconds(2f);
         TalkSomething(_nowMMState);
     }

@@ -91,6 +91,7 @@ public class UI_MainBackUI : UI_Scene
         Bind<Image>(typeof(Images));
 
         Button CreateScheduleBTN = Get<Button>((int)Buttons.CreateScheduleBTN);
+        StampIMG = GameObject.Find("StampIMG").GetComponent<Image>();
 
         CreateScheduleBTN.onClick.AddListener(ShowSchedulePopup);
         GetButton((int)Buttons.GameStatBTN).onClick.AddListener(() => ShowStatPropertyUI(StatName.Game));
@@ -496,33 +497,35 @@ public class UI_MainBackUI : UI_Scene
             ScreenAnimator.SetTrigger(KorName);
         }
     }
-    /// <summary>
-    /// -1ºóÄ­ 0½ÇÆÐ 1º¸Åë 2´ë¼º°ø 
-    /// </summary>
-    /// <param name="Result"></param>
+
+
+    #region Stamp;
+    public Image StampIMG;
+
     public void SetStamp(int Result)
     {
         switch (Result)
         {
             case -1:
-                GetImage((int)Images.StampIMG).gameObject.SetActive(false);
+                StampIMG.gameObject.SetActive(false);
                 break;
             case 0:
-                GetImage((int)Images.StampIMG).gameObject.SetActive(true);
-                GetImage((int)Images.StampIMG).sprite = TempStampImg[0];
+                StampIMG.gameObject.SetActive(true);
+                StampIMG.sprite = TempStampImg[0];
                 break;
             case 1:
-                GetImage((int)Images.StampIMG).gameObject.SetActive(true);
-                GetImage((int)Images.StampIMG).sprite = TempStampImg[1];
+                StampIMG.gameObject.SetActive(true);
+                StampIMG.sprite = TempStampImg[1];
                 break;
             case 2:
-                GetImage((int)Images.StampIMG).gameObject.SetActive(true);
-                GetImage((int)Images.StampIMG).sprite = TempStampImg[2];
+                StampIMG.gameObject.SetActive(true);
+                StampIMG.sprite = TempStampImg[2];
                 break;
         }
-        GetImage((int)Images.StampIMG).transform.localScale = Vector3.one * 5f;
-        GetImage((int)Images.StampIMG).transform.DOScale(1, StampResetTime).SetEase(StampEase);
+        StampIMG.transform.localScale = Vector3.one * 5f;
+        StampIMG.transform.DOScale(1, StampResetTime).SetEase(StampEase);
     }
+    #endregion
 
     #endregion
 }
