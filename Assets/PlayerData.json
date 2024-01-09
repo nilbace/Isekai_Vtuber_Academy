@@ -1,24 +1,28 @@
 {
-    "NowWeek": 2,
-    "nowSubCount": 96,
-    "nowGoldAmount": 998430,
+    "NowWeek": 4,
+    "nowSubCount": 473,
+    "nowGoldAmount": 998742,
     "RubiaKarma": 1,
-    "NowHeart": 100.0,
-    "NowStar": 89.0,
+    "NowHeart": 77.0,
+    "NowStar": 61.0,
     "SixStat": [
-        3.0,
+        17.0,
         0.0,
         0.0,
         2.0,
         0.0,
-        1.0
+        4.0
     ],
     "DoneEventNames": [
-        "도수치료 직캠"
+        "도수치료 직캠",
+        "자르반 84세와 만남",
+        "뮹뮹 다이어트"
     ],
     "BoughtItems": [],
     "SubStoryIndex": [
         12,
-        23
+        23,
+        11,
+        0
     ]
 }
