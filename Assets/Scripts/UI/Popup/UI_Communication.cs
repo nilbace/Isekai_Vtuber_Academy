@@ -65,7 +65,13 @@ public class UI_Communication : UI_Popup
         GetImage((int)Images.LeftIMG).gameObject.SetActive(false);
         GetImage((int)Images.RightIMG).gameObject.SetActive(false);
         dialogueText = GetText((int)Texts.sentenceTMP);
-        GetButton(2).onClick.AddListener(CloseBTN);
+        GetButton(2).onClick.AddListener(SkipBTN);
+    }
+
+    void SkipBTN()
+    {
+        Managers.UI_Manager.ClosePopupUI();
+        Managers.Sound.Play(Sound.Skip);
     }
 
     public void HideSkipBTN()

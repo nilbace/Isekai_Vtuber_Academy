@@ -25,6 +25,7 @@ public class Define
         Fail,
         Buy,
         Receipt,
+        Skip,
         Chat1, Chat2, Chat3,
 
         MaxCount,
