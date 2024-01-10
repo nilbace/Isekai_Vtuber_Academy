@@ -1,21 +1,41 @@
 {
-    "NowWeek": 1,
-    "nowSubCount": 0,
-    "nowGoldAmount": 1000000,
-    "RubiaKarma": 0,
-    "NowHeart": 100.0,
-    "NowStar": 100.0,
+    "NowWeek": 11,
+    "nowSubCount": 2316,
+    "nowGoldAmount": 26421,
+    "RubiaKarma": 3,
+    "NowHeart": 91.0,
+    "NowStar": 94.0,
     "SixStat": [
+        170.89999389648438,
+        13.0,
         0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
+        12.0,
+        38.0,
+        27.0
     ],
-    "DoneEventNames": [],
-    "BoughtItems": [],
+    "DoneEventNames": [
+        "술 헤롱헤롱",
+        "현실부정",
+        "팬레터 읽기",
+        "몰루3",
+        "포카리 물만두",
+        "뮹뮹 다이어트"
+    ],
+    "BoughtItems": [
+        "멘드레이크 쥬스",
+        "사탄의 혀"
+    ],
     "SubStoryIndex": [
-        9
+        23,
+        21,
+        27,
+        6,
+        28,
+        10,
+        4,
+        8,
+        3,
+        1,
+        15
     ]
 }
