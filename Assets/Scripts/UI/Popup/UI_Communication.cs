@@ -34,7 +34,8 @@ public class UI_Communication : UI_Popup
     enum Buttons
     {
         Option1BTN,
-        Option2BTN
+        Option2BTN,
+        SkipBTN
     }
 
 
@@ -64,6 +65,12 @@ public class UI_Communication : UI_Popup
         GetImage((int)Images.LeftIMG).gameObject.SetActive(false);
         GetImage((int)Images.RightIMG).gameObject.SetActive(false);
         dialogueText = GetText((int)Texts.sentenceTMP);
+        GetButton(2).onClick.AddListener(CloseBTN);
+    }
+
+    public void HideSkipBTN()
+    {
+        GetButton(2).gameObject.SetActive(false);
     }
 
     void Update()

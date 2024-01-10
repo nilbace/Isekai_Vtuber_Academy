@@ -29,6 +29,7 @@ public class MainStoryParser : MonoSingleton<MainStoryParser>
         }
 
         UI_Communication.instance.StartDiagloue(Dialogues);
+        UI_Communication.instance.HideSkipBTN();
     }
 
     Dialogue DebugSetence(string asdf)
