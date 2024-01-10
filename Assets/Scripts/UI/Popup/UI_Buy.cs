@@ -43,6 +43,7 @@ public class UI_Buy : UI_Popup
             Managers.Data._myPlayerData.RubiaKarma += item.Karma;
 
             UI_MainBackUI.instance.UpdateUItexts();
+            Managers.Sound.Play(Sound.Buy);
             Managers.UI_Manager.ClosePopupUI();
             Managers.Data._myPlayerData.BoughtItems.Add(item.ItemName);
             UI_Merchant.instance.UpdateTexts();

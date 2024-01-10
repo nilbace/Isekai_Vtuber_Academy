@@ -70,12 +70,14 @@ public class UI_RandomEvent : UI_Popup
     {
         DoOption(true);
         Managers.instance.ShowReceipt();
+        Managers.Sound.Play(Define.Sound.SmallBTN);
     }
 
     void ChooseBTN2()
     {
         DoOption(false);
         Managers.instance.ShowReceipt();
+        Managers.Sound.Play(Define.Sound.SmallBTN);
     }
 
 

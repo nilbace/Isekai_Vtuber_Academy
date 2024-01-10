@@ -445,6 +445,7 @@ public class UI_MainBackUI : UI_Scene
     IEnumerator ShowSubStoryCor(int index)
     {
         Managers.UI_Manager.ShowPopupUI<UI_Communication>();
+        Managers.Sound.Play(Sound.SmallBTN);
         yield return new WaitForEndOfFrame();
         SubStoryParser.Inst.StartStory(index);
     }
@@ -502,6 +503,10 @@ public class UI_MainBackUI : UI_Scene
     }
 
 
+
+
+    #endregion
+
     #region Stamp;
     public Image StampIMG;
 
@@ -528,7 +533,5 @@ public class UI_MainBackUI : UI_Scene
         StampIMG.transform.localScale = Vector3.one * 5f;
         StampIMG.transform.DOScale(1, StampResetTime).SetEase(StampEase);
     }
-    #endregion
-
     #endregion
 }

@@ -57,6 +57,7 @@ public class MerChantItem : MonoBehaviour
     {
         BuyUIItem = _thisItem;
         Managers.UI_Manager.ShowPopupUI<UI_Buy>();
+        Managers.Sound.Play(Sound.SmallBTN);
     }
     
 }

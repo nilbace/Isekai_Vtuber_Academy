@@ -239,11 +239,16 @@ public class UI_Communication : UI_Popup
         {
             if (dialogues[currentDialogueIndex].CostGold > 0)
             {
+                Managers.Sound.Play(Sound.Buy);
                 Managers.Data._myPlayerData.nowGoldAmount -= dialogues[currentDialogueIndex].CostGold;
                 for (int i = 0; i < dialogues[currentDialogueIndex+2].rewardStats.Count; i++)
                 {
                     Managers.Data._myPlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 2].rewardStats[i]);
                 }
+            }
+            else
+            {
+                Managers.Sound.Play(Sound.SmallBTN);
             }
 
             Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 2].sentence, "임시");
@@ -253,11 +258,16 @@ public class UI_Communication : UI_Popup
         {
             if (dialogues[currentDialogueIndex + 1].CostGold > 0)
             {
+                Managers.Sound.Play(Sound.Buy);
                 Managers.Data._myPlayerData.nowGoldAmount -= dialogues[currentDialogueIndex + 1].CostGold;
                 for (int i = 0; i < dialogues[currentDialogueIndex + 3].rewardStats.Count; i++)
                 {
                     Managers.Data._myPlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 3].rewardStats[i]);
                 }
+            }
+            else
+            {
+                Managers.Sound.Play(Sound.SmallBTN);
             }
 
             Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 3].sentence, "임시");
