@@ -848,7 +848,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5501035149407559673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -878,6 +878,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83400481c200d944ba6b2e9f992dab61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CutsceneSprites:
+  - {fileID: 21300000, guid: 7fec0d2858a3a08459ed691c05ce9946, type: 3}
+  - {fileID: 21300000, guid: 6946df222860c354f82e0b1ccb90d3b7, type: 3}
+  - {fileID: 21300000, guid: c4e05384b30f57740ac9a48ab7edb3a8, type: 3}
+  - {fileID: 21300000, guid: 38180938cbaffcf47af124e13d334578, type: 3}
+  - {fileID: 21300000, guid: 3932fe655bb619841980708aecb6499b, type: 3}
+  - {fileID: 21300000, guid: ae638c89d17c0574d836a3e29a90d162, type: 3}
+  - {fileID: 21300000, guid: e21b7a811296fc34d88b2160321055cd, type: 3}
+  - {fileID: 21300000, guid: 1459db2ae1ee4fe4ab63ff799219c863, type: 3}
+  - {fileID: 21300000, guid: aeb058c88ed77634f80bc51b45ec5651, type: 3}
+  - {fileID: 21300000, guid: 9a6500f1cce715c45b643e4f49a4a599, type: 3}
+  - {fileID: 21300000, guid: 9b348485091644445b6d8ccb85b19453, type: 3}
+  - {fileID: 21300000, guid: 6ce134b977082244cb47b86aab4b7f6d, type: 3}
+  - {fileID: 21300000, guid: c1084f2f954453f44870414434f46992, type: 3}
+  - {fileID: 21300000, guid: fe816e5b02de75146b87aab5c128695b, type: 3}
+  - {fileID: 21300000, guid: f4d054c1c8b73d340bde0108c939e6f5, type: 3}
+  - {fileID: 21300000, guid: 32072f40ba1c6c045a35ef3fad60367c, type: 3}
+  - {fileID: 21300000, guid: 182e37466f5c05a4ba9a1be815d13656, type: 3}
+  - {fileID: 21300000, guid: cf3133405cbea9d42861371be555a897, type: 3}
+  - {fileID: 21300000, guid: afba0e908e46b0a4e907866ae4f1cd69, type: 3}
 --- !u!1 &5657491869211867155
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,7 +936,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 2.5, y: 0}
   m_SizeDelta: {x: 224, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &8664257833794682150

@@ -8,7 +8,7 @@ public class ChattingManager : MonoSingleton<ChattingManager>
 {
     const string Message_NameURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&gid=0&range=A2:J";
 
-    List<string>[] Message_NameListArray = new List<string>[(int)BroadCastType.MaxCount_Name + 1];
+    Dictionary<BroadCastType, List<string>> ChatMessage_NameDic = new Dictionary<BroadCastType, List<string>>();
 
     public float ChatBubbleRiseDuration = 0.3f;
     [Header("채팅 사이의 시간")]
@@ -38,11 +38,10 @@ public class ChattingManager : MonoSingleton<ChattingManager>
 
     void Start()
     {
-        for (int i = 0; i < Message_NameListArray.Length; i++)
+        for (int i = 0; i < (int)BroadCastType.MaxCount_Name + 1; i++)
         {
-            Message_NameListArray[i] = new List<string>();
+            ChatMessage_NameDic[(BroadCastType)i] = new List<string>();
         }
-
         //배열에 집어넣고 비활성화
         int childCount = gameObject.transform.childCount;
         for (int i = 0; i < childCount; i++)
@@ -86,7 +85,7 @@ public class ChattingManager : MonoSingleton<ChattingManager>
 
         for (int i = 0; i < (int)BroadCastType.MaxCount_Name; i++)
         {
-            Message_NameListArray[i] = AutoLineBreak(Message_NameListArray[i]);
+            ChatMessage_NameDic[(BroadCastType)i] = AutoLineBreak(ChatMessage_NameDic[(BroadCastType)i]);
         }
     }
 
@@ -97,7 +96,7 @@ public class ChattingManager : MonoSingleton<ChattingManager>
         {
             if (EachData[i] != "")
             {
-                Message_NameListArray[i].Add(EachData[i]);
+                ChatMessage_NameDic[(BroadCastType)i].Add(EachData[i]);
             }
         }
     }
@@ -144,7 +143,7 @@ public class ChattingManager : MonoSingleton<ChattingManager>
 
     public void StartGenerateChattingByType(BroadCastType broadCastType)
     {
-        StartCoroutine(StartGenerateChatting(Message_NameListArray[(int)broadCastType]));
+        StartCoroutine(StartGenerateChatting(ChatMessage_NameDic[broadCastType]));
     }
 
 
@@ -200,7 +199,7 @@ public class ChattingManager : MonoSingleton<ChattingManager>
         Go.transform.localScale = Vector3.zero;
         Go.GetComponent<RectTransform>().anchoredPosition = new Vector3(ChatBubbleXPos, ClearChatGO.transform.GetComponent<RectTransform>().sizeDelta.y/2f* _chatScale + ChatBubbleYPos, 0);
 
-        Go.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMPro.TMP_Text>().text = GetRandomStringFromList(Message_NameListArray[(int)BroadCastType.MaxCount_Name]);
+        Go.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMPro.TMP_Text>().text = GetRandomStringFromList(ChatMessage_NameDic[BroadCastType.MaxCount_Name]);
         Go.transform.GetChild(0).GetChild(0).GetComponent<TMPro.TMP_Text>().text = message;
         ClearChatGO.GetComponent<TMPro.TMP_Text>().text = Go.transform.GetChild(0).GetChild(0).GetComponent<TMPro.TMP_Text>().text;
 

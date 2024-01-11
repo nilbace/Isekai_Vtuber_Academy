@@ -215,6 +215,8 @@ public class UI_MainBackUI : UI_Scene
     }
 
 
+    public Sprite[] StatusBar;
+
     public void UpdateUItexts()
     {
         foreach (Texts textType in System.Enum.GetValues(typeof(Texts)))
@@ -227,9 +229,9 @@ public class UI_MainBackUI : UI_Scene
         float nowStar = Managers.Data._myPlayerData.NowStar;
 
         GetImage((int)Images.HeartBar).sprite =
-            Managers.MSM.StatusBar[GetStatusBarImageIndex(nowHeart)];
+            StatusBar[GetStatusBarImageIndex(nowHeart)];
         GetImage((int)Images.StarBar).sprite =
-            Managers.MSM.StatusBar[GetStatusBarImageIndex(nowStar)];
+            StatusBar[GetStatusBarImageIndex(nowStar)];
 
         GetGameObject((int)GameObjects.HeartCover).transform.localScale =
             new Vector3( 1 - (float)Managers.Data._myPlayerData.NowHeart/100f, 1, 1);

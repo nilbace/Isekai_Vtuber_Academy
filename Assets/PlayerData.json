@@ -1,29 +1,28 @@
 {
-    "NowWeek": 5,
-    "nowSubCount": 146,
-    "nowGoldAmount": 54659,
+    "NowWeek": 4,
+    "nowSubCount": 168,
+    "nowGoldAmount": 995851,
     "RubiaKarma": 5,
-    "NowHeart": 67.0,
-    "NowStar": 59.0,
+    "NowHeart": 95.0,
+    "NowStar": 100.0,
     "SixStat": [
-        143.0,
+        10.0,
+        0.0,
+        3.0,
         4.0,
         0.0,
-        4.0,
-        3.0,
         0.0
     ],
     "DoneEventNames": [
-        "팬레터 읽기",
-        "고삼차 먹방",
-        "합체로봇사줘"
+        "현실부정",
+        "표절논란",
+        "도수치료 직캠"
     ],
     "BoughtItems": [],
     "SubStoryIndex": [
-        16,
         29,
-        1,
-        21,
-        12
+        3,
+        25,
+        22
     ]
 }

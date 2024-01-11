@@ -280,6 +280,18 @@ public class Define
             this.CostGold = costGold;
             this.rewardStats = new List<RewardStat>();
         }
+
+        public bool UserHasEnoughGold()
+        {
+            if (Managers.Data._myPlayerData.nowGoldAmount >= CostGold)
+                return true;
+            return false;
+        }
+
+        public bool IsNeedGold()
+        {
+            return (CostGold > 0);
+        }
     }
 
     [System.Serializable]

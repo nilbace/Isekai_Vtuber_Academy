@@ -7,9 +7,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 using static Define;
 
-/// <summary>
-/// 데이터 읽어오기 및 가공 담당 스크립트
-/// </summary>
 public class DataManager
 { 
     public PlayerData _myPlayerData;
@@ -79,7 +76,6 @@ public class DataManager
 
     }
 
-    //랜덤 이벤트 데이터 불러오기
 
     public IEnumerator RequestAndSetRandEventDatas(string www)
     {

@@ -9,7 +9,9 @@ using static Define;
 public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
     public OneDayScheduleData thisSubSchedleData;
-    public Button thisBTN;
+    [HideInInspector] public Button thisBTN;
+    public Sprite[] TaskPannelSprites;
+    public Sprite[] MiniStatIcons;
     SevenDays thisBTNDay;
     ScrollRect scrollRect;
 
@@ -75,20 +77,20 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         switch (scheduleData.scheduleType)
         {
             case ScheduleType.BroadCast:
-                GetComponent<Image>().sprite = Managers.MSM.DaysPannel[0];
-                ButtonBackImage.pressedSprite = Managers.MSM.DaysPannel[1];
+                GetComponent<Image>().sprite = TaskPannelSprites[0];
+                ButtonBackImage.pressedSprite = TaskPannelSprites[1];
                 thisBTN.spriteState = ButtonBackImage;
                 SetPozition(BroadCastpoz);
                 break;
             case ScheduleType.Rest:
-                GetComponent<Image>().sprite = Managers.MSM.DaysPannel[2];
-                ButtonBackImage.pressedSprite = Managers.MSM.DaysPannel[3];
+                GetComponent<Image>().sprite = TaskPannelSprites[2];
+                ButtonBackImage.pressedSprite = TaskPannelSprites[3];
                 thisBTN.spriteState = ButtonBackImage;
                 SetPozition(Restpoz);
                 break;
             case ScheduleType.GoOut:
-                GetComponent<Image>().sprite = Managers.MSM.DaysPannel[4];
-                ButtonBackImage.pressedSprite = Managers.MSM.DaysPannel[5];
+                GetComponent<Image>().sprite = TaskPannelSprites[4];
+                ButtonBackImage.pressedSprite = TaskPannelSprites[5];
                 thisBTN.spriteState = ButtonBackImage;
                 SetPozition(GOoutpoz);
                 break;
@@ -154,7 +156,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 
         if(statName != StatName.FALSE)
         {
-            GetImage((int)Images.StatIcon).sprite = Managers.MSM.MiniStatIcons[(int)statName];
+            GetImage((int)Images.StatIcon).sprite = MiniStatIcons[(int)statName];
         }
     }
 
@@ -227,13 +229,13 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         switch (thisSubSchedleData.scheduleType)
         {
             case ScheduleType.BroadCast:
-                GetComponent<Image>().sprite = Managers.MSM.DaysPannel[1];
+                GetComponent<Image>().sprite = TaskPannelSprites[1];
                 break;
             case ScheduleType.Rest:
-                GetComponent<Image>().sprite = Managers.MSM.DaysPannel[3];
+                GetComponent<Image>().sprite = TaskPannelSprites[3];
                 break;
             case ScheduleType.GoOut:
-                GetComponent<Image>().sprite = Managers.MSM.DaysPannel[5];
+                GetComponent<Image>().sprite = TaskPannelSprites[5];
                 break;
         }
         foreach (Transform tr in GetComponentsInChildren<Transform>())

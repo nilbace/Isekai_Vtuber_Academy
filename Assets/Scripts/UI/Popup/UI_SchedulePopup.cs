@@ -7,15 +7,14 @@ using UnityEngine.UI;
 using static Define;
 using DG.Tweening;
 
-/// <summary>
-/// 스케쥴 관리와 방송 정보에 대한 정보가 담겨있는 스크립트
-/// </summary>
 public class UI_SchedulePopup : UI_Popup
 {
     public static UI_SchedulePopup instance;
     public Transform ParentTR;
     public GameObject UISubContent;
     private ScrollRect scrollRect;
+
+    public Sprite[] DaysSprites;
 
     enum Buttons
     {
@@ -26,7 +25,6 @@ public class UI_SchedulePopup : UI_Popup
         FridayBTN,
         SaturdayBTN,
         SundayBTN,
-
         BroadCastBTN,
         RestBTN,
         GoOutBTN,
@@ -214,33 +212,33 @@ public class UI_SchedulePopup : UI_Popup
                 GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = baseTextColor[0];
                 if (GetButton(i).interactable == true)
                 {
-                    GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[3];
-                    Under7dayIMGs[i].sprite = Managers.MSM.Days[3];
+                    GetButton(i).GetComponent<Image>().sprite = DaysSprites[3];
+                    Under7dayIMGs[i].sprite = DaysSprites[3];
                 }
                 else
                 {
-                    GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[4];
-                    Under7dayIMGs[i].sprite = Managers.MSM.Days[4];
+                    GetButton(i).GetComponent<Image>().sprite = DaysSprites[4];
+                    Under7dayIMGs[i].sprite = DaysSprites[4];
                 }
             }
             else if(_SevenDayScheduleDatas[i].scheduleType == ScheduleType.BroadCast)
             {
-                GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[0];
-                Under7dayIMGs[i].sprite = Managers.MSM.Days[0];
+                GetButton(i).GetComponent<Image>().sprite = DaysSprites[0];
+                Under7dayIMGs[i].sprite = DaysSprites[0];
                 GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = baseTextColor[1];
                 Under7dayIMGs[i].GetComponentInChildren<TMP_Text>().color = baseTextColor[1];
             }
             else if(_SevenDayScheduleDatas[i].scheduleType == ScheduleType.Rest)
             {
-                GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[1];
-                Under7dayIMGs[i].sprite = Managers.MSM.Days[1];
+                GetButton(i).GetComponent<Image>().sprite = DaysSprites[1];
+                Under7dayIMGs[i].sprite = DaysSprites[1];
                 GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = baseTextColor[2];
                 Under7dayIMGs[i].GetComponentInChildren<TMP_Text>().color = baseTextColor[2];
             }
             else
             {
-                GetButton(i).GetComponent<Image>().sprite = Managers.MSM.Days[2];
-                Under7dayIMGs[i].sprite = Managers.MSM.Days[2];
+                GetButton(i).GetComponent<Image>().sprite = DaysSprites[2];
+                Under7dayIMGs[i].sprite = DaysSprites[2];
                 GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = baseTextColor[3];
                 Under7dayIMGs[i].GetComponentInChildren<TMP_Text>().color = baseTextColor[3];
             }

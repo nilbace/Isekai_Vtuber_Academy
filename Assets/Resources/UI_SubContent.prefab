@@ -278,6 +278,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisBTN: {fileID: 0}
+  TaskPannelSprites:
+  - {fileID: -504395391139034736, guid: a851f1f1a77c96e4fa165dd65dabf93e, type: 3}
+  - {fileID: 7022045606437093838, guid: a851f1f1a77c96e4fa165dd65dabf93e, type: 3}
+  - {fileID: 598104375612921122, guid: a851f1f1a77c96e4fa165dd65dabf93e, type: 3}
+  - {fileID: -7531135042695064924, guid: a851f1f1a77c96e4fa165dd65dabf93e, type: 3}
+  - {fileID: -657963916886311275, guid: a851f1f1a77c96e4fa165dd65dabf93e, type: 3}
+  - {fileID: 9083783706247678723, guid: a851f1f1a77c96e4fa165dd65dabf93e, type: 3}
+  MiniStatIcons:
+  - {fileID: 4471102127428283841, guid: de61d239f2215504c990c62e2722a38d, type: 3}
+  - {fileID: 572975475737285071, guid: de61d239f2215504c990c62e2722a38d, type: 3}
+  - {fileID: -82417923766175998, guid: de61d239f2215504c990c62e2722a38d, type: 3}
+  - {fileID: 6157460025499623584, guid: de61d239f2215504c990c62e2722a38d, type: 3}
+  - {fileID: -6144150555954150607, guid: de61d239f2215504c990c62e2722a38d, type: 3}
+  - {fileID: 8724709180424046824, guid: de61d239f2215504c990c62e2722a38d, type: 3}
   BroadCastpoz:
     HeartPoz: {x: 10.9, y: -12.5, z: 0}
     StarPoz: {x: 40.6, y: -12.5, z: 0}
