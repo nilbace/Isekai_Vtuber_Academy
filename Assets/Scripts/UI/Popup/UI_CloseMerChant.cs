@@ -33,6 +33,7 @@ public class UI_CloseMerChant : UI_Popup
         {
             Managers.UI_Manager.CloseALlPopupUI();
             Managers.instance.ShowReceipt();
+            Managers.Sound.Play(Define.Sound.SmallBTN);
         }
     }
 

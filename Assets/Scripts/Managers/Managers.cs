@@ -15,7 +15,6 @@ public class Managers : MonoBehaviour
     ResourceManager _resource = new ResourceManager();
     UI_Manager _ui_manager = new UI_Manager();
     SoundManager _sound = new SoundManager();
-    PoolManager _pool = new PoolManager();
     DataManager _data = new DataManager();
 
     [Header("½ºÅÝ °ü·Ã")]
@@ -23,15 +22,12 @@ public class Managers : MonoBehaviour
     public float Str_Men_ValuePerLevel;
 
     REventManager _RE = new REventManager();
-    MultiSpriteManager _MSM = new MultiSpriteManager();
     public static InputManager Input {get {return instance._input;}}
     public static ResourceManager Resource{get{return instance._resource;}}
     public static UI_Manager UI_Manager{get{return instance._ui_manager;}}
     public static SoundManager Sound{get{return instance._sound;}}
-    public static PoolManager Pool{get{return instance._pool;}}
     public static DataManager Data { get { return instance._data; } }
     public static REventManager RandEvent { get { return instance._RE; } }
-    public static MultiSpriteManager MSM { get { return instance._MSM; } }
 
 
     void Awake()
@@ -60,9 +56,7 @@ public class Managers : MonoBehaviour
             s_instance = go.GetComponent<Managers>();
 
             s_instance._sound.Init();
-            s_instance._pool.Init();
             s_instance._data.Init();
-            s_instance._MSM.Init();
         }
     }
 
@@ -71,8 +65,6 @@ public class Managers : MonoBehaviour
         Sound.Clear();
         Input.Clear();
         UI_Manager.Clear();
-        
-        Pool.Clear();
     }
 
     const string DayDatasURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&gid=1890750354&range=B2:Q";

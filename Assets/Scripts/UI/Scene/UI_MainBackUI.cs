@@ -215,6 +215,8 @@ public class UI_MainBackUI : UI_Scene
     }
 
 
+    public Sprite[] StatusBar;
+
     public void UpdateUItexts()
     {
         foreach (Texts textType in System.Enum.GetValues(typeof(Texts)))
@@ -227,9 +229,9 @@ public class UI_MainBackUI : UI_Scene
         float nowStar = Managers.Data._myPlayerData.NowStar;
 
         GetImage((int)Images.HeartBar).sprite =
-            Managers.MSM.StatusBar[GetStatusBarImageIndex(nowHeart)];
+            StatusBar[GetStatusBarImageIndex(nowHeart)];
         GetImage((int)Images.StarBar).sprite =
-            Managers.MSM.StatusBar[GetStatusBarImageIndex(nowStar)];
+            StatusBar[GetStatusBarImageIndex(nowStar)];
 
         GetGameObject((int)GameObjects.HeartCover).transform.localScale =
             new Vector3( 1 - (float)Managers.Data._myPlayerData.NowHeart/100f, 1, 1);
@@ -445,6 +447,7 @@ public class UI_MainBackUI : UI_Scene
     IEnumerator ShowSubStoryCor(int index)
     {
         Managers.UI_Manager.ShowPopupUI<UI_Communication>();
+        Managers.Sound.Play(Sound.SmallBTN);
         yield return new WaitForEndOfFrame();
         SubStoryParser.Inst.StartStory(index);
     }
@@ -502,6 +505,10 @@ public class UI_MainBackUI : UI_Scene
     }
 
 
+
+
+    #endregion
+
     #region Stamp;
     public Image StampIMG;
 
@@ -528,7 +535,5 @@ public class UI_MainBackUI : UI_Scene
         StampIMG.transform.localScale = Vector3.one * 5f;
         StampIMG.transform.DOScale(1, StampResetTime).SetEase(StampEase);
     }
-    #endregion
-
     #endregion
 }

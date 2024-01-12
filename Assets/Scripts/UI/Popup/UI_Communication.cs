@@ -34,7 +34,8 @@ public class UI_Communication : UI_Popup
     enum Buttons
     {
         Option1BTN,
-        Option2BTN
+        Option2BTN,
+        SkipBTN
     }
 
 
@@ -45,14 +46,8 @@ public class UI_Communication : UI_Popup
     private void Start()
     {
         Init();
-        typingDelay = new WaitForSeconds(TypingDelay);
     }
 
-    public void StartDiagloue(List<Dialogue> DiaList)
-    {
-        dialogues = DiaList;
-        ShowDialogue(dialogues[0]);
-    }
 
     public override void Init()
     {
@@ -60,10 +55,13 @@ public class UI_Communication : UI_Popup
         Bind<TMPro.TMP_Text>(typeof(Texts));
         Bind<Image>(typeof(Images));
         Bind<Button>(typeof(Buttons));
+        typingDelay = new WaitForSeconds(TypingDelay);
+
 
         GetImage((int)Images.LeftIMG).gameObject.SetActive(false);
         GetImage((int)Images.RightIMG).gameObject.SetActive(false);
         dialogueText = GetText((int)Texts.sentenceTMP);
+        GetButton(2).onClick.AddListener(SkipBTN);
     }
 
     void Update()
@@ -87,6 +85,26 @@ public class UI_Communication : UI_Popup
         }
     }
 
+    #region SkipBTN
+    void SkipBTN()
+    {
+        Managers.UI_Manager.ClosePopupUI();
+        Managers.Sound.Play(Sound.Skip);
+    }
+
+    public void HideSkipBTN()
+    {
+        GetButton(2).gameObject.SetActive(false);
+    }
+    #endregion
+
+
+    public void StartDiagloue(List<Dialogue> DiaList)
+    {
+        dialogues = DiaList;
+        ShowDialogue(dialogues[0]);
+    }
+
     void ShowDialogue(Dialogue dialogue)
     {
         // 대사 출력을 위한 코루틴 실행
@@ -107,7 +125,7 @@ public class UI_Communication : UI_Popup
                 return;
             }
 
-            //버튼이면 버튼 출력
+            //선택지 출력 단계
             if (dialogues[currentDialogueIndex].name == "1")
             {
                 ShowOptionBTN();
@@ -124,7 +142,6 @@ public class UI_Communication : UI_Popup
         Managers.UI_Manager.ClosePopupUI();
     }
 
-    
 
     IEnumerator TypeSentence(Dialogue dialogue)
     {
@@ -190,80 +207,93 @@ public class UI_Communication : UI_Popup
 
     void TurnOnImage(bool isLeft, Sprite sprite)
     {
-        if (isLeft)
-        {
-            GetImage((int)Images.LeftIMG).gameObject.SetActive(true);
-            GetImage((int)Images.LeftIMG).sprite = sprite;
-            GetImage((int)Images.LeftIMG).color = Color.white;
-            GetImage((int)Images.RightIMG).color = Color.gray;
-        }
-        else
-        {
-            GetImage((int)Images.RightIMG).gameObject.SetActive(true);
-            GetImage((int)Images.RightIMG).sprite = sprite;
-            GetImage((int)Images.LeftIMG).color = Color.gray;
-            GetImage((int)Images.RightIMG).color = Color.white;
-        }
+        GetImage((int)Images.LeftIMG).gameObject.SetActive(isLeft);
+        GetImage((int)Images.LeftIMG).sprite = isLeft ? sprite : null;
+        GetImage((int)Images.LeftIMG).color = isLeft ? Color.white : Color.gray;
+
+        GetImage((int)Images.RightIMG).gameObject.SetActive(!isLeft);
+        GetImage((int)Images.RightIMG).sprite = !isLeft ? sprite : null;
+        GetImage((int)Images.RightIMG).color = !isLeft ? Color.white : Color.gray;
     }
 
     void ShowOptionBTN()
     {
         isEnd = true;
-        GetButton((int)Buttons.Option1BTN).transform.DOLocalMoveX(TargetX, MoveTime).SetEase(Ease.OutElastic, 0, PeriodScale);
-        GetButton((int)Buttons.Option2BTN).transform.DOLocalMoveX(TargetX, MoveTime).SetEase(Ease.OutElastic, 0, PeriodScale);
-        GetText((int)Texts.Option1TMP).text = dialogues[currentDialogueIndex].sentence;
-        GetText((int)Texts.Option2TMP).text = dialogues[currentDialogueIndex + 1].sentence;
 
-        if (Managers.Data._myPlayerData.nowGoldAmount >= dialogues[currentDialogueIndex].CostGold)
+        var option1Button = GetButton((int)Buttons.Option1BTN);
+        var option2Button = GetButton((int)Buttons.Option2BTN);
+        var option1Text = GetText((int)Texts.Option1TMP);
+        var option2Text = GetText((int)Texts.Option2TMP);
+
+        option1Button.transform.DOLocalMoveX(TargetX, MoveTime).SetEase(Ease.OutElastic, 0, PeriodScale);
+        option2Button.transform.DOLocalMoveX(TargetX, MoveTime).SetEase(Ease.OutElastic, 0, PeriodScale);
+
+        option1Text.text = dialogues[currentDialogueIndex].sentence;
+        option2Text.text = dialogues[currentDialogueIndex + 1].sentence;
+
+        if (dialogues[currentDialogueIndex].UserHasEnoughGold())
         {
             Debug.Log(dialogues[currentDialogueIndex].CostGold);
-            GetButton((int)Buttons.Option1BTN).interactable = true;
+            option1Button.interactable = true;
         }
         else
         {
-            GetButton((int)Buttons.Option1BTN).interactable = false;
-            GetButton((int)Buttons.Option1BTN).GetComponent<Image>().sprite = GetButton((int)Buttons.Option1BTN).spriteState.pressedSprite;
+            option1Button.interactable = false;
+            option1Button.GetComponent<Image>().sprite = option1Button.spriteState.pressedSprite;
         }
 
-        if (Managers.Data._myPlayerData.nowGoldAmount >= dialogues[currentDialogueIndex + 1].CostGold)
+        if (dialogues[currentDialogueIndex + 1].UserHasEnoughGold())
         {
-            GetButton((int)Buttons.Option2BTN).interactable = true;
+            option2Button.interactable = true;
         }
         else
         {
-            GetButton((int)Buttons.Option2BTN).interactable = false;
-            GetButton((int)Buttons.Option1BTN).GetComponent<Image>().sprite = GetButton((int)Buttons.Option1BTN).spriteState.pressedSprite;
+            option2Button.interactable = false;
+            option1Button.GetComponent<Image>().sprite = option1Button.spriteState.pressedSprite;
         }
 
-        void ShowOption1()
-        {
-            if (dialogues[currentDialogueIndex].CostGold > 0)
-            {
-                Managers.Data._myPlayerData.nowGoldAmount -= dialogues[currentDialogueIndex].CostGold;
-                for (int i = 0; i < dialogues[currentDialogueIndex+2].rewardStats.Count; i++)
-                {
-                    Managers.Data._myPlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 2].rewardStats[i]);
-                }
-            }
-
-            Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 2].sentence, "임시");
-        }
-
-        void ShowOption2()
-        {
-            if (dialogues[currentDialogueIndex + 1].CostGold > 0)
-            {
-                Managers.Data._myPlayerData.nowGoldAmount -= dialogues[currentDialogueIndex + 1].CostGold;
-                for (int i = 0; i < dialogues[currentDialogueIndex + 3].rewardStats.Count; i++)
-                {
-                    Managers.Data._myPlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 3].rewardStats[i]);
-                }
-            }
-
-            Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 3].sentence, "임시");
-        }
-
-        GetButton((int)Buttons.Option1BTN).onClick.AddListener(ShowOption1);
-        GetButton((int)Buttons.Option2BTN).onClick.AddListener(ShowOption2);
+        option1Button.onClick.AddListener(ShowOption1);
+        option2Button.onClick.AddListener(ShowOption2);
     }
+
+    void ShowOption1()
+    {
+        if (dialogues[currentDialogueIndex].IsNeedGold())
+        {
+            Managers.Sound.Play(Sound.Buy);
+            Managers.Data._myPlayerData.nowGoldAmount -= dialogues[currentDialogueIndex].CostGold;
+
+            for (int i = 0; i < dialogues[currentDialogueIndex + 2].rewardStats.Count; i++)
+            {
+                Managers.Data._myPlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 2].rewardStats[i]);
+            }
+        }
+        else
+        {
+            Managers.Sound.Play(Sound.SmallBTN);
+        }
+
+        Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 2].sentence, "임시");
+    }
+
+    void ShowOption2()
+    {
+        if (dialogues[currentDialogueIndex + 1].IsNeedGold())
+        {
+            Managers.Sound.Play(Sound.Buy);
+            Managers.Data._myPlayerData.nowGoldAmount -= dialogues[currentDialogueIndex + 1].CostGold;
+
+            for (int i = 0; i < dialogues[currentDialogueIndex + 3].rewardStats.Count; i++)
+            {
+                Managers.Data._myPlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 3].rewardStats[i]);
+            }
+        }
+        else
+        {
+            Managers.Sound.Play(Sound.SmallBTN);
+        }
+
+        Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 3].sentence, "임시");
+    }
+
 }

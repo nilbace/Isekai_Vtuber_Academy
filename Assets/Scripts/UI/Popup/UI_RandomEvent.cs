@@ -10,6 +10,7 @@ public class UI_RandomEvent : UI_Popup
 {
     public static UI_RandomEvent instance;
     WeekEventData _eventData;
+    public Sprite[] CutsceneSprites;
     enum Buttons
     {
         ResultBTN, ResultBTN2
@@ -60,7 +61,14 @@ public class UI_RandomEvent : UI_Popup
         }
         else
         {
-            sprite = Resources.Load<Sprite>("CutScene/" + Data.CutSceneName);
+            foreach (Sprite CutsceneSprite in CutsceneSprites)
+            {
+                if (CutsceneSprite.name == Data.CutSceneName)
+                {
+
+                    sprite = CutsceneSprite;
+                }
+            }
         }
 
         return sprite;
@@ -70,12 +78,14 @@ public class UI_RandomEvent : UI_Popup
     {
         DoOption(true);
         Managers.instance.ShowReceipt();
+        Managers.Sound.Play(Define.Sound.SmallBTN);
     }
 
     void ChooseBTN2()
     {
         DoOption(false);
         Managers.instance.ShowReceipt();
+        Managers.Sound.Play(Define.Sound.SmallBTN);
     }
 
 

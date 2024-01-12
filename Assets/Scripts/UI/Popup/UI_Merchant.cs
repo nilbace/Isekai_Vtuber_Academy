@@ -69,6 +69,7 @@ public class UI_Merchant : UI_Popup
     void Close()
     {
         Managers.UI_Manager.ShowPopupUI<UI_CloseMerChant>();
+        Managers.Sound.Play(Sound.SmallBTN);
     }
 
     public void UpdateTexts()

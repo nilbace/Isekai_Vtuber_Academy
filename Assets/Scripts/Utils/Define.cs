@@ -25,6 +25,7 @@ public class Define
         Fail,
         Buy,
         Receipt,
+        Skip,
         Chat1, Chat2, Chat3,
 
         MaxCount,
@@ -278,6 +279,18 @@ public class Define
             this.isLeft = isLeft;
             this.CostGold = costGold;
             this.rewardStats = new List<RewardStat>();
+        }
+
+        public bool UserHasEnoughGold()
+        {
+            if (Managers.Data._myPlayerData.nowGoldAmount >= CostGold)
+                return true;
+            return false;
+        }
+
+        public bool IsNeedGold()
+        {
+            return (CostGold > 0);
         }
     }
 

@@ -88,7 +88,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &132624208217058514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +120,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ParentTR: {fileID: 4696267244477151876}
   UISubContent: {fileID: 2381185299945047613, guid: a75effdf7e7a94745a382aab515d4e1b, type: 3}
+  DaysSprites:
+  - {fileID: -2643233851524504723, guid: 75772f333b136e34cb6ad6dc20aea7bf, type: 3}
+  - {fileID: -1420537928389874643, guid: 75772f333b136e34cb6ad6dc20aea7bf, type: 3}
+  - {fileID: -1603729586806323306, guid: 75772f333b136e34cb6ad6dc20aea7bf, type: 3}
+  - {fileID: -6502898960092442253, guid: 75772f333b136e34cb6ad6dc20aea7bf, type: 3}
+  - {fileID: 9189265512996131446, guid: 75772f333b136e34cb6ad6dc20aea7bf, type: 3}
   ease: 3
   moveDuration: 0.18
   baseTextColor:
