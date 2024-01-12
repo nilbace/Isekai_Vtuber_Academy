@@ -45,7 +45,7 @@ public class MM : MonoSingleton<MM>
         }
         else if(mMState == MMState.OnSchedule)
         {
-            MMTalkTMP.text = "일정은 내가 확실히 기억해주겠다뮹! 절대 머리 위의 버튼을 누르지 말라뮹";
+            MMTalkTMP.text = "일정은 내가 확실히 기억해주겠다뮹!\n절대 머리 위의 버튼을 누르지 말라뮹";
         }
     }
 
@@ -80,7 +80,7 @@ public class MM : MonoSingleton<MM>
 
     IEnumerator ForgetTalk()
     {
-        MMTalkTMP.text = "<size=21.5>앗...까먹었다뮹...";
+        MMTalkTMP.text = "<size=21.5>앗...</size> 까먹었다뮹...";
         yield return new WaitForSeconds(2f);
         TalkSomething(_nowMMState);
     }

@@ -9,33 +9,23 @@ public class ChattingManager : MonoSingleton<ChattingManager>
     const string Message_NameURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&gid=0&range=A2:J";
 
     Dictionary<BroadCastType, List<string>> ChatMessage_NameDic = new Dictionary<BroadCastType, List<string>>();
+    List<GameObject> ChatGOs = new List<GameObject>();
+    public GameObject ClearChatGO;
 
     public float ChatBubbleRiseDuration = 0.3f;
-    [Header("채팅 사이의 시간")]
-    [SerializeField] float minChatDelayTime;
-    public float maxChatDelayTime;
-    [Header("채팅 사이 간격")]
-    [SerializeField] float SpaceBetweenChats;
-
-    
-
-    [Header("채팅이 커지는 시간")]
+    public float MinChatDelayTime;
+    public float MaxChatDelayTime;
+    public float SpaceBetweenChats;
     public float TimeForChatGetBigger;
-
-    [Header("채팅 시작좌표")]
-    [SerializeField] float ChatBubbleYPos;
-    [SerializeField] float ChatBubbleXPos;
+    public float ChatBubbleYPos;
+    public float ChatBubbleXPos;
+    [HideInInspector]  float ChatScale = 1;
 
     private void Awake()
     {
         base.Awake();
     }
-
-    List<GameObject> ChatGOs = new List<GameObject>();
-    public GameObject ClearChatGO;
-
-    [SerializeField] float _chatScale;
-
+        
     void Start()
     {
         for (int i = 0; i < (int)BroadCastType.MaxCount_Name + 1; i++)
@@ -136,18 +126,13 @@ public class ChattingManager : MonoSingleton<ChattingManager>
             }
             result.Add(modifiedLine);
         }
-
         return result;
     }
-
 
     public void StartGenerateChattingByType(BroadCastType broadCastType)
     {
         StartCoroutine(StartGenerateChatting(ChatMessage_NameDic[broadCastType]));
     }
-
-
-    
 
     IEnumerator StartGenerateChatting(List<string> messagelist)
     {
@@ -160,7 +145,7 @@ public class ChattingManager : MonoSingleton<ChattingManager>
             ClearChatGO.GetComponent<TMPro.TMP_Text>().text = tempMessage;
             yield return new WaitForEndOfFrame();
             float newYoffset = ClearChatGO.GetComponent<RectTransform>().sizeDelta.y + SpaceBetweenChats;
-            newYoffset *= _chatScale;
+            newYoffset *= ChatScale;
 
             //맨 위에놈 끔
             ChatGOs[(index + ChatGOs.Count + 1) % ChatGOs.Count].SetActive(false);
@@ -183,21 +168,19 @@ public class ChattingManager : MonoSingleton<ChattingManager>
             index++;
             if (index == ChatGOs.Count) index = 0;
 
-            float temp = Random.Range(minChatDelayTime, maxChatDelayTime);
+            float temp = Random.Range(MinChatDelayTime, MaxChatDelayTime);
             yield return new WaitForSeconds(temp);
         }
     }
-
     
-
     IEnumerator MakeRandomChat(int index, string message)
     {
-        Vector3 targetScale = Vector3.one * _chatScale;
+        Vector3 targetScale = Vector3.one * ChatScale;
         GameObject Go = ChatGOs[index];
 
         Go.SetActive(true);
         Go.transform.localScale = Vector3.zero;
-        Go.GetComponent<RectTransform>().anchoredPosition = new Vector3(ChatBubbleXPos, ClearChatGO.transform.GetComponent<RectTransform>().sizeDelta.y/2f* _chatScale + ChatBubbleYPos, 0);
+        Go.GetComponent<RectTransform>().anchoredPosition = new Vector3(ChatBubbleXPos, ClearChatGO.transform.GetComponent<RectTransform>().sizeDelta.y/2f* ChatScale + ChatBubbleYPos, 0);
 
         Go.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMPro.TMP_Text>().text = GetRandomStringFromList(ChatMessage_NameDic[BroadCastType.MaxCount_Name]);
         Go.transform.GetChild(0).GetChild(0).GetComponent<TMPro.TMP_Text>().text = message;

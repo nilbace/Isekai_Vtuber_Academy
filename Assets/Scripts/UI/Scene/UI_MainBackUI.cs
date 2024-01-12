@@ -349,8 +349,6 @@ public class UI_MainBackUI : UI_Scene
     string templog = "";
     public void EndScheduleAndSetUI()
     {
-        templog += $"\n{Managers.Data._myPlayerData.NowWeek - 1 } / 구독자_{Managers.Data._myPlayerData.nowSubCount} / 게임 스텟_{Managers.Data._myPlayerData.SixStat[0]}/{Managers.Data._myPlayerData.SixStat[3]}/{Managers.Data._myPlayerData.SixStat[4]}/{Managers.Data._myPlayerData.SixStat[5]}";
-        Debug.Log(templog);
         StartCoroutine(EndScheduleAndSetUICor());
     }
 
@@ -455,9 +453,14 @@ public class UI_MainBackUI : UI_Scene
     #endregion
 
 
-    void BackBTN()
+    public void BackBTN()
     {
         Managers.Sound.Play("SmallBTN", Sound.Effect);
+        BackBTNWithoutSound();
+    }
+
+    public void BackBTNWithoutSound()
+    {
         if (UI_SchedulePopup.instance.IsShowing3ContentsUI())
         {
             Get<Button>((int)Buttons.CreateScheduleBTN).gameObject.SetActive(true);

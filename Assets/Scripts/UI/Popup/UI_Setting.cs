@@ -61,8 +61,10 @@ public class UI_Setting : UI_Popup
     {
         EasyTransition.TransitionManager.Instance().Transition(transition, 0);
         yield return new WaitForSeconds(1f);
+
+
         Managers.UI_Manager.CloseALlPopupUI();
-        Managers.Data._myPlayerData.ResetData();
+        Managers.Data._myPlayerData = new Define.PlayerData();
         Managers.Data.SaveData();
         UI_MainBackUI.instance.UpdateUItexts();
     }

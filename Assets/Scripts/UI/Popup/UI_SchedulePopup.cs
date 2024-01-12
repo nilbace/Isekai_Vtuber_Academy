@@ -402,6 +402,7 @@ public class UI_SchedulePopup : UI_Popup
     {
         if(MM.Inst != null)
             MM.Inst.SetState(MMState.usual);
+        UI_MainBackUI.instance.BackBTNWithoutSound();
     }
 
     public bool IsShowing3ContentsUI()

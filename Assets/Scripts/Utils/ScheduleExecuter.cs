@@ -73,14 +73,14 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         if(isFastMode)
         {
             UI_MainBackUI.instance.ScreenAnimator.speed = UI_MainBackUI.instance.ScreenAniSpeed * 2;
-            ChattingManager.Inst.maxChatDelayTime = 0.05f;
+            ChattingManager.Inst.MaxChatDelayTime = 0.05f;
             ChattingManager.Inst.TimeForChatGetBigger = 0.04f;
             ChattingManager.Inst.ChatBubbleRiseDuration = 0.15f;
         }
         else
         {
             UI_MainBackUI.instance.ScreenAnimator.speed = UI_MainBackUI.instance.ScreenAniSpeed;
-            ChattingManager.Inst.maxChatDelayTime = 0.1f;
+            ChattingManager.Inst.MaxChatDelayTime = 0.1f;
             ChattingManager.Inst.TimeForChatGetBigger = 0.08f;
             ChattingManager.Inst.ChatBubbleRiseDuration = 0.3f;
         }
@@ -275,10 +275,12 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
     void IncreaseSubsAndMoney(OneDayScheduleData oneDay, float bonusMultiplier)
     {
-        int OneDayNewSubs = CalculateSubAfterDay(Managers.Data._myPlayerData.nowSubCount,
-                oneDay.FisSubsUpValue, oneDay.PerSubsUpValue, bonusMultiplier);
+        int beforeSub = Managers.Data._myPlayerData.nowSubCount;
 
-        int OneDayIncome = Mathf.CeilToInt(Managers.Data._myPlayerData.nowSubCount * oneDay.InComeMag * bonusMultiplier);
+        int OneDayNewSubs = CalculateSubAfterDay(beforeSub, oneDay.FisSubsUpValue, oneDay.PerSubsUpValue, bonusMultiplier);
+
+        int OneDayIncome = Mathf.CeilToInt(Mathf.Log10(beforeSub)*30 * oneDay.InComeMag * bonusMultiplier);
+        Debug.Log(OneDayIncome);
 
         Managers.Data._myPlayerData.nowSubCount += OneDayNewSubs;
         Managers.Data._myPlayerData.nowGoldAmount += OneDayIncome;

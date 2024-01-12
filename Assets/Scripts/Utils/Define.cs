@@ -337,12 +337,8 @@ public class Define
         public PlayerData()
         {
             NowWeek = 1;
-            nowSubCount = 0;
-#if UNITY_EDITOR
-            nowGoldAmount = 1000000;
-#else
-        nowGoldAmount = 0;
-#endif
+            nowSubCount = 10;
+            nowGoldAmount = 1000;
             NowHeart = 100;
             NowStar = 100;
             SixStat = new float[6];
@@ -432,23 +428,5 @@ public class Define
             if (NowWeek == 4 || NowWeek == 8 || NowWeek == 12 || NowWeek == 16) return true;
             return false;
         }
-
-        public void ResetData()
-        {
-            NowWeek = 1;
-            nowSubCount = 0;
-#if UNITY_EDITOR
-            nowGoldAmount = 1000000;
-#else
-        nowGoldAmount = 0;
-#endif
-            NowHeart = 100;
-            NowStar = 100;
-            SixStat = new float[6];
-            DoneEventNames = new List<string>();
-            BoughtItems = new List<string>();
-            SubStoryIndex = new List<int>();
-        }
-
     }
 }

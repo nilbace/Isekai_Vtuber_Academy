@@ -7,22 +7,21 @@ using static Define;
 
 public class Managers : MonoBehaviour
 {
+    [Header("스텟 관련")]
+    public int MainStat_ValuePerLevel;
+    public float Str_Men_ValuePerLevel;
     static Managers s_instance;
     public static Managers instance {get{Init(); return s_instance;}}
     
 
-    InputManager _input = new InputManager();
     ResourceManager _resource = new ResourceManager();
     UI_Manager _ui_manager = new UI_Manager();
     SoundManager _sound = new SoundManager();
     DataManager _data = new DataManager();
 
-    [Header("스텟 관련")]
-    public int MainStat_ValuePerLevel;
-    public float Str_Men_ValuePerLevel;
+    
 
     REventManager _RE = new REventManager();
-    public static InputManager Input {get {return instance._input;}}
     public static ResourceManager Resource{get{return instance._resource;}}
     public static UI_Manager UI_Manager{get{return instance._ui_manager;}}
     public static SoundManager Sound{get{return instance._sound;}}
@@ -36,11 +35,6 @@ public class Managers : MonoBehaviour
         StartCoroutine(LoadDatas());
     }
 
-
-    void Update()
-    {
-        _input.OnUpdate();
-    }
 
     static void Init(){
         if(s_instance == null)
@@ -63,7 +57,6 @@ public class Managers : MonoBehaviour
     public static void Clear()
     {
         Sound.Clear();
-        Input.Clear();
         UI_Manager.Clear();
     }
 
@@ -141,7 +134,7 @@ public class Managers : MonoBehaviour
     #endregion
 
 
-
+    //한 주차가 끝났을때 호출
     public Action WeekOverAction;
 
     public void FinishWeek()

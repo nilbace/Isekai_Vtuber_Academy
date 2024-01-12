@@ -142,7 +142,6 @@ public class UI_Communication : UI_Popup
         Managers.UI_Manager.ClosePopupUI();
     }
 
-
     IEnumerator TypeSentence(Dialogue dialogue)
     {
         ChooseBubbleIMG(dialogue);
@@ -251,7 +250,6 @@ public class UI_Communication : UI_Popup
             option2Button.interactable = false;
             option1Button.GetComponent<Image>().sprite = option1Button.spriteState.pressedSprite;
         }
-
         option1Button.onClick.AddListener(ShowOption1);
         option2Button.onClick.AddListener(ShowOption2);
     }
