@@ -58,11 +58,19 @@ public class UI_Ending : UI_Popup
         {
             transform.GetChild(i).gameObject.SetActive(true);
         }
-        GetImage((int)Images.EndingIMG).sprite = EndingIMGs[(int)EndingName];
+        GetImage((int)Images.EndingIMG).sprite = EndingIMGs[(int)GetValidEndingName()];
     }
 
-    public void Setting(EndingName endingName)
+    EndingName GetValidEndingName()
     {
-        EndingName = endingName;
+        int temp = 0;
+        if (Managers.Data._myPlayerData.RubiaKarma >= 3) temp += 0;
+        else if (Managers.Data._myPlayerData.RubiaKarma <= -3) temp += 1;
+        else temp += 2;
+
+        if (Managers.Data._myPlayerData.GetHigestStatName() == StatName.Song) temp += 3;
+        else if (Managers.Data._myPlayerData.GetHigestStatName() == StatName.Draw) temp += 6;
+
+        return (EndingName)temp;
     }
 }

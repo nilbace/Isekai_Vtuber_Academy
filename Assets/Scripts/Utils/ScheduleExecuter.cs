@@ -55,7 +55,9 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         UI_MainBackUI.instance.UpdateUItexts();
         ChattingManager.Inst.gameObject.SetActive(false);
 
-        if (Managers.Data._myPlayerData.MerchantAppearanceWeek())
+        if (Managers.Data._myPlayerData.NowWeek == 20)
+            Managers.UI_Manager.ShowPopupUI<UI_Ending>();
+        else if (Managers.Data._myPlayerData.MerchantAppearanceWeek())
             Managers.UI_Manager.ShowPopupUI<UI_Merchant>();
         else if (Managers.Data._myPlayerData.MainStoryApperanceWeek())
             Managers.instance.ShowMainStory();
