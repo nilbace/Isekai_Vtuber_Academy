@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class UI_DefaultPopup : UI_Popup
 {
     public static UI_DefaultPopup instance;
-
+    public static string InfoText;
+    public static string ResultBTNText;
     private void Awake()
     {
         instance = this;
@@ -33,12 +34,13 @@ public class UI_DefaultPopup : UI_Popup
         Bind<TMPro.TMP_Text>(typeof(Texts));
 
         GetButton(0).onClick.AddListener(ResultBTN);
+        Setting();
     }
 
-    public void SetText(string EventInfoText, string ResultInfoText)
+    void Setting()
     {
-        GetText(0).text = EventInfoText;
-        GetText(1).text = ResultInfoText;
+        GetText(0).text = InfoText;
+        GetText(1).text = ResultBTNText;
     }
 
     void ResultBTN()

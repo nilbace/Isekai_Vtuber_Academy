@@ -1,30 +1,34 @@
 {
-    "NowWeek": 6,
-    "nowSubCount": 2009,
-    "nowGoldAmount": 687,
-    "RubiaKarma": 1,
-    "NowHeart": 95.0,
-    "NowStar": 68.0,
+    "NowWeek": 8,
+    "nowSubCount": 2586,
+    "nowGoldAmount": 1358,
+    "RubiaKarma": 0,
+    "NowHeart": 59.0,
+    "NowStar": 55.0,
     "SixStat": [
-        32.0,
-        0.0,
+        44.0,
         3.0,
-        4.0,
         0.0,
-        4.0
+        2.0,
+        4.0,
+        0.0
     ],
     "DoneEventNames": [
-        "도수치료 직캠",
-        "표절논란",
-        "고삼차 먹방"
+        "민트초코 먹기",
+        "밀웜 먹방",
+        "팬레터 읽기",
+        "현실부정",
+        "자르반 84세와 만남"
     ],
     "BoughtItems": [],
     "SubStoryIndex": [
-        28,
+        15,
+        8,
+        12,
         5,
-        4,
+        28,
+        2,
         0,
-        22,
-        7
+        21
     ]
 }

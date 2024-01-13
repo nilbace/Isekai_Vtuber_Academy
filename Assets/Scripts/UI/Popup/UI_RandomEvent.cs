@@ -76,16 +76,22 @@ public class UI_RandomEvent : UI_Popup
 
     void ChooseBTN1()
     {
-        DoOption(true);
-        Managers.instance.ShowReceipt();
+        DoOption(isOption1: true);
+        UI_DefaultPopup.InfoText = _eventData.BTN1ResultText;
+        UI_DefaultPopup.ResultBTNText = "1¸ÀÀÖµû";
+        Managers.UI_Manager.ShowPopupUI<UI_DefaultPopup>();
         Managers.Sound.Play(Define.Sound.SmallBTN);
+
     }
 
     void ChooseBTN2()
     {
-        DoOption(false);
-        Managers.instance.ShowReceipt();
+        DoOption(isOption1: false);
+        UI_DefaultPopup.InfoText = _eventData.BTN2ResultText;
+        UI_DefaultPopup.ResultBTNText = "2¸ÀÀÖµû";
+        Managers.UI_Manager.ShowPopupUI<UI_DefaultPopup>();
         Managers.Sound.Play(Define.Sound.SmallBTN);
+
     }
 
 

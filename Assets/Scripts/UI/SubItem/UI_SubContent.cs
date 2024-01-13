@@ -276,7 +276,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         {
             Bonus temp = Managers.Data.GetMainProperty(GetStatNameByBroadCastType(oneDayScheduleData.broadcastType));
 
-            int Income = Mathf.CeilToInt(Mathf.Log10(SubCount)*30 * oneDayScheduleData.InComeMag);
+            int Income = Mathf.CeilToInt(Mathf.Log10(SubCount)*300 * oneDayScheduleData.InComeMag);
             int bonus = Mathf.CeilToInt(Income * (temp.IncomeBonus) / 100f);
 
             return Income + bonus;

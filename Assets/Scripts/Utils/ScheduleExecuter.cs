@@ -281,8 +281,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
         int OneDayNewSubs = CalculateSubAfterDay(beforeSub, oneDay.FisSubsUpValue, oneDay.PerSubsUpValue, bonusMultiplier);
 
-        int OneDayIncome = Mathf.CeilToInt(Mathf.Log10(beforeSub)*30 * oneDay.InComeMag * bonusMultiplier);
-        Debug.Log(OneDayIncome);
+        int OneDayIncome = Mathf.CeilToInt(Mathf.Log10(beforeSub)*300 * oneDay.InComeMag * bonusMultiplier);
 
         Managers.Data._myPlayerData.nowSubCount += OneDayNewSubs;
         Managers.Data._myPlayerData.nowGoldAmount += OneDayIncome;
