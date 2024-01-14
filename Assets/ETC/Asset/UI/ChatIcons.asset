@@ -255,7 +255,7 @@ MonoBehaviour:
       m_Width: 7
       m_Height: 9
       m_HorizontalBearingX: 0.5
-      m_HorizontalBearingY: 7
+      m_HorizontalBearingY: 8
       m_HorizontalAdvance: 8
     m_GlyphRect:
       m_X: 62
@@ -270,7 +270,7 @@ MonoBehaviour:
       m_Width: 7
       m_Height: 9
       m_HorizontalBearingX: 0.5
-      m_HorizontalBearingY: 7
+      m_HorizontalBearingY: 8
       m_HorizontalAdvance: 8
     m_GlyphRect:
       m_X: 72

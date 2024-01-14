@@ -1,22 +1,25 @@
 {
-    "NowWeek": 6,
-    "nowSubCount": 2009,
-    "nowGoldAmount": 687,
+    "NowWeek": 10,
+    "nowSubCount": 5611,
+    "nowGoldAmount": 6949,
     "RubiaKarma": 1,
-    "NowHeart": 95.0,
-    "NowStar": 68.0,
+    "NowHeart": 76.0,
+    "NowStar": 54.0,
     "SixStat": [
-        32.0,
+        57.0,
         0.0,
-        3.0,
+        7.0,
         4.0,
         0.0,
-        4.0
+        6.0
     ],
     "DoneEventNames": [
         "도수치료 직캠",
         "표절논란",
-        "고삼차 먹방"
+        "고삼차 먹방",
+        "팬레터 읽기",
+        "민트초코 먹기",
+        "스카이 다이빙"
     ],
     "BoughtItems": [],
     "SubStoryIndex": [
@@ -24,6 +27,11 @@
         5,
         4,
         0,
-        22
+        22,
+        23,
+        19,
+        1,
+        7,
+        15
     ]
 }
