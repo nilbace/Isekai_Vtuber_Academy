@@ -62,6 +62,11 @@ public class REventManager
 
         tempEventData.EventInfoString = tempstrings.Dequeue();
 
+        tempEventData.BTN1text = tempstrings.Dequeue();
+        tempEventData.BTN1ResultText = tempstrings.Dequeue();
+        tempEventData.BTN2text = tempstrings.Dequeue();
+        tempEventData.BTN2ResultText = tempstrings.Dequeue();
+
         EventDatasList.Add(tempEventData);
     }
 
@@ -229,6 +234,10 @@ public class REventManager
         public float[] Option1;
         public float[] Option2;
         public string EventInfoString;
+        public string BTN1text;
+        public string BTN1ResultText;
+        public string BTN2text;
+        public string BTN2ResultText;
 
         public WeekEventData()
         {

@@ -271,7 +271,9 @@ public class UI_Communication : UI_Popup
             Managers.Sound.Play(Sound.SmallBTN);
         }
 
-        Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 2].sentence, "임시");
+        UI_DefaultPopup.InfoText = dialogues[currentDialogueIndex + 2].sentence;
+        UI_DefaultPopup.ResultBTNText = "임시";
+        Managers.UI_Manager.ShowPopupUI<UI_DefaultPopup>();
     }
 
     void ShowOption2()
@@ -291,7 +293,9 @@ public class UI_Communication : UI_Popup
             Managers.Sound.Play(Sound.SmallBTN);
         }
 
-        Managers.instance.ShowDefualtPopUP(dialogues[currentDialogueIndex + 3].sentence, "임시");
+        UI_DefaultPopup.InfoText = dialogues[currentDialogueIndex + 3].sentence;
+        UI_DefaultPopup.ResultBTNText = "임시";
+        Managers.UI_Manager.ShowPopupUI<UI_DefaultPopup>();
     }
 
 }

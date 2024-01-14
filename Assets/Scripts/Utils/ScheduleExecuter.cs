@@ -55,7 +55,9 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         UI_MainBackUI.instance.UpdateUItexts();
         ChattingManager.Inst.gameObject.SetActive(false);
 
-        if (Managers.Data._myPlayerData.MerchantAppearanceWeek())
+        if (Managers.Data._myPlayerData.NowWeek == 20)
+            Managers.UI_Manager.ShowPopupUI<UI_Ending>();
+        else if (Managers.Data._myPlayerData.MerchantAppearanceWeek())
             Managers.UI_Manager.ShowPopupUI<UI_Merchant>();
         else if (Managers.Data._myPlayerData.MainStoryApperanceWeek())
             Managers.instance.ShowMainStory();
@@ -279,8 +281,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
         int OneDayNewSubs = CalculateSubAfterDay(beforeSub, oneDay.FisSubsUpValue, oneDay.PerSubsUpValue, bonusMultiplier);
 
-        int OneDayIncome = Mathf.CeilToInt(Mathf.Log10(beforeSub)*30 * oneDay.InComeMag * bonusMultiplier);
-        Debug.Log(OneDayIncome);
+        int OneDayIncome = Mathf.CeilToInt(Mathf.Log10(beforeSub)*300 * oneDay.InComeMag * bonusMultiplier);
 
         Managers.Data._myPlayerData.nowSubCount += OneDayNewSubs;
         Managers.Data._myPlayerData.nowGoldAmount += OneDayIncome;
