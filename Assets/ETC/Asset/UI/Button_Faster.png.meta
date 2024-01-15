@@ -8,6 +8,12 @@ TextureImporter:
   - first:
       213: 1689289799579605635
     second: fasterBTN_1
+  - first:
+      213: 1547930346803357621
+    second: Button_Faster_0
+  - first:
+      213: -1178928137436465198
+    second: Button_Faster_1
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -110,12 +116,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fasterBTN_0
+      name: Button_Faster_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 17
+        width: 18
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,19 +130,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71d3820766753f700800000000000000
-      internalID: 572897675086150935
+      spriteID: 5b7e24af27a5b7510800000000000000
+      internalID: 1547930346803357621
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fasterBTN_1
+      name: Button_Faster_1
       rect:
         serializedVersion: 2
-        x: 17
+        x: 18
         y: 0
-        width: 17
+        width: 18
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -145,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38a12aa5f10917710800000000000000
-      internalID: 1689289799579605635
+      spriteID: 2d7f260fa1b93afe0800000000000000
+      internalID: -1178928137436465198
       vertices: []
       indices: 
       edges: []
