@@ -51,7 +51,7 @@ public class UI_Merchant : UI_Popup
 
         foreach (Item temp in Managers.Data.ItemList)
         {
-            if (temp.EntWeek == Managers.Data._myPlayerData.NowWeek)
+            if (temp.EntWeek == Managers.Data.PlayerData.NowWeek)
             {
                 itemList.Add(temp);
             }

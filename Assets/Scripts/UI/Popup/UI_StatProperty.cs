@@ -60,13 +60,13 @@ public class UI_StatProperty : UI_Popup
     {
         GetGameObject((int)GameObjects.StatInfo_SelectBox).transform.localPosition = new Vector3(0, StatInfoInitalPoz, 0);
 
-        float nowStatValue = Managers.Data._myPlayerData.SixStat[(int)stat];
+        float nowStatValue = Managers.Data.PlayerData.SixStat[(int)stat];
         int SelectedStatTier = GetStatTier_div_20(nowStatValue);
         Bonus nowBonus = Managers.Data.GetMainProperty(stat);
 
         GetImage((int)Images.UpperStatIcon).sprite = Resources.Load<Sprite>($"Icon/{stat}");
-        GetText((int)Texts.StatValueTMP).text = Managers.Data._myPlayerData.SixStat[(int)stat].ToString("F0");
-        GetImage((int)Images.Stat_Cover).transform.localScale = new Vector3(1 - (float)Managers.Data._myPlayerData.SixStat[(int)stat] / 200f, 1, 1);
+        GetText((int)Texts.StatValueTMP).text = Managers.Data.PlayerData.SixStat[(int)stat].ToString("F0");
+        GetImage((int)Images.Stat_Cover).transform.localScale = new Vector3(1 - (float)Managers.Data.PlayerData.SixStat[(int)stat] / 200f, 1, 1);
         GetGameObject((int)GameObjects.StatInfo_SelectBox).transform.localPosition += new Vector3(0, StatInfoInterval * SelectedStatTier, 0);
         GetText((int)Texts.BigStatValueTMP).text = (SelectedStatTier * 20).ToString();
 

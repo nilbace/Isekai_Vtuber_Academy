@@ -145,11 +145,11 @@ public class UI_SchedulePopup : UI_Popup
         }
         else
         {
-            if (_SevenDayScheduleDatas[(int)_nowSelectedDay].scheduleType == ScheduleType.BroadCast)
+            if (_SevenDayScheduleDatas[(int)_nowSelectedDay].scheduleType == TaskType.BroadCast)
             {
                 ClickBroadCastBTNWithoutSound();
             }
-            else if (_SevenDayScheduleDatas[(int)_nowSelectedDay].scheduleType == ScheduleType.Rest)
+            else if (_SevenDayScheduleDatas[(int)_nowSelectedDay].scheduleType == TaskType.Rest)
             {
                 ClickRestBTNWithoutSound();
             }
@@ -221,14 +221,14 @@ public class UI_SchedulePopup : UI_Popup
                     Under7dayIMGs[i].sprite = DaysSprites[4];
                 }
             }
-            else if(_SevenDayScheduleDatas[i].scheduleType == ScheduleType.BroadCast)
+            else if(_SevenDayScheduleDatas[i].scheduleType == TaskType.BroadCast)
             {
                 GetButton(i).GetComponent<Image>().sprite = DaysSprites[0];
                 Under7dayIMGs[i].sprite = DaysSprites[0];
                 GetButton(i).GetComponentInChildren<TMPro.TMP_Text>().color = baseTextColor[1];
                 Under7dayIMGs[i].GetComponentInChildren<TMP_Text>().color = baseTextColor[1];
             }
-            else if(_SevenDayScheduleDatas[i].scheduleType == ScheduleType.Rest)
+            else if(_SevenDayScheduleDatas[i].scheduleType == TaskType.Rest)
             {
                 GetButton(i).GetComponent<Image>().sprite = DaysSprites[1];
                 Under7dayIMGs[i].sprite = DaysSprites[1];
@@ -257,7 +257,7 @@ public class UI_SchedulePopup : UI_Popup
     void ClickBroadCastBTNWithoutSound()
     {
         TransitionToSelectSubContent();
-        ChooseScheduleTypeAndFillList(ScheduleType.BroadCast);
+        ChooseScheduleTypeAndFillList(TaskType.BroadCast);
     }
 
     void ClickBroadCastBTN()
@@ -269,7 +269,7 @@ public class UI_SchedulePopup : UI_Popup
     void ClickRestBTNWithoutSound()
     {
         TransitionToSelectSubContent();
-        ChooseScheduleTypeAndFillList(ScheduleType.Rest);
+        ChooseScheduleTypeAndFillList(TaskType.Rest);
     }
 
     void ClickRestBTN()
@@ -281,7 +281,7 @@ public class UI_SchedulePopup : UI_Popup
     void ClickGoOutBTNWithoutSound()
     {
         TransitionToSelectSubContent();
-        ChooseScheduleTypeAndFillList(ScheduleType.GoOut);
+        ChooseScheduleTypeAndFillList(TaskType.GoOut);
     }
 
     void ClickGoOutBTN()
@@ -291,13 +291,13 @@ public class UI_SchedulePopup : UI_Popup
     }
 
     List<OneDayScheduleData> nowSelectScheduleTypeList = new List<OneDayScheduleData>();
-    void ChooseScheduleTypeAndFillList(ScheduleType type)
+    void ChooseScheduleTypeAndFillList(TaskType type)
     {
         nowSelectScheduleTypeList.Clear();
         DeleteAllChildren();
         switch (type)
         {
-            case ScheduleType.BroadCast:
+            case TaskType.BroadCast:
                 for (int i = 0; i < (int)BroadCastType.MaxCount_Name; i++)
                 {
                     nowSelectScheduleTypeList.Add(Managers.Data.GetOneDayDataByName((BroadCastType)i));
@@ -306,7 +306,7 @@ public class UI_SchedulePopup : UI_Popup
                 }
                 break;
 
-            case ScheduleType.Rest:
+            case TaskType.Rest:
                 for (int i = 0; i < (int)RestType.MaxCount; i++)
                 {
                     nowSelectScheduleTypeList.Add(Managers.Data.GetOneDayDataByName((RestType)i));
@@ -315,7 +315,7 @@ public class UI_SchedulePopup : UI_Popup
                 }
                 break;
 
-            case ScheduleType.GoOut:
+            case TaskType.GoOut:
                 for (int i = 0; i < (int)GoOutType.MaxCount; i++)
                 {
                     nowSelectScheduleTypeList.Add(Managers.Data.GetOneDayDataByName((GoOutType)i));
@@ -391,7 +391,7 @@ public class UI_SchedulePopup : UI_Popup
             Managers.Data._SeveDayScrollVarValue[i] = 0;
             
         }
-        Managers.Data._myPlayerData.nowGoldAmount += temp;
+        Managers.Data.PlayerData.nowGoldAmount += temp;
         UI_MainBackUI.instance.UpdateUItexts();
         SetSelectBox();
         UpdateBTN_Interactable();

@@ -64,12 +64,12 @@ public class UI_Ending : UI_Popup
     EndingName GetValidEndingName()
     {
         int temp = 0;
-        if (Managers.Data._myPlayerData.RubiaKarma >= 3) temp += 0;
-        else if (Managers.Data._myPlayerData.RubiaKarma <= -3) temp += 1;
+        if (Managers.Data.PlayerData.RubiaKarma >= 3) temp += 0;
+        else if (Managers.Data.PlayerData.RubiaKarma <= -3) temp += 1;
         else temp += 2;
 
-        if (Managers.Data._myPlayerData.GetHigestStatName() == StatName.Song) temp += 3;
-        else if (Managers.Data._myPlayerData.GetHigestStatName() == StatName.Draw) temp += 6;
+        if (Managers.Data.PlayerData.GetHigestStatName() == StatName.Song) temp += 3;
+        else if (Managers.Data.PlayerData.GetHigestStatName() == StatName.Draw) temp += 6;
 
         return (EndingName)temp;
     }

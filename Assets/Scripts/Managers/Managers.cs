@@ -109,8 +109,8 @@ public class Managers : MonoBehaviour
     public MainStory ChooseMainStory()
     {
         MainStory mainStory;
-        string temp = Data._myPlayerData.GetHigestStatName().ToString();
-        temp += (Data._myPlayerData.NowWeek / 4).ToString();
+        string temp = Data.PlayerData.GetHigestStatName().ToString();
+        temp += (Data.PlayerData.NowWeek / 4).ToString();
 
         Debug.Log(temp);
         Enum.TryParse(temp, out mainStory);
@@ -128,7 +128,7 @@ public class Managers : MonoBehaviour
     public void FinishWeek()
     {
         WeekOverAction?.Invoke();
-        Data._myPlayerData.NowWeek++;
+        Data.PlayerData.NowWeek++;
         Data.SaveData();
         UI_MainBackUI.instance.UpdateUItexts();
     }

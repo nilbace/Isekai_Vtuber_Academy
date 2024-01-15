@@ -51,15 +51,15 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         }
 
         UI_MainBackUI.instance.SetStamp(-1);
-        UI_MainBackUI.instance.StartScreenAnimation("Exit");
+        UI_MainBackUI.instance.StartScreenAnimation("Exit", "");
         UI_MainBackUI.instance.UpdateUItexts();
         ChattingManager.Inst.gameObject.SetActive(false);
 
-        if (Managers.Data._myPlayerData.NowWeek == 20)
+        if (Managers.Data.PlayerData.NowWeek == 20)
             Managers.UI_Manager.ShowPopupUI<UI_Ending>();
-        else if (Managers.Data._myPlayerData.MerchantAppearanceWeek())
+        else if (Managers.Data.PlayerData.MerchantAppearanceWeek())
             Managers.UI_Manager.ShowPopupUI<UI_Merchant>();
-        else if (Managers.Data._myPlayerData.MainStoryApperanceWeek())
+        else if (Managers.Data.PlayerData.MainStoryApperanceWeek())
             Managers.instance.ShowMainStory();
         else
             Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
@@ -75,6 +75,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         if(isFastMode)
         {
             UI_MainBackUI.instance.ScreenAnimator.speed = UI_MainBackUI.instance.ScreenAniSpeed * 2;
+            UI_MainBackUI.instance.RubiaAnimator.speed = UI_MainBackUI.instance.ScreenAniSpeed * 2;
             ChattingManager.Inst.MaxChatDelayTime = 0.05f;
             ChattingManager.Inst.TimeForChatGetBigger = 0.04f;
             ChattingManager.Inst.ChatBubbleRiseDuration = 0.15f;
@@ -82,13 +83,14 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         else
         {
             UI_MainBackUI.instance.ScreenAnimator.speed = UI_MainBackUI.instance.ScreenAniSpeed;
+            UI_MainBackUI.instance.RubiaAnimator.speed = UI_MainBackUI.instance.ScreenAniSpeed;
             ChattingManager.Inst.MaxChatDelayTime = 0.1f;
             ChattingManager.Inst.TimeForChatGetBigger = 0.08f;
             ChattingManager.Inst.ChatBubbleRiseDuration = 0.3f;
         }
 
         //휴식 하는게 아니라면 아플 수 있음
-        if (oneDay.scheduleType != ScheduleType.Rest && !isSick)
+        if (oneDay.scheduleType != TaskType.Rest && !isSick)
         {
             Check_illnessProbability();
         }
@@ -103,8 +105,9 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         //아프지 않다면 모든 일정에 대해 대성공이 뜰 수 있음
         else
         {
-            UI_MainBackUI.instance.StartScreenAnimation(oneDay.PathName);
-            if(oneDay.scheduleType == ScheduleType.BroadCast)
+            UI_MainBackUI.instance.StartScreenAnimation(oneDay.PathName, oneDay.RubiaAni);
+            oneDay.CheckAndAddIfNotWatched();
+            if(oneDay.scheduleType == TaskType.BroadCast)
             {
                 ChattingManager.Inst.gameObject.SetActive(true);
                 ChattingManager.Inst.StartGenerateChattingByType(oneDay.broadcastType);
@@ -128,14 +131,14 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             }
 
             //방송을 진행했다면 돈 구독자 증가
-            if (oneDay.scheduleType == ScheduleType.BroadCast)
+            if (oneDay.scheduleType == TaskType.BroadCast)
             {
                 IncreaseSubsAndMoney(oneDay, bonusMultiplier);
             }
 
             //컨디션 변화
             float HeartVariance; float StarVariance;
-            if (oneDay.scheduleType == ScheduleType.Rest)
+            if (oneDay.scheduleType == TaskType.Rest)
             {
                 HeartVariance = oneDay.HeartVariance * bonusMultiplier;
                 StarVariance = oneDay.StarVariance * bonusMultiplier;
@@ -145,8 +148,8 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 HeartVariance = oneDay.HeartVariance * GetSubStatProperty(StatName.Strength);
                 StarVariance = oneDay.StarVariance * GetSubStatProperty(StatName.Mental);
             }
-            Managers.Data._myPlayerData.NowHeart = Mathf.Clamp(Mathf.CeilToInt(HeartVariance) + Managers.Data._myPlayerData.NowHeart, 0, 100);
-            Managers.Data._myPlayerData.NowStar = Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data._myPlayerData.NowStar, 0, 100);
+            Managers.Data.PlayerData.NowHeart = Mathf.Clamp(Mathf.CeilToInt(HeartVariance) + Managers.Data.PlayerData.NowHeart, 0, 100);
+            Managers.Data.PlayerData.NowStar = Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data.PlayerData.NowStar, 0, 100);
 
 
             //스텟 변화
@@ -155,7 +158,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             {
                 tempstat[i] = oneDay.Six_Stats[i] * bonusMultiplier;
             }
-            Managers.Data._myPlayerData.ChangeStat(tempstat);
+            Managers.Data.PlayerData.ChangeStat(tempstat);
         }
 
         float waitTime = isFastMode ? TimeToStamp / 2 : TimeToStamp;
@@ -194,9 +197,9 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
     void Check_illnessProbability()
     {
-        if (Managers.Data._myPlayerData.NowHeart < 50 || Managers.Data._myPlayerData.NowStar < 50)
+        if (Managers.Data.PlayerData.NowHeart < 50 || Managers.Data.PlayerData.NowStar < 50)
         {
-            if (Managers.Data._myPlayerData.NowHeart < 25)
+            if (Managers.Data.PlayerData.NowHeart < 25)
             {
                 if (UnityEngine.Random.Range(0, 100) < 25)
                 {
@@ -206,7 +209,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                     return;
                 }
             }
-            else if (Managers.Data._myPlayerData.NowStar < 25)
+            else if (Managers.Data.PlayerData.NowStar < 25)
             {
                 if (UnityEngine.Random.Range(0, 100) < 25)
                 {
@@ -216,7 +219,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                     return;
                 }
             }
-            else if (Managers.Data._myPlayerData.NowHeart < 50)
+            else if (Managers.Data.PlayerData.NowHeart < 50)
             {
                 if (UnityEngine.Random.Range(0, 100) < 50)
                 {
@@ -250,15 +253,15 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             isSick = false;
         }
         int RestHeartStarValue = 10;
-        Managers.Data._myPlayerData.NowHeart += RestHeartStarValue;
-        Managers.Data._myPlayerData.NowStar += RestHeartStarValue;
+        Managers.Data.PlayerData.NowHeart += RestHeartStarValue;
+        Managers.Data.PlayerData.NowStar += RestHeartStarValue;
     }
 
     bool BigSuccess = false;
 
     bool CheckSuccessProbability()
     {
-        int LuckGrade = ((int)Managers.Data._myPlayerData.SixStat[5]) / 10;
+        int LuckGrade = ((int)Managers.Data.PlayerData.SixStat[5]) / 10;
         if (UnityEngine.Random.Range(0, 100) < (LuckGrade * 5))
         {
             return true;
@@ -277,14 +280,14 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
     void IncreaseSubsAndMoney(OneDayScheduleData oneDay, float bonusMultiplier)
     {
-        int beforeSub = Managers.Data._myPlayerData.nowSubCount;
+        int beforeSub = Managers.Data.PlayerData.nowSubCount;
 
         int OneDayNewSubs = CalculateSubAfterDay(beforeSub, oneDay.FisSubsUpValue, oneDay.PerSubsUpValue, bonusMultiplier);
 
         int OneDayIncome = Mathf.CeilToInt(Mathf.Log10(beforeSub)*300 * oneDay.InComeMag * bonusMultiplier);
 
-        Managers.Data._myPlayerData.nowSubCount += OneDayNewSubs;
-        Managers.Data._myPlayerData.nowGoldAmount += OneDayIncome;
+        Managers.Data.PlayerData.nowSubCount += OneDayNewSubs;
+        Managers.Data.PlayerData.nowGoldAmount += OneDayIncome;
 
         CalculateBonus(oneDay.broadcastType, OneDayNewSubs, OneDayIncome);
     }
@@ -311,18 +314,18 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     {
         Bonus tempBonus = Managers.Data.GetMainProperty(statname);
 
-        Managers.Data._myPlayerData.nowGoldAmount += Mathf.CeilToInt(DayIncome * (tempBonus.IncomeBonus) / 100f);
-        Managers.Data._myPlayerData.nowSubCount += Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f);
+        Managers.Data.PlayerData.nowGoldAmount += Mathf.CeilToInt(DayIncome * (tempBonus.IncomeBonus) / 100f);
+        Managers.Data.PlayerData.nowSubCount += Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f);
     }
 
     public float GetSubStatProperty(StatName statName)
     {
         int temp = 0;
         if (statName == StatName.Strength)
-            temp = (int)Math.Floor(Managers.Data._myPlayerData.SixStat[3]);
+            temp = (int)Math.Floor(Managers.Data.PlayerData.SixStat[3]);
 
         else if (statName == StatName.Mental)
-            temp = (int)Math.Floor(Managers.Data._myPlayerData.SixStat[4]);
+            temp = (int)Math.Floor(Managers.Data.PlayerData.SixStat[4]);
 
         float result = (float)(temp / 10);
         result *= Managers.instance.Str_Men_ValuePerLevel;

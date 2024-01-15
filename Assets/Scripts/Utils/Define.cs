@@ -17,7 +17,7 @@ public class Define
     {
         Bgm, Effect,
         MM,
-        ScheduleBTN,BigBTN, SmallBTN,
+        ScheduleBTN, BigBTN, SmallBTN,
         ReturnBTN, TaskBTN, SubcontentBTN,
         NextWeekBTN,
         BigSuccess,
@@ -34,22 +34,26 @@ public class Define
     {
         Click,
         Drag,
-        
+
     }
-    public enum MouseEvent{
+    public enum MouseEvent
+    {
         Press,
         Click,
     }
-    public enum CameraMode{
+    public enum CameraMode
+    {
         QuaterView,
     }
 
     #region StatName
-    public enum StatName {
+    public enum StatName
+    {
         Game, Song, Draw, Strength, Mental, Luck, FALSE, Subs, Week, Karma
     }
 
-    public enum StatNameKor { 
+    public enum StatNameKor
+    {
         °ÔÀÓ, ³ë·¡, ±×¸², ±Ù·Â, ¸àÅ», Çà¿î
     }
 
@@ -63,9 +67,9 @@ public class Define
 
     public enum EndingName
     {
-        GameGood,GameEvil,GameFail,
-        SongGood,SongEvil,SongFail,
-        DrawGood,DrawEvil,DrawFail
+        GameGood, GameEvil, GameFail,
+        SongGood, SongEvil, SongFail,
+        DrawGood, DrawEvil, DrawFail
     }
 
     public enum SubStoryName
@@ -103,9 +107,10 @@ public class Define
         Max
     }
 
-   
 
-    public enum EventDataType {
+
+    public enum EventDataType
+    {
         Main, Random, Conditioned
     }
 
@@ -185,9 +190,9 @@ public class Define
         Sunday,
     }
 
-    public enum MainStory { Game1, Game2, Game3, Game4, Song1, Song2, Song3, Song4, Draw1, Draw2, Draw3, Draw4}
+    public enum MainStory { Game1, Game2, Game3, Game4, Song1, Song2, Song3, Song4, Draw1, Draw2, Draw3, Draw4 }
 
-    public enum ScheduleType
+    public enum TaskType
     {
         Null, BroadCast, Rest, GoOut
     }
@@ -196,7 +201,7 @@ public class Define
     {
         public string KorName;
         public string infotext;
-        public ScheduleType scheduleType;
+        public TaskType scheduleType;
         public BroadCastType broadcastType;
         public RestType restType;
         public GoOutType goOutType;
@@ -208,11 +213,12 @@ public class Define
         public int MoneyCost;
         public float[] Six_Stats;
         public string PathName;
+        public string RubiaAni;
 
         public OneDayScheduleData()
         {
             KorName = "";
-            this.scheduleType = ScheduleType.Null;
+            this.scheduleType = TaskType.Null;
             this.broadcastType = BroadCastType.MaxCount_Name;
             this.restType = RestType.MaxCount;
             this.goOutType = GoOutType.MaxCount;
@@ -223,7 +229,24 @@ public class Define
             StarVariance = 0;
             InComeMag = 0;
             MoneyCost = 0;
+            RubiaAni = "";
             Six_Stats = new float[6];
+        }
+
+        public void CheckAndAddIfNotWatched()
+        {
+            switch (scheduleType)
+            {
+                case TaskType.BroadCast:
+                    Managers.Data.PersistentUser.CheckAndAddIfNotWatched(broadcastType);
+                    break;
+                case TaskType.Rest:
+                    Managers.Data.PersistentUser.CheckAndAddIfNotWatched(restType);
+                    break;
+                case TaskType.GoOut:
+                    Managers.Data.PersistentUser.CheckAndAddIfNotWatched(goOutType);
+                    break;
+            }
         }
     }
 
@@ -245,16 +268,16 @@ public class Define
 
         public void FillDatas()
         {
-            Subs = Managers.Data._myPlayerData.nowSubCount;
-            Gold = Managers.Data._myPlayerData.nowGoldAmount;
+            Subs = Managers.Data.PlayerData.nowSubCount;
+            Gold = Managers.Data.PlayerData.nowGoldAmount;
             for (int i = 0; i < 7; i++)
             {
                 Gold += Managers.Data._SevenDayScheduleDatas[i].MoneyCost;
             }
 
 
-            SixStat = new float[Managers.Data._myPlayerData.SixStat.Length];
-            Array.Copy(Managers.Data._myPlayerData.SixStat, SixStat, SixStat.Length);
+            SixStat = new float[Managers.Data.PlayerData.SixStat.Length];
+            Array.Copy(Managers.Data.PlayerData.SixStat, SixStat, SixStat.Length);
         }
     }
 
@@ -283,7 +306,7 @@ public class Define
 
         public bool UserHasEnoughGold()
         {
-            if (Managers.Data._myPlayerData.nowGoldAmount >= CostGold)
+            if (Managers.Data.PlayerData.nowGoldAmount >= CostGold)
                 return true;
             return false;
         }
@@ -333,7 +356,6 @@ public class Define
         public List<string> DoneEventNames;
         public List<string> BoughtItems;
         public List<int> SubStoryIndex;
-
         public PlayerData()
         {
             NowWeek = 1;
@@ -392,9 +414,9 @@ public class Define
 
         public void StatUpByDialogue(RewardStat rewardStat)
         {
-            if(rewardStat.StatName == StatName.Karma)
+            if (rewardStat.StatName == StatName.Karma)
             {
-                Managers.Data._myPlayerData.RubiaKarma += rewardStat.Value;
+                Managers.Data.PlayerData.RubiaKarma += rewardStat.Value;
             }
             else
             {
@@ -405,7 +427,7 @@ public class Define
         public void ChangeStat(StatName statName, float value)
         {
             if ((int)statName >= 6) Debug.LogError("6½ºÅÝ ¾Æ´Ô!");
-            int index = (int)statName; 
+            int index = (int)statName;
 
             SixStat[index] += value;
             SixStat[index] = Mathf.Clamp(SixStat[index], 0, 200);
@@ -428,5 +450,53 @@ public class Define
             if (NowWeek == 4 || NowWeek == 8 || NowWeek == 12 || NowWeek == 16) return true;
             return false;
         }
+
+        
     }
+
+    [Serializable]
+    public class PersistentUserData
+    {
+        public bool BoughtAdPass;
+        public bool WatchedTutorial;
+        public List<BroadCastType> WatchedBroadCast;
+        public List<RestType> WatchedRest;
+        public List<GoOutType> WatchedGoOut;
+        public List<EndingName> WatchedEndingName;
+
+        public bool CheckAndAddIfNotWatched<T>(T enumValue)
+        {
+            List<T> watchedList;
+            if (typeof(T) == typeof(BroadCastType))
+            {
+                watchedList = WatchedBroadCast as List<T>;
+            }
+            else if (typeof(T) == typeof(RestType))
+            {
+                watchedList = WatchedRest as List<T>;
+            }
+            else if (typeof(T) == typeof(GoOutType))
+            {
+                watchedList = WatchedGoOut as List<T>;
+            }
+            else if (typeof(T) == typeof(EndingName))
+            {
+                watchedList = WatchedEndingName as List<T>;
+            }
+            else
+            {
+                throw new ArgumentException("Invalid type");
+            }
+
+            bool isWatched = watchedList.Exists(item => item.Equals(enumValue));
+            if (!isWatched)
+            {
+                watchedList.Add(enumValue);
+            }
+            Debug.Log($"{enumValue} is Watched: {isWatched}");
+            return isWatched;
+        }
+    }
+    
+
 }

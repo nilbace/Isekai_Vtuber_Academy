@@ -16,6 +16,7 @@ public class UI_MainBackUI : UI_Scene
     public float ScreenAniSpeed;
     public bool IsFastMode = false;
     public Sprite[] SpeedBTNSprite;
+    public Animator RubiaAnimator;
 
     //하단 스템프 애니메이션
     public Sprite[] TempStampImg;
@@ -126,8 +127,9 @@ public class UI_MainBackUI : UI_Scene
         //방송 타이틀 오른쪽으로 뺴고 시작
         GetGameObject((int)GameObjects.BroadCastTitle).transform.localPosition += new Vector3(XOffset,0,0);
 
+
         //서브스토리 셋팅
-        if (Managers.Data._myPlayerData.NowWeek != Managers.Data._myPlayerData.SubStoryIndex.Count)
+        if (Managers.Data.PlayerData.NowWeek != Managers.Data.PlayerData.SubStoryIndex.Count)
         {
             //보통 1주차에 발생됨
             SetSubStoryIndex();
@@ -135,7 +137,7 @@ public class UI_MainBackUI : UI_Scene
         else
         {
             //다른 주차라면 저장된 서브스토리 인덱스 셋팅
-            NowWeekSubStoryIndex = Managers.Data._myPlayerData.SubStoryIndex[Managers.Data._myPlayerData.NowWeek-1];
+            NowWeekSubStoryIndex = Managers.Data.PlayerData.SubStoryIndex[Managers.Data.PlayerData.NowWeek-1];
         }
 
         Managers.instance.WeekOverAction -= SetSubStoryIndex;
@@ -225,8 +227,8 @@ public class UI_MainBackUI : UI_Scene
             tmpText.text = GetInitialTextForType(textType);
         }
 
-        float nowHeart = Managers.Data._myPlayerData.NowHeart;
-        float nowStar = Managers.Data._myPlayerData.NowStar;
+        float nowHeart = Managers.Data.PlayerData.NowHeart;
+        float nowStar = Managers.Data.PlayerData.NowStar;
 
         GetImage((int)Images.HeartBar).sprite =
             StatusBar[GetStatusBarImageIndex(nowHeart)];
@@ -234,9 +236,9 @@ public class UI_MainBackUI : UI_Scene
             StatusBar[GetStatusBarImageIndex(nowStar)];
 
         GetGameObject((int)GameObjects.HeartCover).transform.localScale =
-            new Vector3( 1 - (float)Managers.Data._myPlayerData.NowHeart/100f, 1, 1);
+            new Vector3( 1 - (float)Managers.Data.PlayerData.NowHeart/100f, 1, 1);
         GetGameObject((int)GameObjects.StarCover).transform.localScale =
-            new Vector3( 1 - (float)Managers.Data._myPlayerData.NowStar / 100f, 1, 1);
+            new Vector3( 1 - (float)Managers.Data.PlayerData.NowStar / 100f, 1, 1);
 
         GetText((int)Texts.HeartTMP).color =
             HeartStarTextColors[GetStatusBarImageIndex(nowHeart)];
@@ -246,8 +248,8 @@ public class UI_MainBackUI : UI_Scene
         for (int i = 0; i<6;i++)
         {
             GetGameObject((int)GameObjects.GameStat_Cover+i).transform.localScale =
-           new Vector3(1 - (float)Managers.Data._myPlayerData.SixStat[i] / 200f, 1, 1);
-            GetText((int)Texts.TempGameTMP+i).text = Managers.Data._myPlayerData.SixStat[i].ToString("F0");
+           new Vector3(1 - (float)Managers.Data.PlayerData.SixStat[i] / 200f, 1, 1);
+            GetText((int)Texts.TempGameTMP+i).text = Managers.Data.PlayerData.SixStat[i].ToString("F0");
         }
 
         GetText((int)Texts.CommunicationTMP).text = ((SubStoryName)NowWeekSubStoryIndex).ToString();
@@ -258,15 +260,15 @@ public class UI_MainBackUI : UI_Scene
         switch (textType)
         {
             case Texts.HeartTMP:
-                return GetNowConditionToString(Managers.Data._myPlayerData.NowHeart);
+                return GetNowConditionToString(Managers.Data.PlayerData.NowHeart);
             case Texts.StarTMP:
-                return GetNowConditionToString(Managers.Data._myPlayerData.NowStar);
+                return GetNowConditionToString(Managers.Data.PlayerData.NowStar);
             case Texts.MyMoneyTMP:
-                return Util.FormatMoney(Managers.Data._myPlayerData.nowGoldAmount);
+                return Util.FormatMoney(Managers.Data.PlayerData.nowGoldAmount);
             case Texts.MySubsTMP:
-                return Util.FormatSubs(Managers.Data._myPlayerData.nowSubCount);
+                return Util.FormatSubs(Managers.Data.PlayerData.nowSubCount);
             case Texts.NowWeekTMP:
-                return "방송 " +Managers.Data._myPlayerData.NowWeek.ToString()+"주차";
+                return "방송 " +Managers.Data.PlayerData.NowWeek.ToString()+"주차";
             default:
                 return "";
         }
@@ -429,9 +431,9 @@ public class UI_MainBackUI : UI_Scene
         {
             temp = Random.Range(0, (int)SubStoryName.Max);
             Debug.Log(temp);
-            if (!Managers.Data._myPlayerData.SubStoryIndex.Contains(temp)) break;
+            if (!Managers.Data.PlayerData.SubStoryIndex.Contains(temp)) break;
         }
-        Managers.Data._myPlayerData.SubStoryIndex.Add(temp);
+        Managers.Data.PlayerData.SubStoryIndex.Add(temp);
         NowWeekSubStoryIndex = temp;
         UpdateUItexts();
         Managers.Data.SaveData();
@@ -494,7 +496,7 @@ public class UI_MainBackUI : UI_Scene
 
     #region ScheduleAnimation
 
-    public void StartScreenAnimation(string KorName)
+    public void StartScreenAnimation(string KorName, string RubiaAniIndex)
     {
         ScreenAnimator.StopPlayback();
         if(KorName == "")
@@ -505,8 +507,17 @@ public class UI_MainBackUI : UI_Scene
         {
             ScreenAnimator.SetTrigger(KorName);
         }
-    }
 
+        if(RubiaAniIndex != "")
+        {
+            RubiaAnimator.gameObject.SetActive(true);
+            RubiaAnimator.SetTrigger(RubiaAniIndex);
+        }
+        else
+        {
+            RubiaAnimator.gameObject.SetActive(false);
+        }
+    }
 
 
 

@@ -9,7 +9,8 @@ using static Define;
 
 public class DataManager
 { 
-    public PlayerData _myPlayerData;
+    public PlayerData PlayerData;
+    public PersistentUserData PersistentUser;
     int[] MonthlyExpense = {0, 0, 0, 0, 0 };
 
 
@@ -23,47 +24,65 @@ public class DataManager
     void LoadData()
     {
         string path;
+        string path2;
         if (Application.platform == RuntimePlatform.Android)
         {
             path = Path.Combine(Application.persistentDataPath, "PlayerData.json");
+            path2 = Path.Combine(Application.persistentDataPath, "Persistent.json");
         }
         else
         {
             path = Path.Combine(Application.dataPath, "PlayerData.json");
+            path2 = Path.Combine(Application.dataPath, "Persistent.json");
         }
 
-        if (!File.Exists(path))
+        if (!File.Exists(path) || !File.Exists(path2))
         {
-            _myPlayerData = new PlayerData();
+            PlayerData = new PlayerData();
+            PersistentUser = new PersistentUserData();
             SaveData();
         }
-
+    
         FileStream fileStream = new FileStream(path, FileMode.Open);
         byte[] data = new byte[fileStream.Length];
         fileStream.Read(data, 0, data.Length);
         fileStream.Close();
         string jsonData = Encoding.UTF8.GetString(data);
+        PlayerData = JsonUtility.FromJson<PlayerData>(jsonData);
 
-        _myPlayerData = JsonUtility.FromJson<PlayerData>(jsonData);
+        FileStream fileStream2 = new FileStream(path2, FileMode.Open);
+        byte[] data2 = new byte[fileStream2.Length];
+        fileStream2.Read(data2, 0, data2.Length);
+        fileStream2.Close();
+        string jsonData2 = Encoding.UTF8.GetString(data2);
+        PersistentUser = JsonUtility.FromJson<PersistentUserData>(jsonData2);
     }
 
     public void SaveData()
     {
         string path;
+        string path2;
         if (Application.platform == RuntimePlatform.Android)
         {
             path = Path.Combine(Application.persistentDataPath, "PlayerData.json");
+            path2 = Path.Combine(Application.persistentDataPath, "Persistent.json");
         }
         else
         {
             path = Path.Combine(Application.dataPath, "PlayerData.json");
+            path2 = Path.Combine(Application.dataPath, "Persistent.json");
         }
-        string jsonData = JsonUtility.ToJson(_myPlayerData, true);
-
+        string jsonData = JsonUtility.ToJson(PlayerData, true);
         FileStream fileStream = new FileStream(path, FileMode.Create);
         byte[] data = Encoding.UTF8.GetBytes(jsonData);
         fileStream.Write(data, 0, data.Length);
         fileStream.Close();
+
+        string jsonData2 = JsonUtility.ToJson(PersistentUser, true);
+        FileStream fileStream2 = new FileStream(path2, FileMode.Create);
+        byte[] data2 = Encoding.UTF8.GetBytes(jsonData2);
+        fileStream2.Write(data2, 0, data2.Length);
+        fileStream2.Close();
     }
 
     public void SaveToCloud()
@@ -104,7 +123,7 @@ public class DataManager
 
     public int GetNowMonthExpense()
     {
-        int temp = _myPlayerData.NowWeek;
+        int temp = PlayerData.NowWeek;
         int temp2 = ((temp) / 4) - 1;
         return MonthlyExpense[temp2];
     }
@@ -158,19 +177,19 @@ public class DataManager
 
         for(int i = 0;i<(int)BroadCastType.MaxCount_Name; i++)
         {
-            ProcessStringToList(ScheduleType.BroadCast, i, stringqueue.Dequeue());
+            ProcessStringToList(TaskType.BroadCast, i, stringqueue.Dequeue());
         }
         for (int i = 0; i <  (int)RestType.MaxCount; i++)
         {
-            ProcessStringToList(ScheduleType.Rest, i, stringqueue.Dequeue());
+            ProcessStringToList(TaskType.Rest, i, stringqueue.Dequeue());
         }
         for (int i = 0; i < (int)GoOutType.MaxCount; i++)
         {
-            ProcessStringToList(ScheduleType.GoOut, i, stringqueue.Dequeue());
+            ProcessStringToList(TaskType.GoOut, i, stringqueue.Dequeue());
         }
     }
 
-    void ProcessStringToList(ScheduleType scheduleType,int index,string data)
+    void ProcessStringToList(TaskType scheduleType,int index,string data)
     {
         string[] lines = data.Substring(0, data.Length).Split('\t');
         Queue<string> tempstringQueue = new Queue<string>();
@@ -182,19 +201,19 @@ public class DataManager
 
         OneDayScheduleData temp = new OneDayScheduleData();
 
-        if(scheduleType == ScheduleType.BroadCast)
+        if(scheduleType == TaskType.BroadCast)
         {
-            temp.scheduleType = ScheduleType.BroadCast;
+            temp.scheduleType = TaskType.BroadCast;
             temp.broadcastType = (BroadCastType)index;
         }
-        else if(scheduleType == ScheduleType.Rest)
+        else if(scheduleType == TaskType.Rest)
         {
-            temp.scheduleType = ScheduleType.Rest;
+            temp.scheduleType = TaskType.Rest;
             temp.restType = (RestType)index;
         }
         else
         {
-            temp.scheduleType = ScheduleType.GoOut;
+            temp.scheduleType = TaskType.GoOut;
             temp.goOutType = (GoOutType)index;
         }
         
@@ -210,6 +229,7 @@ public class DataManager
             temp.Six_Stats[j] = float.Parse(tempstringQueue.Dequeue());
         }
         temp.PathName = tempstringQueue.Dequeue();
+        temp.RubiaAni = tempstringQueue.Dequeue();
         temp.infotext = tempstringQueue.Dequeue();
         oneDayDatasList.Add(temp);
     }
@@ -277,7 +297,7 @@ public class DataManager
 
     public Bonus GetMainProperty(StatName statName)
     {
-        float highestStat = Managers.Data._myPlayerData.SixStat[(int)statName];
+        float highestStat = Managers.Data.PlayerData.SixStat[(int)statName];
         return GetMainProperty(highestStat);
     }
 

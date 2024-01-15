@@ -1,34 +1,26 @@
 {
-    "NowWeek": 8,
-    "nowSubCount": 2586,
-    "nowGoldAmount": 1358,
+    "NowWeek": 3,
+    "nowSubCount": 289,
+    "nowGoldAmount": 1060264,
     "RubiaKarma": 0,
-    "NowHeart": 59.0,
-    "NowStar": 55.0,
+    "NowHeart": 87.0,
+    "NowStar": 83.0,
     "SixStat": [
-        44.0,
-        3.0,
+        6.0,
+        1.0,
+        1.0,
         0.0,
-        2.0,
-        4.0,
-        0.0
+        3.0,
+        4.0
     ],
     "DoneEventNames": [
-        "민트초코 먹기",
-        "밀웜 먹방",
-        "팬레터 읽기",
-        "현실부정",
-        "자르반 84세와 만남"
+        "몰루3",
+        "술 헤롱헤롱"
     ],
     "BoughtItems": [],
     "SubStoryIndex": [
-        15,
-        8,
-        12,
-        5,
-        28,
-        2,
-        0,
-        21
+        11,
+        14,
+        23
     ]
 }

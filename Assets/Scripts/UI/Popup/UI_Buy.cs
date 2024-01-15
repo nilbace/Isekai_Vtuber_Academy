@@ -34,18 +34,18 @@ public class UI_Buy : UI_Popup
 
         void BuyItem()
         {
-            Managers.Data._myPlayerData.nowGoldAmount -= item.Cost;
+            Managers.Data.PlayerData.nowGoldAmount -= item.Cost;
 
             for (int i = 0; i < 6; i++)
             {
-                Managers.Data._myPlayerData.SixStat[i] += item.SixStats[i];
+                Managers.Data.PlayerData.SixStat[i] += item.SixStats[i];
             }
-            Managers.Data._myPlayerData.RubiaKarma += item.Karma;
+            Managers.Data.PlayerData.RubiaKarma += item.Karma;
 
             UI_MainBackUI.instance.UpdateUItexts();
             Managers.Sound.Play(Sound.Buy);
             Managers.UI_Manager.ClosePopupUI();
-            Managers.Data._myPlayerData.BoughtItems.Add(item.ItemName);
+            Managers.Data.PlayerData.BoughtItems.Add(item.ItemName);
             UI_Merchant.instance.UpdateTexts();
         }
     }

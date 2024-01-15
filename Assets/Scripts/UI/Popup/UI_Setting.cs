@@ -64,7 +64,7 @@ public class UI_Setting : UI_Popup
 
 
         Managers.UI_Manager.CloseALlPopupUI();
-        Managers.Data._myPlayerData = new Define.PlayerData();
+        Managers.Data.PlayerData = new Define.PlayerData();
         Managers.Data.SaveData();
         UI_MainBackUI.instance.UpdateUItexts();
     }

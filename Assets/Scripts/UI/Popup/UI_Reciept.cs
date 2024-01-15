@@ -41,18 +41,18 @@ public class UI_Reciept : UI_Popup
 
     public void SetReceipt()
     {
-        GetText((int)Texts.NWeekTMP).text = $"{Managers.Data._myPlayerData.NowWeek}주차 영수증";
+        GetText((int)Texts.NWeekTMP).text = $"{Managers.Data.PlayerData.NowWeek}주차 영수증";
         GetText((int)Texts.SuccessTimeTMP).text = $"{ScheduleExecuter.Inst.SuccessTime[0]}회"
                                                    + $"\n{ScheduleExecuter.Inst.SuccessTime[1]}회"
                                                    + $"\n{ScheduleExecuter.Inst.SuccessTime[2]}회";
         WeekReceiptData temp = ScheduleExecuter.Inst.BeforeScheduleData;
 
-        int sub = Managers.Data._myPlayerData.nowSubCount - temp.Subs;
-        int income = Managers.Data._myPlayerData.nowGoldAmount - temp.Gold;
+        int sub = Managers.Data.PlayerData.nowSubCount - temp.Subs;
+        int income = Managers.Data.PlayerData.nowGoldAmount - temp.Gold;
         float[] stats = new float[6];
         for (int i = 0; i < 6; i++)
         {
-            stats[i] = Managers.Data._myPlayerData.SixStat[i] - temp.SixStat[i];
+            stats[i] = Managers.Data.PlayerData.SixStat[i] - temp.SixStat[i];
         }
 
         GetText((int)Texts.ReceieptDetailUpperTMP).text = $"+{sub}명"

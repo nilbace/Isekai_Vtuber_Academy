@@ -84,7 +84,7 @@ public class REventManager
         RemoveDoneEvent(tempEventDatasList);
 
 
-        foreach(string name in Managers.Data._myPlayerData.DoneEventNames)
+        foreach(string name in Managers.Data.PlayerData.DoneEventNames)
         {
             foreach(WeekEventData each in tempEventDatasList)
             {
@@ -92,7 +92,7 @@ public class REventManager
             }
         }
         
-        if(Managers.Data._myPlayerData.NowWeek%4 == 0)
+        if(Managers.Data.PlayerData.NowWeek%4 == 0)
         {
             temp = GetMainEvent(tempEventDatasList);
         }
@@ -105,7 +105,7 @@ public class REventManager
             temp = GetRandEvent(tempEventDatasList);
         }
 
-        Managers.Data._myPlayerData.DoneEventNames.Add(temp.EventName);
+        Managers.Data.PlayerData.DoneEventNames.Add(temp.EventName);
         return temp;
     }
 
@@ -118,13 +118,13 @@ public class REventManager
     {
         WeekEventData temp = new WeekEventData();
         
-        switch (Managers.Data._myPlayerData.GetHigestStatName())
+        switch (Managers.Data.PlayerData.GetHigestStatName())
         {
             case StatName.Game:
                 foreach(WeekEventData temp2 in eventlist)
                 {
-                    if (temp2.OccurableWeek == Managers.Data._myPlayerData.NowWeek 
-                        && temp2.ReqStat <= Managers.Data._myPlayerData.SixStat[0] 
+                    if (temp2.OccurableWeek == Managers.Data.PlayerData.NowWeek 
+                        && temp2.ReqStat <= Managers.Data.PlayerData.SixStat[0] 
                         && temp2.StatName == StatName.Game)
                         temp = temp2;
                 }
@@ -132,8 +132,8 @@ public class REventManager
             case StatName.Song:
                 foreach (WeekEventData temp4 in eventlist)
                 {
-                    if (temp4.OccurableWeek == Managers.Data._myPlayerData.NowWeek
-                        && temp4.ReqStat <= Managers.Data._myPlayerData.SixStat[1]
+                    if (temp4.OccurableWeek == Managers.Data.PlayerData.NowWeek
+                        && temp4.ReqStat <= Managers.Data.PlayerData.SixStat[1]
                         && temp4.StatName == StatName.Song)
                         temp = temp4;
                 }
@@ -141,8 +141,8 @@ public class REventManager
             case StatName.Draw:
                 foreach (WeekEventData temp3 in eventlist)
                 {
-                    if (temp3.OccurableWeek == Managers.Data._myPlayerData.NowWeek
-                        && temp3.ReqStat <= Managers.Data._myPlayerData.SixStat[2]
+                    if (temp3.OccurableWeek == Managers.Data.PlayerData.NowWeek
+                        && temp3.ReqStat <= Managers.Data.PlayerData.SixStat[2]
                         && temp3.StatName == StatName.Draw)
                         temp = temp3;
                 }
@@ -194,7 +194,7 @@ public class REventManager
                     break;
                 
                 case StatName.Subs:
-                    if (even.ReqStat <= Managers.Data._myPlayerData.nowSubCount)
+                    if (even.ReqStat <= Managers.Data.PlayerData.nowSubCount)
                     {
                         
                         tempConditionEvent = even;
@@ -203,7 +203,7 @@ public class REventManager
                     break;
 
                 case StatName.Week:
-                    if (even.ReqStat <= Managers.Data._myPlayerData.NowWeek)
+                    if (even.ReqStat <= Managers.Data.PlayerData.NowWeek)
                     {
                         tempConditionEvent = even;
                         return true;
@@ -218,7 +218,7 @@ public class REventManager
 
     void RemoveDoneEvent(List<WeekEventData> eventlist)
     {
-        eventlist.RemoveAll(eventdata => Managers.Data._myPlayerData.DoneEventNames.Contains(eventdata.EventName));
+        eventlist.RemoveAll(eventdata => Managers.Data.PlayerData.DoneEventNames.Contains(eventdata.EventName));
     }
 
 

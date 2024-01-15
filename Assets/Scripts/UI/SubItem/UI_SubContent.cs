@@ -76,19 +76,19 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         SpriteState ButtonBackImage = new SpriteState();
         switch (scheduleData.scheduleType)
         {
-            case ScheduleType.BroadCast:
+            case TaskType.BroadCast:
                 GetComponent<Image>().sprite = TaskPannelSprites[0];
                 ButtonBackImage.pressedSprite = TaskPannelSprites[1];
                 thisBTN.spriteState = ButtonBackImage;
                 SetPozition(BroadCastpoz);
                 break;
-            case ScheduleType.Rest:
+            case TaskType.Rest:
                 GetComponent<Image>().sprite = TaskPannelSprites[2];
                 ButtonBackImage.pressedSprite = TaskPannelSprites[3];
                 thisBTN.spriteState = ButtonBackImage;
                 SetPozition(Restpoz);
                 break;
-            case ScheduleType.GoOut:
+            case TaskType.GoOut:
                 GetComponent<Image>().sprite = TaskPannelSprites[4];
                 ButtonBackImage.pressedSprite = TaskPannelSprites[5];
                 thisBTN.spriteState = ButtonBackImage;
@@ -102,12 +102,12 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         GetText((int)Texts.GoldTMP).text    = (-thisSubSchedleData.MoneyCost).ToString();
         GetText((int)Texts.HeartTMP).text = HeartStarVarianceToString(scheduleData, StatName.Strength);
         GetText((int)Texts.StarTMP).text  = HeartStarVarianceToString(scheduleData, StatName.Mental);
-        if (scheduleData.scheduleType == ScheduleType.GoOut)
+        if (scheduleData.scheduleType == TaskType.GoOut)
         {
             GetText((int)Texts.StatTMP).text = thisSubSchedleData.Six_Stats[(int)statName].ToString();
         }
 
-        if (scheduleData.scheduleType == ScheduleType.BroadCast)
+        if (scheduleData.scheduleType == TaskType.BroadCast)
         {
             SetMoneyAndSubData_BroadCast();
         }
@@ -123,13 +123,13 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         thisBTN.interactable = true;
 
         //외출, 휴식이라면
-        if(scheduleData.scheduleType != ScheduleType.BroadCast)
+        if(scheduleData.scheduleType != TaskType.BroadCast)
         {
             //먼저 선택된 것이 없다면
             if(settedData == null)
             {
                 //내 소지금보다 비싼 활동이라면 안눌림
-                if(Managers.Data._myPlayerData.nowGoldAmount < scheduleData.MoneyCost && scheduleData.MoneyCost != 0)
+                if(Managers.Data.PlayerData.nowGoldAmount < scheduleData.MoneyCost && scheduleData.MoneyCost != 0)
                 {
                     thisBTN.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
                     thisBTN.interactable = false;
@@ -139,7 +139,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
             //선택된것이 있고, 비싸다면 안눌림
             else
             {
-                if (Managers.Data._myPlayerData.nowGoldAmount + settedData.MoneyCost < scheduleData.MoneyCost && scheduleData.MoneyCost != 0)
+                if (Managers.Data.PlayerData.nowGoldAmount + settedData.MoneyCost < scheduleData.MoneyCost && scheduleData.MoneyCost != 0)
                 {
                     thisBTN.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
                     thisBTN.interactable = false;
@@ -164,8 +164,8 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     {
         Managers.Sound.Play(Define.Sound.SubcontentBTN);
         if (OverOffset) return;
-        Managers.Data._myPlayerData.nowGoldAmount += nowCost;
-        Managers.Data._myPlayerData.nowGoldAmount -= thisSubSchedleData.MoneyCost;
+        Managers.Data.PlayerData.nowGoldAmount += nowCost;
+        Managers.Data.PlayerData.nowGoldAmount -= thisSubSchedleData.MoneyCost;
         UI_MainBackUI.instance.UpdateUItexts();
         UI_SchedulePopup.instance.SetDaySchedule(thisSubSchedleData);
     }
@@ -228,13 +228,13 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         thisBTN.interactable = false;
         switch (thisSubSchedleData.scheduleType)
         {
-            case ScheduleType.BroadCast:
+            case TaskType.BroadCast:
                 GetComponent<Image>().sprite = TaskPannelSprites[1];
                 break;
-            case ScheduleType.Rest:
+            case TaskType.Rest:
                 GetComponent<Image>().sprite = TaskPannelSprites[3];
                 break;
-            case ScheduleType.GoOut:
+            case TaskType.GoOut:
                 GetComponent<Image>().sprite = TaskPannelSprites[5];
                 break;
         }
@@ -246,7 +246,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 
     void SetMoneyAndSubData_BroadCast()
     {
-        int tempSub = Managers.Data._myPlayerData.nowSubCount;
+        int tempSub = Managers.Data.PlayerData.nowSubCount;
        
         for(int i = 0; i< (int)thisBTNDay; i++)
         {
@@ -259,7 +259,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 
     int ExpectedSub(int SubCount, OneDayScheduleData oneDayScheduleData)
     {
-        if(oneDayScheduleData.scheduleType == ScheduleType.BroadCast)
+        if(oneDayScheduleData.scheduleType == TaskType.BroadCast)
         {
             Bonus temp = Managers.Data.GetMainProperty(GetStatNameByBroadCastType(oneDayScheduleData.broadcastType));
             int newSubs = ScheduleExecuter.Inst.CalculateSubAfterDay(SubCount, oneDayScheduleData.FisSubsUpValue, oneDayScheduleData.PerSubsUpValue, 1);
@@ -272,7 +272,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 
     int ExpectedInCome(int SubCount, OneDayScheduleData oneDayScheduleData)
     {
-        if (oneDayScheduleData.scheduleType == ScheduleType.BroadCast)
+        if (oneDayScheduleData.scheduleType == TaskType.BroadCast)
         {
             Bonus temp = Managers.Data.GetMainProperty(GetStatNameByBroadCastType(oneDayScheduleData.broadcastType));
 
@@ -294,7 +294,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         else
             value = oneDayScheduleData.StarVariance;
         
-        if(oneDayScheduleData.scheduleType != ScheduleType.Rest)value = value * ScheduleExecuter.Inst.GetSubStatProperty(HeartOrStar);
+        if(oneDayScheduleData.scheduleType != TaskType.Rest)value = value * ScheduleExecuter.Inst.GetSubStatProperty(HeartOrStar);
 
         temp = value.ToString("F0");
 

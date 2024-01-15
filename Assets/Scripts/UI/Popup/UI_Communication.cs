@@ -259,11 +259,11 @@ public class UI_Communication : UI_Popup
         if (dialogues[currentDialogueIndex].IsNeedGold())
         {
             Managers.Sound.Play(Sound.Buy);
-            Managers.Data._myPlayerData.nowGoldAmount -= dialogues[currentDialogueIndex].CostGold;
+            Managers.Data.PlayerData.nowGoldAmount -= dialogues[currentDialogueIndex].CostGold;
 
             for (int i = 0; i < dialogues[currentDialogueIndex + 2].rewardStats.Count; i++)
             {
-                Managers.Data._myPlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 2].rewardStats[i]);
+                Managers.Data.PlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 2].rewardStats[i]);
             }
         }
         else
@@ -281,11 +281,11 @@ public class UI_Communication : UI_Popup
         if (dialogues[currentDialogueIndex + 1].IsNeedGold())
         {
             Managers.Sound.Play(Sound.Buy);
-            Managers.Data._myPlayerData.nowGoldAmount -= dialogues[currentDialogueIndex + 1].CostGold;
+            Managers.Data.PlayerData.nowGoldAmount -= dialogues[currentDialogueIndex + 1].CostGold;
 
             for (int i = 0; i < dialogues[currentDialogueIndex + 3].rewardStats.Count; i++)
             {
-                Managers.Data._myPlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 3].rewardStats[i]);
+                Managers.Data.PlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 3].rewardStats[i]);
             }
         }
         else

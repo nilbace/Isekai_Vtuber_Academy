@@ -15,7 +15,7 @@ public class MerChantItem : MonoBehaviour
     {
         _thisItem = item;
 
-        if(_thisItem.Cost <= Managers.Data._myPlayerData.nowGoldAmount && !IsBought(_thisItem))
+        if(_thisItem.Cost <= Managers.Data.PlayerData.nowGoldAmount && !IsBought(_thisItem))
         {
             NameTmp.text = _thisItem.ItemName + "\n" + _thisItem.Cost+"°ñµå";
             InfoTmp.text = "°ÔÀÓ : " + _thisItem.SixStats[0].ToString() + " /";
@@ -46,7 +46,7 @@ public class MerChantItem : MonoBehaviour
 
     bool IsBought(Item item)
     {
-        foreach(string temp in Managers.Data._myPlayerData.BoughtItems)
+        foreach(string temp in Managers.Data.PlayerData.BoughtItems)
         {
             if (temp == item.ItemName) return true;
         }
