@@ -276,7 +276,7 @@ MonoBehaviour:
   NameTmp: {fileID: 4333474960363801065}
   CostStatTMP: {fileID: 7538273246463973958}
   FlavorTMP: {fileID: 5938415987735567810}
-  UpDownOffset: 5
+  UpDownOffset: 6
 --- !u!1 &4672862131156793807
 GameObject:
   m_ObjectHideFlags: 0
