@@ -1,30 +1,24 @@
 {
-    "NowWeek": 6,
-    "nowSubCount": 1153,
-    "nowGoldAmount": 2542,
-    "RubiaKarma": 1,
-    "NowHeart": 68.0,
-    "NowStar": 65.0,
+    "NowWeek": 2,
+    "nowSubCount": 158,
+    "nowGoldAmount": 1530,
+    "RubiaKarma": 0,
+    "NowHeart": 47.0,
+    "NowStar": 62.0,
     "SixStat": [
-        41.0,
-        0.0,
-        0.0,
+        3.0,
         2.0,
+        3.5,
         0.0,
-        7.0
+        0.0,
+        12.0
     ],
     "DoneEventNames": [
-        "몰루3",
-        "엘라 당근 사기",
-        "뮹뮹 다이어트"
+        "표절논란"
     ],
     "BoughtItems": [],
     "SubStoryIndex": [
-        0,
-        7,
-        4,
-        6,
-        15,
-        10
+        22,
+        25
     ]
 }
