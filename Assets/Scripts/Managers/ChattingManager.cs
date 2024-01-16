@@ -84,7 +84,7 @@ public class ChattingManager : MonoSingleton<ChattingManager>
         string[] EachData = datas.Substring(0, datas.Length).Split('\t');
         for (int i = 0; i < (int)BroadCastType.MaxCount_Name + 1; i++)
         {
-            if (EachData[i] != "")
+            if (EachData[i] != "" && EachData[i] != "\r")
             {
                 ChatMessage_NameDic[(BroadCastType)i].Add(EachData[i]);
             }
@@ -194,5 +194,6 @@ public class ChattingManager : MonoSingleton<ChattingManager>
     {
         int rand = Random.Range(0, list.Count);
         return list[rand];
+        
     }
 }
