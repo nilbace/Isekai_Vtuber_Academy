@@ -43,20 +43,7 @@ public class SubStoryParser : MonoSingleton<SubStoryParser>
         else
             temp.isLeft = false;
 
-        string tempSentence = lines[2];
-        string newSentence = "";
-
-        for (int i = 0; i < tempSentence.Length; i++)
-        {
-            newSentence += tempSentence[i];
-
-            if ((i + 1) % 14 == 0)
-            {
-                newSentence += "\n";
-            }
-        }
-
-        temp.sentence = newSentence;
+        temp.sentence = lines[2];
 
         return temp;
     }

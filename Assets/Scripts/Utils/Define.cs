@@ -493,7 +493,6 @@ public class Define
             {
                 watchedList.Add(enumValue);
             }
-            Debug.Log($"{enumValue} is Watched: {isWatched}");
             return isWatched;
         }
     }
