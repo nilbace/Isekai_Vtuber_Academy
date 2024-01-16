@@ -1,24 +1,26 @@
 {
-    "NowWeek": 2,
-    "nowSubCount": 158,
-    "nowGoldAmount": 1530,
+    "NowWeek": 3,
+    "nowSubCount": 308,
+    "nowGoldAmount": 1881,
     "RubiaKarma": 0,
     "NowHeart": 47.0,
     "NowStar": 62.0,
     "SixStat": [
-        3.0,
-        2.0,
+        8.0,
+        6.0,
         3.5,
         0.0,
         0.0,
-        12.0
+        14.0
     ],
     "DoneEventNames": [
-        "표절논란"
+        "표절논란",
+        "세계 최고의 아이돌"
     ],
     "BoughtItems": [],
     "SubStoryIndex": [
         22,
-        25
+        25,
+        23
     ]
 }
