@@ -193,25 +193,7 @@ public class ChattingManager : MonoSingleton<ChattingManager>
     string GetRandomStringFromList(List<string> list)
     {
         int rand = Random.Range(0, list.Count);
-        ConvertStringToAscii(list[rand]);
         return list[rand];
         
-    }
-
-    public void ConvertStringToAscii(string inputString)
-    {
-        // 공백을 기준으로 문자열을 단어로 분할합니다.
-        string[] words = inputString.Split(' ');
-
-        // 각 단어를 순회하면서 아스키 코드로 변환하여 Debug.Log에 출력합니다.
-        foreach (string word in words)
-        {
-            foreach (char c in word)
-            {
-                int asciiCode = (int)c;
-                Debug.Log(asciiCode);
-            }
-        }
-        Debug.Log("----------");
     }
 }
