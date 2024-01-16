@@ -16585,8 +16585,8 @@ MonoBehaviour:
   ScreenAniSpeed: 0.055555556
   IsFastMode: 0
   SpeedBTNSprite:
-  - {fileID: 572897675086150935, guid: 3385ece2a3eac26478cf3c8ac292cc4d, type: 3}
-  - {fileID: 1689289799579605635, guid: 3385ece2a3eac26478cf3c8ac292cc4d, type: 3}
+  - {fileID: 1547930346803357621, guid: 3385ece2a3eac26478cf3c8ac292cc4d, type: 3}
+  - {fileID: -1178928137436465198, guid: 3385ece2a3eac26478cf3c8ac292cc4d, type: 3}
   RubiaAnimator: {fileID: 179038382}
   TempStampImg:
   - {fileID: 21300000, guid: 502ec516deda6844a9c11a1772ff01e0, type: 3}

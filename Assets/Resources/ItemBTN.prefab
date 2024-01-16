@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1712396331798350784}
   - component: {fileID: 5938415987735567810}
   m_Layer: 5
-  m_Name: flavorTMP
+  m_Name: FlavorTMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -274,7 +274,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NameTmp: {fileID: 4333474960363801065}
-  InfoTmp: {fileID: 7538273246463973958}
+  CostStatTMP: {fileID: 7538273246463973958}
+  FlavorTMP: {fileID: 5938415987735567810}
+  UpDownOffset: 5
 --- !u!1 &4672862131156793807
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +423,7 @@ GameObject:
   - component: {fileID: 5881287393487075948}
   - component: {fileID: 7538273246463973958}
   m_Layer: 5
-  m_Name: Stat
+  m_Name: CostStatTMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -509,7 +511,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 4
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: -8.04
   m_wordSpacing: 0

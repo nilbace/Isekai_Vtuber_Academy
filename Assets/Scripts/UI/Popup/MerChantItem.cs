@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using static Define;
 
-public class MerChantItem : MonoBehaviour
+public class MerChantItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public TMPro.TMP_Text NameTmp;
-    public TMPro.TMP_Text InfoTmp;
+    public TMPro.TMP_Text CostStatTMP;
+    public TMPro.TMP_Text FlavorTMP;
     public Item _thisItem;
     public static Item BuyUIItem;
+
+    public int UpDownOffset;
 
     public void Setting(Item item)
     {
@@ -17,31 +21,43 @@ public class MerChantItem : MonoBehaviour
 
         if(_thisItem.Cost <= Managers.Data.PlayerData.nowGoldAmount && !IsBought(_thisItem))
         {
-            NameTmp.text = _thisItem.ItemName + "\n" + _thisItem.Cost+"골드";
-            InfoTmp.text = "게임 : " + _thisItem.SixStats[0].ToString() + " /";
-            InfoTmp.text += "노래 : " + _thisItem.SixStats[1].ToString() + " /";
-            InfoTmp.text += "저챗 : " + _thisItem.SixStats[2].ToString() + "\n";
-            InfoTmp.text += "근력 : " + _thisItem.SixStats[3].ToString() + " /";
-            InfoTmp.text += "멘탈 : " + _thisItem.SixStats[4].ToString() + " /";
-            InfoTmp.text += "행운 : " + _thisItem.SixStats[5].ToString();
+            NameTmp.text = _thisItem.ItemName;
+            CostStatTMP.text = GetCostStatString();
+            FlavorTMP.text = _thisItem.ItemInfoText;
             GetComponent<Button>().interactable = true;
         }
         else if(IsBought(_thisItem))
         {
             NameTmp.text = _thisItem.ItemName + " 구매 완료";
-            InfoTmp.text = "";
+            CostStatTMP.text = "";
+            FlavorTMP.text = _thisItem.ItemInfoText;
             GetComponent<Button>().interactable = false;
         }
         else
         {
-            NameTmp.text = _thisItem.ItemName+$" <sprite=7><color=red>{_thisItem.Cost}</color>" + " 구매 불가";
-            InfoTmp.text = "";
+            NameTmp.text = _thisItem.ItemName;
+            CostStatTMP.text = $" <sprite=7><color=red>{_thisItem.Cost}</color>" + " 구매 불가";
+            FlavorTMP.text = _thisItem.ItemInfoText;
             GetComponent<Button>().interactable = false;
             GetComponent<Image>().sprite = GetComponent<Button>().spriteState.pressedSprite;
+            DownChildren();
         }
 
         GetComponent<Button>().onClick.RemoveAllListeners();
         GetComponent<Button>().onClick.AddListener(ShowBuyUI);
+    }
+
+    string GetCostStatString()
+    {
+        string temp = "";
+        for (int i = 0; i < 6; i++)
+        {
+            if (_thisItem.SixStats[i] != 0)
+            {
+                return "<sprite=7> " + _thisItem.Cost + $"   <sprite={i}>+" + _thisItem.SixStats[i].ToString();
+            }
+        }
+        return temp;
     }
 
     bool IsBought(Item item)
@@ -59,5 +75,32 @@ public class MerChantItem : MonoBehaviour
         Managers.UI_Manager.ShowPopupUI<UI_Buy>();
         Managers.Sound.Play(Sound.SmallBTN);
     }
-    
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        DownChildren();
+    }
+
+    void DownChildren()
+    {
+        foreach(Transform tr in GetComponentsInChildren<Transform>())
+        {
+            if (tr.name == "TMP SubMeshUI [TextMeshPro/Sprite]") continue;
+            tr.position -= UpDownOffset * Vector3.up;
+        }
+    }
+
+    void UpChildren()
+    {
+        foreach (Transform tr in GetComponentsInChildren<Transform>())
+        {
+            if (tr.name == "TMP SubMeshUI [TextMeshPro/Sprite]") continue;
+            tr.position += UpDownOffset * Vector3.up;
+        }
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        UpChildren();
+    }
 }
