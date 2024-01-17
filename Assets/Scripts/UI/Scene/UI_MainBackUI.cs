@@ -38,7 +38,8 @@ public class UI_MainBackUI : UI_Scene
         TempStrTMP,
         TempMenTMP,
         TempLuckTMP,
-        CommunicationTMP
+        CommunicationTMP,
+        BCTitleTMP,
     }
 
     enum Buttons
