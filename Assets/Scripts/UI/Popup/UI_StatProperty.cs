@@ -11,6 +11,8 @@ public class UI_StatProperty : UI_Popup
     public float Tier1to10Poz;
     public float StatInfoInitalPoz;
     public float StatInfoInterval;
+    public float TextGroupX;
+    public float TextGroup2X;
 
     
 
@@ -26,7 +28,7 @@ public class UI_StatProperty : UI_Popup
 
     enum GameObjects
     { 
-        TextGroup,
+        TextGroup, TextGroup2,
         StatInfo_SelectBox
     }
 
@@ -97,6 +99,7 @@ public class UI_StatProperty : UI_Popup
         int tempTier = 1;
         int indexofEmptyText = IndexofEmptyPlace(SelectedStatTier);
         TMPro.TMP_Text[] StatInfoTexts = GetGameObject((int)GameObjects.TextGroup).GetComponentsInChildren<TMPro.TMP_Text>();
+        TMPro.TMP_Text[] StatInfoTexts2 = GetGameObject((int)GameObjects.TextGroup2).GetComponentsInChildren<TMPro.TMP_Text>();
 
         //하단 글귀들 글자 및 위치 조절
         for (int i = 0; i < 11; i++)
@@ -104,22 +107,27 @@ public class UI_StatProperty : UI_Popup
             if (i == indexofEmptyText)
             {
                 StatInfoTexts[i].text = "";
+                StatInfoTexts2[i].text = "";
                 StatInfoTexts[i].rectTransform.sizeDelta = new Vector2(200, 10);
+                StatInfoTexts2[i].rectTransform.sizeDelta = new Vector2(200, 10);
                 continue;
             }
             StatInfoTexts[i].text = GetStatText(tempTier, stat);
+            StatInfoTexts2[i].text = GetStatText2(tempTier, stat);
             tempTier++;
         }
 
         if (SelectedStatTier != 0)
         {
             GetGameObject((int)GameObjects.StatInfo_SelectBox).SetActive(true);
-            GetGameObject((int)GameObjects.TextGroup).transform.localPosition = new Vector3(-46, Tier1to10Poz, 0);
+            GetGameObject((int)GameObjects.TextGroup).transform.localPosition = new Vector3(TextGroupX, Tier1to10Poz, 0);
+            GetGameObject((int)GameObjects.TextGroup2).transform.localPosition = new Vector3(TextGroup2X, Tier1to10Poz, 0);
         }
         else
         {
             GetGameObject((int)GameObjects.StatInfo_SelectBox).SetActive(false);
-            GetGameObject((int)GameObjects.TextGroup).transform.localPosition = new Vector3(-46, Tier0Poz, 0);
+            GetGameObject((int)GameObjects.TextGroup).transform.localPosition = new Vector3(TextGroupX, Tier0Poz, 0);
+            GetGameObject((int)GameObjects.TextGroup2).transform.localPosition = new Vector3(TextGroup2X, Tier0Poz, 0);
         }
 
         
@@ -166,13 +174,31 @@ public class UI_StatProperty : UI_Popup
 
         string temp = "";
         if (stat == StatName.Game || stat == StatName.Song || stat == StatName.Draw)
-            temp = $"{nowgrade} :{GetIconString(StatIcons.Sub)} +{temp2.SubBonus}%,{GetIconString(StatIcons.Gold)} +{temp2.IncomeBonus}%";
+            temp = $"{nowgrade} :";
         else if (stat == StatName.Strength )
-            temp = $"{nowgrade} :{GetIconString(StatIcons.Heart)} 감소량 -{tier*10}%";
+            temp = $"{nowgrade} :";
         else if (stat == StatName.Mental)
-            temp = $"{nowgrade} :{GetIconString(StatIcons.Star)} 감소량 -{tier * 10}%";
+            temp = $"{nowgrade} :";
         else
-            temp = $"{nowgrade} :{GetIconString(StatIcons.BigSuccess)}대성공 확률 {tier * 10}%";
+            temp = $"{nowgrade} :";
+
+        return temp;
+    }
+
+    string GetStatText2(int tier, StatName stat)
+    {
+        int nowgrade = tier * 20;
+        Bonus temp2 = Managers.Data.GetMainProperty(tier * 20);
+
+        string temp = "";
+        if (stat == StatName.Game || stat == StatName.Song || stat == StatName.Draw)
+            temp = $"{GetIconString(StatIcons.Sub)} +{temp2.SubBonus}%,{GetIconString(StatIcons.Gold)} +{temp2.IncomeBonus}%";
+        else if (stat == StatName.Strength)
+            temp = $"{GetIconString(StatIcons.Heart)} 감소량 -{tier * 10}%";
+        else if (stat == StatName.Mental)
+            temp = $"{GetIconString(StatIcons.Star)} 감소량 -{tier * 10}%";
+        else
+            temp = $"{GetIconString(StatIcons.BigSuccess)}대성공 확률 {tier * 10}%";
 
         return temp;
     }
