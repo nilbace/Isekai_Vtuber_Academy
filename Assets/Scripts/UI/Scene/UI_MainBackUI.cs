@@ -48,15 +48,15 @@ public class UI_MainBackUI : UI_Scene
         GameStatBTN,
         SongStatBTN,
         DrawStatBTN,
-        StrStatBTN, 
+        StrStatBTN,
         MentalStatBTN,
         LuckStatBTN,
         SettingBTN,
         CommuiBTN,
         StartScheduleBTN, BackBTN,
         SpeedBTN,
-        ArchiveBTN
-
+        ArchiveBTN,
+        RubiaNickNameBTN
     }
 
     enum GameObjects
@@ -113,8 +113,9 @@ public class UI_MainBackUI : UI_Scene
         GetButton((int)Buttons.BackBTN).gameObject.SetActive(false);
         SpeedBTNInit();
         GetButton((int)Buttons.SpeedBTN).onClick.AddListener(SpeedBTN);
+        GetButton((int)Buttons.RubiaNickNameBTN).onClick.AddListener(NickNameBTN);
 
-        for (int i = 0;i<6;i++)
+        for (int i = 0; i < 6; i++)
         {
             IconBaseAnis[i] = GetGameObject((int)GameObjects.Stats).transform.GetChild(i).GetChild(0).GetComponent<Animator>();
             IconBaseAnis[i].speed = AniSpeed;
@@ -126,7 +127,7 @@ public class UI_MainBackUI : UI_Scene
         GetButton((int)Buttons.SettingBTN).onClick.AddListener(SettingBTN);
 
         //방송 타이틀 오른쪽으로 뺴고 시작
-        GetGameObject((int)GameObjects.BroadCastTitle).transform.localPosition += new Vector3(XOffset,0,0);
+        GetGameObject((int)GameObjects.BroadCastTitle).transform.localPosition += new Vector3(XOffset, 0, 0);
 
 
         //서브스토리 셋팅
@@ -138,7 +139,7 @@ public class UI_MainBackUI : UI_Scene
         else
         {
             //다른 주차라면 저장된 서브스토리 인덱스 셋팅
-            NowWeekSubStoryIndex = Managers.Data.PlayerData.SubStoryIndex[Managers.Data.PlayerData.NowWeek-1];
+            NowWeekSubStoryIndex = Managers.Data.PlayerData.SubStoryIndex[Managers.Data.PlayerData.NowWeek - 1];
         }
 
         Managers.instance.WeekOverAction -= SetSubStoryIndex;
@@ -205,7 +206,7 @@ public class UI_MainBackUI : UI_Scene
 
     IEnumerator ShowStatProperty(StatName statName)
     {
-        if(UI_StatProperty.instance == null)
+        if (UI_StatProperty.instance == null)
         {
             var Go = Managers.UI_Manager.ShowPopupUI<UI_StatProperty>();
             yield return new WaitForEndOfFrame();
@@ -237,20 +238,20 @@ public class UI_MainBackUI : UI_Scene
             StatusBar[GetStatusBarImageIndex(nowStar)];
 
         GetGameObject((int)GameObjects.HeartCover).transform.localScale =
-            new Vector3( 1 - (float)Managers.Data.PlayerData.NowHeart/100f, 1, 1);
+            new Vector3(1 - (float)Managers.Data.PlayerData.NowHeart / 100f, 1, 1);
         GetGameObject((int)GameObjects.StarCover).transform.localScale =
-            new Vector3( 1 - (float)Managers.Data.PlayerData.NowStar / 100f, 1, 1);
+            new Vector3(1 - (float)Managers.Data.PlayerData.NowStar / 100f, 1, 1);
 
         GetText((int)Texts.HeartTMP).color =
             HeartStarTextColors[GetStatusBarImageIndex(nowHeart)];
         GetText((int)Texts.StarTMP).color =
             HeartStarTextColors[GetStatusBarImageIndex(nowStar)];
 
-        for (int i = 0; i<6;i++)
+        for (int i = 0; i < 6; i++)
         {
-            GetGameObject((int)GameObjects.GameStat_Cover+i).transform.localScale =
+            GetGameObject((int)GameObjects.GameStat_Cover + i).transform.localScale =
            new Vector3(1 - (float)Managers.Data.PlayerData.SixStat[i] / 200f, 1, 1);
-            GetText((int)Texts.TempGameTMP+i).text = Managers.Data.PlayerData.SixStat[i].ToString("F0");
+            GetText((int)Texts.TempGameTMP + i).text = Managers.Data.PlayerData.SixStat[i].ToString("F0");
         }
 
         GetText((int)Texts.CommunicationTMP).text = ((SubStoryName)NowWeekSubStoryIndex).ToString();
@@ -269,7 +270,7 @@ public class UI_MainBackUI : UI_Scene
             case Texts.MySubsTMP:
                 return Util.FormatSubs(Managers.Data.PlayerData.nowSubCount);
             case Texts.NowWeekTMP:
-                return "방송 " +Managers.Data.PlayerData.NowWeek.ToString()+"주차";
+                return "방송 " + Managers.Data.PlayerData.NowWeek.ToString() + "주차";
             default:
                 return "";
         }
@@ -316,7 +317,7 @@ public class UI_MainBackUI : UI_Scene
     }
 
 
-    
+
     float moveDuration = 0.52f;
     float XOffset = 350;
     [Header("닷트윈 애니메이션")]
@@ -382,7 +383,7 @@ public class UI_MainBackUI : UI_Scene
 
     public void CleanSealsOnCallenderBottom()
     {
-        for(int i = 0; i<7;i++)
+        for (int i = 0; i < 7; i++)
         {
             DayResultSeals[i].sprite = null;
             DayResultSeals[i].color = new Color(0, 0, 0, 0);
@@ -395,9 +396,9 @@ public class UI_MainBackUI : UI_Scene
 
         if (SealType == 0)
             DayResultSeals[day].GetComponent<Animator>().SetTrigger("StarAni");
-        else if(SealType == 1)
+        else if (SealType == 1)
             DayResultSeals[day].GetComponent<Animator>().SetTrigger("OAni");
-        else if(SealType == 2)
+        else if (SealType == 2)
         {
             Debug.Log("XXXXX");
             DayResultSeals[day].GetComponent<Animator>().SetTrigger("XAni");
@@ -428,7 +429,7 @@ public class UI_MainBackUI : UI_Scene
     public void SetSubStoryIndex()
     {
         int temp;
-        while(true)
+        while (true)
         {
             temp = Random.Range(0, (int)SubStoryName.Max);
             Debug.Log(temp);
@@ -500,7 +501,7 @@ public class UI_MainBackUI : UI_Scene
     public void StartScreenAnimation(string KorName, string RubiaAniIndex)
     {
         ScreenAnimator.StopPlayback();
-        if(KorName == "")
+        if (KorName == "")
         {
             Debug.Log("개발중");
         }
@@ -509,7 +510,7 @@ public class UI_MainBackUI : UI_Scene
             ScreenAnimator.SetTrigger(KorName);
         }
 
-        if(RubiaAniIndex != "")
+        if (RubiaAniIndex != "")
         {
             RubiaAnimator.gameObject.SetActive(true);
             RubiaAnimator.SetTrigger(RubiaAniIndex);
@@ -524,7 +525,7 @@ public class UI_MainBackUI : UI_Scene
 
     #endregion
 
-    #region Stamp;
+    #region Stamp
     public Image StampIMG;
 
     public void SetStamp(int Result)
@@ -551,4 +552,11 @@ public class UI_MainBackUI : UI_Scene
         StampIMG.transform.DOScale(1, StampResetTime).SetEase(StampEase);
     }
     #endregion
+#region NickNameBTN
+    void NickNameBTN()
+    {
+        Managers.Sound.Play("SmallBTN", Sound.Effect);
+        Managers.UI_Manager.ShowPopupUI<UI_NickName>();
+    }
+#endregion
 }

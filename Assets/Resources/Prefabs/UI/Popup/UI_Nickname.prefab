@@ -1723,7 +1723,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2790184791411816926}
   m_HandleRect: {fileID: 1153839517165615153}
   m_Direction: 2
-  m_Value: 0.99999905
+  m_Value: 1
   m_Size: 0.9296797
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3356,6 +3356,7 @@ GameObject:
   - component: {fileID: 5501035149407559671}
   - component: {fileID: 5501035149407559672}
   - component: {fileID: 5501035149407559673}
+  - component: {fileID: 5601426833873932228}
   m_Layer: 5
   m_Name: UI_Nickname
   m_TagString: Untagged
@@ -3430,7 +3431,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5501035149407559673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3448,6 +3449,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5601426833873932228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5501035149407559674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17c4f2829bb723b44b6bcfa4ed49591d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5865998945597922769
 GameObject:
   m_ObjectHideFlags: 0
@@ -3679,7 +3692,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7208162751341222423}
   m_HandleRect: {fileID: 790030581389501152}
   m_Direction: 2
-  m_Value: 0.99999905
+  m_Value: 1
   m_Size: 0.9296797
   m_NumberOfSteps: 0
   m_OnValueChanged:
