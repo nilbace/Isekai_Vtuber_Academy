@@ -10,7 +10,7 @@ public class Managers : MonoBehaviour
     [Header("½ºÅİ °ü·Ã")]
     public int MainStat_ValuePerLevel;
     public float Str_Men_ValuePerLevel;
-    static Managers s_instance;
+    static Managers s_instance;    
     public static Managers instance {get{Init(); return s_instance;}}
     
 

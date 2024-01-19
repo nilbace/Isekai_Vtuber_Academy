@@ -463,6 +463,7 @@ public class Define
         public List<RestType> WatchedRest;
         public List<GoOutType> WatchedGoOut;
         public List<EndingName> WatchedEndingName;
+        public List<bool> OwnedNickNameBoolList;
 
         public bool CheckAndAddIfNotWatched<T>(T enumValue)
         {
@@ -496,6 +497,38 @@ public class Define
             return isWatched;
         }
     }
-    
+
+    public enum NickNameType
+    { prefix, suffix}
+
+    [System.Serializable]
+    public class NickName
+    {
+        public int NicknameIndex;
+        public NickNameType NicknameType;
+        public string NicknameString;
+        public string ConditionString;
+        public int GameStat;
+        public int SongStat;
+        public int DrawStat;
+        public int StrStat;
+        public int MenStat;
+        public int LuckStat;
+        public int SubCount;
+        public int MoneyValue;
+
+        public int[] GetSixStat()
+        {
+            int[] statArray = new int[6];
+            statArray[0] = GameStat;
+            statArray[1] = SongStat;
+            statArray[2] = DrawStat;
+            statArray[3] = StrStat;
+            statArray[4] = MenStat;
+            statArray[5] = LuckStat;
+
+            return statArray;
+        }
+    }
 
 }

@@ -30,9 +30,12 @@ public class UI_Setting : UI_Popup
 
 
         GetButton((int)Buttons.CloseBTN).onClick.AddListener(CloseBTN);
-        BGMSlider.onValueChanged.AddListener(BGM_ValueChanged);
-        SFXSlider.onValueChanged.AddListener(SFX_ValueChanged);
         GetButton((int)Buttons.ResetBTN).onClick.AddListener(ResetBTN);
+
+        //이름 바뀐거 맞음 
+        BGMSlider.onValueChanged.AddListener(SFX_ValueChanged);
+        SFXSlider.onValueChanged.AddListener(BGM_ValueChanged);
+        
     }
 
     void CloseBTN()

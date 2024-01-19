@@ -11,12 +11,10 @@ public class DataManager
 { 
     public PlayerData PlayerData;
     public PersistentUserData PersistentUser;
-    int[] MonthlyExpense = {0, 0, 0, 0, 0 };
-
-
     public void Init()
     {
         LoadData();
+        
     }
 
     #region DataSave&Load
@@ -112,21 +110,12 @@ public class DataManager
 
     #endregion
 
-
     #region ScheduleData
 
     //Schedule Popup데이터 관리용
     public OneDayScheduleData[] _SevenDayScheduleDatas = new OneDayScheduleData[7];
     public float[] _SeveDayScrollVarValue = new float[7];
 
-
-
-    public int GetNowMonthExpense()
-    {
-        int temp = PlayerData.NowWeek;
-        int temp2 = ((temp) / 4) - 1;
-        return MonthlyExpense[temp2];
-    }
 
     List<OneDayScheduleData> oneDayDatasList = new List<OneDayScheduleData>();
    
