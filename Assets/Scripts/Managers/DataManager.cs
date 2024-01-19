@@ -117,7 +117,7 @@ public class DataManager
     public float[] _SeveDayScrollVarValue = new float[7];
 
 
-    List<OneDayScheduleData> oneDayDatasList = new List<OneDayScheduleData>();
+    public List<OneDayScheduleData> oneDayDatasList = new List<OneDayScheduleData>();
    
     public OneDayScheduleData GetOneDayDataByName(RestType restType)
     {
@@ -220,6 +220,7 @@ public class DataManager
         temp.PathName = tempstringQueue.Dequeue();
         temp.RubiaAni = tempstringQueue.Dequeue();
         temp.infotext = tempstringQueue.Dequeue();
+        temp.ArchiveInfoText = tempstringQueue.Dequeue();
         oneDayDatasList.Add(temp);
     }
 

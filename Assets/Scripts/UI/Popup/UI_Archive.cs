@@ -7,8 +7,9 @@ public class UI_Archive : UI_Popup
 {
     enum Buttons
     {
-        EltubeBTN,
-        InstaBTN,
+        TVBTN,
+        EventBTN,
+        EndingBTN,
         CloseBTN
     }
     
@@ -23,21 +24,27 @@ public class UI_Archive : UI_Popup
         base.Init();
         Bind<Button>(typeof(Buttons));
 
-        GetButton((int)Buttons.EltubeBTN).onClick.AddListener(EltubeBTN);
-        GetButton((int)Buttons.InstaBTN).onClick.AddListener(InstaBTN);
+        GetButton((int)Buttons.TVBTN).onClick.AddListener(BCBTN);
+        GetButton((int)Buttons.EventBTN).onClick.AddListener(InstaBTN);
+        GetButton((int)Buttons.EndingBTN).onClick.AddListener(InstaBTN);
         GetButton((int)Buttons.CloseBTN).onClick.AddListener(CloseBTN);
+    }
+
+    void BCBTN()
+    {
+        Managers.Sound.Play(Define.Sound.SmallBTN);
+        Managers.UI_Manager.ShowPopupUI<UI_Ar_BC>();
     }
 
     void EltubeBTN()
     {
-        Managers.Sound.Play(Define.Sound.SmallBTN);
-        Managers.UI_Manager.ShowPopupUI<UI_Eltube>();
+        //Managers.Sound.Play(Define.Sound.SmallBTN);
+        //Managers.UI_Manager.ShowPopupUI<UI_Eltube>();
     }
 
     void InstaBTN()
     {
-        Managers.Sound.Play(Define.Sound.SmallBTN);
-        Managers.UI_Manager.ShowPopupUI<UI_Insta>();
+        //Managers.Sound.Play(Define.Sound.SmallBTN);
+        //Managers.UI_Manager.ShowPopupUI<UI_Insta>();
     }
-
 }

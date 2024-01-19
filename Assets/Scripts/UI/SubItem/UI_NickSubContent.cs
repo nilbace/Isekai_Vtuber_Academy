@@ -21,14 +21,16 @@ public class UI_NickSubContent : MonoBehaviour
 
     public void Setting(NickName nickName, bool isOwned)
     {
-        NameTMP.text = nickName.NicknameString;
+        
         if(!isOwned)
         {
             thisButton.GetComponentInChildren<Image>().color = thisButton.colors.disabledColor;
             thisButton.onClick.AddListener( () => Alarm.ShowAlarm("¹ÌÈ¹µæ ÄªÈ£ÀÔ´Ï´Ù."));
+            NameTMP.text = "???";
         }
         else
         {
+            NameTMP.text = nickName.NicknameString;
             thisButton.onClick.AddListener(() => ShowNicknamePopup(nickName));
         }
     }

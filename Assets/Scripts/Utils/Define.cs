@@ -214,6 +214,7 @@ public class Define
         public float[] Six_Stats;
         public string PathName;
         public string RubiaAni;
+        public string ArchiveInfoText;
 
         public OneDayScheduleData()
         {
