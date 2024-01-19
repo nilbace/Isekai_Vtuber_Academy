@@ -24,7 +24,12 @@ public class UI_NickSubContent : MonoBehaviour
         NameTMP.text = nickName.NicknameString;
         if(!isOwned)
         {
-            thisButton.interactable = false;
+            thisButton.GetComponentInChildren<Image>().color = thisButton.colors.disabledColor;
+            thisButton.onClick.AddListener( () => Alarm.ShowAlarm("¹ÌÈ¹µæ ÄªÈ£ÀÔ´Ï´Ù."));
+        }
+        else
+        {
+
         }
     }
 }
