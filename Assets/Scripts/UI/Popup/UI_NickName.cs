@@ -66,6 +66,8 @@ public class UI_NickName : UI_Popup
                 }
             }
         }
+
+        //나머지 비활성화
         for (int j = prefixIndex; j < PrefixGOs.Length; j++)
         {
             PrefixGOs[j].gameObject.SetActive(false);

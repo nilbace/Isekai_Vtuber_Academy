@@ -29,7 +29,14 @@ public class UI_NickSubContent : MonoBehaviour
         }
         else
         {
-
+            thisButton.onClick.AddListener(() => ShowNicknamePopup(nickName));
         }
+    }
+
+    void ShowNicknamePopup(NickName nickName)
+    {
+        Managers.UI_Manager.ShowPopupUI<UI_NicknamePopup>();
+        UI_NicknamePopup.nickName = nickName;
+        Managers.Sound.Play(Sound.SmallBTN);
     }
 }
