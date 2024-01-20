@@ -336,5 +336,21 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
     #endregion
 
+    #region Actions
 
+    public Action GameStart;
+    public void StartGame()
+    {
+        GameStart?.Invoke();
+    }
+
+    public Action WeekOverAction;
+
+    public void FinishWeek()
+    {
+        WeekOverAction?.Invoke();
+        Managers.Data.PlayerData.NowWeek++;
+        Managers.Data.SaveData();
+    }
+    #endregion
 }

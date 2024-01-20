@@ -11,6 +11,23 @@ public class UI_MainBackUI : UI_Scene
 {
     [SerializeField] float AniSpeed;
 
+    //하트, 별
+    public Sprite[] StatusBar;
+    [Header("건강 상태 색")]
+    [SerializeField] Color[] HeartStarTextColors;
+
+    //상단 스텟 아이콘 애니메이터
+    Animator[] IconBaseAnis = new Animator[6];
+
+    //하단 스템프 애니메이션
+    public Sprite[] TempStampImg;
+    public float StampResetTime;
+    public Ease StampEase;
+
+    //하단 7일 이미지
+    public Image[] Under7Imges;
+    Image[] DayResultSeals = new Image[7];
+
     //메인 화면 애니메이션
     public Animator ScreenAnimator;
     public float ScreenAniSpeed;
@@ -18,13 +35,6 @@ public class UI_MainBackUI : UI_Scene
     public Sprite[] SpeedBTNSprite;
     public Animator RubiaAnimator;
 
-    //하단 스템프 애니메이션
-    public Sprite[] TempStampImg;
-    public float StampResetTime;
-    public Ease StampEase;
-
-    //하단 버튼들
-    public Image[] Under7Imges;
     enum Texts
     {
         HeartTMP,  //현재 건강 상태
@@ -71,10 +81,6 @@ public class UI_MainBackUI : UI_Scene
         HeartBar, StarBar, StampIMG
     }
 
-
-    Animator[] IconBaseAnis = new Animator[6];
-    Image[] DayResultSeals = new Image[7];
-
     public static UI_MainBackUI instance;
 
     private void Awake()
@@ -95,10 +101,8 @@ public class UI_MainBackUI : UI_Scene
         Bind<GameObject>(typeof(GameObjects));
         Bind<Image>(typeof(Images));
 
-        Button CreateScheduleBTN = Get<Button>((int)Buttons.CreateScheduleBTN);
-        StampIMG = GameObject.Find("StampIMG").GetComponent<Image>();
-
-        CreateScheduleBTN.onClick.AddListener(ShowSchedulePopup);
+        //연결
+        GetButton((int)Buttons.CreateScheduleBTN).onClick.AddListener(ShowSchedulePopup);
         GetButton((int)Buttons.GameStatBTN).onClick.AddListener(() => ShowStatPropertyUI(StatName.Game));
         GetButton((int)Buttons.SongStatBTN).onClick.AddListener(() => ShowStatPropertyUI(StatName.Song));
         GetButton((int)Buttons.DrawStatBTN).onClick.AddListener(() => ShowStatPropertyUI(StatName.Draw));
@@ -111,20 +115,25 @@ public class UI_MainBackUI : UI_Scene
         GetButton((int)Buttons.CommuiBTN).onClick.AddListener(CommunicationBTN);
         GetButton((int)Buttons.StartScheduleBTN).gameObject.SetActive(false);
         GetButton((int)Buttons.BackBTN).gameObject.SetActive(false);
-        SpeedBTNInit();
         GetButton((int)Buttons.SpeedBTN).onClick.AddListener(SpeedBTN);
         GetButton((int)Buttons.RubiaNickNameBTN).onClick.AddListener(NickNameBTN);
+        GetButton((int)Buttons.SettingBTN).onClick.AddListener(SettingBTN);
+        StampIMG = GetImage((int)Images.StampIMG);
+        SpeedBTNInit();
 
+        //스텟 아이콘 6개 조절
         for (int i = 0; i < 6; i++)
         {
             IconBaseAnis[i] = GetGameObject((int)GameObjects.Stats).transform.GetChild(i).GetChild(0).GetComponent<Animator>();
             IconBaseAnis[i].speed = AniSpeed;
         }
+
+        //하단 주차 씰 7개 조절
         for (int i = 0; i < 7; i++)
         {
             DayResultSeals[i] = GetGameObject((int)GameObjects.Days7).transform.GetChild(i).GetChild(1).GetComponent<Image>();
         }
-        GetButton((int)Buttons.SettingBTN).onClick.AddListener(SettingBTN);
+        
 
         //방송 타이틀 오른쪽으로 뺴고 시작
         GetGameObject((int)GameObjects.BroadCastTitle).transform.localPosition += new Vector3(XOffset, 0, 0);
@@ -142,22 +151,66 @@ public class UI_MainBackUI : UI_Scene
             NowWeekSubStoryIndex = Managers.Data.PlayerData.SubStoryIndex[Managers.Data.PlayerData.NowWeek - 1];
         }
 
-        Managers.instance.WeekOverAction -= SetSubStoryIndex;
-        Managers.instance.WeekOverAction += SetSubStoryIndex;
-
+        //잡다한 처리
         ScreenAnimator.speed = ScreenAniSpeed;
         SetStamp(-1);
         UpdateUItexts();
+        RegisterActionToOtherScripts();
         Managers.Sound.Play("bgm1", Sound.Bgm);
     }
 
+    void RegisterActionToOtherScripts()
+    {
+        ScheduleExecuter.Inst.WeekOverAction -= SetSubStoryIndex;
+        ScheduleExecuter.Inst.WeekOverAction += SetSubStoryIndex;
+        ScheduleExecuter.Inst.WeekOverAction -= FinishWeek;
+        ScheduleExecuter.Inst.WeekOverAction += FinishWeek;
+    }
+
+    //메인UI화면에서 누르는 모든 버튼들
+    #region Buttons
+    //상단 칭호 버튼
+    void NickNameBTN()
+    {
+        Managers.Sound.Play("SmallBTN", Sound.Effect);
+        Managers.UI_Manager.ShowPopupUI<UI_NickName>();
+    }
+    //상단 아카이브 버튼
     void ArchiveBTN()
     {
         Managers.Sound.Play(Define.Sound.SmallBTN);
         Managers.UI_Manager.ShowPopupUI<UI_Archive>();
     }
+    //상단 셋팅 버튼
+    public void SettingBTN()
+    {
+        Managers.Sound.Play("SmallBTN", Sound.Effect);
+        Managers.UI_Manager.ShowPopupUI<UI_Setting>();
+    }
 
-    #region SpeedBTN
+    //중단 스텟 팝업창
+    void ShowStatPropertyUI(StatName statName)
+    {
+        Managers.Sound.Play("SmallBTN", Sound.Effect);
+        StartCoroutine(ShowStatProperty(statName));
+    }
+
+    IEnumerator ShowStatProperty(StatName statName)
+    {
+        if (UI_StatProperty.instance == null)
+        {
+            var Go = Managers.UI_Manager.ShowPopupUI<UI_StatProperty>();
+            yield return new WaitForEndOfFrame();
+            Go.Setting(statName);
+        }
+        else
+        {
+            UI_StatProperty.instance.Setting(statName);
+        }
+    }
+
+    //하단 배속 버튼
+    //화면 애니메이션 속도 조절
     void SpeedBTNInit()
     {
         if (PlayerPrefs.HasKey("IsFastModeKey"))
@@ -190,37 +243,151 @@ public class UI_MainBackUI : UI_Scene
     }
     void SaveIsFastMode()
     {
-        // true는 1로, false는 0으로 저장
         PlayerPrefs.SetInt("IsFastModeKey", IsFastMode ? 1 : 0);
         PlayerPrefs.Save();
     }
-
-    #endregion
-
-
-    void ShowStatPropertyUI(StatName statName)
+    //하단 스케쥴 짜기 버튼
+    //사실 팝업창이 나오는 시스템
+    public void ShowSchedulePopup()
     {
-        Managers.Sound.Play("SmallBTN", Sound.Effect);
-        StartCoroutine(ShowStatProperty(statName));
+        Managers.Sound.Play(Sound.BigBTN);
+        Managers.UI_Manager.ShowPopupUI<UI_SchedulePopup>();
+        GetButton((int)Buttons.StartScheduleBTN).gameObject.SetActive(true);
+        GetButton((int)Buttons.BackBTN).gameObject.SetActive(true);
+        Get<Button>((int)Buttons.CreateScheduleBTN).gameObject.SetActive(false);
     }
 
-    IEnumerator ShowStatProperty(StatName statName)
+    //스케쥴 실행하기 버튼
+    void StartScheduleBTN()
     {
-        if (UI_StatProperty.instance == null)
+        Managers.Sound.Play(Sound.ScheduleBTN);
+        StartScheduleAndSetUI();
+        Managers.instance.StartSchedule();
+        Managers.UI_Manager.ClosePopupUI();
+    }
+
+
+    //하단 뒤로가기 버튼
+    public void BackBTN()
+    {
+        Managers.Sound.Play("SmallBTN", Sound.Effect);
+        BackBTNWithoutSound();
+    }
+    public void BackBTNWithoutSound()
+    {
+        if (UI_SchedulePopup.instance.IsShowing3ContentsUI())
         {
-            var Go = Managers.UI_Manager.ShowPopupUI<UI_StatProperty>();
-            yield return new WaitForEndOfFrame();
-            Go.Setting(statName);
+            Get<Button>((int)Buttons.CreateScheduleBTN).gameObject.SetActive(true);
+            GetButton((int)Buttons.StartScheduleBTN).gameObject.SetActive(false);
+            GetButton((int)Buttons.BackBTN).gameObject.SetActive(false);
+            Managers.UI_Manager.ClosePopupUI();
         }
         else
         {
-            UI_StatProperty.instance.Setting(statName);
+            UI_SchedulePopup.instance.Show3Contents();
         }
     }
 
 
-    public Sprite[] StatusBar;
+    //최하단 서브스토리 버튼
+    int NowWeekSubStoryIndex;
+    public void SetSubStoryIndex()
+    {
+        int temp;
+        while (true)
+        {
+            temp = Random.Range(0, (int)SubStoryName.Max);
+            Debug.Log(temp);
+            if (!Managers.Data.PlayerData.SubStoryIndex.Contains(temp)) break;
+        }
+        Managers.Data.PlayerData.SubStoryIndex.Add(temp);
+        NowWeekSubStoryIndex = temp;
+        UpdateUItexts();
+        Managers.Data.SaveData();
+    }
 
+    void CommunicationBTN()
+    {
+        StartCoroutine(ShowSubStoryCor(NowWeekSubStoryIndex));
+    }
+
+    IEnumerator ShowSubStoryCor(int index)
+    {
+        Managers.UI_Manager.ShowPopupUI<UI_Communication>();
+        Managers.Sound.Play(Sound.SmallBTN);
+        yield return new WaitForEndOfFrame();
+        SubStoryParser.Inst.StartStory(index);
+    }
+    #endregion
+
+    //스케쥴 실행 애니메이션
+    #region ScheduleAnimation
+
+    public void StartScreenAnimation(string KorName, string RubiaAniIndex)
+    {
+        ScreenAnimator.StopPlayback();
+        if (KorName == "")
+        {
+            Debug.Log("개발중");
+        }
+        else
+        {
+            ScreenAnimator.SetTrigger(KorName);
+        }
+
+        if (RubiaAniIndex != "")
+        {
+            RubiaAnimator.gameObject.SetActive(true);
+            RubiaAnimator.SetTrigger(RubiaAniIndex);
+        }
+        else
+        {
+            RubiaAnimator.gameObject.SetActive(false);
+        }
+    }
+
+
+
+    #endregion
+
+    //스템프 애니메이션
+    #region Stamp
+    public Image StampIMG;
+
+    public void SetStamp(int Result)
+    {
+        switch (Result)
+        {
+            case -1:
+                StampIMG.gameObject.SetActive(false);
+                break;
+            case 0:
+                StampIMG.gameObject.SetActive(true);
+                StampIMG.sprite = TempStampImg[0];
+                break;
+            case 1:
+                StampIMG.gameObject.SetActive(true);
+                StampIMG.sprite = TempStampImg[1];
+                break;
+            case 2:
+                StampIMG.gameObject.SetActive(true);
+                StampIMG.sprite = TempStampImg[2];
+                break;
+        }
+        StampIMG.transform.localScale = Vector3.one * 5f;
+        StampIMG.transform.DOScale(1, StampResetTime).SetEase(StampEase);
+    }
+    #endregion
+
+    //UI갱신 관련 스크립트들
+    #region UI_updates
+    //스텟이 상승할때 작동하는 애니메이션
+    public void GlitterStat(int i)
+    {
+        IconBaseAnis[i].CrossFade("Shine", 0);
+    }
+
+    //전체반적인 모든 글자들 갱신
     public void UpdateUItexts()
     {
         foreach (Texts textType in System.Enum.GetValues(typeof(Texts)))
@@ -276,8 +443,7 @@ public class UI_MainBackUI : UI_Scene
         }
     }
 
-    [Header("건강 상태 색")]
-    [SerializeField] Color[] HeartStarTextColors;
+    
     string GetNowConditionToString(float n)
     {
         string temp = "";
@@ -316,8 +482,7 @@ public class UI_MainBackUI : UI_Scene
         return temp;
     }
 
-
-
+    //스케쥴 짜기 버튼,뒤로가기 버튼 등 프레임 밑 버튼들 좌우 이동
     float moveDuration = 0.52f;
     float XOffset = 350;
     [Header("닷트윈 애니메이션")]
@@ -346,11 +511,38 @@ public class UI_MainBackUI : UI_Scene
 
         yield return tween;
     }
+    //하단 스티커들 관련
+    public void CleanSealsOnCallenderBottom()
+    {
+        for (int i = 0; i < 7; i++)
+        {
+            DayResultSeals[i].sprite = null;
+            DayResultSeals[i].color = new Color(0, 0, 0, 0);
+        }
+    }
 
-    /// <summary>
-    /// 스케쥴 종료시 UI들 다시 전환
-    /// </summary>
-    string templog = "";
+    public void BottomSeal(int day, int SealType)
+    {
+        DayResultSeals[day].color = new Color(1, 1, 1, 1);
+
+        if (SealType == 0)
+            DayResultSeals[day].GetComponent<Animator>().SetTrigger("StarAni");
+        else if (SealType == 1)
+            DayResultSeals[day].GetComponent<Animator>().SetTrigger("OAni");
+        else if (SealType == 2)
+        {
+            Debug.Log("XXXXX");
+            DayResultSeals[day].GetComponent<Animator>().SetTrigger("XAni");
+        }
+    }
+
+    //주차 끝날때
+    void FinishWeek()
+    {
+        EndScheduleAndSetUI();
+        UpdateUItexts();
+    }
+
     public void EndScheduleAndSetUI()
     {
         StartCoroutine(EndScheduleAndSetUICor());
@@ -376,109 +568,10 @@ public class UI_MainBackUI : UI_Scene
         yield return tween;
     }
 
-    public void GlitterStat(int i)
-    {
-        IconBaseAnis[i].CrossFade("Shine", 0);
-    }
-
-    public void CleanSealsOnCallenderBottom()
-    {
-        for (int i = 0; i < 7; i++)
-        {
-            DayResultSeals[i].sprite = null;
-            DayResultSeals[i].color = new Color(0, 0, 0, 0);
-        }
-    }
-
-    public void BottomSeal(int day, int SealType)
-    {
-        DayResultSeals[day].color = new Color(1, 1, 1, 1);
-
-        if (SealType == 0)
-            DayResultSeals[day].GetComponent<Animator>().SetTrigger("StarAni");
-        else if (SealType == 1)
-            DayResultSeals[day].GetComponent<Animator>().SetTrigger("OAni");
-        else if (SealType == 2)
-        {
-            Debug.Log("XXXXX");
-            DayResultSeals[day].GetComponent<Animator>().SetTrigger("XAni");
-        }
-    }
-
-    public void ShowSchedulePopup()
-    {
-        Managers.Sound.Play(Sound.BigBTN);
-        Managers.UI_Manager.ShowPopupUI<UI_SchedulePopup>();
-        GetButton((int)Buttons.StartScheduleBTN).gameObject.SetActive(true);
-        GetButton((int)Buttons.BackBTN).gameObject.SetActive(true);
-        Get<Button>((int)Buttons.CreateScheduleBTN).gameObject.SetActive(false);
-    }
-
-    void StartScheduleBTN()
-    {
-        Managers.Sound.Play(Sound.ScheduleBTN);
-        StartScheduleAndSetUI();
-        Managers.instance.StartSchedule();
-        Managers.UI_Manager.ClosePopupUI();
-    }
-
-    #region Communication
-
-    int NowWeekSubStoryIndex;
-
-    public void SetSubStoryIndex()
-    {
-        int temp;
-        while (true)
-        {
-            temp = Random.Range(0, (int)SubStoryName.Max);
-            Debug.Log(temp);
-            if (!Managers.Data.PlayerData.SubStoryIndex.Contains(temp)) break;
-        }
-        Managers.Data.PlayerData.SubStoryIndex.Add(temp);
-        NowWeekSubStoryIndex = temp;
-        UpdateUItexts();
-        Managers.Data.SaveData();
-    }
-
-    void CommunicationBTN()
-    {
-        StartCoroutine(ShowSubStoryCor(NowWeekSubStoryIndex));
-    }
-
-    IEnumerator ShowSubStoryCor(int index)
-    {
-        Managers.UI_Manager.ShowPopupUI<UI_Communication>();
-        Managers.Sound.Play(Sound.SmallBTN);
-        yield return new WaitForEndOfFrame();
-        SubStoryParser.Inst.StartStory(index);
-    }
-
     #endregion
 
-
-    public void BackBTN()
-    {
-        Managers.Sound.Play("SmallBTN", Sound.Effect);
-        BackBTNWithoutSound();
-    }
-
-    public void BackBTNWithoutSound()
-    {
-        if (UI_SchedulePopup.instance.IsShowing3ContentsUI())
-        {
-            Get<Button>((int)Buttons.CreateScheduleBTN).gameObject.SetActive(true);
-            GetButton((int)Buttons.StartScheduleBTN).gameObject.SetActive(false);
-            GetButton((int)Buttons.BackBTN).gameObject.SetActive(false);
-            Managers.UI_Manager.ClosePopupUI();
-        }
-        else
-        {
-            UI_SchedulePopup.instance.Show3Contents();
-        }
-    }
-
-
+    //인스턴스 전달 파트
+    #region GetInstance
     public Button GetStartScheduleBTN()
     {
         return GetButton((int)Buttons.StartScheduleBTN);
@@ -488,75 +581,5 @@ public class UI_MainBackUI : UI_Scene
     {
         return GetButton((int)Buttons.BackBTN);
     }
-
-    public void SettingBTN()
-    {
-        Managers.Sound.Play("SmallBTN", Sound.Effect);
-        Managers.UI_Manager.ShowPopupUI<UI_Setting>();
-    }
-
-
-    #region ScheduleAnimation
-
-    public void StartScreenAnimation(string KorName, string RubiaAniIndex)
-    {
-        ScreenAnimator.StopPlayback();
-        if (KorName == "")
-        {
-            Debug.Log("개발중");
-        }
-        else
-        {
-            ScreenAnimator.SetTrigger(KorName);
-        }
-
-        if (RubiaAniIndex != "")
-        {
-            RubiaAnimator.gameObject.SetActive(true);
-            RubiaAnimator.SetTrigger(RubiaAniIndex);
-        }
-        else
-        {
-            RubiaAnimator.gameObject.SetActive(false);
-        }
-    }
-
-
-
     #endregion
-
-    #region Stamp
-    public Image StampIMG;
-
-    public void SetStamp(int Result)
-    {
-        switch (Result)
-        {
-            case -1:
-                StampIMG.gameObject.SetActive(false);
-                break;
-            case 0:
-                StampIMG.gameObject.SetActive(true);
-                StampIMG.sprite = TempStampImg[0];
-                break;
-            case 1:
-                StampIMG.gameObject.SetActive(true);
-                StampIMG.sprite = TempStampImg[1];
-                break;
-            case 2:
-                StampIMG.gameObject.SetActive(true);
-                StampIMG.sprite = TempStampImg[2];
-                break;
-        }
-        StampIMG.transform.localScale = Vector3.one * 5f;
-        StampIMG.transform.DOScale(1, StampResetTime).SetEase(StampEase);
-    }
-    #endregion
-#region NickNameBTN
-    void NickNameBTN()
-    {
-        Managers.Sound.Play("SmallBTN", Sound.Effect);
-        Managers.UI_Manager.ShowPopupUI<UI_NickName>();
-    }
-#endregion
 }

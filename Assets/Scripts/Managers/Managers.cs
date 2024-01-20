@@ -123,14 +123,5 @@ public class Managers : MonoBehaviour
     #endregion
 
 
-    //한 주차가 끝났을때 호출
-    public Action WeekOverAction;
-
-    public void FinishWeek()
-    {
-        WeekOverAction?.Invoke();
-        Data.PlayerData.NowWeek++;
-        Data.SaveData();
-        UI_MainBackUI.instance.UpdateUItexts();
-    }
+    
 }
