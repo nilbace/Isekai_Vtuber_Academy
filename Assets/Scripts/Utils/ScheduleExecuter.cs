@@ -12,13 +12,9 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     public WeekReceiptData BeforeScheduleData = new WeekReceiptData();
     public int BeforeGold = 0;
 
+    //영수증 전달용 변수
     //0대성공 1성공 2실패
     public int[] SuccessTime = new int[3];
-
-    private void Awake()
-    {
-        base.Awake();
-    }
 
     public IEnumerator StartSchedule()
     {
