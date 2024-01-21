@@ -50,7 +50,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             Managers.Data._SeveDayScrollVarValue[i] = 0;
         }
 
-        UI_MainBackUI.instance.SetStamp(-1);
+        UI_Stamp.Inst.SetStamp(UI_Stamp.StampState.transparent);
         UI_MainBackUI.instance.StartScreenAnimation("Exit", "");
         UI_MainBackUI.instance.UpdateUItexts();
         ChattingManager.Inst.gameObject.SetActive(false);
@@ -70,9 +70,9 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         //√ ±‚»≠
         bool todaySick = false;
         BigSuccess = false;
-        UI_MainBackUI.instance.SetStamp(-1);
-        
-        if(isFastMode)
+        UI_Stamp.Inst.SetStamp(UI_Stamp.StampState.transparent);
+
+        if (isFastMode)
         {
             UI_MainBackUI.instance.ScreenAnimator.speed = UI_MainBackUI.instance.ScreenAniSpeed * 2;
             UI_MainBackUI.instance.RubiaAnimator.speed = UI_MainBackUI.instance.ScreenAniSpeed * 2;
@@ -170,19 +170,19 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         if (todaySick || isSick)
         {
             UI_MainBackUI.instance.BottomSeal(DayIndex, 2);
-            UI_MainBackUI.instance.SetStamp(0);
+            UI_Stamp.Inst.SetStamp(UI_Stamp.StampState.Fail);
             Managers.Sound.Play(Define.Sound.Fail);
         }
         else if (BigSuccess)
         {
             UI_MainBackUI.instance.BottomSeal(DayIndex, 0);
-            UI_MainBackUI.instance.SetStamp(2);
+            UI_Stamp.Inst.SetStamp(UI_Stamp.StampState.BicSuccess);
             Managers.Sound.Play(Define.Sound.BigSuccess);
         }
         else
         {
             UI_MainBackUI.instance.BottomSeal(DayIndex, 1);
-            UI_MainBackUI.instance.SetStamp(1);
+            UI_Stamp.Inst.SetStamp(UI_Stamp.StampState.Success);
             Managers.Sound.Play(Define.Sound.Success);
         }
     }

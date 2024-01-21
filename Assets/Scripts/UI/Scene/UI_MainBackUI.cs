@@ -19,11 +19,6 @@ public class UI_MainBackUI : UI_Scene
     //상단 스텟 아이콘 애니메이터
     Animator[] IconBaseAnis = new Animator[6];
 
-    //하단 스템프 애니메이션
-    public Sprite[] TempStampImg;
-    public float StampResetTime;
-    public Ease StampEase;
-
     //하단 7일 이미지
     public Image[] Under7Imges;
     Image[] DayResultSeals = new Image[7];
@@ -78,7 +73,7 @@ public class UI_MainBackUI : UI_Scene
 
     enum Images
     {
-        HeartBar, StarBar, StampIMG
+        HeartBar, StarBar
     }
 
     public static UI_MainBackUI instance;
@@ -118,7 +113,6 @@ public class UI_MainBackUI : UI_Scene
         GetButton((int)Buttons.SpeedBTN).onClick.AddListener(SpeedBTN);
         GetButton((int)Buttons.RubiaNickNameBTN).onClick.AddListener(NickNameBTN);
         GetButton((int)Buttons.SettingBTN).onClick.AddListener(SettingBTN);
-        StampIMG = GetImage((int)Images.StampIMG);
         SpeedBTNInit();
 
         //스텟 아이콘 6개 조절
@@ -153,7 +147,6 @@ public class UI_MainBackUI : UI_Scene
 
         //잡다한 처리
         ScreenAnimator.speed = ScreenAniSpeed;
-        SetStamp(-1);
         UpdateUItexts();
         RegisterActionToOtherScripts();
         Managers.Sound.Play("bgm1", Sound.Bgm);
@@ -348,35 +341,6 @@ public class UI_MainBackUI : UI_Scene
 
 
 
-    #endregion
-
-    //스템프 애니메이션
-    #region Stamp
-    public Image StampIMG;
-
-    public void SetStamp(int Result)
-    {
-        switch (Result)
-        {
-            case -1:
-                StampIMG.gameObject.SetActive(false);
-                break;
-            case 0:
-                StampIMG.gameObject.SetActive(true);
-                StampIMG.sprite = TempStampImg[0];
-                break;
-            case 1:
-                StampIMG.gameObject.SetActive(true);
-                StampIMG.sprite = TempStampImg[1];
-                break;
-            case 2:
-                StampIMG.gameObject.SetActive(true);
-                StampIMG.sprite = TempStampImg[2];
-                break;
-        }
-        StampIMG.transform.localScale = Vector3.one * 5f;
-        StampIMG.transform.DOScale(1, StampResetTime).SetEase(StampEase);
-    }
     #endregion
 
     //UI갱신 관련 스크립트들
