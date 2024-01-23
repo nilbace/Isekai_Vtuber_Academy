@@ -13,6 +13,7 @@ public class UI_Ar_BC_Popup : UI_Popup
     public Animator RubiaAnimator;
     public TMPro.TMP_Text Infotext;
     public Button BTN_Close;
+    enum Animators { }
     void Start()
     {
         Init();
@@ -30,6 +31,8 @@ public class UI_Ar_BC_Popup : UI_Popup
     public override void Init()
     {
         base.Init();
+        Bind<Animator>(typeof(Animators));
+
         BTN_Close.onClick.AddListener(CloseBTN);
         oneDayScheduleData = Managers.Data.GetOneDayDataByName(broadCast);
         ScreenAnimator.speed = RubiaAnimator.speed = ScreenAniSpeed;

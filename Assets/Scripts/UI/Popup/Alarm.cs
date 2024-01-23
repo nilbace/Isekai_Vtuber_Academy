@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+//¾Ë¶÷ ÆË¾÷Ã¢
 public class Alarm : MonoSingleton<Alarm>
 {
     private static Coroutine fadeCoroutine;

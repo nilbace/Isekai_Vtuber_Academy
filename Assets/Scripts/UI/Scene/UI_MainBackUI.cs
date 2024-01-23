@@ -24,11 +24,9 @@ public class UI_MainBackUI : UI_Scene
     Image[] DayResultSeals = new Image[7];
 
     //메인 화면 애니메이션
-    public Animator ScreenAnimator;
-    public float ScreenAniSpeed;
+    public const float ScreenAniSpeed = 0.05555556f;
     public bool IsFastMode = false;
     public Sprite[] SpeedBTNSprite;
-    public Animator RubiaAnimator;
 
     enum Texts
     {
@@ -75,6 +73,11 @@ public class UI_MainBackUI : UI_Scene
     {
         HeartBar, StarBar
     }
+    enum Animators
+    {
+        ScreenIMG, RubiaIMG
+    }
+
 
     public static UI_MainBackUI instance;
 
@@ -95,6 +98,7 @@ public class UI_MainBackUI : UI_Scene
         Bind<Button>(typeof(Buttons));
         Bind<GameObject>(typeof(GameObjects));
         Bind<Image>(typeof(Images));
+        Bind<Animator>(typeof(Animators));
 
         //연결
         GetButton((int)Buttons.CreateScheduleBTN).onClick.AddListener(ShowSchedulePopup);
@@ -145,8 +149,7 @@ public class UI_MainBackUI : UI_Scene
             NowWeekSubStoryIndex = Managers.Data.PlayerData.SubStoryIndex[Managers.Data.PlayerData.NowWeek - 1];
         }
 
-        //잡다한 처리
-        ScreenAnimator.speed = ScreenAniSpeed;
+        Get<Animator>((int)Animators.ScreenIMG).speed = ScreenAniSpeed;
         UpdateUItexts();
         RegisterActionToOtherScripts();
         Managers.Sound.Play("bgm1", Sound.Bgm);
@@ -158,6 +161,8 @@ public class UI_MainBackUI : UI_Scene
         ScheduleExecuter.Inst.WeekOverAction += SetSubStoryIndex;
         ScheduleExecuter.Inst.WeekOverAction -= FinishWeek;
         ScheduleExecuter.Inst.WeekOverAction += FinishWeek;
+        ScheduleExecuter.Inst.SetAniSpeedAction -= SetScreenAniSpeed;
+        ScheduleExecuter.Inst.SetAniSpeedAction += SetScreenAniSpeed;
     }
 
     //메인UI화면에서 누르는 모든 버튼들
@@ -318,17 +323,14 @@ public class UI_MainBackUI : UI_Scene
 
     public void StartScreenAnimation(string KorName, string RubiaAniIndex)
     {
-        ScreenAnimator.StopPlayback();
-        if (KorName == "")
-        {
-            Debug.Log("개발중");
-        }
-        else
-        {
-            ScreenAnimator.SetTrigger(KorName);
-        }
+        var ScreenAnimator = Get<Animator>((int)Animators.ScreenIMG);
+        var RubiaAnimator = Get<Animator>((int)Animators.RubiaIMG);
 
-        if (RubiaAniIndex != "")
+        ScreenAnimator.StopPlayback();
+        ScreenAnimator.SetTrigger(KorName);
+        
+
+        if(RubiaAniIndex != "")
         {
             RubiaAnimator.gameObject.SetActive(true);
             RubiaAnimator.SetTrigger(RubiaAniIndex);
@@ -337,6 +339,15 @@ public class UI_MainBackUI : UI_Scene
         {
             RubiaAnimator.gameObject.SetActive(false);
         }
+    }
+
+    public void SetScreenAniSpeed(int speed)
+    {
+        var ScreenAnimator = Get<Animator>((int)Animators.ScreenIMG);
+        var RubiaAnimator = Get<Animator>((int)Animators.RubiaIMG);
+
+        ScreenAnimator.speed = speed * ScreenAniSpeed;
+        RubiaAnimator.speed = speed * ScreenAniSpeed;
     }
 
 

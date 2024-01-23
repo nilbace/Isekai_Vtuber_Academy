@@ -8,8 +8,6 @@ public class REventManager
 {
     public List<WeekEventData> EventDatasList = new List<WeekEventData>();
 
-    
-
     public void ProcessData(string data)
     {
         string[] lines = data.Substring(0, data.Length).Split('\t');
@@ -78,10 +76,7 @@ public class REventManager
 
     WeekEventData tempConditionEvent;
     
-    /// <summary>
-    /// 주차나 조건에 알맞은 이벤트를 호출
-    /// </summary>
-    /// <returns></returns>
+
     public WeekEventData GetProperEvent()
     {
         WeekEventData temp = new WeekEventData();
@@ -115,11 +110,7 @@ public class REventManager
         return temp;
     }
 
-    /// <summary>
-    /// 4주차마다 메인 이벤트
-    /// </summary>
-    /// <param name="eventlist">넘겨받는 이벤트</param>
-    /// <returns></returns>
+
     WeekEventData GetMainEvent(List<WeekEventData> eventlist)
     {
         WeekEventData temp = new WeekEventData();

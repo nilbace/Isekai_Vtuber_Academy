@@ -18,7 +18,11 @@ public class DataParser : MonoSingleton<DataParser>
 
     void DataDictionaryInit()
     {
-        //ÄªÈ£ ºÎºÐ Parse
+        ParseNickName();
+    }
+
+    void ParseNickName()
+    {
         DataDictionary.Add(typeof(NickName), TextDatas[0].text);
         NickNameList = MakeList<NickName>(DataDictionary[typeof(NickName)]);
     }

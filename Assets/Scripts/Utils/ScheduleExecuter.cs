@@ -16,6 +16,12 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     //0대성공 1성공 2실패
     public int[] SuccessTime = new int[3];
 
+    public Action<int> SetAniSpeedAction;
+    void SetAniSpeed(int speed)
+    {
+        SetAniSpeedAction?.Invoke(speed);
+    }
+
     public IEnumerator StartSchedule()
     {
         //상태 초기화
@@ -68,22 +74,8 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         BigSuccess = false;
         UI_Stamp.Inst.SetStamp(UI_Stamp.StampState.transparent);
 
-        if (isFastMode)
-        {
-            UI_MainBackUI.instance.ScreenAnimator.speed = UI_MainBackUI.instance.ScreenAniSpeed * 2;
-            UI_MainBackUI.instance.RubiaAnimator.speed = UI_MainBackUI.instance.ScreenAniSpeed * 2;
-            ChattingManager.Inst.MaxChatDelayTime = 0.05f;
-            ChattingManager.Inst.TimeForChatGetBigger = 0.04f;
-            ChattingManager.Inst.ChatBubbleRiseDuration = 0.15f;
-        }
-        else
-        {
-            UI_MainBackUI.instance.ScreenAnimator.speed = UI_MainBackUI.instance.ScreenAniSpeed;
-            UI_MainBackUI.instance.RubiaAnimator.speed = UI_MainBackUI.instance.ScreenAniSpeed;
-            ChattingManager.Inst.MaxChatDelayTime = 0.1f;
-            ChattingManager.Inst.TimeForChatGetBigger = 0.08f;
-            ChattingManager.Inst.ChatBubbleRiseDuration = 0.3f;
-        }
+        //FastMode라면 2배속, 아니면 1배속
+        SetAniSpeed(isFastMode ? 2 : 1);
 
         //휴식 하는게 아니라면 아플 수 있음
         if (oneDay.scheduleType != TaskType.Rest && !isSick)

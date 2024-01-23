@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using static Define;
 
+//삭제 예정
 public class DataManager
 { 
     public PlayerData PlayerData;

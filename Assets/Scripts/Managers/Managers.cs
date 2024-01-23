@@ -7,6 +7,7 @@ using static Define;
 
 public class Managers : MonoBehaviour
 {
+    //DataParser로 변경 예정
     [Header("스텟 관련")]
     public int MainStat_ValuePerLevel;
     public float Str_Men_ValuePerLevel;
