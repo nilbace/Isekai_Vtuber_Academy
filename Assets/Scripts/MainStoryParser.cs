@@ -9,12 +9,8 @@ public class MainStoryParser : MonoSingleton<MainStoryParser>
     public TextAsset[] Stories;
 
     public List<Dialogue> Dialogues = new List<Dialogue>();
-    private void Awake()
-    {
-        base.Awake();
-    }
- 
-    TextAsset LoadMainStory(MainStory main)
+  
+     TextAsset LoadMainStory(MainStory main)
     {
         TextAsset text = Resources.Load<TextAsset>($"MainStory/{main}");
         return text;
@@ -32,10 +28,10 @@ public class MainStoryParser : MonoSingleton<MainStoryParser>
         UI_Communication.instance.HideSkipBTN();
     }
 
-    Dialogue DebugSetence(string asdf)
+    Dialogue DebugSetence(string dialogue)
     {
         Dialogue temp = new Define.Dialogue();
-        string[] lines = asdf.Split('\t');
+        string[] lines = dialogue.Split('\t');
 
         temp.name = lines[0];
 

@@ -1,21 +1,25 @@
 {
-    "NowWeek": 1,
-    "nowSubCount": 10,
-    "nowGoldAmount": 1000,
+    "NowWeek": 3,
+    "nowSubCount": 269,
+    "nowGoldAmount": 1387,
     "RubiaKarma": 0,
-    "NowHeart": 100.0,
-    "NowStar": 100.0,
+    "NowHeart": 88.0,
+    "NowStar": 88.0,
     "SixStat": [
-        0.0,
+        10.0,
         0.0,
         0.0,
         0.0,
         0.0,
         0.0
     ],
-    "DoneEventNames": [],
+    "DoneEventNames": [
+        "도수치료 직캠"
+    ],
     "BoughtItems": [],
     "SubStoryIndex": [
-        0
+        0,
+        25,
+        14
     ]
 }

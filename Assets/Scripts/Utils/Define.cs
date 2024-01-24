@@ -439,20 +439,6 @@ public class Define
             }
             UI_MainBackUI.instance.UpdateUItexts();
         }
-
-        public bool MerchantAppearanceWeek()
-        {
-            if (NowWeek == 5 || NowWeek == 10 || NowWeek == 15) return true;
-            return false;
-        }
-
-        public bool MainStoryApperanceWeek()
-        {
-            if (NowWeek == 4 || NowWeek == 8 || NowWeek == 12 || NowWeek == 16) return true;
-            return false;
-        }
-
-        
     }
 
     [Serializable]

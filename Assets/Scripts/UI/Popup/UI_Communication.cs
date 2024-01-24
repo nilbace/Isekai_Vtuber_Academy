@@ -27,7 +27,8 @@ public class UI_Communication : UI_Popup
 
     enum Texts { sentenceTMP, Option1TMP, Option2TMP }
     enum Images 
-    { LeftIMG, RightIMG,
+    {   LeftIMG, 
+        RightIMG,
         ChatBubbleIMG
     }
 
@@ -181,10 +182,14 @@ public class UI_Communication : UI_Popup
             if (dialogue.isLeft) GetImage((int)Images.ChatBubbleIMG).sprite = BubbleIMGs[2];
             else GetImage((int)Images.ChatBubbleIMG).sprite = BubbleIMGs[3];
         }
-        else
+        else if(dialogue.name == "’À’À")
         {
             if (dialogue.isLeft) GetImage((int)Images.ChatBubbleIMG).sprite = BubbleIMGs[4];
             else GetImage((int)Images.ChatBubbleIMG).sprite = BubbleIMGs[5];
+        }
+        else
+        {
+            GetImage((int)Images.ChatBubbleIMG).sprite = BubbleIMGs[6];
         }
     }
 

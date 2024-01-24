@@ -4,17 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Define;
 
+/// <summary>
+/// 게임 매니저 역할 겸임
+/// </summary>
 public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 {
     public bool isDev;
-    public float TimeToStamp;
-    public float TimeStampToNext;
+    const float TimeToStamp = 2.3f;
+    const float TimeStampToNext = 0.7f;
     public WeekReceiptData BeforeScheduleData = new WeekReceiptData();
     public int BeforeGold = 0;
 
     //영수증 전달용 변수
     //0대성공 1성공 2실패
-    public int[] SuccessTime = new int[3];
+    public int[] SuccessTimeContainer = new int[3];
 
     public Action<int> SetAniSpeedAction;
     void SetAniSpeed(int speed)
@@ -29,7 +32,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         BeforeScheduleData.FillDatas();
         for (int i = 0; i < 3; i++)
         {
-            SuccessTime[i] = 0;
+            SuccessTimeContainer[i] = 0;
         }
      
 
@@ -57,14 +60,78 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         UI_MainBackUI.instance.UpdateUItexts();
         ChattingManager.Inst.gameObject.SetActive(false);
 
-        if (Managers.Data.PlayerData.NowWeek == 20)
-            Managers.UI_Manager.ShowPopupUI<UI_Ending>();
-        else if (Managers.Data.PlayerData.MerchantAppearanceWeek())
-            Managers.UI_Manager.ShowPopupUI<UI_Merchant>();
-        else if (Managers.Data.PlayerData.MainStoryApperanceWeek())
-            Managers.instance.ShowMainStory();
-        else
-            Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
+        EndSchedule();
+    }
+
+    void EndSchedule()
+    {
+        var NowWeek = Managers.Data.PlayerData.NowWeek;
+
+        switch (NowWeek)
+        {
+            case 1:
+                Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
+                break;
+            case 2:
+                Managers.instance.ShowReceipt();
+                break;
+            case 3:
+                Managers.instance.ShowReceipt();
+                break;
+            case 4:
+                Managers.instance.ShowMainStory();
+                break;
+            case 5:
+                Managers.UI_Manager.ShowPopupUI<UI_Merchant>();
+                break;
+            case 6:
+                // 6주차에 대한 작업 추가
+                break;
+            case 7:
+                Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
+                break;
+            case 8:
+                Managers.instance.ShowMainStory();
+                break;
+            case 9:
+                Managers.instance.ShowReceipt();
+                break;
+            case 10:
+                Managers.UI_Manager.ShowPopupUI<UI_Merchant>();
+                break;
+            case 11:
+                Managers.instance.ShowReceipt();
+                break;
+            case 12:
+                Managers.instance.ShowMainStory();
+                break;
+            case 13:
+                Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
+                break;
+            case 14:
+                Managers.instance.ShowReceipt();
+                break;
+            case 15:
+                Managers.UI_Manager.ShowPopupUI<UI_Merchant>();
+                break;
+            case 16:
+                Managers.instance.ShowMainStory();
+                break;
+            case 17:
+                Managers.instance.ShowReceipt();
+                break;
+            case 18:
+                Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
+                break;
+            case 19:
+                Managers.instance.ShowReceipt();
+                break;
+            case 20:
+                Managers.instance.ShowReceipt();
+                break;
+        }
+
+
     }
 
     public IEnumerator ExecuteOneDayWork(OneDayScheduleData oneDay, int DayIndex, bool isFastMode)
@@ -88,7 +155,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         {
             todaySick = true;
             ExecuteSickDay();
-            SuccessTime[2]++;
+            SuccessTimeContainer[2]++;
         }
         //아프지 않다면 모든 일정에 대해 대성공이 뜰 수 있음
         else
@@ -111,11 +178,11 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             {
                 BigSuccess = true;
                 bonusMultiplier = 1.5f;// 50% 상승을 위한 상수값
-                SuccessTime[0]++;
+                SuccessTimeContainer[0]++;
             }
             else
             {
-                SuccessTime[1]++;
+                SuccessTimeContainer[1]++;
             }
 
             //방송을 진행했다면 돈 구독자 증가
@@ -150,7 +217,6 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         }
 
         float waitTime = isFastMode ? TimeToStamp / 2 : TimeToStamp;
-
         if (isDev) waitTime = 0;
         yield return new WaitForSeconds(waitTime);
 
@@ -174,8 +240,6 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             Managers.Sound.Play(Define.Sound.Success);
         }
     }
-
-
 
 
     #region Sick__BigSuccess
@@ -259,8 +323,6 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     }
 
     #endregion
-
-
 
 
     #region DoOneDaySchedule
