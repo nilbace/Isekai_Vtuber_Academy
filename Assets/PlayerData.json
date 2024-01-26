@@ -1,27 +1,21 @@
 {
-    "NowWeek": 5,
-    "nowSubCount": 481,
-    "nowGoldAmount": 948,
-    "RubiaKarma": 1,
-    "NowHeart": 90.0,
-    "NowStar": 96.0,
+    "NowWeek": 1,
+    "nowSubCount": 10,
+    "nowGoldAmount": 1000,
+    "RubiaKarma": 0,
+    "NowHeart": 100.0,
+    "NowStar": 100.0,
     "SixStat": [
-        26.0,
+        0.0,
         0.0,
         0.0,
         0.0,
         0.0,
         0.0
     ],
-    "DoneEventNames": [
-        "팬레터 읽기"
-    ],
+    "DoneEventNames": [],
     "BoughtItems": [],
     "SubStoryIndex": [
-        16,
-        17,
-        15,
-        6,
-        3
+        28
     ]
 }

@@ -43,11 +43,25 @@ public class UI_Photo : UI_Base
         }
         else if(TaskEnum is RestType)
         {
+            BaseImage.sprite = RestImgs[(int)TaskEnum];
 
+            if (Managers.Data.PersistentUser.WatchedRest.Contains((RestType)TaskEnum))
+            {
+                CoverBTN.gameObject.SetActive(false);
+            }
+
+            //BaseImage.GetComponent<Button>().onClick.AddListener(() => ShowBcPopup((RestType)TaskEnum));
         }
         else if(TaskEnum is GoOutType)
         {
+            BaseImage.sprite = BroadCastImgs[(int)TaskEnum];
 
+            if (Managers.Data.PersistentUser.WatchedBroadCast.Contains((BroadCastType)TaskEnum))
+            {
+                CoverBTN.gameObject.SetActive(false);
+            }
+
+            BaseImage.GetComponent<Button>().onClick.AddListener(() => ShowBcPopup((BroadCastType)TaskEnum));
         }
     }
 
@@ -55,6 +69,13 @@ public class UI_Photo : UI_Base
     {
         Managers.Sound.Play(Sound.SmallBTN);
         UI_Ar_BC_Popup.broadCast = broadCastType;
+        Managers.UI_Manager.ShowPopupUI<UI_Ar_BC_Popup>();
+    }
+
+    void ShowRestPopup(RestType restType)
+    {
+        Managers.Sound.Play(Sound.SmallBTN);
+        //UI_Ar_BC_Popup.restt = restType;
         Managers.UI_Manager.ShowPopupUI<UI_Ar_BC_Popup>();
     }
 

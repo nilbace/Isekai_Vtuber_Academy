@@ -6,14 +6,13 @@ using static Define;
 
 public class UI_Ar_BC_Popup : UI_Popup
 {
-    public static BroadCastType broadCast;
+    public static object broadCast;
     OneDayScheduleData oneDayScheduleData;
     const float ScreenAniSpeed = 0.05555556f;
     public Animator ScreenAnimator;
     public Animator RubiaAnimator;
     public TMPro.TMP_Text Infotext;
     public Button BTN_Close;
-    enum Animators { }
     void Start()
     {
         Init();
@@ -31,16 +30,12 @@ public class UI_Ar_BC_Popup : UI_Popup
     public override void Init()
     {
         base.Init();
-        Bind<Animator>(typeof(Animators));
 
         BTN_Close.onClick.AddListener(CloseBTN);
-        oneDayScheduleData = Managers.Data.GetOneDayDataByName(broadCast);
+        //oneDayScheduleData = Managers.Data.GetOneDayDataByName(broadCast);
         ScreenAnimator.speed = RubiaAnimator.speed = ScreenAniSpeed;
         ScreenAnimator.SetTrigger(oneDayScheduleData.PathName);
         RubiaAnimator.SetTrigger(oneDayScheduleData.RubiaAni);
         Infotext.text = oneDayScheduleData.ArchiveInfoText;
     }
-
-
-
 }

@@ -26,11 +26,9 @@ public class UI_Ar_BC : UI_Popup
         GetButton(0).onClick.AddListener(CloseBTN);
         PhotoGroup = GetComponentsInChildren<UI_Photo>();
 
-        int i = 0;
-        foreach(UI_Photo photo in PhotoGroup)
+        for (int i = 0; i < 9; i++)
         {
-            photo.Set((BroadCastType)i);
-            i++;
+            PhotoGroup[i].Set((BroadCastType)i);
         }
     }
 }
