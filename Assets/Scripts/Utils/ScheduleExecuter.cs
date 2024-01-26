@@ -85,7 +85,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 Managers.UI_Manager.ShowPopupUI<UI_Merchant>();
                 break;
             case 6:
-                // 6주차에 대한 작업 추가
+                Managers.instance.ShowReceipt();
                 break;
             case 7:
                 Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
