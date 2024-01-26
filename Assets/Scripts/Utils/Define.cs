@@ -26,6 +26,7 @@ public class Define
         Buy,
         Receipt,
         Skip,
+        knock,
         Chat1, Chat2, Chat3,
 
         MaxCount,
@@ -177,6 +178,11 @@ public class Define
         game1, game2, game3, song1, song2, song3, chat1, chat2, chat3,
         hea1, hea2, hea3, men1, men2, men3, luck1, luck2, luck3,
         MaxCount
+    }
+
+    public enum DefaultPopupState
+    {
+        Normal, Merchant, RandomEvent,
     }
 
     public enum SevenDays

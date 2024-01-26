@@ -70,7 +70,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         switch (NowWeek)
         {
             case 1:
-                Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
+                UI_DefaultPopup.RandEventOccur();
                 break;
             case 2:
                 Managers.instance.ShowReceipt();
@@ -82,13 +82,13 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 Managers.instance.ShowMainStory();
                 break;
             case 5:
-                Managers.UI_Manager.ShowPopupUI<UI_Merchant>();
+                UI_DefaultPopup.MerchantAppear();
                 break;
             case 6:
                 Managers.instance.ShowReceipt();
                 break;
             case 7:
-                Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
+                UI_DefaultPopup.RandEventOccur();
                 break;
             case 8:
                 Managers.instance.ShowMainStory();
@@ -97,7 +97,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 Managers.instance.ShowReceipt();
                 break;
             case 10:
-                Managers.UI_Manager.ShowPopupUI<UI_Merchant>();
+                UI_DefaultPopup.MerchantAppear();
                 break;
             case 11:
                 Managers.instance.ShowReceipt();
@@ -106,13 +106,13 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 Managers.instance.ShowMainStory();
                 break;
             case 13:
-                Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
+                UI_DefaultPopup.RandEventOccur();
                 break;
             case 14:
                 Managers.instance.ShowReceipt();
                 break;
             case 15:
-                Managers.UI_Manager.ShowPopupUI<UI_Merchant>();
+                UI_DefaultPopup.MerchantAppear();
                 break;
             case 16:
                 Managers.instance.ShowMainStory();
@@ -121,7 +121,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 Managers.instance.ShowReceipt();
                 break;
             case 18:
-                Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
+                UI_DefaultPopup.RandEventOccur();
                 break;
             case 19:
                 Managers.instance.ShowReceipt();
