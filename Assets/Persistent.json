@@ -2,57 +2,12 @@
     "BoughtAdPass": false,
     "WatchedTutorial": false,
     "WatchedBroadCast": [
-        0,
-        1
+        0
     ],
     "WatchedRest": [
-        0,
-        1
+        0
     ],
     "WatchedGoOut": [],
     "WatchedEndingName": [],
-    "OwnedNickNameBoolList": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-    ]
+    "OwnedNickNameBoolList": []
 }

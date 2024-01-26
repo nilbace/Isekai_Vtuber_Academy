@@ -1,33 +1,27 @@
 {
-    "NowWeek": 10,
-    "nowSubCount": 2973,
-    "nowGoldAmount": 1706,
+    "NowWeek": 5,
+    "nowSubCount": 481,
+    "nowGoldAmount": 948,
     "RubiaKarma": 1,
-    "NowHeart": 96.0,
+    "NowHeart": 90.0,
     "NowStar": 96.0,
     "SixStat": [
-        51.5,
+        26.0,
         0.0,
         0.0,
         0.0,
         0.0,
-        10.0
+        0.0
     ],
     "DoneEventNames": [
-        "도수치료 직캠",
-        "합체로봇사줘"
+        "팬레터 읽기"
     ],
     "BoughtItems": [],
     "SubStoryIndex": [
-        0,
-        25,
-        14,
-        4,
-        9,
-        10,
-        18,
-        23,
+        16,
+        17,
         15,
-        5
+        6,
+        3
     ]
 }

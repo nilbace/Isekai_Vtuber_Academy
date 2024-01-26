@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static Define;
+using DG.Tweening;
 
 public class UI_DefaultPopup : UI_Popup
 {
@@ -11,6 +12,9 @@ public class UI_DefaultPopup : UI_Popup
     static DefaultPopupState popupState;
     static string InfoText;
     static string ResultBTNText;
+    public Image RubiaImage;
+    public Ease ease;
+    public float MoveTime;
     private void Awake()
     {
         instance = this;
@@ -38,6 +42,10 @@ public class UI_DefaultPopup : UI_Popup
 
         GetButton((int)Buttons.ResultBTN).onClick.AddListener(ResultBTN);
         Setting();
+        if (popupState == DefaultPopupState.Merchant)
+        {
+            RubiaImage.transform.DOMoveX(-250, MoveTime).SetEase(ease);
+        }
     }
 
     void Setting()
