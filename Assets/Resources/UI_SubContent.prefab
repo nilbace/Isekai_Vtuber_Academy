@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 923106601970221508}
   - component: {fileID: 8090578952932775545}
   - component: {fileID: 8090578952932775525}
+  - component: {fileID: 8455722294754634790}
   m_Layer: 5
   m_Name: UI_SubContent
   m_TagString: Untagged
@@ -313,8 +314,20 @@ MonoBehaviour:
     SubTextPoz: {x: 0, y: 3000, z: 0}
     GoldTextPoz: {x: 3.5, y: -36.5, z: 0}
     StatTextPoz: {x: 7.1, y: -24.5, z: 0}
-  offset: 6
   MouseDragOffset: 100
+--- !u!114 &8455722294754634790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2381185299945047613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fad50c79fc192a469e994c9273d1f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: 10
 --- !u!1 &3889826550822649576
 GameObject:
   m_ObjectHideFlags: 0

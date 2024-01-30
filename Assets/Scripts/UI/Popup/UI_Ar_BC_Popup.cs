@@ -6,9 +6,8 @@ using static Define;
 
 public class UI_Ar_BC_Popup : UI_Popup
 {
-    public static object broadCast;
+    public static object tasktype;
     OneDayScheduleData oneDayScheduleData;
-    const float ScreenAniSpeed = 0.05555556f;
     public Animator ScreenAnimator;
     public Animator RubiaAnimator;
     public TMPro.TMP_Text Infotext;
@@ -32,10 +31,17 @@ public class UI_Ar_BC_Popup : UI_Popup
         base.Init();
 
         BTN_Close.onClick.AddListener(CloseBTN);
-        //oneDayScheduleData = Managers.Data.GetOneDayDataByName(broadCast);
+        oneDayScheduleData = Managers.Data.GetOneDayDataByObject(tasktype);
         ScreenAnimator.speed = RubiaAnimator.speed = ScreenAniSpeed;
         ScreenAnimator.SetTrigger(oneDayScheduleData.PathName);
-        RubiaAnimator.SetTrigger(oneDayScheduleData.RubiaAni);
+        if(tasktype is BroadCastType)
+        {
+            RubiaAnimator.SetTrigger(oneDayScheduleData.RubiaAni);
+        }
+        else
+        {
+            RubiaAnimator.gameObject.SetActive(false);
+        }
         Infotext.text = oneDayScheduleData.ArchiveInfoText;
     }
 }

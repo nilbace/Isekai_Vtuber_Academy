@@ -345,13 +345,14 @@ public class UI_SchedulePopup : UI_Popup
 
     public void DeleteAllChildren()
     {
-        int childCount = ParentTR.childCount;
+    int childCount = ParentTR.childCount;
 
         for (int i = childCount - 1; i >= 0; i--)
         {
             Destroy(ParentTR.GetChild(i).gameObject);
         }
     }
+
 
     public void SetDaySchedule(OneDayScheduleData data)
     {

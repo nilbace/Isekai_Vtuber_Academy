@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Define
 {
+    public const float ScreenAniSpeed = 0.05555556f;
+
     public enum Scene
     {
         Unknown,

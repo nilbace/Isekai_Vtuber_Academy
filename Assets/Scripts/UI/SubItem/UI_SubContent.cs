@@ -172,7 +172,6 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 
 
 
-    [SerializeField] float offset = 5.5f;
     private bool isPressed = false;
     bool TruelyInteractable =  true;
     Vector2 pressedPosition;
@@ -185,10 +184,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         if (!TruelyInteractable) { scrollRect.OnBeginDrag(eventData); return; }
         isPressed = true;
         
-        foreach (Transform tr in GetComponentsInChildren<Transform>())
-        {
-            tr.localPosition += new Vector3(0, -offset, 0);
-        }
+       
         pressedPosition = eventData.position; // 눌린 위치 저장
 
         scrollRect.OnBeginDrag(eventData);
@@ -200,10 +196,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         if (!TruelyInteractable) { scrollRect.OnBeginDrag(eventData); return; }
         isPressed = false;
 
-        foreach (Transform tr in GetComponentsInChildren<Transform>())
-        {
-            tr.localPosition += new Vector3(0, offset, 0);
-        }
+     
         scrollRect.OnEndDrag(eventData);
         UI_SchedulePopup.instance.SetScrollVarValue(scrollRect.horizontalScrollbar.value);
     }
@@ -238,10 +231,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
                 GetComponent<Image>().sprite = TaskPannelSprites[5];
                 break;
         }
-        foreach (Transform tr in GetComponentsInChildren<Transform>())
-        {
-            tr.localPosition += new Vector3(0, -offset, 0);
-        }
+     
     }
 
     void SetMoneyAndSubData_BroadCast()

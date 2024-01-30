@@ -119,7 +119,28 @@ public class DataManager
 
 
     public List<OneDayScheduleData> oneDayDatasList = new List<OneDayScheduleData>();
-   
+
+    public OneDayScheduleData GetOneDayDataByObject(object type)
+    {
+        OneDayScheduleData oneDayData = null;
+
+        if (type is RestType restType)
+        {
+            oneDayData = GetOneDayDataByName(restType);
+        }
+        else if (type is BroadCastType broadcastType)
+        {
+            oneDayData = GetOneDayDataByName(broadcastType);
+        }
+        else if (type is GoOutType gooutType)
+        {
+            oneDayData = GetOneDayDataByName(gooutType);
+        }
+
+        return oneDayData;
+    }
+
+
     public OneDayScheduleData GetOneDayDataByName(RestType restType)
     {
         OneDayScheduleData temp = new OneDayScheduleData();

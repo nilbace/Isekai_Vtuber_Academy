@@ -30,5 +30,13 @@ public class UI_Ar_BC : UI_Popup
         {
             PhotoGroup[i].Set((BroadCastType)i);
         }
+        for (int i = 9; i < 15; i++)
+        {
+            PhotoGroup[i].Set((RestType)i);
+        }
+        for (int i = 15; i < 21; i++)
+        {
+            PhotoGroup[i].Set((GoOutType)i);
+        }
     }
 }

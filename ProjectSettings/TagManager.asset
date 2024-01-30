@@ -44,3 +44,6 @@ TagManager:
   - name: Alarm
     uniqueID: 892291369
     locked: 0
+  - name: Tutorial
+    uniqueID: 1935352195
+    locked: 0
