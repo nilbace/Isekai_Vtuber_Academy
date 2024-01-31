@@ -134,6 +134,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
                     thisBTN.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
                     thisBTN.interactable = false;
                     TruelyInteractable = false;
+                    thisBTN.GetComponent<BtnChildUpdown>().NotEnoughMoney();
                 }
             }
             //선택된것이 있고, 비싸다면 안눌림
@@ -144,6 +145,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
                     thisBTN.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
                     thisBTN.interactable = false;
                     TruelyInteractable = false;
+                    thisBTN.GetComponent<BtnChildUpdown>().NotEnoughMoney();
                 }
             }
             
@@ -152,6 +154,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         if(scheduleData == settedData)
         {
             LikePressed();
+            thisBTN.GetComponent<BtnChildUpdown>().SetUninteractable();
         }
 
         if(statName != StatName.FALSE)
@@ -198,7 +201,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 
      
         scrollRect.OnEndDrag(eventData);
-        UI_SchedulePopup.instance.SetScrollVarValue(scrollRect.horizontalScrollbar.value);
+        UI_SchedulePopup.instance.SaveScrollVarValue(scrollRect.horizontalScrollbar.value);
     }
 
     bool OverOffset = false;

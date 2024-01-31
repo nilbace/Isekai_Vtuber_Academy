@@ -113,7 +113,7 @@ public class UI_MainBackUI : UI_Scene
         GetButton((int)Buttons.ArchiveBTN).onClick.AddListener(ArchiveBTN);
         GetButton((int)Buttons.CommuiBTN).onClick.AddListener(CommunicationBTN);
         GetButton((int)Buttons.StartScheduleBTN).gameObject.SetActive(false);
-        GetButton((int)Buttons.BackBTN).gameObject.SetActive(false);
+        GetButton((int)Buttons.BackBTN).gameObject.SetActive(false); 
         GetButton((int)Buttons.SpeedBTN).onClick.AddListener(SpeedBTN);
         GetButton((int)Buttons.RubiaNickNameBTN).onClick.AddListener(NickNameBTN);
         GetButton((int)Buttons.SettingBTN).onClick.AddListener(SettingBTN);

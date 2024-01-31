@@ -3,59 +3,15 @@
     "WatchedTutorial": false,
     "WatchedBroadCast": [
         0,
-        1,
-        6
-    ],
-    "WatchedRest": [
-        0,
         1
     ],
-    "WatchedGoOut": [
+    "WatchedRest": [
+        1,
         0
     ],
+    "WatchedGoOut": [
+        6
+    ],
     "WatchedEndingName": [],
-    "OwnedNickNameBoolList": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-    ]
+    "OwnedNickNameBoolList": []
 }

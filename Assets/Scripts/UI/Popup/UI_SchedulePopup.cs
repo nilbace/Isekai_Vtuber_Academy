@@ -16,6 +16,11 @@ public class UI_SchedulePopup : UI_Popup
 
     public Sprite[] DaysSprites;
 
+    [SerializeField] Ease ease;
+    [SerializeField] float moveDuration;
+    [SerializeField] Color[] baseTextColor;
+    Image[] Under7dayIMGs;
+
     enum Buttons
     {
         MondayBTN,
@@ -32,6 +37,7 @@ public class UI_SchedulePopup : UI_Popup
 
     Button StartScheduleBTN_Main;
     Button BackBTN_Main;
+    Button[] CategoryBTNs;
     enum Texts
     {
         PointText,
@@ -42,6 +48,8 @@ public class UI_SchedulePopup : UI_Popup
         Days7,
         Contents3,
         SubContents,
+        Category,
+        Content,
         Sub0, Sub1, Sub2, Sub3, 
     }
     enum Images
@@ -70,6 +78,7 @@ public class UI_SchedulePopup : UI_Popup
     {
         GetGameObject((int)GameObjects.Contents3).SetActive(true);
         GetGameObject((int)GameObjects.SubContents).SetActive(false);
+        GetGameObject((int)GameObjects.Category).SetActive(false);
     }
 
     void TransitionToSelectSubContent()
@@ -91,11 +100,13 @@ public class UI_SchedulePopup : UI_Popup
         {
             int inttemp = i;
             Button temp = GetButton(i);
-            temp.onClick.AddListener( () => ClickDayBTN(inttemp));
+            temp.onClick.AddListener(() => ClickDayBTN(inttemp));
         }
 
         scrollRect = GetComponentInChildren<ScrollRect>();
+        CategoryBTNs = GetGameObject((int)GameObjects.Category).GetComponentsInChildren<Button>();
         GetGameObject((int)GameObjects.SubContents).SetActive(false);
+        GetGameObject((int)GameObjects.Category).SetActive(false);
         GetButton((int)Buttons.BroadCastBTN).onClick.       AddListener(ClickBroadCastBTN);
         GetButton((int)Buttons.RestBTN).onClick.            AddListener(ClickRestBTN);
         GetButton((int)Buttons.GoOutBTN).onClick.           AddListener(ClickGoOutBTN);
@@ -115,7 +126,7 @@ public class UI_SchedulePopup : UI_Popup
     OneDayScheduleData[] _SevenDayScheduleDatas = new OneDayScheduleData[7];
     float[] _SeveDayScrollVarValue =  new float[7];
 
-    public void SetScrollVarValue(float value)
+    public void SaveScrollVarValue(float value)
     {
         _SeveDayScrollVarValue[(int)_nowSelectedDay] = value;
         Managers.Data._SeveDayScrollVarValue = _SeveDayScrollVarValue;
@@ -131,13 +142,11 @@ public class UI_SchedulePopup : UI_Popup
                 break;
             }
         }
-
         GetImage((int)Images.NowDayFrame).transform.DOMoveX(((int)_nowSelectedDay - 3) * 40, 0f);
     }
     
     void ClickDayBTNWithoutSound(int dayIndex)
     {
-        
         _nowSelectedDay = (SevenDays)dayIndex;
         if (_SevenDayScheduleDatas[(int)_nowSelectedDay] == null)
         {
@@ -148,6 +157,7 @@ public class UI_SchedulePopup : UI_Popup
             if (_SevenDayScheduleDatas[(int)_nowSelectedDay].scheduleType == TaskType.BroadCast)
             {
                 ClickBroadCastBTNWithoutSound();
+                GetGameObject((int)GameObjects.Category).SetActive(true);
             }
             else if (_SevenDayScheduleDatas[(int)_nowSelectedDay].scheduleType == TaskType.Rest)
             {
@@ -156,6 +166,7 @@ public class UI_SchedulePopup : UI_Popup
             else
             {
                 ClickGoOutBTNWithoutSound();
+                GetGameObject((int)GameObjects.Category).SetActive(true);
             }
         }
         UpdateColorAndSelected();
@@ -194,10 +205,7 @@ public class UI_SchedulePopup : UI_Popup
         }
         
     }
-    [SerializeField] Ease ease;
-    [SerializeField] float moveDuration;
-    [SerializeField] Color[] baseTextColor;
-    Image[] Under7dayIMGs;
+    
     void UpdateColorAndSelected()
     {
         for(int i = 0; i<7;i++)
@@ -249,14 +257,72 @@ public class UI_SchedulePopup : UI_Popup
     {
         GetGameObject((int)GameObjects.Contents3).SetActive(true);
         GetGameObject((int)GameObjects.SubContents).SetActive(false);
+        GetGameObject((int)GameObjects.Category).SetActive(false);
+    }
+
+    public Sprite[] CategoryIMGS;
+    public float[] BC_ScrollXPoz;
+    public float[] GoOutScrollXPoz;
+    void SetSubContentSize(TaskType taskType)
+    {
+        var SubcontentsGO = GetGameObject((int)GameObjects.SubContents);
+        var SubcontRect = SubcontentsGO.GetComponent<RectTransform>();
+        var LayoutGroup = GetGameObject((int)GameObjects.Content).GetComponent<HorizontalLayoutGroup>();
+        
+
+        switch (taskType)
+        {
+            case TaskType.BroadCast:
+                GetGameObject((int)GameObjects.Category).SetActive(true);
+                SubcontRect.sizeDelta = new Vector2(254, SubcontRect.sizeDelta.y);
+                SubcontRect.transform.position = new Vector2(18, SubcontRect.transform.position.y);
+                LayoutGroup.padding.left = 2;
+                for (int i = 0; i < 6; i++)
+                {
+                    CategoryBTNs[i].onClick.RemoveAllListeners();
+                    if (i<3)
+                    {
+                        int j = i;
+                        CategoryBTNs[i].onClick.AddListener(() => DOTween.To(() => scrollRect.horizontalScrollbar.value, x => scrollRect.horizontalScrollbar.value = x, BC_ScrollXPoz[j], moveDuration).SetEase(ease));
+                        CategoryBTNs[i].GetComponent<Image>().sprite = CategoryIMGS[0];
+                        CategoryBTNs[i].spriteState = new SpriteState { pressedSprite = CategoryIMGS[1] };
+                    }
+                    else
+                    {
+                        CategoryBTNs[i].gameObject.SetActive(false);
+                    }
+                }
+                break;
+            case TaskType.Rest:
+                GetGameObject((int)GameObjects.Category).SetActive(false);
+                SubcontRect.sizeDelta = new Vector2(282, SubcontRect.sizeDelta.y);
+                SubcontRect.transform.position = new Vector2(0, SubcontRect.transform.position.y);
+                LayoutGroup.padding.left = 2;
+                break;
+            case TaskType.GoOut:
+                GetGameObject((int)GameObjects.Category).SetActive(true);
+                SubcontRect.sizeDelta = new Vector2(254, SubcontRect.sizeDelta.y);
+                SubcontRect.transform.position = new Vector2(18, SubcontRect.transform.position.y);
+                LayoutGroup.padding.left = 2;
+                for (int i = 0; i < 6; i++)
+                {
+                    CategoryBTNs[i].onClick.RemoveAllListeners();
+                    int j = i;
+                    CategoryBTNs[i].gameObject.SetActive(true);
+                    CategoryBTNs[i].onClick.AddListener(() => DOTween.To(() => scrollRect.horizontalScrollbar.value, x => scrollRect.horizontalScrollbar.value = x, GoOutScrollXPoz[j], moveDuration).SetEase(ease));
+                    CategoryBTNs[i].GetComponent<Image>().sprite = CategoryIMGS[2];
+                    CategoryBTNs[i].spriteState = new SpriteState { pressedSprite = CategoryIMGS[3] };
+                }
+                break;
+        }
     }
 
 
-    #region Schedules
 
     void ClickBroadCastBTNWithoutSound()
     {
         TransitionToSelectSubContent();
+        SetSubContentSize(TaskType.BroadCast);
         ChooseScheduleTypeAndFillList(TaskType.BroadCast);
     }
 
@@ -269,6 +335,7 @@ public class UI_SchedulePopup : UI_Popup
     void ClickRestBTNWithoutSound()
     {
         TransitionToSelectSubContent();
+        SetSubContentSize(TaskType.Rest);
         ChooseScheduleTypeAndFillList(TaskType.Rest);
     }
 
@@ -281,6 +348,7 @@ public class UI_SchedulePopup : UI_Popup
     void ClickGoOutBTNWithoutSound()
     {
         TransitionToSelectSubContent();
+        SetSubContentSize(TaskType.GoOut);
         ChooseScheduleTypeAndFillList(TaskType.GoOut);
     }
 
@@ -345,7 +413,7 @@ public class UI_SchedulePopup : UI_Popup
 
     public void DeleteAllChildren()
     {
-    int childCount = ParentTR.childCount;
+        int childCount = ParentTR.childCount;
 
         for (int i = childCount - 1; i >= 0; i--)
         {
@@ -358,11 +426,10 @@ public class UI_SchedulePopup : UI_Popup
     {
         _SevenDayScheduleDatas[(int)_nowSelectedDay] = data;
         Managers.Data._SevenDayScheduleDatas = _SevenDayScheduleDatas;
-        
+        GetGameObject((int)GameObjects.Category).SetActive(false);
         UpdateBTN_Interactable();
         ClickLastDay_PlusOne();
     }
-    #endregion
 
     void ClickLastDay_PlusOne()
     {
@@ -413,5 +480,6 @@ public class UI_SchedulePopup : UI_Popup
         return false;
     }
 
-    #endregion
+        #endregion
+    
 }

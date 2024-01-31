@@ -1,21 +1,27 @@
 {
-    "NowWeek": 1,
-    "nowSubCount": 10,
-    "nowGoldAmount": 1000,
+    "NowWeek": 5,
+    "nowSubCount": 750,
+    "nowGoldAmount": 1585,
     "RubiaKarma": 0,
-    "NowHeart": 100.0,
-    "NowStar": 100.0,
+    "NowHeart": 64.0,
+    "NowStar": 63.0,
     "SixStat": [
+        20.0,
         0.0,
-        12.0,
-        90.0,
-        120.0,
-        45.0,
-        200.0
+        4.0,
+        0.0,
+        0.0,
+        0.0
     ],
-    "DoneEventNames": [],
+    "DoneEventNames": [
+        "스카이 다이빙"
+    ],
     "BoughtItems": [],
     "SubStoryIndex": [
-        12
+        22,
+        25,
+        27,
+        17,
+        18
     ]
 }
