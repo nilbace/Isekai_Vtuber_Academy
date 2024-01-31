@@ -2,18 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UI_CouponPopup : MonoBehaviour
+public class UI_CouponPopup : UI_Popup
 {
     public TMP_InputField inputField;
 
-    private const int maxInputLength = 12;
-    private const int insertDashAt1 = 3;
-    private const int insertDashAt2 = 7;
+
+    enum Buttons
+    {
+        CloseBTN, ResultBTN
+    }
 
     private void Start()
     {
-        inputField.characterLimit = maxInputLength;
+        base.Init();
+        Bind<Button>(typeof(Buttons));
+
+        GetButton((int)Buttons.CloseBTN).onClick.AddListener(CloseBTN);
+
     }
 
   

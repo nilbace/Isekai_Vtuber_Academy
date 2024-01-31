@@ -55,7 +55,7 @@ public class Alarm : MonoSingleton<Alarm>
             yield return null;
         }
 
-        
+        yield return new WaitForSeconds(0.7f);
 
         // 페이드 아웃
         time = 0f;
