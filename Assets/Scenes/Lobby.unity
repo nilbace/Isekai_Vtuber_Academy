@@ -18029,7 +18029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StarPrefab: {fileID: 8203667287615796949, guid: 75e0bc5e08b9a8945b96dbb129f55261, type: 3}
   poolSize: 10
-  defaultTime: 0.05
+  defaultTime: 0.2
   CirclePrefab: {fileID: 197009308641581651, guid: a525c74392f6d1f4f9bc3e7d92693cf7, type: 3}
   pool2Size: 4
 --- !u!4 &1985239779
