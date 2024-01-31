@@ -43,23 +43,27 @@ public class UI_Photo : UI_Base
         }
         else if(TaskEnum is RestType)
         {
-            BaseImage.sprite = RestImgs[(int)TaskEnum -9];
-            if (Managers.Data.PersistentUser.WatchedRest.Contains((RestType)(int)TaskEnum - 9))
+            BaseImage.sprite = RestImgs[(int)TaskEnum];
+            if (Managers.Data.PersistentUser.WatchedRest.Contains((RestType)TaskEnum))
             {
                 CoverBTN.gameObject.SetActive(false);
             }
 
-            BaseImage.GetComponent<Button>().onClick.AddListener(() => ShowBcPopup((RestType)(int)TaskEnum - 9));
+            BaseImage.GetComponent<Button>().onClick.AddListener(() => ShowBcPopup((RestType)TaskEnum));
         }
         else if(TaskEnum is GoOutType)
         {
-            BaseImage.sprite = GoOutImgs[(int)TaskEnum -15];
-            if (Managers.Data.PersistentUser.WatchedGoOut.Contains((GoOutType)(int)TaskEnum - 15))
+            BaseImage.sprite = GoOutImgs[(int)TaskEnum];
+            for (int i = (int)TaskEnum * 3; i <= (int)TaskEnum * 3 + 2; i++)
             {
-                CoverBTN.gameObject.SetActive(false);
+                if (Managers.Data.PersistentUser.WatchedGoOut.Contains((GoOutType)i))
+                {
+                    CoverBTN.gameObject.SetActive(false);
+                    break;
+                }
             }
 
-            BaseImage.GetComponent<Button>().onClick.AddListener(() => ShowBcPopup((GoOutType)(int)TaskEnum - 15));
+            BaseImage.GetComponent<Button>().onClick.AddListener(() => ShowBcPopup((GoOutType)((int)TaskEnum*3)));
         }
     }
 

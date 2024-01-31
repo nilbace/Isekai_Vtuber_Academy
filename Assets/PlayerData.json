@@ -1,27 +1,26 @@
 {
-    "NowWeek": 5,
-    "nowSubCount": 750,
-    "nowGoldAmount": 1585,
+    "NowWeek": 4,
+    "nowSubCount": 276,
+    "nowGoldAmount": 37,
     "RubiaKarma": 0,
-    "NowHeart": 64.0,
-    "NowStar": 63.0,
+    "NowHeart": 51.0,
+    "NowStar": 86.0,
     "SixStat": [
-        20.0,
-        0.0,
+        28.0,
         4.0,
         0.0,
-        0.0,
-        0.0
+        4.0,
+        4.0,
+        3.0
     ],
     "DoneEventNames": [
-        "스카이 다이빙"
+        "자르반 84세와 만남"
     ],
     "BoughtItems": [],
     "SubStoryIndex": [
-        22,
-        25,
-        27,
-        17,
-        18
+        13,
+        21,
+        26,
+        29
     ]
 }
