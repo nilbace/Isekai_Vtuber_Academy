@@ -200,7 +200,7 @@ public class Define
 
     public enum MainStory { Game1, Game2, Game3, Game4, Song1, Song2, Song3, Song4, Draw1, Draw2, Draw3, Draw4 }
 
-    public enum TaskType
+    public enum ContentType
     {
         Null, BroadCast, Rest, GoOut
     }
@@ -209,7 +209,7 @@ public class Define
     {
         public string KorName;
         public string infotext;
-        public TaskType scheduleType;
+        public ContentType scheduleType;
         public BroadCastType broadcastType;
         public RestType restType;
         public GoOutType goOutType;
@@ -227,7 +227,7 @@ public class Define
         public OneDayScheduleData()
         {
             KorName = "";
-            this.scheduleType = TaskType.Null;
+            this.scheduleType = ContentType.Null;
             this.broadcastType = BroadCastType.MaxCount_Name;
             this.restType = RestType.MaxCount;
             this.goOutType = GoOutType.MaxCount;
@@ -246,13 +246,13 @@ public class Define
         {
             switch (scheduleType)
             {
-                case TaskType.BroadCast:
+                case ContentType.BroadCast:
                     Managers.Data.PersistentUser.CheckAndAddIfNotWatched(broadcastType);
                     break;
-                case TaskType.Rest:
+                case ContentType.Rest:
                     Managers.Data.PersistentUser.CheckAndAddIfNotWatched(restType);
                     break;
-                case TaskType.GoOut:
+                case ContentType.GoOut:
                     Managers.Data.PersistentUser.CheckAndAddIfNotWatched(goOutType);
                     break;
             }

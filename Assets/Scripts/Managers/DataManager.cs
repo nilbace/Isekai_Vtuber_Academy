@@ -188,19 +188,19 @@ public class DataManager
 
         for(int i = 0;i<(int)BroadCastType.MaxCount_Name; i++)
         {
-            ProcessStringToList(TaskType.BroadCast, i, stringqueue.Dequeue());
+            ProcessStringToList(ContentType.BroadCast, i, stringqueue.Dequeue());
         }
         for (int i = 0; i <  (int)RestType.MaxCount; i++)
         {
-            ProcessStringToList(TaskType.Rest, i, stringqueue.Dequeue());
+            ProcessStringToList(ContentType.Rest, i, stringqueue.Dequeue());
         }
         for (int i = 0; i < (int)GoOutType.MaxCount; i++)
         {
-            ProcessStringToList(TaskType.GoOut, i, stringqueue.Dequeue());
+            ProcessStringToList(ContentType.GoOut, i, stringqueue.Dequeue());
         }
     }
 
-    void ProcessStringToList(TaskType scheduleType,int index,string data)
+    void ProcessStringToList(ContentType scheduleType,int index,string data)
     {
         string[] lines = data.Substring(0, data.Length).Split('\t');
         Queue<string> tempstringQueue = new Queue<string>();
@@ -212,19 +212,19 @@ public class DataManager
 
         OneDayScheduleData temp = new OneDayScheduleData();
 
-        if(scheduleType == TaskType.BroadCast)
+        if(scheduleType == ContentType.BroadCast)
         {
-            temp.scheduleType = TaskType.BroadCast;
+            temp.scheduleType = ContentType.BroadCast;
             temp.broadcastType = (BroadCastType)index;
         }
-        else if(scheduleType == TaskType.Rest)
+        else if(scheduleType == ContentType.Rest)
         {
-            temp.scheduleType = TaskType.Rest;
+            temp.scheduleType = ContentType.Rest;
             temp.restType = (RestType)index;
         }
         else
         {
-            temp.scheduleType = TaskType.GoOut;
+            temp.scheduleType = ContentType.GoOut;
             temp.goOutType = (GoOutType)index;
         }
         

@@ -145,7 +145,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         SetAniSpeed(isFastMode ? 2 : 1);
 
         //휴식 하는게 아니라면 아플 수 있음
-        if (oneDay.scheduleType != TaskType.Rest && !isSick)
+        if (oneDay.scheduleType != ContentType.Rest && !isSick)
         {
             Check_illnessProbability();
         }
@@ -162,7 +162,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         {
             UI_MainBackUI.instance.StartScreenAnimation(oneDay.PathName, oneDay.RubiaAni);
             oneDay.CheckAndAddIfNotWatched();
-            if(oneDay.scheduleType == TaskType.BroadCast)
+            if(oneDay.scheduleType == ContentType.BroadCast)
             {
                 ChattingManager.Inst.gameObject.SetActive(true);
                 ChattingManager.Inst.StartGenerateChattingByType(oneDay.broadcastType);
@@ -186,14 +186,14 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             }
 
             //방송을 진행했다면 돈 구독자 증가
-            if (oneDay.scheduleType == TaskType.BroadCast)
+            if (oneDay.scheduleType == ContentType.BroadCast)
             {
                 IncreaseSubsAndMoney(oneDay, bonusMultiplier);
             }
 
             //컨디션 변화
             float HeartVariance; float StarVariance;
-            if (oneDay.scheduleType == TaskType.Rest)
+            if (oneDay.scheduleType == ContentType.Rest)
             {
                 HeartVariance = oneDay.HeartVariance * bonusMultiplier;
                 StarVariance = oneDay.StarVariance * bonusMultiplier;

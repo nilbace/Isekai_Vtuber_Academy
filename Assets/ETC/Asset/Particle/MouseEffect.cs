@@ -11,6 +11,11 @@ public class MouseEffect : MonoBehaviour
     float spawnTime;
     public float defaultTime = 0.05f;
 
+    public GameObject CirclePrefab;
+    public int pool2Size = 4;
+    GameObject[] circlePool;
+    int currentPool2Index = 0;
+
     void Start()
     {
         // 오브젝트 풀 초기화
@@ -20,10 +25,20 @@ public class MouseEffect : MonoBehaviour
             starPool[i] = Instantiate(StarPrefab, transform);
             starPool[i].SetActive(false);
         }
+        circlePool = new GameObject[pool2Size];
+        for (int i = 0; i < pool2Size; i++)
+        {
+            circlePool[i] = Instantiate(CirclePrefab, transform);
+            circlePool[i].SetActive(false);
+        }
     }
 
     void Update()
     {
+        if(Input.GetMouseButtonDown(0))
+        {
+            TouchCreate();
+        }
         if ((Input.GetMouseButton(0) || Input.touchCount > 0) && spawnTime >= defaultTime)
         {
             StarCreate();
@@ -46,5 +61,21 @@ public class MouseEffect : MonoBehaviour
 
         // 오브젝트 인덱스 업데이트
         currentPoolIndex = (currentPoolIndex + 1) % poolSize;
+    }
+
+    void TouchCreate()
+    {
+        // 오브젝트 풀에서 사용 가능한 오브젝트 찾기
+        GameObject star = circlePool[currentPool2Index];
+        star.SetActive(true);
+
+        // 생성 위치 설정
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+        star.transform.position = mousePos;
+        star.GetComponentInChildren<CircleParticle>().Start();
+
+        // 오브젝트 인덱스 업데이트
+        currentPool2Index = (currentPool2Index + 1) % pool2Size;
     }
 }
