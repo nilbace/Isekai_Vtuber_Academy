@@ -32,7 +32,7 @@ RectTransform:
   m_Children:
   - {fileID: 6697205270137708122}
   m_Father: {fileID: 5501035149407559670}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -488,7 +488,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 0.023477325}
   m_Children: []
   m_Father: {fileID: 5501035149407559670}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -934,9 +934,9 @@ RectTransform:
   - {fileID: 8014308165878538932}
   - {fileID: 7780970117520245584}
   - {fileID: 2158346640120564230}
-  - {fileID: 7068376507539086757}
   - {fileID: 6694458618807780855}
   - {fileID: 7148797361635048046}
+  - {fileID: 7068376507539086757}
   - {fileID: 1701863276961764442}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -989,7 +989,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5501035149407559673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,6 +1020,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 3791552861156885725}
+  GD:
+    order: 
+    result: 
+    msg: 
 --- !u!1 &5657491869211867155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,7 +1174,6 @@ GameObject:
   - component: {fileID: 30934467821325543}
   - component: {fileID: 1127225658419368813}
   - component: {fileID: 2849113329005672082}
-  - component: {fileID: 5287679160714204510}
   m_Layer: 5
   m_Name: ResultBTN
   m_TagString: Untagged
@@ -1191,7 +1194,7 @@ RectTransform:
   m_Children:
   - {fileID: 3740612374810786670}
   m_Father: {fileID: 5501035149407559670}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1279,27 +1282,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1127225658419368813}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &5287679160714204510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6119193094691815484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreLayout: 0
-  m_MinWidth: -1
-  m_MinHeight: -1
-  m_PreferredWidth: -1
-  m_PreferredHeight: -1
-  m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
-  m_LayoutPriority: 1
+      m_Calls:
+      - m_Target: {fileID: 5059978660814583164}
+        m_TargetAssemblyTypeName: UI_CouponPopup, Assembly-CSharp
+        m_MethodName: UseCoupon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8243285347759087708
 GameObject:
   m_ObjectHideFlags: 0
