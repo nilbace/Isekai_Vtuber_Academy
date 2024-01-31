@@ -9,7 +9,7 @@ public class UI_Setting : UI_Popup
 
     enum Buttons
     {
-        Googlelink, CloudSave, CloudLoad, Achievement, Credit, CloseBTN, ResetBTN
+        Googlelink, CloudSave, CloudLoad, Achievement, Credit, CloseBTN, ResetBTN, CouponBTN
     }
 
     public Slider BGMSlider;
@@ -31,6 +31,7 @@ public class UI_Setting : UI_Popup
 
         GetButton((int)Buttons.CloseBTN).onClick.AddListener(CloseBTN);
         GetButton((int)Buttons.ResetBTN).onClick.AddListener(ResetBTN);
+        GetButton((int)Buttons.CouponBTN).onClick.AddListener(CouponBTN);
 
         //이름 바뀐거 맞음 
         BGMSlider.onValueChanged.AddListener(SFX_ValueChanged);
@@ -42,6 +43,12 @@ public class UI_Setting : UI_Popup
     {
         Managers.UI_Manager.ClosePopupUI();
         Managers.Sound.Play(Define.Sound.SmallBTN);
+    }
+
+    void CouponBTN()
+    {
+        Managers.Sound.Play(Define.Sound.SmallBTN);
+        Managers.UI_Manager.ShowPopupUI<UI_CouponPopup>();
     }
 
     void BGM_ValueChanged(float value)

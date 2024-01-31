@@ -4638,8 +4638,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 983556901}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9879,11 +9878,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983556899}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.0619879, y: -13.269831, z: -118.52555}
+  m_LocalPosition: {x: -1.0619879, y: -13.269831, z: -108.787476}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 399023211}
-  m_RootOrder: 0
+  m_Father: {fileID: 1379743930}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &995684424
 GameObject:
@@ -12801,6 +12800,7 @@ Transform:
   - {fileID: 1205183827}
   - {fileID: 1857679098}
   - {fileID: 1985239779}
+  - {fileID: 983556901}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16756,7 +16756,7 @@ GameObject:
   - component: {fileID: 1857679100}
   - component: {fileID: 1857679099}
   m_Layer: 5
-  m_Name: UI_MiniPopup
+  m_Name: AlarmPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

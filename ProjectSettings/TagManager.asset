@@ -47,3 +47,6 @@ TagManager:
   - name: Tutorial
     uniqueID: 1935352195
     locked: 0
+  - name: Touch
+    uniqueID: 3650584559
+    locked: 0
