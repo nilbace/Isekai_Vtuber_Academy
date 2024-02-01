@@ -112,8 +112,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 85.95325}
-  m_SizeDelta: {x: 232, y: 126.0935}
+  m_AnchoredPosition: {x: 0, y: 102.40962}
+  m_SizeDelta: {x: 232, y: 93.1808}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6994189619540729751
 CanvasRenderer:
@@ -297,8 +297,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 80}
-  m_SizeDelta: {x: 214, y: 98}
+  m_AnchoredPosition: {x: 0, y: 95.8889}
+  m_SizeDelta: {x: 214, y: 66.2222}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3077445919088913498
 CanvasRenderer:
@@ -356,7 +356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9202014230646930133
 RectTransform:
   m_ObjectHideFlags: 0
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5501035149407559673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,7 +689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -16.253246}
+  m_AnchoredPosition: {x: 0, y: -12.5}
   m_SizeDelta: {x: 195.6948, y: 38.652405}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9056424226241367428
@@ -720,9 +720,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC2E0\uCCB4 \uAC74\uAC15 <sprite=11> \uD639\uC740 \uC815\uC2E0 \uAC74\uAC15
-    <sprite=12> \uC774 50 \uC774\uD558\uB77C\uBA74\\n\uC2A4\uCF00\uC974 \uB2F9\uC77C\uACFC
-    \uB2E4\uC74C\uB0A0\uAE4C\uC9C0 \uC2E4\uD328\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  m_text: "\uC2E0\uCCB4 \uAC74\uAC15<sprite=11> \uD639\uC740 \uC815\uC2E0 \uAC74\uAC15<sprite=12>
+    \uC774 50 \uC774\uD558\uB77C\uBA74\\n\uC2A4\uCF00\uC974 \uB2F9\uC77C\uACFC \uB2E4\uC74C\uB0A0\uAE4C\uC9C0
+    \uC2E4\uD328\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 55fd8658d54b9b5419c8d25476bdc5dc, type: 2}
   m_sharedMaterial: {fileID: -3065034633096218605, guid: 55fd8658d54b9b5419c8d25476bdc5dc, type: 2}
