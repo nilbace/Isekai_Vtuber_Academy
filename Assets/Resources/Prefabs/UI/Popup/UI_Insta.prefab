@@ -505,7 +505,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5501035149407559673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,9 +1042,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CoverBTN: {fileID: 0}
   BaseImage: {fileID: 0}
-  BroadCastAnis: []
-  RestAnis: []
-  GoOutAnis: []
+  BroadCastImgs: []
+  RestImgs: []
+  GoOutImgs: []
   EndingImgs: []
 --- !u!1 &8043539910855982995
 GameObject:
