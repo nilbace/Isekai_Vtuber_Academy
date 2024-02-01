@@ -295,6 +295,20 @@ public class Define
 
     public enum MMState { usual, OnSchedule }
 
+    public enum TutorialFocusPoint
+    {
+        StartSchedule,
+        Screen,
+        BroadcastBTN,
+        RestBTN,
+        GoOutBTN,
+        Healing,
+        LOL,
+        Sketch,
+        BC_Draw,
+        MaxCount
+    }
+
     [System.Serializable]
     public class Dialogue
     {
@@ -303,6 +317,7 @@ public class Define
         public bool isLeft;
         public int CostGold;
         public List<RewardStat> rewardStats;
+        public TutorialFocusPoint tutorialFocus;
 
         public Dialogue(string name = "", string sentence = "", bool isLeft = false, int costGold = 0)
         {
