@@ -3,16 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using static Define;
 
-[System.Serializable]
-public class FocusPoint {
-    public Vector2 Poz;
-    public Vector2 WidthHeight;
-}
 
-
-public class UI_Tutorial : UI_Popup
+public class UI_Tutorial : UI_Popup, IPointerClickHandler
 {
     public static UI_Tutorial instance;
     public Sprite[] BubbleIMGs;
@@ -24,6 +19,7 @@ public class UI_Tutorial : UI_Popup
     public float TypingDelay;
     private WaitForSeconds typingDelay;
     private int currentDialogueIndex = 0;
+    Button NowSelctedBTN;
 
 
     bool isEnd;
@@ -33,6 +29,8 @@ public class UI_Tutorial : UI_Popup
     {
         LeftIMG,
         RightIMG,
+        FocusIMG,
+        BlackIMG,
         ChatBubbleIMG
     }
 
@@ -40,6 +38,10 @@ public class UI_Tutorial : UI_Popup
     {
         Option1BTN,
         Option2BTN,
+    }
+    private void Awake()
+    {
+        instance = this;
     }
 
     private void Start()
@@ -50,7 +52,6 @@ public class UI_Tutorial : UI_Popup
 
     public override void Init()
     {
-        instance = this;
         base.Init();
         Bind<TMPro.TMP_Text>(typeof(Texts));
         Bind<Image>(typeof(Images));
@@ -65,23 +66,78 @@ public class UI_Tutorial : UI_Popup
 
     void Update()
     {
-        // 화면을 터치하면 다음 대사로 넘어가기
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began
-            || Input.GetMouseButtonDown(0))
+        //if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began || Input.GetMouseButtonDown(0))
+        //{
+        //    // 화면을 터치하면 다음 대사로 넘어가기
+        //    if (isTyping)
+        //    {
+        //        // 글자 출력 중이라면 모든 대사 한 번에 보여주기
+        //        StopCoroutine(typingCoroutine);
+        //        dialogueText.text = dialogues[currentDialogueIndex].sentence;
+        //        isTyping = false;
+        //    }
+        //    //대사가 끝난 상태에서
+        //    else
+        //    {
+        //        //Focus포인트가 있다면
+        //        if (dialogues[currentDialogueIndex].tutorialFocus != TutorialFocusPoint.MaxCount)
+        //        {
+        //            //넘어가는건 OnPointerClick에 있음
+        //            return;
+        //        }
+        //        //Focus포인트가 없다면 다음 대사로 넘어감
+        //        else
+        //        {
+        //            NextDialogue();
+        //        }
+        //    }
+        //}
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (isTyping)
         {
-            if (isTyping)
+            // 글자 출력 중이라면 모든 대사 한 번에 보여주기
+            StopCoroutine(typingCoroutine);
+            dialogueText.text = dialogues[currentDialogueIndex].sentence;
+            isTyping = false;
+        }
+        else
+        {
+            if (dialogues[currentDialogueIndex].tutorialFocus != TutorialFocusPoint.MaxCount)
             {
-                // 글자 출력 중이라면 모든 대사 한 번에 보여주기
-                StopCoroutine(typingCoroutine);
-                dialogueText.text = dialogues[currentDialogueIndex].sentence;
-                isTyping = false;
+                // 터치한 GameObject가 img인지 확인
+                if (eventData.pointerCurrentRaycast.gameObject == GetImage((int)Images.BlackIMG).gameObject)
+                {
+                    if (NowSelctedBTN != null)
+                    {
+                        Debug.Log("버튼임");
+                        NowSelctedBTN.onClick.Invoke();
+                    }
+                    NextDialogue();
+                }
             }
+            //Focus포인트가 없다면 다음 대사로 넘어감
             else
             {
-                // 다음 대사로 넘어가기
                 NextDialogue();
             }
+
+            
         }
+
+        //원본
+
+        //// 터치한 GameObject가 img인지 확인
+        //if (eventData.pointerCurrentRaycast.gameObject == GetImage((int)Images.BlackIMG).gameObject)
+        //{
+        //    if (NowSelctedBTN != null)
+        //    {
+        //        NowSelctedBTN.onClick.Invoke();
+        //    }
+        //    NextDialogue();
+        //}
     }
 
     public void StartDiagloue(List<Dialogue> DiaList)
@@ -92,6 +148,9 @@ public class UI_Tutorial : UI_Popup
 
     void ShowDialogue(Dialogue dialogue)
     {
+        ChooseBubbleIMG(dialogue);
+        ShowImage(dialogue);
+        SetFocusImg(dialogue);
         // 대사 출력을 위한 코루틴 실행
         typingCoroutine = StartCoroutine(TypeSentence(dialogue));
     }
@@ -122,8 +181,7 @@ public class UI_Tutorial : UI_Popup
 
     IEnumerator TypeSentence(Dialogue dialogue)
     {
-        ChooseBubbleIMG(dialogue);
-        ShowImage(dialogue);
+        
 
         // 글자 출력 중임을 표시
         isTyping = true;
@@ -186,6 +244,68 @@ public class UI_Tutorial : UI_Popup
         }
     }
 
+    void SetFocusImg(Dialogue dialogue)
+    {
+        
+        switch (dialogue.tutorialFocus)
+        {
+            case TutorialFocusPoint.StartSchedule:
+                SetFocusImg("CreateScheduleBTN");
+                break;
+            case TutorialFocusPoint.Screen:
+                SetFocusImg("ScreenIMG");
+                break;
+            case TutorialFocusPoint.BroadcastBTN:
+                break;
+            case TutorialFocusPoint.RestBTN:
+                break;
+            case TutorialFocusPoint.GoOutBTN:
+                break;
+            case TutorialFocusPoint.Healing:
+                break;
+            case TutorialFocusPoint.LOL:
+                break;
+            case TutorialFocusPoint.Sketch:
+                break;
+            case TutorialFocusPoint.BC_Draw:
+                break;
+            case TutorialFocusPoint.MaxCount:
+                FocusImgDisappear();
+                break;
+        }
+    }
+
+    GameObject SetFocusImg(string Objectname)
+    {
+        var FocusImg = GetImage((int)Images.FocusIMG);
+        GameObject go = GameObject.Find(Objectname);
+        FocusImg.sprite = go.GetComponent<Image>().sprite;
+        FocusImg.GetComponent<RectTransform>().sizeDelta = go.GetComponent<RectTransform>().sizeDelta;
+        FocusImg.GetComponent<RectTransform>().anchoredPosition = go.GetComponent<RectTransform>().anchoredPosition;
+
+        Button button = go.GetComponent<Button>();
+
+        // Button 컴포넌트가 있는지 확인
+        if (button != null)
+        {
+            NowSelctedBTN = button;
+            Debug.Log("버튼 있다");
+        }
+        else
+        {
+            NowSelctedBTN = button;
+            Debug.Log("버튼 없다");
+        }
+
+        return go;
+    }
+
+    void FocusImgDisappear()
+    {
+        var FocusImg = GetImage((int)Images.FocusIMG);
+        FocusImg.GetComponent<RectTransform>().sizeDelta = new Vector3(0, 0, 0);
+    }
+
     void TurnOnImage(bool isLeft, Sprite sprite)
     {
         GetImage((int)Images.LeftIMG).gameObject.SetActive(isLeft);
@@ -197,6 +317,5 @@ public class UI_Tutorial : UI_Popup
         GetImage((int)Images.RightIMG).color = !isLeft ? Color.white : Color.gray;
     }
 
-   
-
+    
 }
