@@ -37,7 +37,7 @@ public class UI_SchedulePopup : UI_Popup
         FridayBTN,
         SaturdayBTN,
         SundayBTN,
-        BroadCastBTN,
+        BroadcastBTN,
         RestBTN,
         GoOutBTN,
     }
@@ -109,7 +109,7 @@ public class UI_SchedulePopup : UI_Popup
         }
         
         //방송, 휴식, 외출 버튼 연결
-        GetButton((int)Buttons.BroadCastBTN).onClick.AddListener(()=>ChooseContentType(ContentType.BroadCast));
+        GetButton((int)Buttons.BroadcastBTN).onClick.AddListener(()=>ChooseContentType(ContentType.BroadCast));
         GetButton((int)Buttons.RestBTN).onClick.AddListener(() => ChooseContentType(ContentType.Rest));
         GetButton((int)Buttons.GoOutBTN).onClick.AddListener(() => ChooseContentType(ContentType.GoOut));
 

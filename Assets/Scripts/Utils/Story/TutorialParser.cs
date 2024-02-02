@@ -42,9 +42,10 @@ public class TutorialParser : MonoSingleton<TutorialParser>
         if (lines[2] == "") temp.tutorialFocus = TutorialFocusPoint.MaxCount;
         else Enum.TryParse(lines[2], out temp.tutorialFocus);
 
+        if (lines[3] == "TRUE") temp.IsInteractable = true;
 
         //대화 하나
-        temp.sentence = ReplaceString(lines[3]);
+        temp.sentence = ReplaceString(lines[4]);
         
         
 

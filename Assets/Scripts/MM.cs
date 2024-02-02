@@ -13,7 +13,8 @@ public class MM : MonoSingleton<MM>
     Coroutine ResetTalkCor;
     
     Animator animator;
-    
+
+    [HideInInspector] public bool Interactable;
     
 
     MMState _nowMMState = MMState.usual;
@@ -23,6 +24,7 @@ public class MM : MonoSingleton<MM>
     private void Awake()
     {
         base.Awake();
+        Interactable = true;
         string[] talks = SmallTalkTextAsset.text.Split('\n');
         foreach(string talk in talks)
         {
@@ -68,13 +70,16 @@ public class MM : MonoSingleton<MM>
 
     private void OnMouseDown()
     {
-        if (_nowMMState == MMState.OnSchedule)
+        if(Interactable)
         {
-            animator.SetTrigger("Push");
-            Managers.Sound.Play("MM");
-            UI_SchedulePopup.instance.ResetSchedule();
-            if (ResetTalkCor != null) StopCoroutine(ResetTalkCor);
-            ResetTalkCor = StartCoroutine(ForgetTalk());
+            if (_nowMMState == MMState.OnSchedule)
+            {
+                animator.SetTrigger("Push");
+                Managers.Sound.Play("MM");
+                UI_SchedulePopup.instance.ResetSchedule();
+                if (ResetTalkCor != null) StopCoroutine(ResetTalkCor);
+                ResetTalkCor = StartCoroutine(ForgetTalk());
+            }
         }
     }
 

@@ -17,9 +17,17 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
     //영수증 전달용 변수
     //0대성공 1성공 2실패
-    public int[] SuccessTimeContainer = new int[3];
+    [HideInInspector] public int[] SuccessTimeContainer = new int[3];
 
     public Action<int> SetAniSpeedAction;
+
+    private void Start()
+    {
+        //if (!Managers.Data.PersistentUser.WatchedTutorial)
+        //{
+        //    Managers.UI_Manager.ShowPopupUI<UI_Tutorial>();
+        //}
+    }
     void SetAniSpeed(int speed)
     {
         SetAniSpeedAction?.Invoke(speed);
@@ -392,6 +400,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     public void StartGame()
     {
         GameStart?.Invoke();
+        
     }
 
     public Action WeekOverAction;

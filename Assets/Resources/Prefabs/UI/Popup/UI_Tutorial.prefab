@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -82, y: -102.5}
+  m_AnchoredPosition: {x: -82, y: 177}
   m_SizeDelta: {x: 100, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7708429626332914271
@@ -185,7 +185,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -200.44995}
+  m_AnchoredPosition: {x: 0, y: 79.05005}
   m_SizeDelta: {x: 272, y: 78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6535570492112637773
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 7202737150082356331}
   - component: {fileID: 7160023675646414254}
   m_Layer: 5
-  m_Name: Black
+  m_Name: BlackIMG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 2469289580425887431}
   - component: {fileID: 4170221605281033011}
   m_Layer: 5
-  m_Name: FocusPart
+  m_Name: FocusIMG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,7 +338,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -85.586624, y: -138.80478}
-  m_SizeDelta: {x: 10, y: 10}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1395493272764829997
 CanvasRenderer:
@@ -454,7 +454,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1935352195
   m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &7047927248918468122
@@ -706,7 +706,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 82, y: -102.5}
+  m_AnchoredPosition: {x: 82, y: 177}
   m_SizeDelta: {x: 100, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3296057959218796205

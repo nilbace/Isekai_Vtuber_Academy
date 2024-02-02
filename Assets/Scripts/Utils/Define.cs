@@ -297,15 +297,21 @@ public class Define
 
     public enum TutorialFocusPoint
     {
-        StartSchedule,
-        Screen,
+        CreateScheduleBTN,
+        ScreenIMG,
         BroadcastBTN,
         RestBTN,
         GoOutBTN,
         Healing,
         LOL,
         Sketch,
-        BC_Draw,
+        Category_Draw,
+        TuesdayBTN,
+        Category_Song,
+        Song,
+        MM,
+        HealthBox,
+        StatBox,
         MaxCount
     }
 
@@ -318,6 +324,7 @@ public class Define
         public int CostGold;
         public List<RewardStat> rewardStats;
         public TutorialFocusPoint tutorialFocus;
+        public bool IsInteractable;
 
         public Dialogue(string name = "", string sentence = "", bool isLeft = false, int costGold = 0)
         {
