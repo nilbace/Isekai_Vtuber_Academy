@@ -429,7 +429,7 @@ public class Define
             return temp;
         }
 
-        public void ChangeStat(float[] stats)
+        public void ChangeStatAndPlayAnimation(float[] stats)
         {
             for (int i = 0; i < 6; i++)
             {
@@ -438,6 +438,7 @@ public class Define
                 if (stats[i] != 0)
                 {
                     UI_MainBackUI.instance.GlitterStat(i);
+                    PlusText.Inst.PlayAnimation((StatName)i, (int)stats[i]);
                 }
             }
             UI_MainBackUI.instance.UpdateUItexts();

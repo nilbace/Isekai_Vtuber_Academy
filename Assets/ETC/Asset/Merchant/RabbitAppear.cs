@@ -31,7 +31,7 @@ public class RabbitAppear : MonoBehaviour
         moveUpTween.OnComplete(() =>
         {
             startShake = false;
-            targetRectTransform.anchoredPosition = initialPosition;
+            targetRectTransform.DOAnchorPos(initialPosition, 0.1f);
         });
 
 

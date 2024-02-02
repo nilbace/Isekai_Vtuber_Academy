@@ -119,6 +119,6 @@ public class UI_RandomEvent : UI_Popup
             }
         }
 
-        Managers.Data.PlayerData.ChangeStat(eventStatValues);
+        Managers.Data.PlayerData.ChangeStatAndPlayAnimation(eventStatValues);
     }
 }

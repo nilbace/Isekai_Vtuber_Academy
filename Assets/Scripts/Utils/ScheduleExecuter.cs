@@ -21,13 +21,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
     public Action<int> SetAniSpeedAction;
 
-    private void Start()
-    {
-        //if (!Managers.Data.PersistentUser.WatchedTutorial)
-        //{
-        //    Managers.UI_Manager.ShowPopupUI<UI_Tutorial>();
-        //}
-    }
+    
     void SetAniSpeed(int speed)
     {
         SetAniSpeedAction?.Invoke(speed);
@@ -148,6 +142,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         bool todaySick = false;
         BigSuccess = false;
         UI_Stamp.Inst.SetStamp(UI_Stamp.StampState.transparent);
+        float bonusMultiplier =1f;
 
         //FastMode라면 2배속, 아니면 1배속
         SetAniSpeed(isFastMode ? 2 : 1);
@@ -181,7 +176,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             }
 
             //대성공 체크
-            float bonusMultiplier = 1.0f;
+            bonusMultiplier = 1.0f;
             if (CheckSuccessProbability())
             {
                 BigSuccess = true;
@@ -215,18 +210,20 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             Managers.Data.PlayerData.NowStar = Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data.PlayerData.NowStar, 0, 100);
 
 
-            //스텟 변화
-            float[] tempstat = new float[6];
-            for (int i = 0; i < 6; i++)
-            {
-                tempstat[i] = oneDay.Six_Stats[i] * bonusMultiplier;
-            }
-            Managers.Data.PlayerData.ChangeStat(tempstat);
+            
         }
 
         float waitTime = isFastMode ? TimeToStamp / 2 : TimeToStamp;
         if (isDev) waitTime = 0;
         yield return new WaitForSeconds(waitTime);
+
+        //스텟 변화
+        float[] tempstat = new float[6];
+        for (int i = 0; i < 6; i++)
+        {
+            tempstat[i] = oneDay.Six_Stats[i] * bonusMultiplier;
+        }
+        Managers.Data.PlayerData.ChangeStatAndPlayAnimation(tempstat);
 
         //UI하단 씰 붙이기
         if (todaySick || isSick)
