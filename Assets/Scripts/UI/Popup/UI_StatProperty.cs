@@ -19,7 +19,7 @@ public class UI_StatProperty : UI_Popup
     public static UI_StatProperty instance;
     enum Buttons
     {
-        CloseBTN,
+        
     }
     enum Texts
     {
@@ -54,8 +54,6 @@ public class UI_StatProperty : UI_Popup
         Bind<TMPro.TMP_Text>(typeof(Texts));
         Bind<GameObject>(typeof(GameObjects));
         Bind<Image>(typeof(Images));
-
-        GetButton((int)Buttons.CloseBTN).onClick.AddListener(Close);
     }
 
     public void Setting(StatName stat)
@@ -209,13 +207,4 @@ public class UI_StatProperty : UI_Popup
         if (temp == -1) return 0;
         return temp;
     }
-
-
-    void Close()
-    {
-        Managers.UI_Manager.ClosePopupUI();
-        Managers.Sound.Play(Define.Sound.SmallBTN);
-    }
-
-
 }

@@ -49,7 +49,6 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
         Init();
     }
 
-
     public override void Init()
     {
         base.Init();
@@ -173,8 +172,6 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
 
     IEnumerator TypeSentence(Dialogue dialogue)
     {
-        
-
         // 글자 출력 중임을 표시
         isTyping = true;
 
@@ -191,7 +188,6 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
             Managers.Sound.Play(Define.Sound.Chat1);
             chatIndex++;
         }
-
         // 글자 출력 완료 후 대사 정보 업데이트
         isTyping = false;
     }
@@ -396,6 +392,4 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
         GetImage((int)Images.RightIMG).sprite = !isLeft ? sprite : null;
         GetImage((int)Images.RightIMG).color = !isLeft ? Color.white : Color.gray;
     }
-
-
 }
