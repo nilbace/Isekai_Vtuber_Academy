@@ -17,7 +17,7 @@ public class UI_RandomEvent : UI_Popup
     }
     enum Texts
     {
-        EventText,
+        EventText, BTN1Text, BTN2Text
     }
 
     enum Images
@@ -47,6 +47,8 @@ public class UI_RandomEvent : UI_Popup
         GetImage((int)Images.CutSceneIMG).sprite = LoadIMG(_eventData);
 
         GetText((int)Texts.EventText).text = _eventData.EventInfoString;
+        GetText((int)Texts.BTN1Text).text = _eventData.BTN1text;
+        GetText((int)Texts.BTN2Text).text = _eventData.BTN2text;
         GetButton((int)Buttons.ResultBTN).onClick.AddListener(ChooseBTN1);
         GetButton((int)Buttons.ResultBTN2).onClick.AddListener(ChooseBTN2);
         if (_eventData.EventDataType == EventDataType.Main) GetButton((int)Buttons.ResultBTN2).interactable = false;
@@ -77,7 +79,7 @@ public class UI_RandomEvent : UI_Popup
     void ChooseBTN1()
     {
         DoOption(isOption1: true);
-        UI_DefaultPopup.SetDefaultPopupUI( DefaultPopupState.Normal, _eventData.BTN1ResultText, "1번");
+        UI_DefaultPopup.SetDefaultPopupUI( DefaultPopupState.Normal, _eventData.BTN1ResultText, "확인");
         Managers.UI_Manager.ShowPopupUI<UI_DefaultPopup>();
         Managers.Sound.Play(Define.Sound.SmallBTN);
 
@@ -86,7 +88,7 @@ public class UI_RandomEvent : UI_Popup
     void ChooseBTN2()
     {
         DoOption(isOption1: false);
-        UI_DefaultPopup.SetDefaultPopupUI(DefaultPopupState.Normal, _eventData.BTN2ResultText, "2번");
+        UI_DefaultPopup.SetDefaultPopupUI(DefaultPopupState.Normal, _eventData.BTN2ResultText, "확인");
         Managers.UI_Manager.ShowPopupUI<UI_DefaultPopup>();
         Managers.Sound.Play(Define.Sound.SmallBTN);
 
@@ -101,10 +103,11 @@ public class UI_RandomEvent : UI_Popup
         {
             optionArray = _eventData.Option2;
         }
-        
+
 
         //하트 별 변화량
-        Managers.Data.PlayerData.ChangeHeart(optionArray[1]);
+        Managers.Data.PlayerData.ChangeHeart(optionArray[0]);
+        Managers.Data.PlayerData.ChangeStar(optionArray[1]);
         //스텟 변화량
         float[] eventStatValues = new float[6];
         for(int i = 0; i<6;i++)

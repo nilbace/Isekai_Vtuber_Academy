@@ -452,12 +452,12 @@ public class Define
             }
             else if(rewardStat.StatName == StatName.Heart)
             {
-                Managers.Data.PlayerData.NowHeart += rewardStat.Value;
+                Managers.Data.PlayerData.ChangeHeart(rewardStat.Value);
                 UI_MainBackUI.instance.UpdateUItexts();
             }
             else if(rewardStat.StatName == StatName.Star)
             {
-                Managers.Data.PlayerData.NowStar += rewardStat.Value;
+                Managers.Data.PlayerData.ChangeStar(rewardStat.Value);
                 UI_MainBackUI.instance.UpdateUItexts();
             }
             else
