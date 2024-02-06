@@ -10,5 +10,5 @@
 나레이션		루비아는 게임에 빠져 현실감각이 사라진 듯 합니다.				
 1		시청자와 거리를 두라고 교육하기.				
 2		치킨 야미~				
-1after		때로는 적당한 거리가 필요한 법이죠.			Karma	
-2after		헤헤 맛있다!			Karma	
+1after		때로는 적당한 거리가 필요한 법이죠. <sprite=12> + 30	Star	30	Karma	1
+2after		헤헤 맛있다! <sprite=11> + 30	Heart	30	Karma	-1
