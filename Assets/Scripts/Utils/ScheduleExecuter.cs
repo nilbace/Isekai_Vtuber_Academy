@@ -65,6 +65,9 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         EndSchedule();
     }
 
+    string temp = "";
+
+
     void EndSchedule()
     {
         var NowWeek = Managers.Data.PlayerData.NowWeek;

@@ -237,7 +237,6 @@ public class UI_Communication : UI_Popup
 
         if (dialogues[currentDialogueIndex].UserHasEnoughGold())
         {
-            Debug.Log(dialogues[currentDialogueIndex].CostGold);
             option1Button.interactable = true;
         }
         else

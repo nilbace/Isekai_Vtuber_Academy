@@ -20,6 +20,7 @@ public class Managers : MonoBehaviour
     SoundManager _sound = new SoundManager();
     DataManager _data = new DataManager();
     NicknameManager _nickname = new NicknameManager();
+    SceneMManager _scene = new SceneMManager();
     
 
     REventManager _RE = new REventManager();
@@ -29,6 +30,7 @@ public class Managers : MonoBehaviour
     public static DataManager Data { get { return instance._data; } }
     public static REventManager RandEvent { get { return instance._RE; } }
     public static NicknameManager NickName { get { return instance._nickname; } }
+    public static SceneMManager Scene { get { return instance._scene; } }
 
 
     void Awake()
@@ -53,13 +55,8 @@ public class Managers : MonoBehaviour
 
             s_instance._sound.Init();
             s_instance._data.Init();
+            s_instance._scene.Init();
         }
-    }
-
-    public static void Clear()
-    {
-        Sound.Clear();
-        UI_Manager.Clear();
     }
 
     const string DayDatasURL = "https://docs.google.com/spreadsheets/d/1WjIWPgya-w_QcNe6pWE_iug0bsF6uwTFDRY8j2MkO3o/export?format=tsv&gid=1890750354&range=B2:R";
@@ -114,7 +111,6 @@ public class Managers : MonoBehaviour
         string temp = Data.PlayerData.GetHigestStatName().ToString();
         temp += (Data.PlayerData.NowWeek / 4).ToString();
 
-        Debug.Log(temp);
         Enum.TryParse(temp, out mainStory);
 
         return mainStory;

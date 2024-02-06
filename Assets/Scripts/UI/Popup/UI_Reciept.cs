@@ -79,9 +79,17 @@ public class UI_Reciept : UI_Popup
 
     void FinishBTN()
     {
+        //삭제할 부분
+        var data = Managers.Data.PlayerData;
+        temp += $"{data.NowWeek}주차 : 게임{data.SixStat[0]},구독{data.nowSubCount},돈{data.nowGoldAmount},근력{data.SixStat[3]},멘탈{data.SixStat[4]},행운{data.SixStat[5]}\n";
+        Debug.Log(temp);
+
+        //여기까지
         Managers.UI_Manager.CloseALlPopupUI();
         Managers.Sound.Play(Define.Sound.NextWeekBTN);
 
         ScheduleExecuter.Inst.FinishWeek();
     }
+
+    static string temp = "";
 }

@@ -152,7 +152,6 @@ public class UI_MainBackUI : UI_Scene
         Get<Animator>((int)Animators.ScreenIMG).speed = ScreenAniSpeed;
         UpdateUItexts();
         RegisterActionToOtherScripts();
-        Managers.Sound.Play("bgm1", Sound.Bgm);
     }
 
     void RegisterActionToOtherScripts()
@@ -295,7 +294,6 @@ public class UI_MainBackUI : UI_Scene
         while (true)
         {
             temp = Random.Range(0, (int)SubStoryName.Max);
-            Debug.Log(temp);
             if (!Managers.Data.PlayerData.SubStoryIndex.Contains(temp)) break;
         }
         Managers.Data.PlayerData.SubStoryIndex.Add(temp);
