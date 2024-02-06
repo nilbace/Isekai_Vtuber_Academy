@@ -52,7 +52,7 @@ public class Define
     #region StatName
     public enum StatName
     {
-        Game, Song, Draw, Strength, Mental, Luck, FALSE, Subs, Week, Karma
+        Game, Song, Draw, Strength, Mental, Luck, FALSE, Subs, Week, Karma, Heart, Star
     }
 
     public enum StatNameKor
@@ -449,6 +449,16 @@ public class Define
             if (rewardStat.StatName == StatName.Karma)
             {
                 Managers.Data.PlayerData.RubiaKarma += rewardStat.Value;
+            }
+            else if(rewardStat.StatName == StatName.Heart)
+            {
+                Managers.Data.PlayerData.NowHeart += rewardStat.Value;
+                UI_MainBackUI.instance.UpdateUItexts();
+            }
+            else if(rewardStat.StatName == StatName.Star)
+            {
+                Managers.Data.PlayerData.NowStar += rewardStat.Value;
+                UI_MainBackUI.instance.UpdateUItexts();
             }
             else
             {

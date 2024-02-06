@@ -104,19 +104,12 @@ public class UI_RandomEvent : UI_Popup
         
 
         //하트 별 변화량
-        Managers.Data.PlayerData.ChangeHeart(optionArray[0]);
-        if (optionArray[0] != 0) Debug.Log($"하트{optionArray[0]} 변화 ");
         Managers.Data.PlayerData.ChangeHeart(optionArray[1]);
-        if (optionArray[1] != 0) Debug.Log($"별{optionArray[1]} 변화");
         //스텟 변화량
         float[] eventStatValues = new float[6];
         for(int i = 0; i<6;i++)
         {
             eventStatValues[i] = optionArray[i + 2];
-            if(optionArray[i+2] != 0)
-            {
-                Debug.Log($"{(StatName)(i)} 스텟 {optionArray[i + 2]} 증가");
-            }
         }
 
         Managers.Data.PlayerData.ChangeStatAndPlayAnimation(eventStatValues);

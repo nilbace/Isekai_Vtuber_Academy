@@ -21,7 +21,13 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
     public Action<int> SetAniSpeedAction;
 
-    
+    //아픈 첫날 체크용
+    bool FirstSickDay = false;
+    //두번쨋날이 끝나면 false로 바뀜
+    bool isSick = false; 
+    bool caughtCold = false; 
+    bool caughtDepression = false;
+
     void SetAniSpeed(int speed)
     {
         SetAniSpeedAction?.Invoke(speed);
@@ -30,7 +36,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     public IEnumerator StartSchedule()
     {
         //상태 초기화
-        isSick = false; SickDayOne = false;
+        isSick = false; FirstSickDay = false;
         BeforeScheduleData.FillDatas();
         for (int i = 0; i < 3; i++)
         {
@@ -65,7 +71,6 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         EndSchedule();
     }
 
-    string temp = "";
 
 
     void EndSchedule()
@@ -156,11 +161,12 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             Check_illnessProbability();
         }
 
-        //아프면 그냥 누워있을 거임
+        //아픈 첫번쨋날, 두번쨋날 실행되는 부분
         if (isSick)
         {
             todaySick = true;
             ExecuteSickDay();
+            //실패 카운트 증가
             SuccessTimeContainer[2]++;
         }
         //아프지 않다면 모든 일정에 대해 대성공이 뜰 수 있음
@@ -184,10 +190,12 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             {
                 BigSuccess = true;
                 bonusMultiplier = 1.5f;// 50% 상승을 위한 상수값
+                //대성공 카운트 증가
                 SuccessTimeContainer[0]++;
             }
             else
             {
+                //성공 카운트 증가
                 SuccessTimeContainer[1]++;
             }
 
@@ -251,10 +259,9 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
 
     #region Sick__BigSuccess
-    bool isSick = false; bool SickDayOne = false;
-    bool caughtCold = false; bool caughtDepression = false;
+    
 
-
+    //감기에 걸리거나 가출함
     void Check_illnessProbability()
     {
         if (Managers.Data.PlayerData.NowHeart < 50 || Managers.Data.PlayerData.NowStar < 50)
@@ -264,7 +271,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 if (UnityEngine.Random.Range(0, 100) < 25)
                 {
                     isSick = true;
-                    SickDayOne = true;
+                    FirstSickDay = true;
                     caughtCold = true;
                     return;
                 }
@@ -274,7 +281,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 if (UnityEngine.Random.Range(0, 100) < 25)
                 {
                     isSick = true;
-                    SickDayOne = true;
+                    FirstSickDay = true;
                     caughtDepression = true;
                     return;
                 }
@@ -284,7 +291,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 if (UnityEngine.Random.Range(0, 100) < 50)
                 {
                     isSick = true;
-                    SickDayOne = true;
+                    FirstSickDay = true;
                     caughtCold = true;
                     return;
                 }
@@ -294,9 +301,21 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 if (UnityEngine.Random.Range(0, 100) < 50)
                 {
                     isSick = true;
-                    SickDayOne = true;
+                    FirstSickDay = true;
                     caughtDepression = true;
                     return;
+                }
+            }
+            if (caughtCold && caughtDepression)
+            {
+                int randomValue = UnityEngine.Random.Range(0, 2);
+                if (randomValue == 0)
+                {
+                    caughtCold = false;
+                }
+                else
+                {
+                    caughtDepression = false;
                 }
             }
         }
@@ -304,13 +323,23 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
     void ExecuteSickDay()
     {
-        if (SickDayOne)
+        if(caughtCold)
         {
-            SickDayOne = false;
+            UI_MainBackUI.instance.StartScreenAnimation("Cold");
+        }
+        else if(caughtDepression)
+        {
+            UI_MainBackUI.instance.StartScreenAnimation("RunAway");
+        }
+        if (FirstSickDay)
+        {
+            FirstSickDay = false;
         }
         else
         {
             isSick = false;
+            caughtCold = false;
+            caughtDepression = false;
         }
         int RestHeartStarValue = 10;
         Managers.Data.PlayerData.NowHeart += RestHeartStarValue;

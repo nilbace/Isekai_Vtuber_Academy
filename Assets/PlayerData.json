@@ -1,0 +1,38 @@
+{
+    "NowWeek": 12,
+    "nowSubCount": 10238,
+    "nowGoldAmount": 549,
+    "RubiaKarma": 1,
+    "NowHeart": 95.0,
+    "NowStar": 68.0,
+    "SixStat": [
+        67.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+    ],
+    "DoneEventNames": [
+        "밀웜 먹방",
+        "도수치료 직캠"
+    ],
+    "BoughtItems": [
+        "악마의 렌즈",
+        "멘드레이크 쥬스"
+    ],
+    "SubStoryIndex": [
+        26,
+        28,
+        1,
+        6,
+        21,
+        27,
+        11,
+        23,
+        8,
+        20,
+        12,
+        25
+    ]
+}

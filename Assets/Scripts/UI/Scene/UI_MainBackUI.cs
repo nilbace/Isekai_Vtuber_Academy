@@ -319,7 +319,7 @@ public class UI_MainBackUI : UI_Scene
     //스케쥴 실행 애니메이션
     #region ScheduleAnimation
 
-    public void StartScreenAnimation(string KorName, string RubiaAniIndex)
+    public void StartScreenAnimation(string KorName, string RubiaAniIndex = "")
     {
         var ScreenAnimator = Get<Animator>((int)Animators.ScreenIMG);
         var RubiaAnimator = Get<Animator>((int)Animators.RubiaIMG);
@@ -394,7 +394,7 @@ public class UI_MainBackUI : UI_Scene
             GetText((int)Texts.TempGameTMP + i).text = Managers.Data.PlayerData.SixStat[i].ToString("F0");
         }
 
-        GetText((int)Texts.CommunicationTMP).text = ((SubStoryName)NowWeekSubStoryIndex).ToString();
+        GetText((int)Texts.CommunicationTMP).text = ReplaceDashWithSpace(((SubStoryName)NowWeekSubStoryIndex).ToString());
     }
 
     private string GetInitialTextForType(Texts textType)
@@ -422,17 +422,17 @@ public class UI_MainBackUI : UI_Scene
         string temp = "";
         if (n >= 75)
         {
-            temp = "건강";
+            temp = $"건강 {n}";
         }
         else if (n >= 50)
         {
-            temp = "주의";
+            temp = $"주의 {n}";
         }
         else if (n >= 25)
         {
-            temp = "위험";
+            temp = $"위험 {n}";
         }
-        else temp = "심각";
+        else temp = $"심각 {n}";
         return temp;
     }
 
@@ -453,6 +453,12 @@ public class UI_MainBackUI : UI_Scene
         }
         else temp = 3;
         return temp;
+    }
+
+    string ReplaceDashWithSpace(string input)
+    {
+        string result = input.Replace('_', ' ');
+        return result;
     }
 
     //스케쥴 짜기 버튼,뒤로가기 버튼 등 프레임 밑 버튼들 좌우 이동
@@ -504,7 +510,6 @@ public class UI_MainBackUI : UI_Scene
             DayResultSeals[day].GetComponent<Animator>().SetTrigger("OAni");
         else if (SealType == 2)
         {
-            Debug.Log("XXXXX");
             DayResultSeals[day].GetComponent<Animator>().SetTrigger("XAni");
         }
     }
