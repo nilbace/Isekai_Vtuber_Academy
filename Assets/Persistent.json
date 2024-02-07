@@ -2,7 +2,7 @@
     "BoughtAdPass": false,
     "WatchedTutorial": false,
     "WatchedCaught": true,
-    "WatchedRunAway": false,
+    "WatchedRunAway": true,
     "WatchedBroadCast": [
         1,
         0,

@@ -15,6 +15,7 @@ public class UI_DefaultPopup : UI_Popup
     public Image RubiaImage;
     public Ease ease;
     public float MoveTime;
+    public Animator SurpriseAnimator;
     private void Awake()
     {
         instance = this;
@@ -26,7 +27,6 @@ public class UI_DefaultPopup : UI_Popup
     enum Texts
     {
         EventText, resultbtnTMP
-
     }
 
     private void Start()
@@ -46,6 +46,10 @@ public class UI_DefaultPopup : UI_Popup
         {
             RubiaImage.transform.DOMoveX(-250, MoveTime).SetEase(ease);
         }
+        else if(popupState == DefaultPopupState.RandomEvent)
+        {
+            SurpriseAnimator.gameObject.SetActive(true);
+        }
     }
 
     void Setting()
@@ -62,7 +66,7 @@ public class UI_DefaultPopup : UI_Popup
 
     public static void RandEventOccur()
     {
-        SetDefaultPopupUI(DefaultPopupState.RandomEvent, "또 뭔 사고를 친거냐뮹", "에휴...");
+        SetDefaultPopupUI(DefaultPopupState.RandomEvent, "무슨 일이 일어난 것\n같다...", "사태 파악하기");
         Managers.UI_Manager.ShowPopupUI<UI_DefaultPopup>();
     }
 

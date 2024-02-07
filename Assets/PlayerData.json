@@ -1,24 +1,19 @@
 {
-    "NowWeek": 2,
-    "nowSubCount": 365,
-    "nowGoldAmount": 2165,
+    "NowWeek": 1,
+    "nowSubCount": 10,
+    "nowGoldAmount": 1000,
     "RubiaKarma": 0,
-    "NowHeart": 0.0,
-    "NowStar": 35.0,
+    "NowHeart": 100.0,
+    "NowStar": 100.0,
     "SixStat": [
-        13.299999237060547,
+        0.0,
         0.0,
         0.0,
         0.0,
         0.0,
         0.0
     ],
-    "DoneEventNames": [
-        "밀웜 먹방"
-    ],
+    "DoneEventNames": [],
     "BoughtItems": [],
-    "SubStoryIndex": [
-        2,
-        9
-    ]
+    "SubStoryIndex": []
 }
