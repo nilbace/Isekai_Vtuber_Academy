@@ -487,6 +487,8 @@ public class Define
     {
         public bool BoughtAdPass;
         public bool WatchedTutorial;
+        public bool WatchedCaught;
+        public bool WatchedRunAway;
         public List<BroadCastType> WatchedBroadCast;
         public List<RestType> WatchedRest;
         public List<GoOutType> WatchedGoOut;

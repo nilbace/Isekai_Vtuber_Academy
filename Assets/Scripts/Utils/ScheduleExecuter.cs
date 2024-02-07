@@ -325,10 +325,12 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     {
         if(caughtCold)
         {
+            Managers.Data.PersistentUser.WatchedCaught = true;
             UI_MainBackUI.instance.StartScreenAnimation("Cold");
         }
         else if(caughtDepression)
         {
+            Managers.Data.PersistentUser.WatchedRunAway = true;
             UI_MainBackUI.instance.StartScreenAnimation("RunAway");
         }
         if (FirstSickDay)

@@ -12,6 +12,8 @@ public class UI_Photo : UI_Base
     public Sprite[] RestImgs;
     public Sprite[] GoOutImgs;
     public Sprite[] EndingImgs;
+    public Sprite ColdImg;
+    public Sprite RunAwayImg;
 
     
 
@@ -67,10 +69,47 @@ public class UI_Photo : UI_Base
         }
     }
 
+    public void SetCold()
+    {
+        BaseImage.sprite = ColdImg;
+        if (Managers.Data.PersistentUser.WatchedCaught)
+        {
+            CoverBTN.gameObject.SetActive(false);
+        }
+
+        BaseImage.GetComponent<Button>().onClick.AddListener(ShowColdPopup);
+    }
+
+    public void SetRunAway()
+    {
+        BaseImage.sprite = RunAwayImg;
+        if (Managers.Data.PersistentUser.WatchedRunAway)
+        {
+            CoverBTN.gameObject.SetActive(false);
+        }
+
+        BaseImage.GetComponent<Button>().onClick.AddListener(ShowRunawayPopup);
+    }
+
+
     void ShowBcPopup(object broadCastType)
     {
         Managers.Sound.Play(Sound.SmallBTN);
         UI_Ar_BC_Popup.tasktype = broadCastType;
+        Managers.UI_Manager.ShowPopupUI<UI_Ar_BC_Popup>();
+    }
+
+    void ShowColdPopup()
+    {
+        Managers.Sound.Play(Sound.SmallBTN);
+        UI_Ar_BC_Popup.isCold = true;
+        Managers.UI_Manager.ShowPopupUI<UI_Ar_BC_Popup>();
+    }
+
+    void ShowRunawayPopup()
+    {
+        Managers.Sound.Play(Sound.SmallBTN);
+        UI_Ar_BC_Popup.isRunAway = true;
         Managers.UI_Manager.ShowPopupUI<UI_Ar_BC_Popup>();
     }
 }

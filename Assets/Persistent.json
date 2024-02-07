@@ -1,9 +1,12 @@
 {
     "BoughtAdPass": false,
     "WatchedTutorial": false,
+    "WatchedCaught": true,
+    "WatchedRunAway": false,
     "WatchedBroadCast": [
         1,
-        0
+        0,
+        3
     ],
     "WatchedRest": [
         0,

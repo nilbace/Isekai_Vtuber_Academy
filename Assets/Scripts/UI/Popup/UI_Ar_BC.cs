@@ -38,5 +38,7 @@ public class UI_Ar_BC : UI_Popup
         {
             PhotoGroup[i].Set((GoOutType)(i-15));
         }
+        PhotoGroup[21].SetCold();
+        PhotoGroup[22].SetRunAway();
     }
 }
