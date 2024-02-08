@@ -15,8 +15,6 @@ public class UI_Photo : UI_Base
     public Sprite ColdImg;
     public Sprite RunAwayImg;
 
-    
-
 
     void Start()
     {

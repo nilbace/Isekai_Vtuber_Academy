@@ -219,9 +219,6 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             }
             Managers.Data.PlayerData.NowHeart = Mathf.Clamp(Mathf.CeilToInt(HeartVariance) + Managers.Data.PlayerData.NowHeart, 0, 100);
             Managers.Data.PlayerData.NowStar = Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data.PlayerData.NowStar, 0, 100);
-
-
-            
         }
 
         float waitTime = isFastMode ? TimeToStamp / 2 : TimeToStamp;
@@ -344,8 +341,9 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             caughtDepression = false;
         }
         int RestHeartStarValue = 10;
-        Managers.Data.PlayerData.NowHeart += RestHeartStarValue;
-        Managers.Data.PlayerData.NowStar += RestHeartStarValue;
+
+        Managers.Data.PlayerData.ChangeHeart(RestHeartStarValue);
+        Managers.Data.PlayerData.ChangeStar(RestHeartStarValue);
     }
 
     bool BigSuccess = false;

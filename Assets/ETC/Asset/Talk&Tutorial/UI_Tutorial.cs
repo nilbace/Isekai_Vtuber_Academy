@@ -57,16 +57,11 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
         Bind<Button>(typeof(Buttons));
         typingDelay = new WaitForSeconds(TypingDelay);
 
-        MM.Inst.Interactable = false;
         GetImage((int)Images.LeftIMG).gameObject.SetActive(false);
         GetImage((int)Images.RightIMG).gameObject.SetActive(false);
         dialogueText = GetText((int)Texts.sentenceTMP);
     }
-
-    private void OnDisable()
-    {
-        MM.Inst.Interactable = true;
-    }
+  
 
     #region Pointer
     public void OnPointerDown(PointerEventData eventData)

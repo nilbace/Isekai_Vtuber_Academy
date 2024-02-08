@@ -3,6 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace RandEvent
+{
+    public class Item
+    {
+        public string EventName;
+        public string InfoText;
+    }
+}
+
+namespace MerchantItem
+{
+    public class Item
+    {
+        public string ItemName;
+        public int ItemIndex;
+        public string ItemInfo;
+    }
+}
+
+
 public class Define
 {
     public const float ScreenAniSpeed = 0.05555556f;
@@ -404,6 +424,7 @@ public class Define
         {
             NowHeart += value;
             NowHeart = Mathf.Clamp(NowHeart, 0, 100);
+            UI_MainBackUI.instance.UpdateUItexts();
         }
 
 
@@ -411,6 +432,7 @@ public class Define
         {
             NowStar += value;
             NowStar = Mathf.Clamp(NowStar, 0, 100);
+            UI_MainBackUI.instance.UpdateUItexts();
         }
 
         public Define.StatName GetHigestStatName()
