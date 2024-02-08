@@ -13,7 +13,6 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     const float TimeToStamp = 2.3f;
     const float TimeStampToNext = 0.7f;
     public WeekReceiptData BeforeScheduleData = new WeekReceiptData();
-    public int BeforeGold = 0;
 
     //영수증 전달용 변수
     //0대성공 1성공 2실패
@@ -27,6 +26,8 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     bool isSick = false; 
     bool caughtCold = false; 
     bool caughtDepression = false;
+
+    public float BigSuccessMultiplier;
 
     void SetAniSpeed(int speed)
     {
@@ -150,7 +151,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         bool todaySick = false;
         BigSuccess = false;
         UI_Stamp.Inst.SetStamp(UI_Stamp.StampState.transparent);
-        float bonusMultiplier =1f;
+        float bigSuccessMultiplier =1f;
 
         //FastMode라면 2배속, 아니면 1배속
         SetAniSpeed(isFastMode ? 2 : 1);
@@ -185,11 +186,11 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             }
 
             //대성공 체크
-            bonusMultiplier = 1.0f;
+            bigSuccessMultiplier = 1.0f;
             if (CheckSuccessProbability())
             {
                 BigSuccess = true;
-                bonusMultiplier = 1.5f;// 50% 상승을 위한 상수값
+                bigSuccessMultiplier = BigSuccessMultiplier;
                 //대성공 카운트 증가
                 SuccessTimeContainer[0]++;
             }
@@ -202,15 +203,15 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             //방송을 진행했다면 돈 구독자 증가
             if (oneDay.scheduleType == ContentType.BroadCast)
             {
-                IncreaseSubsAndMoney(oneDay, bonusMultiplier);
+                IncreaseSubsAndMoney(oneDay, bigSuccessMultiplier);
             }
 
             //컨디션 변화
             float HeartVariance; float StarVariance;
             if (oneDay.scheduleType == ContentType.Rest)
             {
-                HeartVariance = oneDay.HeartVariance * bonusMultiplier;
-                StarVariance = oneDay.StarVariance * bonusMultiplier;
+                HeartVariance = oneDay.HeartVariance * bigSuccessMultiplier;
+                StarVariance = oneDay.StarVariance * bigSuccessMultiplier;
             }
             else
             {
@@ -229,7 +230,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         float[] tempstat = new float[6];
         for (int i = 0; i < 6; i++)
         {
-            tempstat[i] = oneDay.Six_Stats[i] * bonusMultiplier;
+            tempstat[i] = oneDay.Six_Stats[i] * bigSuccessMultiplier;
         }
         Managers.Data.PlayerData.ChangeStatAndPlayAnimation(tempstat);
 

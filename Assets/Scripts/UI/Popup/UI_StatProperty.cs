@@ -152,12 +152,18 @@ public class UI_StatProperty : UI_Popup
                 temp = "일정 진행 시 아래에 표기된 수치만큼\n<sprite=12>의 소모량이 감소합니다.";
                 break;
             case StatName.Luck:
-                temp = "일정 진행 시 아래의 확률로 <sprite=8>대성공합니다.\n<sprite=8>대성공 시 얻는 모든 수치가 50% 추가됩니다.";
+                temp = $"일정 진행 시 아래의 확률로 <sprite=8>대성공합니다.\n<sprite=8>대성공 시 얻는 모든 수치가 {LuckBounsValue()}% 추가됩니다.";
                 break;
         }
 
         return temp;
     }
+
+    string LuckBounsValue()
+    {
+        return Math.Round((ScheduleExecuter.Inst.BigSuccessMultiplier - 1) * 100).ToString();
+    }
+
 
 
     int GetStatTier_div_20(float Value)
