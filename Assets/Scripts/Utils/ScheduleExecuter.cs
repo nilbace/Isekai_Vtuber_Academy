@@ -434,12 +434,18 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         
     }
 
-    public Action WeekOverAction;
+    private Action weekOverAction;
+
+    public Action WeekOverAction
+    {
+        get { return weekOverAction; }
+        set { weekOverAction = value; }
+    }
 
     public void FinishWeek()
     {
-        WeekOverAction?.Invoke();
         Managers.Data.PlayerData.NowWeek++;
+        WeekOverAction?.Invoke();
         Managers.Data.SaveData();
     }
     #endregion

@@ -75,7 +75,12 @@ public class UI_Reciept : UI_Popup
         Debug.Log(temp);
         //여기까지
 
-        if (Managers.Data.PlayerData.NowWeek == 20) Debug.Log("엔딩 보여야 함");
+        //if (Managers.Data.PlayerData.NowWeek == 20)
+        //{
+        //    Managers.UI_Manager.ShowPopupUI<UI_Ending>();
+        //    return;
+        //}
+
         Managers.UI_Manager.CloseALlPopupUI();
         Managers.Sound.Play(Define.Sound.NextWeekBTN);
 
