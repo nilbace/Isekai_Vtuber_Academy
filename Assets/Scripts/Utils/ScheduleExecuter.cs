@@ -27,8 +27,6 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     bool caughtCold = false; 
     bool caughtDepression = false;
 
-    public float BigSuccessMultiplier;
-
     void SetAniSpeed(int speed)
     {
         SetAniSpeedAction?.Invoke(speed);
@@ -190,7 +188,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             if (CheckSuccessProbability())
             {
                 BigSuccess = true;
-                bigSuccessMultiplier = BigSuccessMultiplier;
+                bigSuccessMultiplier = Managers.instance.BigSuccessCoefficientValue;
                 //대성공 카운트 증가
                 SuccessTimeContainer[0]++;
             }
@@ -351,7 +349,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
     bool CheckSuccessProbability()
     {
-        int BigSuccessProbability = (((int)Managers.Data.PlayerData.SixStat[5]) / 20)*10   ;
+        int BigSuccessProbability = (((int)Managers.Data.PlayerData.SixStat[5]) / 20)* Managers.instance.BigSuccessProbability;
         if (UnityEngine.Random.Range(0, 100) < (BigSuccessProbability))
         {
             return true;

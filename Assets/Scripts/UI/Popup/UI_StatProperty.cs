@@ -78,17 +78,17 @@ public class UI_StatProperty : UI_Popup
         }
         else if(stat == StatName.Strength)
         {
-            GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.Heart)} 감소량 -{SelectedStatTier * 10}%";
+            GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.Heart)} 감소량 -{SelectedStatTier * Mathf.RoundToInt(Managers.instance.Str_Men_ValuePerLevel * 100)}%";
             GetText((int)Texts.StatNameTMP).text = GetStatKorName(stat);
         }
         else if(stat == StatName.Mental)
         {
-            GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.Star)} 감소량 -{SelectedStatTier * 10}%";
+            GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.Star)} 감소량 -{SelectedStatTier * Mathf.RoundToInt(Managers.instance.Str_Men_ValuePerLevel * 100)}%";
             GetText((int)Texts.StatNameTMP).text = GetStatKorName(stat);
         }
         else
         {
-            GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.BigSuccess)}대성공 확률 {SelectedStatTier * 10}%";
+            GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.BigSuccess)}대성공 확률 {SelectedStatTier * Managers.instance.BigSuccessProbability}%";
             GetText((int)Texts.StatNameTMP).text = GetStatKorName(stat);
         }
 
@@ -161,7 +161,7 @@ public class UI_StatProperty : UI_Popup
 
     string LuckBounsValue()
     {
-        return Math.Round((ScheduleExecuter.Inst.BigSuccessMultiplier - 1) * 100).ToString();
+        return Math.Round((Managers.instance.BigSuccessCoefficientValue - 1) * 100).ToString();
     }
 
 
@@ -198,11 +198,11 @@ public class UI_StatProperty : UI_Popup
         if (stat == StatName.Game || stat == StatName.Song || stat == StatName.Draw)
             temp = $"{GetIconString(StatIcons.Sub)} +{temp2.SubBonus}%,{GetIconString(StatIcons.Gold)} +{temp2.IncomeBonus}%";
         else if (stat == StatName.Strength)
-            temp = $"{GetIconString(StatIcons.Heart)} 감소량 -{tier * 10}%";
+            temp = $"{GetIconString(StatIcons.Heart)} 감소량 -{tier * Mathf.RoundToInt(Managers.instance.Str_Men_ValuePerLevel*100)}%";
         else if (stat == StatName.Mental)
-            temp = $"{GetIconString(StatIcons.Star)} 감소량 -{tier * 10}%";
+            temp = $"{GetIconString(StatIcons.Star)} 감소량 -{tier * Mathf.RoundToInt(Managers.instance.Str_Men_ValuePerLevel * 100)}%";
         else
-            temp = $"{GetIconString(StatIcons.BigSuccess)}대성공 확률 {tier * 10}%";
+            temp = $"{GetIconString(StatIcons.BigSuccess)}대성공 확률 {tier * Managers.instance.BigSuccessProbability}%";
 
         return temp;
     }

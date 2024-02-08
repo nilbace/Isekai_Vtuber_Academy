@@ -7,10 +7,18 @@ using static Define;
 
 public class Managers : MonoBehaviour
 {
-    //DataParser로 변경 예정
-    [Header("스텟 관련")]
-    public int MainStat_ValuePerLevel;
-    public float Str_Men_ValuePerLevel;
+    [SerializeField] private int _mainStat_UpValuePerLevel;
+    [SerializeField] private float _str_Men_DownValuePerLevel;
+    [SerializeField] private int _bigSuccessProbability;
+    [SerializeField] private float _bigSuccessCoefficientValue;
+
+    public int MainStat_ValuePerLevel => _mainStat_UpValuePerLevel;
+    public float Str_Men_ValuePerLevel => _str_Men_DownValuePerLevel;
+    public int BigSuccessProbability => _bigSuccessProbability;
+    public float BigSuccessCoefficientValue => _bigSuccessCoefficientValue;
+
+
+
     static Managers s_instance;    
     public static Managers instance {get{Init(); return s_instance;}}
     
