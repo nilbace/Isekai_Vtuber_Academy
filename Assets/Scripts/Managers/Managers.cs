@@ -7,15 +7,15 @@ using static Define;
 
 public class Managers : MonoBehaviour
 {
-    [SerializeField] private int _mainStat_UpValuePerLevel;
-    [SerializeField] private float _str_Men_DownValuePerLevel;
-    [SerializeField] private int _bigSuccessProbability;
-    [SerializeField] private float _bigSuccessCoefficientValue;
+    [SerializeField] private int _mainStatUpValuePerTier;
+    [SerializeField] private float _str_MenDownValuePerTier;
+    [SerializeField] private int _bigSuccessProbabilityPerTier;
+    [SerializeField] private float _bigSuccessCoefficientValuePerTier;
 
-    public int MainStat_ValuePerLevel => _mainStat_UpValuePerLevel;
-    public float Str_Men_ValuePerLevel => _str_Men_DownValuePerLevel;
-    public int BigSuccessProbability => _bigSuccessProbability;
-    public float BigSuccessCoefficientValue => _bigSuccessCoefficientValue;
+    public int MainStat_ValuePerLevel => _mainStatUpValuePerTier;
+    public float Str_Men_ValuePerLevel => _str_MenDownValuePerTier;
+    public int BigSuccessProbability => _bigSuccessProbabilityPerTier;
+    public float BigSuccessCoefficientValue => _bigSuccessCoefficientValuePerTier;
 
 
 
