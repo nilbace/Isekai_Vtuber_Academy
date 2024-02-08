@@ -273,6 +273,10 @@ public class UI_Communication : UI_Popup
         else
         {
             Managers.Sound.Play(Sound.SmallBTN);
+            for (int i = 0; i < dialogues[currentDialogueIndex + 2].rewardStats.Count; i++)
+            {
+                Managers.Data.PlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 2].rewardStats[i]);
+            }
         }
         UI_DefaultPopup.SetDefaultPopupUI(DefaultPopupState.Normal, dialogues[currentDialogueIndex + 2].sentence, "임시");
         Managers.UI_Manager.ShowPopupUI<UI_DefaultPopup>();
@@ -293,6 +297,10 @@ public class UI_Communication : UI_Popup
         else
         {
             Managers.Sound.Play(Sound.SmallBTN);
+            for (int i = 0; i < dialogues[currentDialogueIndex + 3].rewardStats.Count; i++)
+            {
+                Managers.Data.PlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 3].rewardStats[i]);
+            }
         }
         UI_DefaultPopup.SetDefaultPopupUI(DefaultPopupState.Normal, dialogues[currentDialogueIndex + 3].sentence, "임시");
         Managers.UI_Manager.ShowPopupUI<UI_DefaultPopup>();
