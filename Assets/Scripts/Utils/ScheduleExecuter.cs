@@ -352,8 +352,8 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
     bool CheckSuccessProbability()
     {
-        int LuckGrade = ((int)Managers.Data.PlayerData.SixStat[5]) / 10;
-        if (UnityEngine.Random.Range(0, 100) < (LuckGrade * 5))
+        int BigSuccessProbability = (((int)Managers.Data.PlayerData.SixStat[5]) / 20)*10   ;
+        if (UnityEngine.Random.Range(0, 100) < (BigSuccessProbability))
         {
             return true;
         }
@@ -404,7 +404,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         Bonus tempBonus = Managers.Data.GetMainProperty(statname);
 
         Managers.Data.PlayerData.nowGoldAmount += Mathf.CeilToInt(DayIncome * (tempBonus.IncomeBonus) / 100f);
-        Managers.Data.PlayerData.nowSubCount += Mathf.CeilToInt(DaySub * (tempBonus.IncomeBonus) / 100f);
+        Managers.Data.PlayerData.nowSubCount += Mathf.CeilToInt(DaySub * (tempBonus.SubBonus) / 100f);
     }
 
     public float GetSubStatProperty(StatName statName)
@@ -416,7 +416,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         else if (statName == StatName.Mental)
             temp = (int)Math.Floor(Managers.Data.PlayerData.SixStat[4]);
 
-        float result = (float)(temp / 10);
+        float result = (float)(temp / 20);
         result *= Managers.instance.Str_Men_ValuePerLevel;
         result = 1 - result;
         return result;
