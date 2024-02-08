@@ -352,8 +352,8 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
     bool CheckSuccessProbability()
     {
-        int LuckGrade = ((int)Managers.Data.PlayerData.SixStat[5]) / 10;
-        if (UnityEngine.Random.Range(0, 100) < (LuckGrade * 5))
+        int BigSuccessProbability = (((int)Managers.Data.PlayerData.SixStat[5]) / 20)*10   ;
+        if (UnityEngine.Random.Range(0, 100) < (BigSuccessProbability))
         {
             return true;
         }
