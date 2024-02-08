@@ -60,19 +60,9 @@ public class UI_Reciept : UI_Popup
         GetText((int)Texts.ReceieptDetailLowerTMP).text = "";
         for (int i = 0; i < 6; i++)
         {
-            if(stats[i]==0)
-            {
-                GetText((int)Texts.ReceieptDetailLowerTMP).text += "-" + "\n";
-            }
-            else
-            {
-                GetText((int)Texts.ReceieptDetailLowerTMP).text += "+" + stats[i].ToString("F0") + "\n";
-            }
-            
-
-            if (i == 5) GetText((int)Texts.ReceieptDetailLowerTMP).text.TrimEnd('\n');
+            GetText((int)Texts.ReceieptDetailLowerTMP).text += (stats[i] >= 0 ? (stats[i] == 0 ? "-" : "+") : "") + (stats[i] != 0 ? stats[i].ToString("F0") : "") + "\n";
         }
-
+        GetText((int)Texts.ReceieptDetailLowerTMP).text.TrimEnd('\n');
     }
 
 
@@ -83,8 +73,9 @@ public class UI_Reciept : UI_Popup
         var data = Managers.Data.PlayerData;
         temp += $"{data.NowWeek}주차 : 게임{data.SixStat[0]},구독{data.nowSubCount},돈{data.nowGoldAmount},근력{data.SixStat[3]},멘탈{data.SixStat[4]},행운{data.SixStat[5]}\n";
         Debug.Log(temp);
-
         //여기까지
+
+        if (Managers.Data.PlayerData.NowWeek == 20) Debug.Log("엔딩 보여야 함");
         Managers.UI_Manager.CloseALlPopupUI();
         Managers.Sound.Play(Define.Sound.NextWeekBTN);
 

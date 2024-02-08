@@ -1,27 +1,27 @@
 {
     "NowWeek": 5,
-    "nowSubCount": 860,
-    "nowGoldAmount": 742,
+    "nowSubCount": 814,
+    "nowGoldAmount": 2348,
     "RubiaKarma": 1,
-    "NowHeart": 78.0,
-    "NowStar": 68.0,
+    "NowHeart": 95.0,
+    "NowStar": 73.0,
     "SixStat": [
-        34.0,
-        1.0,
+        28.0,
         0.0,
         0.0,
-        20.0,
+        0.0,
+        0.0,
         0.0
     ],
     "DoneEventNames": [
-        "밀웜 먹방"
+        "표절논란"
     ],
     "BoughtItems": [],
     "SubStoryIndex": [
-        6,
-        24,
-        17,
-        28,
-        15
+        15,
+        10,
+        5,
+        9,
+        18
     ]
 }
