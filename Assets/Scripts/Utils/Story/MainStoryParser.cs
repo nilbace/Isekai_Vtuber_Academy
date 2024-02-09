@@ -41,9 +41,8 @@ public class MainStoryParser : MonoSingleton<MainStoryParser>
         else
             temp.isLeft = false;
 
-        temp.sentence = lines[2];
-        if (!(lines[0] == "루비아" || lines[0] == "유저" || lines[0] == "뮹뮹" || lines[0] == "나레이션"))
-            temp.sentence = lines[2];
+        temp.sentence = lines[2].ConvertEuroToNewline();
+        
 
         int tempGold;
         StatName tempStatName;
