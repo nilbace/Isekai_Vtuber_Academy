@@ -1,0 +1,21 @@
+{
+    "NowWeek": 1,
+    "nowSubCount": 10,
+    "nowGoldAmount": 1000,
+    "RubiaKarma": 0,
+    "NowHeart": 100.0,
+    "NowStar": 100.0,
+    "SixStat": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+    ],
+    "DoneEventNames": [],
+    "BoughtItems": [],
+    "SubStoryIndex": [
+        2
+    ]
+}

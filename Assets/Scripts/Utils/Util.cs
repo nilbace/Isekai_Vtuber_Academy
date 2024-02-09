@@ -53,7 +53,7 @@ public class Util{
 
         return transform.gameObject;
     }
-
+ 
     public static string FormatMoney(int amount)
     {
         // 만 단위로 나누기

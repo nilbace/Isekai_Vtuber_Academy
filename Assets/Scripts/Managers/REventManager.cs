@@ -61,9 +61,9 @@ public class REventManager
         tempEventData.EventInfoString = tempstrings.Dequeue();
         tempEventData.EventInfoString = ReplaceString(tempEventData.EventInfoString);
         tempEventData.BTN1text = tempstrings.Dequeue();
-        tempEventData.BTN1ResultText = tempstrings.Dequeue();
+        tempEventData.BTN1ResultText = tempstrings.Dequeue().ConvertEuroToNewline();
         tempEventData.BTN2text = tempstrings.Dequeue();
-        tempEventData.BTN2ResultText = tempstrings.Dequeue();
+        tempEventData.BTN2ResultText = tempstrings.Dequeue().ConvertEuroToNewline();
 
         EventDatasList.Add(tempEventData);
     }

@@ -13,4 +13,14 @@ public static class Extension
     {
         UI_Base.BindEvent(go, action, type);
     }
+
+    public static string ConvertEuroToNewline(this string text)
+    {
+        return text.Replace("¢æ", "\n");
+    }
+
+    public static string RoundToString(this float value)
+    {
+        return Mathf.Round(value).ToString();
+    }
 }

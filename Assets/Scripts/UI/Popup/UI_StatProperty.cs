@@ -78,12 +78,12 @@ public class UI_StatProperty : UI_Popup
         }
         else if(stat == StatName.Strength)
         {
-            GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.Heart)} 감소량 -{SelectedStatTier * Mathf.RoundToInt(Managers.instance.Str_Men_ValuePerLevel * 100)}%";
+            GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.Heart)} 감소량 -{(SelectedStatTier * Managers.instance.Str_Men_ValuePerLevel * 100).RoundToString()}%";
             GetText((int)Texts.StatNameTMP).text = GetStatKorName(stat);
         }
         else if(stat == StatName.Mental)
         {
-            GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.Star)} 감소량 -{SelectedStatTier * Mathf.RoundToInt(Managers.instance.Str_Men_ValuePerLevel * 100)}%";
+            GetText((int)Texts.StatInfoTMP).text = $"{GetIconString(StatIcons.Star)} 감소량 -{(SelectedStatTier *Managers.instance.Str_Men_ValuePerLevel * 100 ).RoundToString()}%";
             GetText((int)Texts.StatNameTMP).text = GetStatKorName(stat);
         }
         else

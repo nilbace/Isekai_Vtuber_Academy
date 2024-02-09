@@ -123,7 +123,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -795,6 +795,19 @@ MonoBehaviour:
   moveTime: 1.21
   shakeStrength: 2.09
   cooldown: 0.08
+  ChatBubble: {fileID: 4796811526190627317}
+  ChatTMP: {fileID: 2044431519375271175}
+  duration: 1
+  Dialogues:
+  - "\uC9C0\uB098\uAC00\uB294 \uC7A1\uC0C1\uC778\uC785\uB2C8\uB2E4. \uBB34\uC2A8
+    \uBB38\uC81C\uB77C\uB3C4?"
+  - "\uD3C9\uD654\uB97C \uC0AC\uB791\uD558\uB294 \uC0D0\uB9AC\uB77C\uACE0 \uD569\uB2C8\uB2E4\uB9CC?"
+  - "\uC544, \uC774 \uAE4C\uB9C8\uADC0\uAD70\uC758 \uC774\uB984\uC740 \uD751\uC784\uC790\uB9C8\uCE74\uB871\uC785\uB2C8\uB2E4."
+  - "\uC6B0\uD6A8\uC637~ \uC774\uACF3\uC5D0 \uACC4\uC2E0 \uC544\uB984\uB2E4\uC6B4
+    \uB4DC\uB798\uACE4\uB2D8\uC758 \uB2A5\uB825\uCE58\uB97C \uC62C\uB824\uC904 \uC218\uB3C4
+    \uC788\uB2E4\uAD6C\uC6A7?"
+  - "\uADF8\uAC78 \uC0AC\uC2DC\uACA0\uC2B5\uB2C8\uAE4C? \uC120\uD0DD\uC740 \uB2F9\uC2E0\uC758
+    \uBAAB\uC785\uB2C8\uB2E4\uB9CC..."
 --- !u!1 &6914573694383023291
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,7 +826,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8533017152215290586
 RectTransform:
   m_ObjectHideFlags: 0
