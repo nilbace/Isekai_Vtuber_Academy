@@ -43,7 +43,7 @@ public class SubStoryParser : MonoSingleton<SubStoryParser>
         else
             temp.isLeft = false;
 
-        temp.sentence = lines[2];
+        temp.sentence = lines[2].ConvertEuroToNewline();
 
         return temp;
     }
