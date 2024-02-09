@@ -542,7 +542,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -1064,7 +1073,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -1314,7 +1332,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -2118,7 +2145,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -2697,7 +2733,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -3588,7 +3633,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -3807,7 +3861,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -3906,7 +3969,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -4259,7 +4331,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -4703,7 +4784,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -4802,7 +4892,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -5021,7 +5120,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -5129,7 +5237,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5501035149407559673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6423,7 +6531,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -7010,7 +7127,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -7184,7 +7310,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -7598,7 +7733,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -8132,7 +8276,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -8231,7 +8384,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -8690,7 +8852,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -8789,7 +8960,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -9563,7 +9743,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -10142,7 +10331,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:
@@ -10316,7 +10514,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3e67fc3eee2f148877c8984be0698b, type: 3}
   - {fileID: 21300000, guid: 3f273bad85906474db052036ed00821d, type: 3}
   - {fileID: 21300000, guid: 051adfa5b844a164fbdeb3ef3e5ca836, type: 3}
-  EndingImgs: []
+  EndingImgs:
+  - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
+  - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
+  - {fileID: 21300000, guid: 370a98cb9f1f09d4294076e1ad031f47, type: 3}
+  - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
+  - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
+  - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  - {fileID: 21300000, guid: be03194f2a89ad145b2bde30c622363d, type: 3}
+  - {fileID: 21300000, guid: 0edb448a1e689504e915172852a4a292, type: 3}
+  - {fileID: 21300000, guid: 44f54d678b310ad4485158e91d636229, type: 3}
   ColdImg: {fileID: 21300000, guid: 82b64b772257b7a4fa173d7457eb2f19, type: 3}
   RunAwayImg: {fileID: 21300000, guid: 4b249bd8f81c41b4da8b072817668729, type: 3}
   RandEventCutScene:

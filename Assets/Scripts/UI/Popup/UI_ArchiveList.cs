@@ -73,6 +73,17 @@ public class UI_ArchiveList : UI_Popup
                 break;
             case ArchiveState.Ending:
                 PanelStateTMP.text = "¿£µùÄÆ¾À";
+                for (int i = 0; i < 23; i++)
+                {
+                    if (i < (int)EndingName.MaxCount)
+                    {
+                        PhotoGroup[i].Set((EndingName)i);
+                    }
+                    else
+                    {
+                        PhotoGroup[i].gameObject.SetActive(false);
+                    }
+                }
                 break;
         }
 

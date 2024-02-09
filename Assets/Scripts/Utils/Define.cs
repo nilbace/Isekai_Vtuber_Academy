@@ -92,7 +92,8 @@ public class Define
     {
         GameGood, GameEvil, GameFail,
         SongGood, SongEvil, SongFail,
-        DrawGood, DrawEvil, DrawFail
+        DrawGood, DrawEvil, DrawFail,
+        MaxCount
     }
 
     public enum SubStoryName

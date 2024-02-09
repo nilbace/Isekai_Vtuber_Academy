@@ -30,6 +30,14 @@ public class UI_Photo : UI_Base
     {
         if (TaskEnum is EndingName)
         {
+            BaseImage.sprite = EndingImgs[(int)TaskEnum];
+
+            if (Managers.Data.PersistentUser.WatchedEndingName.Contains((EndingName)TaskEnum))
+            {
+                CoverBTN.gameObject.SetActive(false);
+            }
+
+            BaseImage.GetComponent<Button>().onClick.AddListener(() => ShowBcPopup((EndingName)TaskEnum));
         }
         else if(TaskEnum is RandEventName)
         {
@@ -117,6 +125,11 @@ public class UI_Photo : UI_Base
         Debug.Log(Managers.RandEvent.GetWeekEventByName((RandEventName)index).eventName);
         UI_RandomEvent.ArchiveMode = true;
         Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
+    }
+
+    void ShowEndingPopup(object endingType)
+    {
+        Managers.Sound.Play(Sound.SmallBTN);
     }
     void ShowColdPopup()
     {

@@ -9,7 +9,8 @@ public class UI_Ending : UI_Popup
 {
     public EasyTransition.TransitionSettings transition;
     public Sprite[] EndingIMGs;
-    public EndingName EndingName;
+    public static EndingName EndingName;
+    public static bool ArchiveMode;
 
     enum Buttons
     {
@@ -72,5 +73,10 @@ public class UI_Ending : UI_Popup
         else if (Managers.Data.PlayerData.GetHigestStatName() == StatName.Draw) temp += 6;
 
         return (EndingName)temp;
+    }
+
+    private void OnDisable()
+    {
+        ArchiveMode = false;
     }
 }
