@@ -8,7 +8,16 @@ public class REventManager
 {
     public List<WeekEventData> EventDatasList = new List<WeekEventData>();
 
-    public void ProcessData(string data)
+    public WeekEventData GetWeekEventByName(RandEventName randEventName)
+    {
+        WeekEventData temp = null;
+        foreach(WeekEventData data in EventDatasList)
+        {
+            if (data.eventName == randEventName) temp = data;
+        }
+        return temp;
+    }
+    public void ProcessData(string data, int index)
     {
         string[] lines = data.Substring(0, data.Length).Split('\t');
         Queue<string> tempstrings = new Queue<string>();
@@ -64,6 +73,7 @@ public class REventManager
         tempEventData.BTN1ResultText = tempstrings.Dequeue().ConvertEuroToNewline();
         tempEventData.BTN2text = tempstrings.Dequeue();
         tempEventData.BTN2ResultText = tempstrings.Dequeue().ConvertEuroToNewline();
+        tempEventData.eventName = (RandEventName)index;
 
         EventDatasList.Add(tempEventData);
     }
@@ -235,6 +245,7 @@ public class REventManager
         public string BTN1ResultText;
         public string BTN2text;
         public string BTN2ResultText;
+        public RandEventName eventName;
 
         public WeekEventData()
         {
@@ -243,11 +254,9 @@ public class REventManager
             EventInfoString = "빈 이벤트";
         }
 
-        public void PrintData()
+        public void CheckAndAddIfNotWatched()
         {
-            Debug.Log($"이벤트 이름 : {EventName}");
-            Debug.Log($"발생 가능 주차 : {this.OccurableWeek}");
-            Debug.Log($"필요 스텟과 수치 : {StatName} {ReqStat}");
+            Managers.Data.PersistentUser.CheckAndAddIfNotWatched(eventName);
         }
     }
 

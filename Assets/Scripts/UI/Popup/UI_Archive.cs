@@ -24,27 +24,30 @@ public class UI_Archive : UI_Popup
         base.Init();
         Bind<Button>(typeof(Buttons));
 
-        GetButton((int)Buttons.TVBTN).onClick.AddListener(BCBTN);
-        GetButton((int)Buttons.EventBTN).onClick.AddListener(InstaBTN);
-        GetButton((int)Buttons.EndingBTN).onClick.AddListener(InstaBTN);
+        GetButton((int)Buttons.TVBTN).onClick.AddListener(BroadcastBTN);
+        GetButton((int)Buttons.EventBTN).onClick.AddListener(EventBTN);
+        GetButton((int)Buttons.EndingBTN).onClick.AddListener(EndingBTN);
         GetButton((int)Buttons.CloseBTN).onClick.AddListener(CloseBTN);
     }
 
-    void BCBTN()
+    void BroadcastBTN()
     {
         Managers.Sound.Play(Define.Sound.SmallBTN);
-        Managers.UI_Manager.ShowPopupUI<UI_Ar_BC>();
+        Managers.UI_Manager.ShowPopupUI<UI_ArchiveList>();
+        UI_ArchiveList.archiveState = ArchiveState.BroadCast;
     }
 
-    void EltubeBTN()
+    void EventBTN()
     {
-        //Managers.Sound.Play(Define.Sound.SmallBTN);
-        //Managers.UI_Manager.ShowPopupUI<UI_Eltube>();
+        Managers.Sound.Play(Define.Sound.SmallBTN);
+        Managers.UI_Manager.ShowPopupUI<UI_ArchiveList>();
+        UI_ArchiveList.archiveState = ArchiveState.EventCutscene;
     }
 
-    void InstaBTN()
+    void EndingBTN()
     {
-        //Managers.Sound.Play(Define.Sound.SmallBTN);
-        //Managers.UI_Manager.ShowPopupUI<UI_Insta>();
+        Managers.Sound.Play(Define.Sound.SmallBTN);
+        Managers.UI_Manager.ShowPopupUI<UI_ArchiveList>();
+        UI_ArchiveList.archiveState = ArchiveState.Ending;
     }
 }

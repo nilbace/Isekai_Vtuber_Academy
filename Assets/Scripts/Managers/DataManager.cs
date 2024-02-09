@@ -103,9 +103,9 @@ public class DataManager
         string data = wwww.downloadHandler.text;
         string[] lines = data.Substring(0, data.Length).Split('\n');
 
-        foreach (string temp in lines)
+        for (int i = 0; i < lines.Length; i++)
         {
-            Managers.RandEvent.ProcessData(temp);
+            Managers.RandEvent.ProcessData(lines[i], i);
         }
     }
 

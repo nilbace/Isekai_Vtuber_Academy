@@ -9,11 +9,13 @@ using static REventManager;
 public class UI_RandomEvent : UI_Popup
 {
     public static UI_RandomEvent instance;
-    WeekEventData _eventData;
+    public static WeekEventData _eventData;
     public Sprite[] CutsceneSprites;
+    public static bool ArchiveMode;
+
     enum Buttons
     {
-        ResultBTN, ResultBTN2
+        ResultBTN, ResultBTN2, Panel
     }
     enum Texts
     {
@@ -39,7 +41,10 @@ public class UI_RandomEvent : UI_Popup
     public override void Init()
     {
         base.Init();
-        _eventData = Managers.RandEvent.GetProperEvent();
+        //도감으로 등장한 것이 아닌 게임 진행중 등장했다면
+        //랜덤 이벤트를 받아옴
+        if(!ArchiveMode) _eventData = Managers.RandEvent.GetProperEvent();
+        _eventData.CheckAndAddIfNotWatched();
         Bind<Image>(typeof(Images));
         Bind<Button>(typeof(Buttons));
         Bind<TMPro.TMP_Text>(typeof(Texts));
@@ -51,6 +56,7 @@ public class UI_RandomEvent : UI_Popup
         GetText((int)Texts.BTN2Text).text = _eventData.BTN2text;
         GetButton((int)Buttons.ResultBTN).onClick.AddListener(ChooseBTN1);
         GetButton((int)Buttons.ResultBTN2).onClick.AddListener(ChooseBTN2);
+        GetButton((int)Buttons.Panel).onClick.AddListener(CloseIfArchive);
         if (_eventData.EventDataType == EventDataType.Main) GetButton((int)Buttons.ResultBTN2).interactable = false;
     }
 
@@ -79,7 +85,7 @@ public class UI_RandomEvent : UI_Popup
     void ChooseBTN1()
     {
         DoOption(isOption1: true);
-        UI_DefaultPopup.SetDefaultPopupUI( DefaultPopupState.Normal, _eventData.BTN1ResultText, "확인");
+        UI_DefaultPopup.SetDefaultPopupUI(ArchiveMode ? DefaultPopupState.RandEventArchive : DefaultPopupState.Normal, _eventData.BTN1ResultText, "확인");
         Managers.UI_Manager.ShowPopupUI<UI_DefaultPopup>();
         Managers.Sound.Play(Define.Sound.SmallBTN);
 
@@ -88,7 +94,8 @@ public class UI_RandomEvent : UI_Popup
     void ChooseBTN2()
     {
         DoOption(isOption1: false);
-        UI_DefaultPopup.SetDefaultPopupUI(DefaultPopupState.Normal, _eventData.BTN2ResultText, "확인");
+        UI_DefaultPopup.SetDefaultPopupUI(ArchiveMode ? DefaultPopupState.RandEventArchive : DefaultPopupState.Normal, _eventData.BTN2ResultText, "확인");
+
         Managers.UI_Manager.ShowPopupUI<UI_DefaultPopup>();
         Managers.Sound.Play(Define.Sound.SmallBTN);
 
@@ -97,24 +104,40 @@ public class UI_RandomEvent : UI_Popup
 
     void DoOption(bool isOption1)
     {
-        float[] optionArray;
-        if (isOption1) optionArray = _eventData.Option1;
-        else
+        if(!ArchiveMode)
         {
-            optionArray = _eventData.Option2;
+            float[] optionArray;
+            if (isOption1) optionArray = _eventData.Option1;
+            else
+            {
+                optionArray = _eventData.Option2;
+            }
+
+
+            //하트 별 변화량
+            Managers.Data.PlayerData.ChangeHeart(optionArray[0]);
+            Managers.Data.PlayerData.ChangeStar(optionArray[1]);
+            //스텟 변화량
+            float[] eventStatValues = new float[6];
+            for (int i = 0; i < 6; i++)
+            {
+                eventStatValues[i] = optionArray[i + 2];
+            }
+
+            Managers.Data.PlayerData.ChangeStatAndPlayAnimation(eventStatValues);
         }
+    }
 
-
-        //하트 별 변화량
-        Managers.Data.PlayerData.ChangeHeart(optionArray[0]);
-        Managers.Data.PlayerData.ChangeStar(optionArray[1]);
-        //스텟 변화량
-        float[] eventStatValues = new float[6];
-        for(int i = 0; i<6;i++)
+    void CloseIfArchive()
+    {
+        if(ArchiveMode)
         {
-            eventStatValues[i] = optionArray[i + 2];
+            Managers.UI_Manager.ClosePopupUI();
         }
+    }
 
-        Managers.Data.PlayerData.ChangeStatAndPlayAnimation(eventStatValues);
+    private void OnDisable()
+    {
+        ArchiveMode = false;
     }
 }

@@ -204,7 +204,7 @@ public class Define
 
     public enum DefaultPopupState
     {
-        Normal, Merchant, RandomEvent,
+        Normal, Merchant, RandomEvent, RandEventArchive,
     }
 
     public enum SevenDays
@@ -334,6 +334,30 @@ public class Define
         StatBox,
         MaxCount
     }
+
+    public enum RandEventName
+    { 
+        Mandu,
+        TS,
+        Jaemmin,
+        SilverButton,
+        Gosamcha,
+        Mukbang,
+        Myungdiet,
+        Chiropractor,
+        skydiving,
+        FanLetter,
+        Mealworm,
+        Drunk,
+        danggeun,
+        Sajyooo,
+        BlackandWhite,
+        Battle,
+        Controversy,
+        Idol,
+        MaxCount
+    }
+
 
     [System.Serializable]
     public class Dialogue
@@ -514,6 +538,7 @@ public class Define
         public List<BroadCastType> WatchedBroadCast;
         public List<RestType> WatchedRest;
         public List<GoOutType> WatchedGoOut;
+        public List<RandEventName> WatchedRandEvent;
         public List<EndingName> WatchedEndingName;
         public List<bool> OwnedNickNameBoolList;
 
@@ -531,6 +556,10 @@ public class Define
             else if (typeof(T) == typeof(GoOutType))
             {
                 watchedList = WatchedGoOut as List<T>;
+            }
+            else if(typeof(T)== typeof(RandEventName))
+            {
+                watchedList = WatchedRandEvent as List<T>;
             }
             else if (typeof(T) == typeof(EndingName))
             {

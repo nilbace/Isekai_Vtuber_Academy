@@ -45,17 +45,8 @@ public class TutorialParser : MonoSingleton<TutorialParser>
         if (lines[3] == "TRUE") temp.IsInteractable = true;
 
         //대화 하나
-        temp.sentence = ReplaceString(lines[4]);
+        temp.sentence = lines[4].ConvertEuroToNewline();
         
-        
-
         return temp;
     }
-
-    public string ReplaceString(string inputString)
-    {
-        string replacedString = inputString.Replace("€", "\n");
-        return replacedString;
-    }
-
 }

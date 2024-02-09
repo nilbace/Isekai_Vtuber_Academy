@@ -14,6 +14,7 @@ public class UI_Photo : UI_Base
     public Sprite[] EndingImgs;
     public Sprite ColdImg;
     public Sprite RunAwayImg;
+    public Sprite[] RandEventCutScene;
 
 
     void Start()
@@ -29,6 +30,18 @@ public class UI_Photo : UI_Base
     {
         if (TaskEnum is EndingName)
         {
+        }
+        else if(TaskEnum is RandEventName)
+        {
+            int index = (int)TaskEnum;
+            BaseImage.sprite = GetProperRandCutsceneIMG(Managers.RandEvent.EventDatasList[index].CutSceneName);
+
+            if (Managers.Data.PersistentUser.WatchedRandEvent.Contains((RandEventName)TaskEnum))
+            {
+                CoverBTN.gameObject.SetActive(false);
+            }
+
+            BaseImage.GetComponent<Button>().onClick.AddListener(() => ShowRandEventPopup(index));
         }
         else if(TaskEnum is BroadCastType)
         {
@@ -97,6 +110,14 @@ public class UI_Photo : UI_Base
         Managers.UI_Manager.ShowPopupUI<UI_Ar_BC_Popup>();
     }
 
+    void ShowRandEventPopup(int index)
+    {
+        Managers.Sound.Play(Sound.SmallBTN);
+        UI_RandomEvent._eventData = Managers.RandEvent.GetWeekEventByName((RandEventName)index);
+        Debug.Log(Managers.RandEvent.GetWeekEventByName((RandEventName)index).eventName);
+        UI_RandomEvent.ArchiveMode = true;
+        Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
+    }
     void ShowColdPopup()
     {
         Managers.Sound.Play(Sound.SmallBTN);
@@ -109,5 +130,15 @@ public class UI_Photo : UI_Base
         Managers.Sound.Play(Sound.SmallBTN);
         UI_Ar_BC_Popup.isRunAway = true;
         Managers.UI_Manager.ShowPopupUI<UI_Ar_BC_Popup>();
+    }
+
+    Sprite GetProperRandCutsceneIMG(string name)
+    {
+        Sprite temp= null;
+        for (int i = 0; i < RandEventCutScene.Length; i++)
+        {
+            if (RandEventCutScene[i].name == name) temp = RandEventCutScene[i];
+        }
+        return temp;
     }
 }

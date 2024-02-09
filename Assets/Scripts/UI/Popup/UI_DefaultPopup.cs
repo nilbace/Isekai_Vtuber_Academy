@@ -90,6 +90,9 @@ public class UI_DefaultPopup : UI_Popup
             case DefaultPopupState.RandomEvent:
                 Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
                 break;
+            case DefaultPopupState.RandEventArchive:
+                UI_ArchiveList.CloseTwoPopup();
+                break;
         }
 
     }
