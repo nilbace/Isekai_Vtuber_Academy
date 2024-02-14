@@ -1,19 +1,11 @@
 {
     "BoughtAdPass": false,
-    "WatchedTutorial": false,
+    "WatchedTutorial": true,
     "WatchedCaught": true,
     "WatchedRunAway": false,
-    "WatchedBroadCast": [
-        0,
-        4,
-        7
-    ],
-    "WatchedRest": [
-        0
-    ],
-    "WatchedGoOut": [
-        0
-    ],
+    "WatchedBroadCast": [],
+    "WatchedRest": [],
+    "WatchedGoOut": [],
     "WatchedRandEvent": [],
     "WatchedEndingName": [],
     "OwnedNickNameBoolList": []

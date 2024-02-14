@@ -92,9 +92,25 @@ public class Managers : MonoBehaviour
     }
     IEnumerator ShowReceiptCor()
     {
-        UI_Manager.CloseALlPopupUI();
+        if(UI_Tutorial.instance == null)
+            UI_Manager.ClosePopupUI();
+
         yield return new WaitForEndOfFrame();
         UI_Manager.ShowPopupUI<UI_Reciept>();
+    }
+
+    public void CloseTitle()
+    {
+        if (Managers.Data.PersistentUser.WatchedTutorial == false)
+            StartCoroutine(ShowTutorialCor());
+        else
+            Managers.UI_Manager.ClosePopupUI();
+    }
+    IEnumerator ShowTutorialCor()
+    {
+        UI_Manager.CloseALlPopupUI();
+        yield return new WaitForEndOfFrame();
+        UI_Manager.ShowPopupUI<UI_Tutorial>();
     }
 
     public void StartSchedule()

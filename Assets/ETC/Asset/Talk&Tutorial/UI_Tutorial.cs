@@ -163,7 +163,6 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
             // 대사가 모두 끝났을 경우 대화 종료
             if (currentDialogueIndex >= dialogues.Count)
             {
-                EndDialogue();
                 return;
             }
 
@@ -172,10 +171,7 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
         }
     }
 
-    void EndDialogue()
-    {
-        Managers.UI_Manager.ClosePopupUI();
-    }
+    
 
     IEnumerator TypeSentence(Dialogue dialogue)
     {

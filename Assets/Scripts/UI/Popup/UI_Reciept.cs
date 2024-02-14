@@ -38,6 +38,8 @@ public class UI_Reciept : UI_Popup
         var tween = transform.DOLocalMoveY(0, Duration).SetEase(EaseStatus, 0, periodScale);
         tween.OnComplete(FocusifTutorial);
         GetButton((int)Buttons.FinishBTN).onClick.AddListener(FinishBTN);
+        if (UI_Tutorial.instance != null)
+            UI_Tutorial.instance.NextDialogue();
     }
 
     void FocusifTutorial()
@@ -89,8 +91,11 @@ public class UI_Reciept : UI_Popup
         //    Managers.UI_Manager.ShowPopupUI<UI_Ending>();
         //    return;
         //}
+        if (UI_Tutorial.instance == null)
+            Managers.UI_Manager.CloseALlPopupUI();
+        else
+            Managers.UI_Manager.ClosePopupUI();
 
-        Managers.UI_Manager.CloseALlPopupUI();
         Managers.Sound.Play(Define.Sound.NextWeekBTN);
 
         ScheduleExecuter.Inst.FinishWeek();

@@ -5,21 +5,21 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.EventSystems;
 
-public class TitleIMG : MonoBehaviour
+public class TitleIMG : UI_Popup, IPointerClickHandler
 {
     public Image Title;
     public Image TouchToStart;
 
     public float duration = 1f; // Lerp에 걸리는 시간
     private float startAlpha = 0.3f; // 시작 알파 값
-    private float targetAlpha = 1f; // 목표 알파 값
+    private float targetAlpha = 1f; // 목표 알파 값.
 
     private void Start()
     {
+        base.Init();
         StartCoroutine(LerpAlphaRepeat());
         StartCoroutine(LerpAlpha());
         Title.rectTransform.DOAnchorPosY(Title.rectTransform.anchoredPosition.y + 30f, duration);
-        
     }
 
     private IEnumerator LerpAlphaRepeat()
@@ -86,5 +86,10 @@ public class TitleIMG : MonoBehaviour
         Color finalColor = startColor;
         finalColor.a = targetAlpha;
         Title.color = finalColor;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Managers.instance.CloseTitle();
     }
 }
