@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class UI_Setting : UI_Popup
 {
-    public EasyTransition.TransitionSettings transition;
 
     enum Buttons
     {
@@ -51,6 +50,12 @@ public class UI_Setting : UI_Popup
         Managers.UI_Manager.ShowPopupUI<UI_CouponPopup>();
     }
 
+    void ResetBTN()
+    {
+        Managers.Sound.Play(Define.Sound.SmallBTN);
+        Managers.UI_Manager.ShowPopupUI<UI_ConfirmReset>();
+    }
+
     void BGM_ValueChanged(float value)
     {
         Managers.Sound.ChangeVolume(Define.Sound.Bgm, value);
@@ -61,21 +66,5 @@ public class UI_Setting : UI_Popup
         Managers.Sound.ChangeVolume(Define.Sound.Effect, value);
     }
 
-    void ResetBTN()
-    {
-        StartCoroutine(ResetGame());
-        Managers.Sound.Play(Define.Sound.ReturnBTN);
-    }
-
-    IEnumerator ResetGame()
-    {
-        EasyTransition.TransitionManager.Instance().Transition(transition, 0);
-        yield return new WaitForSeconds(1f);
-
-
-        Managers.UI_Manager.CloseALlPopupUI();
-        Managers.Data.PlayerData = new Define.PlayerData();
-        Managers.Data.SaveData();
-        UI_MainBackUI.instance.UpdateUItexts();
-    }
+    
 }
