@@ -21,6 +21,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     public Action<int> SetAniSpeedAction;
 
     //아픈 첫날 체크용
+    //두번쩃날에는 이미 false임
     bool FirstSickDay = false;
     //두번쨋날이 끝나면 false로 바뀜
     bool isSick = false; 
@@ -182,6 +183,10 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             ExecuteSickDay();
             //실패 카운트 증가
             SuccessTimeContainer[2]++;
+
+            float waitTime = isFastMode ? TimeToStamp / 2 : TimeToStamp;
+            if (isDev) waitTime = 0;
+            yield return new WaitForSeconds(waitTime);
         }
         //아프지 않다면 모든 일정에 대해 대성공이 뜰 수 있음
         else
@@ -231,6 +236,10 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 }
             }
 
+            float waitTime = isFastMode ? TimeToStamp / 2 : TimeToStamp;
+            if (isDev) waitTime = 0;
+            yield return new WaitForSeconds(waitTime);
+
             //방송을 진행했다면 돈 구독자 증가
             if (oneDay.scheduleType == ContentType.BroadCast)
             {
@@ -251,19 +260,18 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             }
             Managers.Data.PlayerData.NowHeart = Mathf.Clamp(Mathf.CeilToInt(HeartVariance) + Managers.Data.PlayerData.NowHeart, 0, 100);
             Managers.Data.PlayerData.NowStar = Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data.PlayerData.NowStar, 0, 100);
+
+            //스텟 변화
+            float[] tempstat = new float[6];
+            for (int i = 0; i < 6; i++)
+            {
+                tempstat[i] = oneDay.Six_Stats[i] * bigSuccessMultiplier;
+            }
+            Managers.Data.PlayerData.ChangeStatAndPlayAnimation(tempstat);
         }
 
-        float waitTime = isFastMode ? TimeToStamp / 2 : TimeToStamp;
-        if (isDev) waitTime = 0;
-        yield return new WaitForSeconds(waitTime);
+        
 
-        //스텟 변화
-        float[] tempstat = new float[6];
-        for (int i = 0; i < 6; i++)
-        {
-            tempstat[i] = oneDay.Six_Stats[i] * bigSuccessMultiplier;
-        }
-        Managers.Data.PlayerData.ChangeStatAndPlayAnimation(tempstat);
 
         //UI하단 씰 붙이기
         if (todaySick || isSick)

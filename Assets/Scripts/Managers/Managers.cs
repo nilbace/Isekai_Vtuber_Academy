@@ -93,7 +93,7 @@ public class Managers : MonoBehaviour
     IEnumerator ShowReceiptCor()
     {
         if(UI_Tutorial.instance == null)
-            UI_Manager.ClosePopupUI();
+            UI_Manager.CloseALlPopupUI();
 
         yield return new WaitForEndOfFrame();
         UI_Manager.ShowPopupUI<UI_Reciept>();
