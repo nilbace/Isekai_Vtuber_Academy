@@ -521,8 +521,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7621377675082f1488b66c0490ccbf8f, type: 3}
   - {fileID: 21300000, guid: bd34ca46e9f17d64784510bf82fb2d61, type: 3}
   - {fileID: 21300000, guid: 88eaab7460f3d6447a00b95d214cf4a0, type: 3}
+  - {fileID: 21300000, guid: 135df3d09786eaf42ad34bc9d779b3d2, type: 3}
   dialogues: []
   TypingDelay: 0.1
+  currentDialogueIndex: 0
 --- !u!114 &455133248345138507
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -154,10 +154,25 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         //FastMode라면 2배속, 아니면 1배속
         SetAniSpeed(isFastMode ? 2 : 1);
 
-        //휴식 하는게 아니라면 아플 수 있음
-        if (oneDay.scheduleType != ContentType.Rest && !isSick)
+        //튜토리얼중이라면
+        if (UI_Tutorial.instance != null)
         {
-            Check_illnessProbability();
+            //토요일에 실패
+            if (DayIndex == 5)
+            {
+                isSick = true;
+                FirstSickDay = true;
+                caughtCold = true;
+            }
+        }
+        //튜토리얼이 아닐 때
+        else
+        {
+            //휴식 하는게 아니라면 아플 수 있음
+            if (oneDay.scheduleType != ContentType.Rest && !isSick)
+            {
+                Check_illnessProbability();
+            }
         }
 
         //아픈 첫번쨋날, 두번쨋날 실행되는 부분
@@ -185,17 +200,35 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
             //대성공 체크
             bigSuccessMultiplier = 1.0f;
-            if (CheckSuccessProbability())
+            
+            //튜토리얼이라면
+            if(UI_Tutorial.instance != null)
             {
-                BigSuccess = true;
-                bigSuccessMultiplier = Managers.instance.BigSuccessCoefficientValue;
-                //대성공 카운트 증가
-                SuccessTimeContainer[0]++;
+                //수요일에 대성공
+                if(DayIndex==2)
+                {
+                    BigSuccess = true;
+                    bigSuccessMultiplier = Managers.instance.BigSuccessCoefficientValue;
+                    //대성공 카운트 증가
+                    SuccessTimeContainer[0]++;
+                }
             }
+            //튜토리얼이 아니라면
+            //대성공 확률 체크 후 실행
             else
             {
-                //성공 카운트 증가
-                SuccessTimeContainer[1]++;
+                if (CheckSuccessProbability())
+                {
+                    BigSuccess = true;
+                    bigSuccessMultiplier = Managers.instance.BigSuccessCoefficientValue;
+                    //대성공 카운트 증가
+                    SuccessTimeContainer[0]++;
+                }
+                else
+                {
+                    //성공 카운트 증가
+                    SuccessTimeContainer[1]++;
+                }
             }
 
             //방송을 진행했다면 돈 구독자 증가
@@ -251,6 +284,23 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             UI_Stamp.Inst.SetStamp(UI_Stamp.StampState.Success);
             Managers.Sound.Play(Define.Sound.Success);
         }
+        //튜토리얼 상태일때
+        if (UI_Tutorial.instance != null)
+        {
+            yield return new WaitForSeconds(0.2f);
+            //수요일이라면
+            if (DayIndex == 2)
+            {
+                Time.timeScale = 0;
+                UI_Tutorial.instance.NextDialogue();
+            }
+            if (DayIndex == 5)
+            {
+                Time.timeScale = 0;
+                UI_Tutorial.instance.NextDialogue();
+            }
+        }
+
     }
 
 

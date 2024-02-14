@@ -17,14 +17,14 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
     private bool isTyping = false;
     private Coroutine typingCoroutine;
     public float TypingDelay;
-    private WaitForSeconds typingDelay;
-    private int currentDialogueIndex = 0;
+    private WaitForSecondsRealtime typingDelay;
+    [SerializeField] private int currentDialogueIndex = 0;
     Button NowSelctedBTN;
     bool NowSelectedBTNPressed = false;
 
     bool isEnd;
 
-    enum Texts { sentenceTMP,  }
+    enum Texts { sentenceTMP, }
     enum Images
     {
         LeftIMG,
@@ -55,13 +55,16 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
         Bind<TMPro.TMP_Text>(typeof(Texts));
         Bind<Image>(typeof(Images));
         Bind<Button>(typeof(Buttons));
-        typingDelay = new WaitForSeconds(TypingDelay);
+        typingDelay = new WaitForSecondsRealtime(TypingDelay);
 
+
+        //영수증 띄우기용 2주차 설정
+        Managers.Data.PlayerData.NowWeek = 2;
         GetImage((int)Images.LeftIMG).gameObject.SetActive(false);
         GetImage((int)Images.RightIMG).gameObject.SetActive(false);
         dialogueText = GetText((int)Texts.sentenceTMP);
     }
-  
+
 
     #region Pointer
     public void OnPointerDown(PointerEventData eventData)
@@ -78,7 +81,7 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
                 }
             }
         }
-        
+
     }
     public void OnPointerUp(PointerEventData eventData)
     {
@@ -103,6 +106,15 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
         }
         else
         {
+            if(dialogues[currentDialogueIndex].name == "대기")
+            {
+                return;
+            }
+            else if (dialogues[currentDialogueIndex].name == "진행")
+            {
+                Time.timeScale = 1;
+            }
+        
             if (dialogues[currentDialogueIndex].tutorialFocus != TutorialFocusPoint.MaxCount)
             {
                 //포커스 된 부분을 잘 클릭 했다면
@@ -135,13 +147,13 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
         yield return new WaitForEndOfFrame();
         NowSelctedBTN = null;
         ChooseBubbleIMG(dialogue);
-        ShowImage(dialogue);
+        ShowCharImage(dialogue);
         SetFocusImg(dialogue);
         // 대사 출력을 위한 코루틴 실행
         typingCoroutine = StartCoroutine(TypeSentence(dialogue));
     }
 
-    void NextDialogue()
+    public void NextDialogue()
     {
         if (!isEnd)
         {
@@ -190,6 +202,7 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
 
     void ChooseBubbleIMG(Dialogue dialogue)
     {
+        GetImage((int)Images.ChatBubbleIMG).color = alpha1;
         if (dialogue.name == "유저")
         {
             if (dialogue.isLeft) GetImage((int)Images.ChatBubbleIMG).sprite = BubbleIMGs[0];
@@ -205,13 +218,17 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
             if (dialogue.isLeft) GetImage((int)Images.ChatBubbleIMG).sprite = BubbleIMGs[4];
             else GetImage((int)Images.ChatBubbleIMG).sprite = BubbleIMGs[5];
         }
+        else if(dialogue.name == "대기" || dialogue.name == "진행")
+        {
+            GetImage((int)Images.ChatBubbleIMG).sprite = CharIMGs[3];
+        }
         else
         {
             GetImage((int)Images.ChatBubbleIMG).sprite = BubbleIMGs[6];
         }
     }
 
-    void ShowImage(Dialogue dialogue)
+    void ShowCharImage(Dialogue dialogue)
     {
         if (dialogue.name == "유저")
         {
@@ -221,12 +238,19 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
         {
             TurnOnImage(dialogue.isLeft, CharIMGs[1]);
         }
+        else if(dialogue.name == "대기" || dialogue.name == "진행")
+        {
+            //투명 이미지
+            TurnOnImage(dialogue.isLeft, CharIMGs[3]);
+        }
         else
         {
             TurnOnImage(dialogue.isLeft, CharIMGs[2]);
         }
+        
     }
 
+    //특정 선택지들은 선택박스가 딸려옴
     void SetFocusImg(Dialogue dialogue)
     {
         switch (dialogue.tutorialFocus)
@@ -236,15 +260,20 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
                 StartCoroutine(FollowSubcontent("Sketch", dialogue.IsInteractable));
                 break;
 
-            case TutorialFocusPoint.Category_Draw:
-                SetFocusImg("Category_Draw", dialogue.IsInteractable);
-                break;
-
             case TutorialFocusPoint.Song:
                 SetFocusImg("Song", dialogue.IsInteractable);
                 StartCoroutine(FollowSubcontent("Song", dialogue.IsInteractable));
                 break;
-           
+
+            case TutorialFocusPoint.BaseDraw:
+                SetFocusImg("BaseDraw", dialogue.IsInteractable);
+                StartCoroutine(FollowSubcontent("BaseDraw", dialogue.IsInteractable));
+                break;
+            case TutorialFocusPoint.BaseSong:
+                SetFocusImg("BaseSong", dialogue.IsInteractable);
+                StartCoroutine(FollowSubcontent("BaseSong", dialogue.IsInteractable));
+                break;
+
 
             case TutorialFocusPoint.MaxCount:
                 FocusImgDisappear();
@@ -275,13 +304,13 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
     {
         var FocusImg = GetImage((int)Images.FocusIMG);
         GameObject go = FindGo(Objectname);
-        Transform parent = go.transform.parent;
+        Transform parent = go.GetComponent<RectTransform>().parent;
         RectTransform parentRect = go.transform.parent.GetComponent<RectTransform>();
         RectTransform rectTransform = go.GetComponent<RectTransform>();
         FocusImg.sprite = go.GetComponent<Image>().sprite;
         FocusImg.GetComponent<RectTransform>().sizeDelta = rectTransform.sizeDelta;
         FocusImg.GetComponent<RectTransform>().anchoredPosition = go.GetComponent<RectTransform>().anchoredPosition;
-        if(parentRect != null && parentRect.anchoredPosition != Vector2.zero)
+        if (parentRect != null && parentRect.anchoredPosition != Vector2.zero)
         {
             FocusImg.GetComponent<RectTransform>().anchoredPosition += parent.GetComponent<RectTransform>().anchoredPosition;
         }
@@ -295,7 +324,7 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
         {
             Button button = go.GetComponent<Button>();
 
-            // Button 컴포넌트가 있는지 확인
+            // Button 컴포넌트가 있는지 확인.
             if (button != null)
             {
                 NowSelctedBTN = button;
@@ -306,7 +335,7 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
             }
         }
     }
-    
+
     GameObject FindGo(string name)
     {
         GameObject temp = null;
@@ -325,6 +354,15 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
             case "Song":
                 temp = contentGo.transform.GetChild(4).gameObject;
                 break;
+            case "BaseGame":
+                temp = contentGo.transform.GetChild(0).gameObject;
+                break;
+            case "BaseSong":
+                temp = contentGo.transform.GetChild(3).gameObject;
+                break;
+            case "BaseDraw":
+                temp = contentGo.transform.GetChild(6).gameObject;
+                break;
             default:
                 temp = GameObject.Find(name);
                 break;
@@ -336,7 +374,7 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
 
     Vector2 GetAnchoredPositionRelativeToParent(GameObject gameObject)
     {
-        //Layout에 속해있는 N번째 오브젝트
+        //Layout에 속해있는 N번째 오브젝트.
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
 
         //Layout컴포넌트를 들고있고 얼마나 움직였는지 체크용
@@ -386,5 +424,11 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
         GetImage((int)Images.RightIMG).gameObject.SetActive(!isLeft);
         GetImage((int)Images.RightIMG).sprite = !isLeft ? sprite : null;
         GetImage((int)Images.RightIMG).color = !isLeft ? Color.white : Color.gray;
+    }
+
+    private void OnDisable()
+    {
+        Managers.Data.PersistentUser.WatchedTutorial = true;
+        Debug.Log("다 봤다잉");
     }
 }

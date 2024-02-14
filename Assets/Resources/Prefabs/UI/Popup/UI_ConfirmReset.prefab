@@ -570,7 +570,7 @@ GameObject:
   - component: {fileID: 5287679160714204510}
   - component: {fileID: 2181124550880483880}
   m_Layer: 5
-  m_Name: ResetBTN
+  m_Name: StartResetBTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

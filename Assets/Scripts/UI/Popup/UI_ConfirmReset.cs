@@ -11,7 +11,7 @@ public class UI_ConfirmReset : UI_Popup
 
     enum Buttons
     {
-        ResetBTN
+        StartResetBTN
     }
    
 
@@ -25,7 +25,7 @@ public class UI_ConfirmReset : UI_Popup
         base.Init();
         Bind<Button>(typeof(Buttons));
 
-        GetButton((int)Buttons.ResetBTN).onClick.AddListener(ResetBTN);
+        GetButton((int)Buttons.StartResetBTN).onClick.AddListener(ResetBTN);
     }
 
     void ResetBTN()

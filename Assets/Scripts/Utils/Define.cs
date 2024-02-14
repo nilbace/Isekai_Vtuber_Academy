@@ -333,6 +333,15 @@ public class Define
         MM,
         HealthBox,
         StatBox,
+        BaseGame,
+        BaseSong,
+        BaseDraw,
+        StartScheduleBTN,
+        RecieptBackGroundIMG,
+        FinishBTN,
+        SettingBTN,
+        StartResetBTN,
+        ResetBTN,
         MaxCount
     }
 

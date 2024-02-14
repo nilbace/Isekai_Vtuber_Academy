@@ -35,8 +35,17 @@ public class UI_Reciept : UI_Popup
         Bind<TMPro.TMP_Text>(typeof(Texts));
         Managers.Sound.Play(Define.Sound.Receipt);
         SetReceipt();
-        transform.DOLocalMoveY(0, Duration).SetEase(EaseStatus, 0, periodScale);
+        var tween = transform.DOLocalMoveY(0, Duration).SetEase(EaseStatus, 0, periodScale);
+        tween.OnComplete(FocusifTutorial);
         GetButton((int)Buttons.FinishBTN).onClick.AddListener(FinishBTN);
+    }
+
+    void FocusifTutorial()
+    {
+        if (UI_Tutorial.instance != null)
+        {
+            UI_Tutorial.instance.NextDialogue();
+        }
     }
 
     public void SetReceipt()
@@ -69,7 +78,7 @@ public class UI_Reciept : UI_Popup
 
     void FinishBTN()
     {
-        //삭제할 부분
+        //삭제할 부분.
         var data = Managers.Data.PlayerData;
         temp += $"{data.NowWeek}주차 : 게임{data.SixStat[0]},구독{data.nowSubCount},돈{data.nowGoldAmount},근력{data.SixStat[3]},멘탈{data.SixStat[4]},행운{data.SixStat[5]}\n";
         Debug.Log(temp);
