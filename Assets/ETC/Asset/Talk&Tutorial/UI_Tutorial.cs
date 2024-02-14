@@ -115,8 +115,10 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
             {
                 Time.timeScale = 1;
             }
-        
-            if (dialogues[currentDialogueIndex].tutorialFocus != TutorialFocusPoint.MaxCount)
+            
+
+            //포커스 포인트가 있고, interactable이라면은
+            if (dialogues[currentDialogueIndex].tutorialFocus != TutorialFocusPoint.MaxCount && dialogues[currentDialogueIndex].IsInteractable)
             {
                 //포커스 된 부분을 잘 클릭 했다면
                 if (eventData.pointerCurrentRaycast.gameObject == GetImage((int)Images.BlackIMG).gameObject)
