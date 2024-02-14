@@ -97,6 +97,7 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
     }
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (isEnd) return;
         if (isTyping)
         {
             // 글자 출력 중이라면 모든 대사 한 번에 보여주기
@@ -159,12 +160,15 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
         {
             // 다음 대사 인덱스로 이동
             currentDialogueIndex++;
-
             // 대사가 모두 끝났을 경우 대화 종료
             if (currentDialogueIndex >= dialogues.Count)
             {
+                isEnd = true;
+                Debug.Log("끝남");
                 return;
             }
+
+            
 
             // 다음 대사 출력
             StartCoroutine(ShowDialogue(dialogues[currentDialogueIndex]));
