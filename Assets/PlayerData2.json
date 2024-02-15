@@ -1,22 +1,24 @@
 {
-    "NowWeek": 1,
-    "nowSubCount": 10,
-    "nowGoldAmount": 1000,
+    "NowWeek": 2,
+    "nowSubCount": 158,
+    "nowGoldAmount": 176,
     "RubiaKarma": 0,
-    "NowHeart": 100.0,
-    "NowStar": 100.0,
+    "NowHeart": 97.0,
+    "NowStar": 87.0,
     "SixStat": [
-        40.0,
-        40.0,
-        40.0,
-        45.0,
-        45.0,
-        45.0
+        11.0,
+        0.0,
+        0.0,
+        10.0,
+        5.0,
+        5.0
     ],
-    "DoneEventNames": [],
+    "DoneEventNames": [
+        "진수성찬 먹방"
+    ],
     "BoughtItems": [],
     "SubStoryIndex": [
-        6
+        5
     ],
-    "NowNickName": "대담한 초보"
+    "NowNickName": "익숙한 초보"
 }
