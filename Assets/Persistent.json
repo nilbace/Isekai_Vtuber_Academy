@@ -6,15 +6,21 @@
     "WatchedBroadCast": [
         0,
         4,
-        7
+        7,
+        1
     ],
     "WatchedRest": [
         0
     ],
     "WatchedGoOut": [
-        0
+        0,
+        13
     ],
-    "WatchedRandEvent": [],
+    "WatchedRandEvent": [
+        2,
+        0,
+        17
+    ],
     "WatchedEndingName": [],
     "OwnedNickNameBoolList": [
         true,
