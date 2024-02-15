@@ -11,7 +11,6 @@ public class UI_SelectNickName : UI_Popup
     UI_NickSubContent[] Suffixs;
     NickName SelectedPrefix;
     NickName SelectedSuffix;
-    bool ToLeft;
 
     enum Buttons
     {
@@ -95,38 +94,27 @@ public class UI_SelectNickName : UI_Popup
         {
             if (ResultArray[i] != 0)
             {
-                AddInfoText($"{(StatNameKor)i} 실력 {GetIconString(i)} +" + ResultArray[i] + "\n");
+                GetText((int)Texts.InfoTMP).text += $"{(StatNameKor)i} 실력 {GetIconString(i)} +" + ResultArray[i] + "\n";
             }
         }
         for (int i = 3; i < 6; i++)
         {
             if (ResultArray[i] != 0)
             {
-                AddInfoText($"{(StatNameKor)i} {GetIconString(i)} +" + ResultArray[i] + "\n");
+                GetText((int)Texts.Info2TMP).text += $"{(StatNameKor)i} {GetIconString(i)} +" + ResultArray[i] + "\n";
             }
         }
         if (ResultArray[6] != 0)
         {
-            AddInfoText($"골드 {GetIconString(StatIcons.Gold)}+" + ResultArray[6] + "\n");
+            GetText((int)Texts.InfoTMP).text += $"돈 {GetIconString(StatIcons.Gold)} +" + ResultArray[6];
         }
         if (ResultArray[7] != 0)
         {
-            AddInfoText($"구독자 {GetIconString(StatIcons.Sub)}+" + ResultArray[7]);
+            GetText((int)Texts.Info2TMP).text += $"구독자 {GetIconString(StatIcons.Sub)}+" + ResultArray[7];
         }
     }
 
-    public void AddInfoText(string stringdata)
-    {
-        if(ToLeft)
-        {
-            GetText((int)Texts.InfoTMP).text += stringdata;
-        }
-        else
-        {
-            GetText((int)Texts.Info2TMP).text += stringdata;
-        }
-        ToLeft = !ToLeft;
-    }
+  
 
     public void CheckOwnedNickName()
     {

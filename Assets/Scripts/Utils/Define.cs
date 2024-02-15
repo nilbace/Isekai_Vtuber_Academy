@@ -402,13 +402,13 @@ public class Define
     public enum StatIcons { Game, Song, Draw, Strength, Mental, Luck, Sub, Gold, BigSuccess, Success, Fail, Heart, Star, Ruby }
     public static string GetIconString(StatIcons stat)
     {
-        string temp = $"  <sprite={(int)stat}>";
+        string temp = $"<sprite={(int)stat}>";
         return temp;
     }
 
     public static string GetIconString(int index)
     {
-        string temp = $"  <sprite={index}>";
+        string temp = $"<sprite={index}>";
         return temp;
     }
 
