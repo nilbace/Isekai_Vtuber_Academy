@@ -9,9 +9,9 @@ public class UI_SelectNickName : UI_Popup
     public static UI_SelectNickName instance;
     UI_NickSubContent[] Prefixs;
     UI_NickSubContent[] Suffixs;
-    public NickName SelectedPrefix;
-    public NickName SelectedSuffix;
-    readonly NickName EmptyNickName = new NickName();
+    NickName SelectedPrefix;
+    NickName SelectedSuffix;
+    bool ToLeft;
 
     enum Buttons
     {
@@ -21,6 +21,7 @@ public class UI_SelectNickName : UI_Popup
     {
         NameTMP,
         InfoTMP,
+        Info2TMP
     }
 
     enum Transforms
@@ -87,30 +88,44 @@ public class UI_SelectNickName : UI_Popup
         ResultArray[6] = SelectedPrefix.MoneyValue + SelectedSuffix.MoneyValue;
         ResultArray[7] = SelectedPrefix.SubCount + SelectedSuffix.SubCount;
 
+        GetText((int)Texts.InfoTMP).text = "";
+        GetText((int)Texts.Info2TMP).text = "";
 
-        GetText((int)Texts.InfoTMP).text = "회차 시작 시\n";
         for (int i = 0; i < 3; i++)
         {
             if (ResultArray[i] != 0)
             {
-                GetText((int)Texts.InfoTMP).text += $"{(StatNameKor)i} 실력 {GetIconString(i)} +" + ResultArray[i] + "\n";
+                AddInfoText($"{(StatNameKor)i} 실력 {GetIconString(i)} +" + ResultArray[i] + "\n");
             }
         }
         for (int i = 3; i < 6; i++)
         {
             if (ResultArray[i] != 0)
             {
-                GetText((int)Texts.InfoTMP).text += $"{(StatNameKor)i} {GetIconString(i)} +" + ResultArray[i] + "\n";
+                AddInfoText($"{(StatNameKor)i} {GetIconString(i)} +" + ResultArray[i] + "\n");
             }
         }
         if (ResultArray[6] != 0)
         {
-            GetText((int)Texts.InfoTMP).text += $"골드 {GetIconString(StatIcons.Gold)}+" + ResultArray[6] + "\n";
+            AddInfoText($"골드 {GetIconString(StatIcons.Gold)}+" + ResultArray[6] + "\n");
         }
         if (ResultArray[7] != 0)
         {
-            GetText((int)Texts.InfoTMP).text += $"골드 {GetIconString(StatIcons.Sub)}+" + ResultArray[7];
+            AddInfoText($"구독자 {GetIconString(StatIcons.Sub)}+" + ResultArray[7]);
         }
+    }
+
+    public void AddInfoText(string stringdata)
+    {
+        if(ToLeft)
+        {
+            GetText((int)Texts.InfoTMP).text += stringdata;
+        }
+        else
+        {
+            GetText((int)Texts.Info2TMP).text += stringdata;
+        }
+        ToLeft = !ToLeft;
     }
 
     public void CheckOwnedNickName()
