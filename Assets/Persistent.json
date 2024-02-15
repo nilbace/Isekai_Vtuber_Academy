@@ -14,9 +14,7 @@
     "WatchedGoOut": [
         0
     ],
-    "WatchedRandEvent": [
-        1
-    ],
+    "WatchedRandEvent": [],
     "WatchedEndingName": [],
     "OwnedNickNameBoolList": [
         true,
@@ -29,7 +27,7 @@
         false,
         false,
         false,
-        false,
+        true,
         false,
         false,
         false,
@@ -61,5 +59,8 @@
         false,
         false,
         false
-    ]
+    ],
+    "ResetCount": 3,
+    "BigSuccessCount": 0,
+    "MMCount": 0
 }

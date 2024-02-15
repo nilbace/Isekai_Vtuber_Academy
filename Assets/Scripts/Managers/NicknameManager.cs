@@ -10,17 +10,18 @@ public class NicknameManager
     /// <summary>
     /// 칭호에 처음 접근할 때 사용되는 함수
     /// </summary>
+
+    
     public void OpenBaseNickName()
     {
-        var OwnedCheckList = Managers.Data.PersistentUser.OwnedNickNameBoolList;
-        var NickNameList = DataParser.Inst.NickNameList;
-        while (OwnedCheckList.Count < NickNameList.Count)
-        {
-            OwnedCheckList.Add(false);
-        }
         OpenNicknameWithoutAlarm(0);
         OpenNicknameWithoutAlarm(21);
     }
+
+    /// <summary>
+    /// 어떤 칭호를 해금했는지 알람과 보여줌
+    /// </summary>
+    /// <param name="n"></param>
     public void OpenNickname(int n)
     {
         if(Managers.Data.PersistentUser.OwnedNickNameBoolList[n] == false)
@@ -43,13 +44,5 @@ public class NicknameManager
     public void OpenNickname(NickNameKor kor)
     {
         OpenNickname((int)kor);
-    }
-
-
-    public Action UnlockNicknameIfConditionsMetAction;
-
-    public void UnlockNicknameIfConditionsMet()
-    {
-        UnlockNicknameIfConditionsMetAction?.Invoke();
     }
 }

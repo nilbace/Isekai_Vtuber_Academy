@@ -47,6 +47,7 @@ public class UI_ConfirmReset : UI_Popup
         }
         EasyTransition.TransitionManager.Instance().Transition(transition, 0);
         yield return new WaitForSeconds(1f);
+        Managers.Data.PersistentUser.InCreaseResetCount();
         Managers.UI_Manager.CloseALlPopupUI();
         Managers.Data.PlayerData = new Define.PlayerData();
         Managers.Data.SaveData();

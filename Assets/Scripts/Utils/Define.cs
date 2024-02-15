@@ -533,6 +533,30 @@ public class Define
         public List<RandEventName> WatchedRandEvent;
         public List<EndingName> WatchedEndingName;
         public List<bool> OwnedNickNameBoolList;
+        public int ResetCount;
+        public int BigSuccessCount;
+        public int MMCount;
+
+        public PersistentUserData()
+        {
+            BoughtAdPass = false;
+            WatchedTutorial = false;
+            WatchedCaught = false;
+            WatchedRunAway = false;
+            WatchedBroadCast = new List<BroadCastType>();
+            WatchedRest = new List<RestType>();
+            WatchedGoOut = new List<GoOutType>();
+            WatchedRandEvent = new List<RandEventName>();
+            WatchedEndingName = new List<EndingName>();
+            OwnedNickNameBoolList = new List<bool>();
+            for (int i = 0; i < 42; i++)
+            {
+                OwnedNickNameBoolList.Add(false);
+            }
+            ResetCount = 0;
+            BigSuccessCount = 0;
+            MMCount = 0;
+        }
 
         public bool CheckAndAddIfNotWatched<T>(T enumValue)
         {
@@ -568,6 +592,24 @@ public class Define
                 watchedList.Add(enumValue);
             }
             return isWatched;
+        }
+
+        public void InCreaseResetCount()
+        {
+            ResetCount++;
+            Debug.Log(ResetCount);
+            if(ResetCount == 1)
+            {
+                Managers.NickName.OpenNickname(NickNameKor.ÀÍ¼÷ÇÑ);
+            }
+            if (ResetCount == 50)
+            {
+                Managers.NickName.OpenNickname(NickNameKor.½Ã°ø°£ÀÇ);
+            }
+            if (ResetCount == 100)
+            {
+                Managers.NickName.OpenNickname(NickNameKor.È¸±ÍÀÚ);
+            }
         }
     }
 
