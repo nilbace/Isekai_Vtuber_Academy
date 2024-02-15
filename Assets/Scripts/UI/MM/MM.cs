@@ -66,6 +66,7 @@ public class MM : MonoSingleton<MM>
     {
         if (_nowMMState == MMState.OnSchedule)
         {
+            Managers.Data.PersistentUser.IncreaseMMCount();
             animator.SetTrigger("Push");
             Managers.Sound.Play("MM");
             UI_SchedulePopup.instance.ResetSchedule();

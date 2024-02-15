@@ -76,7 +76,7 @@ public class UI_SelectNickName : UI_Popup
         //보이는 칭호 설정
         GetText((int)Texts.NameTMP).text = SelectedPrefix.NicknameString + " " + SelectedSuffix.NicknameString;
 
-        int[] ResultArray = new int[7];
+        int[] ResultArray = new int[8];
         int[] prefixStats = SelectedPrefix.GetSixStat(); // SelectedPrefix의 6개 스텟을 가져옴
         int[] suffixStats = SelectedSuffix.GetSixStat(); // SelectedSuffix의 6개 스텟을 가져옴
 
@@ -85,7 +85,7 @@ public class UI_SelectNickName : UI_Popup
             ResultArray[i] = prefixStats[i] + suffixStats[i]; // 두 개의 스텟을 더해서 ResultArray에 저장
         }
         ResultArray[6] = SelectedPrefix.MoneyValue + SelectedSuffix.MoneyValue;
-
+        ResultArray[7] = SelectedPrefix.SubCount + SelectedSuffix.SubCount;
 
 
         GetText((int)Texts.InfoTMP).text = "회차 시작 시\n";
@@ -105,7 +105,11 @@ public class UI_SelectNickName : UI_Popup
         }
         if (ResultArray[6] != 0)
         {
-            GetText((int)Texts.InfoTMP).text += $"골드 {GetIconString(StatIcons.Gold)}+" + ResultArray[6];
+            GetText((int)Texts.InfoTMP).text += $"골드 {GetIconString(StatIcons.Gold)}+" + ResultArray[6] + "\n";
+        }
+        if (ResultArray[7] != 0)
+        {
+            GetText((int)Texts.InfoTMP).text += $"골드 {GetIconString(StatIcons.Sub)}+" + ResultArray[7];
         }
     }
 
@@ -163,6 +167,7 @@ public class UI_SelectNickName : UI_Popup
             Managers.Data.PlayerData.SixStat[i] += prefixStats[i] + suffixStats[i];
         }
         Managers.Data.PlayerData.nowGoldAmount += SelectedPrefix.MoneyValue + SelectedSuffix.MoneyValue;
+        Managers.Data.PlayerData.nowSubCount += SelectedPrefix.SubCount + SelectedSuffix.SubCount;
         Managers.Data.PlayerData.NowNickName = SelectedPrefix.NicknameString + " " + SelectedSuffix.NicknameString;
         UI_MainBackUI.instance.UpdateUItexts();
         Managers.UI_Manager.CloseALlPopupUI();

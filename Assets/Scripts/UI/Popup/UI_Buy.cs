@@ -42,6 +42,9 @@ public class UI_Buy : UI_Popup
             }
             Managers.Data.PlayerData.RubiaKarma += item.Karma;
 
+            if (item.ItemName == "호문쿨루스 소환서") Managers.NickName.OpenNickname(NickNameKor.흑마법사);
+            if (item.ItemName == "여우의 꼬리") Managers.NickName.OpenNickname(NickNameKor.구미호);
+
             UI_MainBackUI.instance.UpdateUItexts();
             Managers.Sound.Play(Sound.Buy);
             Managers.UI_Manager.ClosePopupUI();

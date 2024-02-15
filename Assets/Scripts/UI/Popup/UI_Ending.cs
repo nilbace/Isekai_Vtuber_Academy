@@ -41,8 +41,6 @@ public class UI_Ending : UI_Popup
         Bind<TMPro.TMP_Text>(typeof(Texts));
 
         StartCoroutine(StartTransition());
-
-        
     }
 
     IEnumerator StartTransition()
@@ -60,6 +58,7 @@ public class UI_Ending : UI_Popup
             transform.GetChild(i).gameObject.SetActive(true);
         }
         GetImage((int)Images.EndingIMG).sprite = EndingIMGs[(int)GetValidEndingName()];
+
     }
 
     EndingName GetValidEndingName()
@@ -72,6 +71,9 @@ public class UI_Ending : UI_Popup
         if (Managers.Data.PlayerData.GetHigestStatName() == StatName.Song) temp += 3;
         else if (Managers.Data.PlayerData.GetHigestStatName() == StatName.Draw) temp += 6;
 
+        Managers.NickName.OpenNickname(temp + 1);
+        Managers.NickName.OpenNickname(temp + 22);
+        Managers.NickName.CheckPerfectNickName();
         return (EndingName)temp;
     }
 

@@ -7,10 +7,16 @@
         0,
         4,
         7,
-        1
+        1,
+        2,
+        3,
+        5,
+        6,
+        8
     ],
     "WatchedRest": [
-        0
+        0,
+        1
     ],
     "WatchedGoOut": [
         0,
@@ -19,7 +25,9 @@
     "WatchedRandEvent": [
         2,
         0,
-        17
+        17,
+        5,
+        14
     ],
     "WatchedEndingName": [],
     "OwnedNickNameBoolList": [
@@ -63,10 +71,12 @@
         false,
         false,
         false,
-        false,
+        true,
         false
     ],
-    "ResetCount": 5,
+    "ResetCount": 7,
     "BigSuccessCount": 0,
-    "MMCount": 0
+    "MMCount": 0,
+    "BroadcastCount": 22,
+    "ColdCount": 0
 }

@@ -228,6 +228,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                     bigSuccessMultiplier = Managers.instance.BigSuccessCoefficientValue;
                     //대성공 카운트 증가
                     SuccessTimeContainer[0]++;
+                    Managers.Data.PersistentUser.IncreaseBigSuccessCount();
                 }
                 else
                 {
@@ -243,6 +244,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             //방송을 진행했다면 돈 구독자 증가
             if (oneDay.scheduleType == ContentType.BroadCast)
             {
+                Managers.Data.PersistentUser.IncreaseBCCount();
                 IncreaseSubsAndMoney(oneDay, bigSuccessMultiplier);
             }
 
@@ -373,6 +375,8 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 }
             }
         }
+
+        if (caughtCold) Managers.Data.PersistentUser.IncreaseColdCount();
     }
 
     void ExecuteSickDay()

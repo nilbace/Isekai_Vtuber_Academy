@@ -45,6 +45,7 @@ public class UI_RandomEvent : UI_Popup
         //·£´ý ÀÌº¥Æ®¸¦ ¹Þ¾Æ¿È
         if(!ArchiveMode) _eventData = Managers.RandEvent.GetProperEvent();
         _eventData.CheckAndAddIfNotWatched();
+        Managers.NickName.CheckPerfectNickName();
         Bind<Image>(typeof(Images));
         Bind<Button>(typeof(Buttons));
         Bind<TMPro.TMP_Text>(typeof(Texts));

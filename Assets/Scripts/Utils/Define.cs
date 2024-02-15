@@ -258,6 +258,7 @@ public class Define
                     Managers.Data.PersistentUser.CheckAndAddIfNotWatched(goOutType);
                     break;
             }
+            if (Managers.Data.PersistentUser.WatchedBroadCast.Count >= 9) Managers.NickName.OpenNickname(NickNameKor.카멜레온);
         }
     }
 
@@ -537,6 +538,8 @@ public class Define
         public int ResetCount;
         public int BigSuccessCount;
         public int MMCount;
+        public int BroadcastCount;
+        public int ColdCount;
 
         public PersistentUserData()
         {
@@ -620,6 +623,33 @@ public class Define
                 Managers.NickName.OpenNickname(NickNameKor.천재);
             }
         }
+
+        public void IncreaseMMCount()
+        {
+            MMCount++;
+            if (MMCount >= 100)
+            {
+                Managers.NickName.OpenNickname(NickNameKor.뮹뮹이의);
+            }
+        }
+
+        public void IncreaseColdCount()
+        {
+            ColdCount++;
+            if (ColdCount >= 10)
+            {
+                Managers.NickName.OpenNickname(NickNameKor.환자);
+            }
+        }
+
+        public void IncreaseBCCount()
+        {
+            BroadcastCount++;
+            if (BroadcastCount >= 200)
+            {
+                Managers.NickName.OpenNickname(NickNameKor.노예);
+            }
+        }
     }
 
     public enum NickNameType
@@ -686,8 +716,9 @@ public class Define
         public int StrStat;
         public int MenStat;
         public int LuckStat;
-        public int SubCount;
         public int MoneyValue;
+        public int SubCount;
+
 
         public NickName()
         {

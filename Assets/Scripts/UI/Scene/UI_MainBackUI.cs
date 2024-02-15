@@ -397,6 +397,15 @@ public class UI_MainBackUI : UI_Scene
 
         GetText((int)Texts.CommunicationTMP).text = ReplaceDashWithSpace(((SubStoryName)NowWeekSubStoryIndex).ToString());
         GetText((int)Texts.NickNameTMP).text = Managers.Data.PlayerData.NowNickName;
+
+        //겸 스텟 관련 엔딩 검사 부분
+        if (Managers.Data.PlayerData.SixStat[5] >= 200) Managers.NickName.OpenNickname(NickNameKor.행운의);
+        if (Managers.Data.PlayerData.SixStat[3] >= 200) Managers.NickName.OpenNickname(NickNameKor.단단한);
+        if (Managers.Data.PlayerData.SixStat[4] >= 200) Managers.NickName.OpenNickname(NickNameKor.평온한);
+        if (Managers.Data.PlayerData.nowGoldAmount >= 10000) Managers.NickName.OpenNickname(NickNameKor.부르주아);
+        if (Managers.Data.PlayerData.RubiaKarma >= 6) Managers.NickName.OpenNickname(NickNameKor.드래곤);
+        if (Managers.Data.PlayerData.nowSubCount >= 100000) Managers.NickName.OpenNickname(NickNameKor.떠오르는);
+        if (Managers.Data.PlayerData.nowSubCount >= 1000000) Managers.NickName.OpenNickname(NickNameKor.버튜버);
     }
 
     private string GetInitialTextForType(Texts textType)
