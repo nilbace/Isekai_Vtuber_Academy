@@ -3,10 +3,19 @@
     "WatchedTutorial": true,
     "WatchedCaught": false,
     "WatchedRunAway": false,
-    "WatchedBroadCast": [],
-    "WatchedRest": [],
-    "WatchedGoOut": [],
-    "WatchedRandEvent": [],
+    "WatchedBroadCast": [
+        0
+    ],
+    "WatchedRest": [
+        1,
+        0
+    ],
+    "WatchedGoOut": [
+        0
+    ],
+    "WatchedRandEvent": [
+        5
+    ],
     "WatchedEndingName": [],
     "OwnedNickNameBoolList": [
         true,
@@ -52,9 +61,9 @@
         false,
         false
     ],
-    "ResetCount": 2,
+    "ResetCount": 5,
     "BigSuccessCount": 0,
     "MMCount": 0,
-    "BroadcastCount": 0,
+    "BroadcastCount": 2,
     "ColdCount": 0
 }
