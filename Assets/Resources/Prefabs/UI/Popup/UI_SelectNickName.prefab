@@ -268,6 +268,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &907837558755809585
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +550,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &1117628187976452372
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,7 +596,7 @@ RectTransform:
   - {fileID: 9026821836299593192}
   - {fileID: 6736593100704876992}
   m_Father: {fileID: 5501035149407559670}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -779,6 +805,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &1264051789626094587
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,7 +851,7 @@ RectTransform:
   - {fileID: 6124015032776066262}
   - {fileID: 3639577144488222119}
   m_Father: {fileID: 5501035149407559670}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1768,6 +1807,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &2666231810084525277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1915,7 +1967,7 @@ GameObject:
   - component: {fileID: 6986583710104239432}
   - component: {fileID: 1928269138849994275}
   m_Layer: 5
-  m_Name: Button
+  m_Name: StartBTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1934,7 +1986,7 @@ RectTransform:
   m_Children:
   - {fileID: 807204263376349899}
   m_Father: {fileID: 5501035149407559670}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2055,7 +2107,7 @@ RectTransform:
   - {fileID: 1438665372217320614}
   - {fileID: 9108193397149058206}
   m_Father: {fileID: 5501035149407559670}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2234,6 +2286,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &3056493257528854510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2542,7 +2607,7 @@ GameObject:
   - component: {fileID: 1545776641687208024}
   - component: {fileID: 2274435890109275747}
   m_Layer: 5
-  m_Name: Content
+  m_Name: suffixParentTR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2750,6 +2815,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &3907669690560748670
 GameObject:
   m_ObjectHideFlags: 0
@@ -2884,6 +2962,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &3909642167236367742
 GameObject:
   m_ObjectHideFlags: 0
@@ -3018,6 +3109,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &4037128121690878902
 GameObject:
   m_ObjectHideFlags: 0
@@ -3420,6 +3524,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &4564318304531617680
 GameObject:
   m_ObjectHideFlags: 0
@@ -3554,6 +3671,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &4740055730880093339
 GameObject:
   m_ObjectHideFlags: 0
@@ -3688,6 +3818,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &5094067027708766214
 GameObject:
   m_ObjectHideFlags: 0
@@ -3854,7 +3997,6 @@ RectTransform:
   m_Children:
   - {fileID: 3428941824756763818}
   - {fileID: 4410162905297250061}
-  - {fileID: 8438636171087121278}
   - {fileID: 3217757371144354199}
   - {fileID: 5814037275784457188}
   - {fileID: 6996070134181584675}
@@ -4299,126 +4441,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &6026345677936229931
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8438636171087121278}
-  - component: {fileID: 1918516526649916867}
-  - component: {fileID: 6327936137313487644}
-  - component: {fileID: 4328966001697353920}
-  m_Layer: 5
-  m_Name: CloseBTN
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &8438636171087121278
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6026345677936229931}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5501035149407559670}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100.35, y: 209.62}
-  m_SizeDelta: {x: 19, y: 19}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1918516526649916867
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6026345677936229931}
-  m_CullTransparentMesh: 1
---- !u!114 &6327936137313487644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6026345677936229931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 98583b0967226c440918e728f6bda7b1, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!114 &4328966001697353920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6026345677936229931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 1809132378963351333, guid: 9c5f4462325609544a39b9a0adb1b826, type: 3}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 6327936137313487644}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &6140127131924882796
 GameObject:
   m_ObjectHideFlags: 0
@@ -4553,6 +4575,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &6251333515177630994
 GameObject:
   m_ObjectHideFlags: 0
@@ -5090,6 +5125,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &6702079303634693569
 GameObject:
   m_ObjectHideFlags: 0
@@ -5102,7 +5150,7 @@ GameObject:
   - component: {fileID: 3941132146381800757}
   - component: {fileID: 5768886884934337224}
   m_Layer: 5
-  m_Name: Content
+  m_Name: prefixParentTR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5310,6 +5358,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &6746240477589938183
 GameObject:
   m_ObjectHideFlags: 0
@@ -5578,6 +5639,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &6911495818569445889
 GameObject:
   m_ObjectHideFlags: 0
@@ -6204,6 +6278,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &7515103368931276130
 GameObject:
   m_ObjectHideFlags: 0
@@ -6949,6 +7036,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &8043539910855982995
 GameObject:
   m_ObjectHideFlags: 0
@@ -7173,6 +7273,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &8151304513289912237
 GameObject:
   m_ObjectHideFlags: 0
@@ -7307,6 +7420,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &8191885242220379372
 GameObject:
   m_ObjectHideFlags: 0
@@ -7441,6 +7567,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &8468839512882245161
 GameObject:
   m_ObjectHideFlags: 0
@@ -7784,6 +7923,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0
 --- !u!1 &8700514885326261486
 GameObject:
   m_ObjectHideFlags: 0
@@ -8186,3 +8338,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c3dc86e12e114cbc9b6263219caa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisNickName:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    SubCount: 0
+    MoneyValue: 0

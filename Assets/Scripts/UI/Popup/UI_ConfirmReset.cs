@@ -51,6 +51,7 @@ public class UI_ConfirmReset : UI_Popup
         Managers.Data.PlayerData = new Define.PlayerData();
         Managers.Data.SaveData();
         UI_MainBackUI.instance.UpdateUItexts();
+        Managers.UI_Manager.ShowPopupUI<UI_SelectNickName>();
     }
 
 

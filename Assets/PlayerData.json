@@ -1,25 +1,19 @@
 {
-    "NowWeek": 3,
-    "nowSubCount": 1256,
-    "nowGoldAmount": 3148,
+    "NowWeek": 1,
+    "nowSubCount": 10,
+    "nowGoldAmount": 1000,
     "RubiaKarma": 0,
-    "NowHeart": 44.0,
-    "NowStar": 54.0,
+    "NowHeart": 100.0,
+    "NowStar": 100.0,
     "SixStat": [
-        14.0,
-        0.0,
         0.0,
         0.0,
         5.0,
-        0.0
+        0.0,
+        5.0,
+        5.0
     ],
-    "DoneEventNames": [
-        "TS 코스프레"
-    ],
+    "DoneEventNames": [],
     "BoughtItems": [],
-    "SubStoryIndex": [
-        1,
-        23,
-        2
-    ]
+    "SubStoryIndex": []
 }

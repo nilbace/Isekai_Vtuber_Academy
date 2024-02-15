@@ -3,25 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RandEvent
-{
-    public class Item
-    {
-        public string EventName;
-        public string InfoText;
-    }
-}
-
-namespace MerchantItem
-{
-    public class Item
-    {
-        public string ItemName;
-        public int ItemIndex;
-        public string ItemInfo;
-    }
-}
-
 
 public class Define
 {
@@ -415,16 +396,17 @@ public class Define
         }
     }
 
-    public static string GetIconString(StatName stat)
-    {
-        string temp = $"  <sprite={(int)stat}>";
-        return temp;
-    }
 
     public enum StatIcons { Game, Song, Draw, Strength, Mental, Luck, Sub, Gold, BigSuccess, Success, Fail, Heart, Star, Ruby }
     public static string GetIconString(StatIcons stat)
     {
         string temp = $"  <sprite={(int)stat}>";
+        return temp;
+    }
+
+    public static string GetIconString(int index)
+    {
+        string temp = $"  <sprite={index}>";
         return temp;
     }
 
@@ -590,7 +572,55 @@ public class Define
     }
 
     public enum NickNameType
-    { prefix, suffix}
+    { prefix, suffix }
+
+    public enum NickNameKor
+    {
+        대담한,
+        불멸의,
+        빛나는,
+        파릇파릇한,
+        발칙한,
+        버릇_없는,
+        농염한,
+        사랑에_빠진,
+        숨겨진,
+        집요한,
+        익숙한,
+        시공간의,
+        천재,
+        작고_소중한,
+        사랑스러운,
+        이세계,
+        떠오르는,
+        행운의,
+        단단한,
+        평온한,
+        뮹뮹이의,
+        초보,
+        탑라이너,
+        아이돌,
+        새내기,
+        여왕,
+        쓰레기,
+        붉은_머리,
+        소녀,
+        보석,
+        지배자,
+        필멸자,
+        노예,
+        환자,
+        부르주아,
+        드래곤,
+        버튜버,
+        회귀자,
+        완벽주의자,
+        흑마법사,
+        카멜레온,
+        구미호,
+        MaxCount
+    }
+
 
     [System.Serializable]
     public class NickName
@@ -608,6 +638,22 @@ public class Define
         public int SubCount;
         public int MoneyValue;
 
+        public NickName()
+        {
+            NicknameIndex = -1;
+            NicknameType = NickNameType.suffix;
+            NicknameString = "";
+            ConditionString = "";
+            GameStat = 0;
+            SongStat = 0;
+            DrawStat = 0;
+            StrStat = 0;
+            MenStat = 0;
+            LuckStat = 0;
+            SubCount = 0;
+            MoneyValue = 0;
+        }
+
         public int[] GetSixStat()
         {
             int[] statArray = new int[6];
@@ -622,4 +668,6 @@ public class Define
         }
     }
 
+    
 }
+

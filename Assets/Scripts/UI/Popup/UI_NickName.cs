@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static Define;
-
 public class UI_NickName : UI_Popup
 {
     public Transform PrefixParent;
@@ -41,11 +40,8 @@ public class UI_NickName : UI_Popup
         int prefixIndex = 0;
         int suffixIndex = 0;
 
-        // OwnedCheckList를 NickNameList와 동일한 길이로 맞춰줌
-        while (OwnedCheckList.Count < NickNameList.Count)
-        {
-            OwnedCheckList.Add(false);
-        }
+        //최초 초기화 용도
+        Managers.NickName.OpenBaseNickName();
 
         for (int i = 0; i < NickNameList.Count; i++)
         {
@@ -77,7 +73,5 @@ public class UI_NickName : UI_Popup
         {
             SuffixGOs[j].gameObject.SetActive(false);
         }
-
-        Managers.Data.SaveData();
     }
 }
