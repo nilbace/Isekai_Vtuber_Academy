@@ -423,6 +423,7 @@ public class Define
         public List<string> DoneEventNames;
         public List<string> BoughtItems;
         public List<int> SubStoryIndex;
+        public string NowNickName;
         public PlayerData()
         {
             NowWeek = 1;
@@ -597,7 +598,6 @@ public class Define
         public void InCreaseResetCount()
         {
             ResetCount++;
-            Debug.Log(ResetCount);
             if(ResetCount == 1)
             {
                 Managers.NickName.OpenNickname(NickNameKor.ÀÍ¼÷ÇÑ);
@@ -609,6 +609,15 @@ public class Define
             if (ResetCount == 100)
             {
                 Managers.NickName.OpenNickname(NickNameKor.È¸±ÍÀÚ);
+            }
+        }
+
+        public void IncreaseBigSuccessCount()
+        {
+            BigSuccessCount++;
+            if (BigSuccessCount == 50)
+            {
+                Managers.NickName.OpenNickname(NickNameKor.ÃµÀç);
             }
         }
     }

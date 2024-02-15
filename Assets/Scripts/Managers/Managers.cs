@@ -99,6 +99,17 @@ public class Managers : MonoBehaviour
         UI_Manager.ShowPopupUI<UI_Reciept>();
     }
 
+    public void ShowSelectNickName()
+    {
+        StartCoroutine(ShowSelectNickNameCor());
+    }
+    IEnumerator ShowSelectNickNameCor()
+    {
+        UI_Manager.ClosePopupUI();
+             yield return new WaitForEndOfFrame();
+        UI_Manager.ShowPopupUI<UI_SelectNickName>();
+    }
+
     public void CloseTitle()
     {
         if (Managers.Data.PersistentUser.WatchedTutorial == false)
@@ -140,9 +151,8 @@ public class Managers : MonoBehaviour
         return mainStory;
     }
 
+     #endregion
 
-    #endregion
 
 
-    
 }

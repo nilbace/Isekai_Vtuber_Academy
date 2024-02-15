@@ -43,6 +43,7 @@ public class UI_MainBackUI : UI_Scene
         TempLuckTMP,
         CommunicationTMP,
         BCTitleTMP,
+        NickNameTMP
     }
 
     enum Buttons
@@ -395,6 +396,7 @@ public class UI_MainBackUI : UI_Scene
         }
 
         GetText((int)Texts.CommunicationTMP).text = ReplaceDashWithSpace(((SubStoryName)NowWeekSubStoryIndex).ToString());
+        GetText((int)Texts.NickNameTMP).text = Managers.Data.PlayerData.NowNickName;
     }
 
     private string GetInitialTextForType(Texts textType)

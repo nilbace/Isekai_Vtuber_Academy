@@ -8,12 +8,15 @@ using UnityEngine.UI;
 public class Alarm : MonoSingleton<Alarm>
 {
     private static Coroutine fadeCoroutine;
+    static bool isCoroutineRunning = false;
     public Image image;
     public TMP_Text text;
+    public Queue<string> StringQueue;
 
     private void Awake()
     {
         base.Awake();
+        Inst.StringQueue = new Queue<string>();
     }
 
     void Start()
@@ -24,11 +27,25 @@ public class Alarm : MonoSingleton<Alarm>
 
     public static void ShowAlarm(string Text)
     {
-        if (fadeCoroutine != null)
+        Inst.StringQueue.Enqueue(Text); // 받은 문자열을 Queue에 추가합니다.
+        Inst.StartCoroutine(FadeCorController());
+    }
+    static IEnumerator FadeCorController()
+    {
+        if (isCoroutineRunning)
         {
-            Inst.StopCoroutine(fadeCoroutine);
+            yield break;
         }
-        fadeCoroutine = Inst.StartCoroutine(FadeCoroutine(Text));
+
+        isCoroutineRunning = true;
+
+        while (Inst.StringQueue.Count > 0)
+        {
+            string text = Inst.StringQueue.Dequeue();
+            yield return Inst.StartCoroutine(FadeCoroutine(text));
+        }
+
+        isCoroutineRunning = false;
     }
 
     private static IEnumerator FadeCoroutine(string Text)

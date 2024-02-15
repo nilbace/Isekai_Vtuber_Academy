@@ -8,6 +8,7 @@ public class SceneMManager
     public void Init()
     {
         Managers.Sound.Play("bgm1", Sound.Bgm);
+        
 #if UNITY_EDITOR
         Managers.UI_Manager.ShowPopupUI<TitleIMG>();
 #else

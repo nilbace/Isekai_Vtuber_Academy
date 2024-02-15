@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 26301636}
   - component: {fileID: 26301638}
   m_Layer: 5
-  m_Name: Image
+  m_Name: TouchArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13158,7 +13158,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC804\uC124\uC758 \uD504\uB85C\uAC8C\uC774\uBA38 \uC5D8\uB77C"
+  m_text: "\uB300\uB2F4\uD55C \uCD08\uBCF4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dfd3ad76c45247c47a1abbe6a9ce36ea, type: 2}
   m_sharedMaterial: {fileID: -4350223732561355469, guid: dfd3ad76c45247c47a1abbe6a9ce36ea, type: 2}

@@ -154,7 +154,7 @@ public class UI_SelectNickName : UI_Popup
 
     void StartGame()
     {
-        //기본 스텟 및 소지금 애니메이션 없이 깡 업데이트
+        //기본 스텟 및 소지금 애니메이션 없이 수치 깡 업데이트
         int[] prefixStats = SelectedPrefix.GetSixStat(); 
         int[] suffixStats = SelectedSuffix.GetSixStat(); 
 
@@ -163,8 +163,8 @@ public class UI_SelectNickName : UI_Popup
             Managers.Data.PlayerData.SixStat[i] += prefixStats[i] + suffixStats[i];
         }
         Managers.Data.PlayerData.nowGoldAmount += SelectedPrefix.MoneyValue + SelectedSuffix.MoneyValue;
+        Managers.Data.PlayerData.NowNickName = SelectedPrefix.NicknameString + " " + SelectedSuffix.NicknameString;
         UI_MainBackUI.instance.UpdateUItexts();
-
         Managers.UI_Manager.CloseALlPopupUI();
         Managers.Data.SaveData();
     }
