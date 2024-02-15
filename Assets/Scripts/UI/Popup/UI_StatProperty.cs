@@ -71,6 +71,7 @@ public class UI_StatProperty : UI_Popup
         GetText((int)Texts.BigStatValueTMP).text = (SelectedStatTier * 20).ToString();
 
         //선택 박스 내 글귀
+        //영준아 여기 고치고 주석 이거 한줄 통째로 지워줘
         if (stat == StatName.Game || stat == StatName.Song || stat == StatName.Draw)
         {
             GetText((int)Texts.StatInfoTMP).text = $"  {GetIconString(StatIcons.Sub)} +{nowBonus.SubBonus}%, {GetIconString(StatIcons.Gold)} +{nowBonus.IncomeBonus}%";
@@ -131,6 +132,8 @@ public class UI_StatProperty : UI_Popup
         
     }
 
+    //위쪽 박스 아래 설명부분
+    //영준아 여기 고치고 주석 이거 한줄 통째로 지워줘
     string SetExtraInfoTMP(StatName stat)
     {
         string temp = "";
@@ -189,6 +192,9 @@ public class UI_StatProperty : UI_Popup
         return temp;
     }
 
+    //뒤에 배경으로 깔리는 선택박스 외부 글자들
+    //20~200까지 스텟들 글귀
+    //영준아 여기 고치고 주석 이거 한줄 통째로 지워줘
     string GetStatText2(int tier, StatName stat)
     {
         int nowgrade = tier * 20;
