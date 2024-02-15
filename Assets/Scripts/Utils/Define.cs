@@ -259,6 +259,7 @@ public class Define
                     break;
             }
             if (Managers.Data.PersistentUser.WatchedBroadCast.Count >= 9) Managers.NickName.OpenNickname(NickNameKor.Ä«¸á·¹¿Â);
+            Managers.NickName.CheckPerfectNickName();
         }
     }
 

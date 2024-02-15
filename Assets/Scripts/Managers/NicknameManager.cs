@@ -34,8 +34,9 @@ public class NicknameManager
 
     public void CheckPerfectNickName()
     {
-        if (Managers.Data.PersistentUser.WatchedEndingName.Count == 9 &&
-            Managers.Data.PersistentUser.WatchedRandEvent.Count == 18)
+        if (Managers.Data.PersistentUser.WatchedEndingName.Count == (int)EndingName.MaxCount &&
+            Managers.Data.PersistentUser.WatchedRandEvent.Count == 18&&
+            Managers.Data.PersistentUser.WatchedBroadCast.Count == (int)BroadCastType.MaxCount_Name)
             OpenNickname(NickNameKor.완벽주의자);
     }
 

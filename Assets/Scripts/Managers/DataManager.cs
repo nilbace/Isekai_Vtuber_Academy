@@ -26,13 +26,13 @@ public class DataManager
         string path2;
         if (Application.platform == RuntimePlatform.Android)
         {
-            path = Path.Combine(Application.persistentDataPath, "PlayerData.json");
-            path2 = Path.Combine(Application.persistentDataPath, "Persistent.json");
+            path = Path.Combine(Application.persistentDataPath, "PlayerData2.json");
+            path2 = Path.Combine(Application.persistentDataPath, "Persistent2.json");
         }
         else
         {
-            path = Path.Combine(Application.dataPath, "PlayerData.json");
-            path2 = Path.Combine(Application.dataPath, "Persistent.json");
+            path = Path.Combine(Application.dataPath, "PlayerData2.json");
+            path2 = Path.Combine(Application.dataPath, "Persistent2.json");
         }
 
         if (!File.Exists(path) || !File.Exists(path2))
@@ -63,13 +63,13 @@ public class DataManager
         string path2;
         if (Application.platform == RuntimePlatform.Android)
         {
-            path = Path.Combine(Application.persistentDataPath, "PlayerData.json");
-            path2 = Path.Combine(Application.persistentDataPath, "Persistent.json");
+            path = Path.Combine(Application.persistentDataPath, "PlayerData2.json");
+            path2 = Path.Combine(Application.persistentDataPath, "Persistent2.json");
         }
         else
         {
-            path = Path.Combine(Application.dataPath, "PlayerData.json");
-            path2 = Path.Combine(Application.dataPath, "Persistent.json");
+            path = Path.Combine(Application.dataPath, "PlayerData2.json");
+            path2 = Path.Combine(Application.dataPath, "Persistent2.json");
         }
         string jsonData = JsonUtility.ToJson(PlayerData, true);
         FileStream fileStream = new FileStream(path, FileMode.Create);

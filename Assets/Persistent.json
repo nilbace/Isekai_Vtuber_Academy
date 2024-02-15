@@ -6,28 +6,17 @@
     "WatchedBroadCast": [
         0,
         4,
-        7,
-        1,
-        2,
-        3,
-        5,
-        6,
-        8
+        7
     ],
     "WatchedRest": [
-        0,
-        1
+        0
     ],
     "WatchedGoOut": [
-        0,
-        13
+        0
     ],
     "WatchedRandEvent": [
-        2,
-        0,
-        17,
-        5,
-        14
+        13,
+        4
     ],
     "WatchedEndingName": [],
     "OwnedNickNameBoolList": [
@@ -71,12 +60,12 @@
         false,
         false,
         false,
-        true,
+        false,
         false
     ],
-    "ResetCount": 7,
+    "ResetCount": 2,
     "BigSuccessCount": 0,
     "MMCount": 0,
-    "BroadcastCount": 22,
+    "BroadcastCount": 12,
     "ColdCount": 0
 }

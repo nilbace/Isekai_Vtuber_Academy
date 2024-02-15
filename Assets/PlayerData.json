@@ -1,27 +1,25 @@
 {
-    "NowWeek": 4,
-    "nowSubCount": 1453,
-    "nowGoldAmount": 2307,
+    "NowWeek": 2,
+    "nowSubCount": 397,
+    "nowGoldAmount": 1601,
     "RubiaKarma": 0,
     "NowHeart": 100.0,
-    "NowStar": 88.0,
+    "NowStar": 87.0,
     "SixStat": [
-        23.0,
+        10.0,
         0.0,
         0.0,
         5.0,
-        15.0,
+        5.0,
         5.0
     ],
     "DoneEventNames": [
-        "현실부정"
+        "고삼차 먹방"
     ],
     "BoughtItems": [],
     "SubStoryIndex": [
-        18,
-        16,
-        9,
-        8
+        14,
+        7
     ],
-    "NowNickName": "대담한 초보"
+    "NowNickName": "익숙한 초보"
 }
