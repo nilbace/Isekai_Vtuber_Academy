@@ -1,12 +1,65 @@
 {
     "BoughtAdPass": false,
-    "WatchedTutorial": false,
-    "WatchedCaught": false,
+    "WatchedTutorial": true,
+    "WatchedCaught": true,
     "WatchedRunAway": false,
-    "WatchedBroadCast": [],
-    "WatchedRest": [],
-    "WatchedGoOut": [],
-    "WatchedRandEvent": [],
+    "WatchedBroadCast": [
+        0,
+        4,
+        7
+    ],
+    "WatchedRest": [
+        0
+    ],
+    "WatchedGoOut": [
+        0
+    ],
+    "WatchedRandEvent": [
+        1
+    ],
     "WatchedEndingName": [],
-    "OwnedNickNameBoolList": []
+    "OwnedNickNameBoolList": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+    ]
 }

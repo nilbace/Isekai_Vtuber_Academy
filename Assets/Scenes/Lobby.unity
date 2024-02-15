@@ -13160,8 +13160,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC804\uC124\uC758 \uD504\uB85C\uAC8C\uC774\uBA38 \uC5D8\uB77C"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8bae00d3f38bac44ca17df61f33b456e, type: 2}
-  m_sharedMaterial: {fileID: -3381243541127260742, guid: 8bae00d3f38bac44ca17df61f33b456e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dfd3ad76c45247c47a1abbe6a9ce36ea, type: 2}
+  m_sharedMaterial: {fileID: -4350223732561355469, guid: dfd3ad76c45247c47a1abbe6a9ce36ea, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
