@@ -196,7 +196,7 @@ public class UI_StatProperty : UI_Popup
 
         string temp = "";
         if (stat == StatName.Game || stat == StatName.Song || stat == StatName.Draw)
-            temp = $"  {GetIconString(StatIcons.Sub)} +{temp2.SubBonus}%,{GetIconString(StatIcons.Gold)} +{temp2.IncomeBonus}%";
+            temp = $"  {GetIconString(StatIcons.Sub)} +{temp2.SubBonus}%, {GetIconString(StatIcons.Gold)} +{temp2.IncomeBonus}%";
         else if (stat == StatName.Strength)
             temp = $"  {GetIconString(StatIcons.Heart)} °¨¼Ò·® -{tier * Mathf.RoundToInt(Managers.instance.Str_Men_ValuePerLevel*100)}%";
         else if (stat == StatName.Mental)
