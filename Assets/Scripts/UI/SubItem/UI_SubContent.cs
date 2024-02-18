@@ -169,7 +169,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         if (OverOffset) return;
         Managers.Data.PlayerData.nowGoldAmount += nowCost;
         Managers.Data.PlayerData.nowGoldAmount -= thisSubSchedleData.MoneyCost;
-        UI_MainBackUI.instance.UpdateUItexts();
+        UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
         UI_SchedulePopup.instance.SetDaySchedule(thisSubSchedleData);
     }
 
@@ -269,7 +269,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         {
             Bonus temp = Managers.Data.GetMainProperty(GetStatNameByBroadCastType(oneDayScheduleData.broadcastType));
 
-            int Income = Mathf.CeilToInt(Mathf.Log10(SubCount)*300 * oneDayScheduleData.InComeMag);
+            int Income = Mathf.CeilToInt(Mathf.Log10(SubCount)*3000 * oneDayScheduleData.InComeMag);
             int bonus = Mathf.CeilToInt(Income * (temp.IncomeBonus) / 100f);
 
             return Income + bonus;

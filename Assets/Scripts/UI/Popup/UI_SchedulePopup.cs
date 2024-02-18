@@ -409,7 +409,7 @@ public class UI_SchedulePopup : UI_Popup
             
         }
         Managers.Data.PlayerData.nowGoldAmount += temp;
-        UI_MainBackUI.instance.UpdateUItexts();
+        UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
         SetNowSelectedFrameBox();
         UpdateDayBTN_Interactable();
         ClickLastDay_PlusOne();

@@ -151,7 +151,7 @@ public class UI_MainBackUI : UI_Scene
         }
 
         Get<Animator>((int)Animators.ScreenIMG).speed = ScreenAniSpeed;
-        UpdateUItexts();
+        UpdateUItextsAndCheckNickname();
         RegisterActionToOtherScripts();
     }
 
@@ -299,7 +299,7 @@ public class UI_MainBackUI : UI_Scene
         }
         Managers.Data.PlayerData.SubStoryIndex.Add(temp);
         NowWeekSubStoryIndex = temp;
-        UpdateUItexts();
+        UpdateUItextsAndCheckNickname();
         Managers.Data.SaveData();
     }
 
@@ -361,8 +361,8 @@ public class UI_MainBackUI : UI_Scene
         IconBaseAnis[i].CrossFade("Shine", 0);
     }
 
-    //전체반적인 모든 글자들 갱신
-    public void UpdateUItexts()
+    //전체반적인 모든 글자들 갱신+닉네임 체크
+    public void UpdateUItextsAndCheckNickname()
     {
         foreach (Texts textType in System.Enum.GetValues(typeof(Texts)))
         {
@@ -402,7 +402,7 @@ public class UI_MainBackUI : UI_Scene
         if (Managers.Data.PlayerData.SixStat[5] >= 200) Managers.NickName.OpenNickname(NickNameKor.행운의);
         if (Managers.Data.PlayerData.SixStat[3] >= 200) Managers.NickName.OpenNickname(NickNameKor.단단한);
         if (Managers.Data.PlayerData.SixStat[4] >= 200) Managers.NickName.OpenNickname(NickNameKor.평온한);
-        if (Managers.Data.PlayerData.nowGoldAmount >= 10000) Managers.NickName.OpenNickname(NickNameKor.부르주아);
+        if (Managers.Data.PlayerData.nowGoldAmount >= 100000) Managers.NickName.OpenNickname(NickNameKor.부르주아);
         if (Managers.Data.PlayerData.RubiaKarma >= 6) Managers.NickName.OpenNickname(NickNameKor.드래곤);
         if (Managers.Data.PlayerData.nowSubCount >= 100000) Managers.NickName.OpenNickname(NickNameKor.떠오르는);
         if (Managers.Data.PlayerData.nowSubCount >= 1000000) Managers.NickName.OpenNickname(NickNameKor.버튜버);
@@ -529,7 +529,7 @@ public class UI_MainBackUI : UI_Scene
     void FinishWeek()
     {
         EndScheduleAndSetUI();
-        UpdateUItexts();
+        UpdateUItextsAndCheckNickname();
     }
 
     public void EndScheduleAndSetUI()

@@ -82,21 +82,24 @@ public class UI_Reciept : UI_Popup
     {
         //삭제할 부분.
         var data = Managers.Data.PlayerData;
-        temp += $"{data.NowWeek}주차 : 게임{data.SixStat[0]},구독{data.nowSubCount},돈{data.nowGoldAmount},근력{data.SixStat[3]},멘탈{data.SixStat[4]},행운{data.SixStat[5]}\n";
+        temp += $"{data.NowWeek}주차 : 노래{data.SixStat[1]},구독{data.nowSubCount},돈{data.nowGoldAmount},근력{data.SixStat[3]},멘탈{data.SixStat[4]},행운{data.SixStat[5]}\n";
         Debug.Log(temp);
         //여기까지
 
-        //if (Managers.Data.PlayerData.NowWeek == 20)
-        //{
-        //    Managers.UI_Manager.ShowPopupUI<UI_Ending>();
-        //    return;
-        //}
-        if (UI_Tutorial.instance == null)
+        if (Managers.Data.PlayerData.NowWeek == 20)
+        {
+            Managers.UI_Manager.ShowPopupUI<UI_Ending>();
+        }
+
+        Managers.Sound.Play(Define.Sound.NextWeekBTN);
+        
+
+        if (UI_Tutorial.instance == null && Managers.Data.PlayerData.NowWeek != 20)
             Managers.UI_Manager.CloseALlPopupUI();
         else
             Managers.UI_Manager.ClosePopupUI();
 
-        Managers.Sound.Play(Define.Sound.NextWeekBTN);
+        
 
         ScheduleExecuter.Inst.FinishWeek();
     }

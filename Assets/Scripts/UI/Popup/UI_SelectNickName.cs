@@ -172,7 +172,7 @@ public class UI_SelectNickName : UI_Popup
         Managers.Data.PlayerData.nowGoldAmount += SelectedPrefix.MoneyValue + SelectedSuffix.MoneyValue;
         Managers.Data.PlayerData.nowSubCount += SelectedPrefix.SubCount + SelectedSuffix.SubCount;
         Managers.Data.PlayerData.NowNickName = SelectedPrefix.NicknameString + " " + SelectedSuffix.NicknameString;
-        UI_MainBackUI.instance.UpdateUItexts();
+        UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
         Managers.UI_Manager.CloseALlPopupUI();
         Managers.Data.SaveData();
     }

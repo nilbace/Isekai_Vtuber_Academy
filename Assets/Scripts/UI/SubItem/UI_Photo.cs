@@ -122,7 +122,6 @@ public class UI_Photo : UI_Base
     {
         Managers.Sound.Play(Sound.SmallBTN);
         UI_RandomEvent._eventData = Managers.RandEvent.GetWeekEventByName((RandEventName)index);
-        Debug.Log(Managers.RandEvent.GetWeekEventByName((RandEventName)index).eventName);
         UI_RandomEvent.ArchiveMode = true;
         Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
     }

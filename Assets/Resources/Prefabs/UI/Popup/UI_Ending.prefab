@@ -602,7 +602,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c8d0fbd3e89089468743ac494cacc02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 11400000, guid: 5d42ad7319df4a8439d74d82f30a60cc, type: 2}
+  Endingtransition: {fileID: 11400000, guid: 5d42ad7319df4a8439d74d82f30a60cc, type: 2}
+  Resettransition: {fileID: 11400000, guid: 9710edcf009d00943af961dd2a7ca7d3, type: 2}
   EndingIMGs:
   - {fileID: 21300000, guid: 519609411b34e8848a62ee0295224463, type: 3}
   - {fileID: 21300000, guid: d60c10537e820b3439a5b909ce62a253, type: 3}
@@ -613,6 +614,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4d4d9cfc5f60a274183ce6ddb3901a69, type: 3}
   - {fileID: 21300000, guid: 8aa7b0f42a7f61c439ba79c988de22c9, type: 3}
   - {fileID: 21300000, guid: 2e873826a3f798e4385876b055b9e964, type: 3}
+  EndingAssets:
+  - {fileID: 4900000, guid: 73eb76125fb31624b8c6fa5bd1a844bf, type: 3}
+  - {fileID: 4900000, guid: e80906e363263dd439610b9bca89659d, type: 3}
+  - {fileID: 4900000, guid: 70aeca5cd96f753429785cde25de62ae, type: 3}
+  - {fileID: 4900000, guid: bafcf4544fe58184aa6ced9784a6e091, type: 3}
+  - {fileID: 4900000, guid: 63bec3fe7b9a05a4fa8b9f9e03a737da, type: 3}
+  - {fileID: 4900000, guid: e125e1be348039c4e8b80de9072220cc, type: 3}
+  - {fileID: 4900000, guid: cadd6b2336247de4299daf9a180ebfcb, type: 3}
+  - {fileID: 4900000, guid: d20992143780e944083f439862df4144, type: 3}
+  - {fileID: 4900000, guid: 03960975fc1bb2d4fb77d9011eb86495, type: 3}
 --- !u!1 &5836641396695054871
 GameObject:
   m_ObjectHideFlags: 0

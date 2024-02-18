@@ -7,8 +7,10 @@ using static Define;
 
 public class UI_Ending : UI_Popup
 {
-    public EasyTransition.TransitionSettings transition;
+    public EasyTransition.TransitionSettings Endingtransition;
+    public EasyTransition.TransitionSettings Resettransition;
     public Sprite[] EndingIMGs;
+    public TextAsset[] EndingAssets;
     public static EndingName EndingName;
     public static bool ArchiveMode;
 
@@ -40,6 +42,8 @@ public class UI_Ending : UI_Popup
         Bind<Image>(typeof(Images));
         Bind<TMPro.TMP_Text>(typeof(Texts));
 
+        GetButton((int)Buttons.FinishBTN).onClick.AddListener(ResetBTN);
+
         StartCoroutine(StartTransition());
     }
 
@@ -49,7 +53,7 @@ public class UI_Ending : UI_Popup
         {
             transform.GetChild(i).gameObject.SetActive(false);
         }
-        EasyTransition.TransitionManager.Instance().Transition(transition, 0);
+        EasyTransition.TransitionManager.Instance().Transition(Endingtransition, 0);
 
         yield return new WaitForSeconds(1);
 
@@ -75,6 +79,38 @@ public class UI_Ending : UI_Popup
         Managers.NickName.OpenNickname(temp + 22);
         Managers.NickName.CheckPerfectNickName();
         return (EndingName)temp;
+    }
+
+    void ResetBTN()
+    {
+        StartCoroutine(ResetGame());
+        Managers.Sound.Play(Define.Sound.ReturnBTN);
+    }
+
+    IEnumerator ResetGame()
+    {
+
+        if (UI_Tutorial.instance == null)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(2f);
+        }
+        EasyTransition.TransitionManager.Instance().Transition(Resettransition, 0);
+        yield return new WaitForSeconds(1f);
+
+        if (UI_Tutorial.instance == null)
+        {
+            Managers.Data.PersistentUser.InCreaseResetCount();
+        }
+
+        Managers.UI_Manager.CloseALlPopupUI();
+        Managers.Data.PlayerData = new Define.PlayerData();
+        Managers.Data.SaveData();
+        UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
+        Managers.UI_Manager.ShowPopupUI<UI_BeforeSelectNickName>();
     }
 
     private void OnDisable()

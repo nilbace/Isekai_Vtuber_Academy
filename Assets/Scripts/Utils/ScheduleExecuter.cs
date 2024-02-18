@@ -50,7 +50,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             bool isFastMode = UI_MainBackUI.instance.IsFastMode;
             yield return StartCoroutine(ExecuteOneDayWork(Managers.Data._SevenDayScheduleDatas[i], i, isFastMode));
             
-            UI_MainBackUI.instance.UpdateUItexts();
+            UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
             float waitTime = isFastMode ? TimeStampToNext / 2 : TimeStampToNext;
             yield return new WaitForSeconds(waitTime);
             ChattingManager.Inst.gameObject.SetActive(false);
@@ -65,7 +65,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
         UI_Stamp.Inst.SetStamp(UI_Stamp.StampState.transparent);
         UI_MainBackUI.instance.StartScreenAnimation("Exit", "");
-        UI_MainBackUI.instance.UpdateUItexts();
+        UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
         ChattingManager.Inst.gameObject.SetActive(false);
 
         EndSchedule();
@@ -432,7 +432,8 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
         int OneDayNewSubs = CalculateSubAfterDay(beforeSub, oneDay.FisSubsUpValue, oneDay.PerSubsUpValue, bonusMultiplier);
 
-        int OneDayIncome = Mathf.CeilToInt(Mathf.Log10(beforeSub)*300 * oneDay.InComeMag * bonusMultiplier);
+        //3천은 그냥 상수
+        int OneDayIncome = Mathf.CeilToInt(Mathf.Log10(beforeSub)*3000 * oneDay.InComeMag * bonusMultiplier);
 
         Managers.Data.PlayerData.nowSubCount += OneDayNewSubs;
         Managers.Data.PlayerData.nowGoldAmount += OneDayIncome;

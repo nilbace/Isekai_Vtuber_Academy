@@ -430,7 +430,7 @@ public class Define
         {
             NowWeek = 1;
             nowSubCount = 10;
-            nowGoldAmount = 1000;
+            nowGoldAmount = 5000;
             NowHeart = 100;
             NowStar = 100;
             SixStat = new float[6];
@@ -443,7 +443,7 @@ public class Define
         {
             NowHeart += value;
             NowHeart = Mathf.Clamp(NowHeart, 0, 100);
-            UI_MainBackUI.instance.UpdateUItexts();
+            UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
         }
 
 
@@ -451,7 +451,7 @@ public class Define
         {
             NowStar += value;
             NowStar = Mathf.Clamp(NowStar, 0, 100);
-            UI_MainBackUI.instance.UpdateUItexts();
+            UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
         }
 
         public Define.StatName GetHigestStatName()
@@ -482,7 +482,7 @@ public class Define
                     PlusText.Inst.PlayAnimation((StatName)i, (int)stats[i]);
                 }
             }
-            UI_MainBackUI.instance.UpdateUItexts();
+            UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
         }
 
         public void StatUpByDialogue(RewardStat rewardStat)
@@ -494,12 +494,12 @@ public class Define
             else if(rewardStat.StatName == StatName.Heart)
             {
                 Managers.Data.PlayerData.ChangeHeart(rewardStat.Value);
-                UI_MainBackUI.instance.UpdateUItexts();
+                UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
             }
             else if(rewardStat.StatName == StatName.Star)
             {
                 Managers.Data.PlayerData.ChangeStar(rewardStat.Value);
-                UI_MainBackUI.instance.UpdateUItexts();
+                UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
             }
             else
             {
@@ -519,7 +519,7 @@ public class Define
             {
                 UI_MainBackUI.instance.GlitterStat(index);
             }
-            UI_MainBackUI.instance.UpdateUItexts();
+            UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
         }
     }
 

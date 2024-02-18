@@ -45,7 +45,7 @@ public class UI_Buy : UI_Popup
             if (item.ItemName == "호문쿨루스 소환서") Managers.NickName.OpenNickname(NickNameKor.흑마법사);
             if (item.ItemName == "여우의 꼬리") Managers.NickName.OpenNickname(NickNameKor.구미호);
 
-            UI_MainBackUI.instance.UpdateUItexts();
+            UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
             Managers.Sound.Play(Sound.Buy);
             Managers.UI_Manager.ClosePopupUI();
             Managers.Data.PlayerData.BoughtItems.Add(item.ItemName);
