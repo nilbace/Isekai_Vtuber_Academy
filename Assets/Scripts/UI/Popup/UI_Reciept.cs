@@ -86,22 +86,26 @@ public class UI_Reciept : UI_Popup
         Debug.Log(temp);
         //여기까지
 
-        if (Managers.Data.PlayerData.NowWeek == 20)
+        Managers.Sound.Play(Define.Sound.NextWeekBTN);
+        ScheduleExecuter.Inst.FinishWeek();
+
+        if (Managers.Data.PlayerData.NowWeek == 21)
         {
             Managers.UI_Manager.ShowPopupUI<UI_Ending>();
+            return;
         }
 
-        Managers.Sound.Play(Define.Sound.NextWeekBTN);
+        
         
 
-        if (UI_Tutorial.instance == null && Managers.Data.PlayerData.NowWeek != 20)
+        if (UI_Tutorial.instance == null )
             Managers.UI_Manager.CloseALlPopupUI();
         else
             Managers.UI_Manager.ClosePopupUI();
 
         
 
-        ScheduleExecuter.Inst.FinishWeek();
+        
     }
 
     static string temp = "";

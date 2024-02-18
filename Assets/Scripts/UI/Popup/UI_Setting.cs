@@ -35,7 +35,6 @@ public class UI_Setting : UI_Popup
         //이름 바뀐거 맞음 
         BGMSlider.onValueChanged.AddListener(SFX_ValueChanged);
         SFXSlider.onValueChanged.AddListener(BGM_ValueChanged);
-        
     }
 
     void CloseBTN()

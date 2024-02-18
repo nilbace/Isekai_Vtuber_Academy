@@ -403,7 +403,6 @@ public class UI_MainBackUI : UI_Scene
         if (Managers.Data.PlayerData.SixStat[3] >= 200) Managers.NickName.OpenNickname(NickNameKor.단단한);
         if (Managers.Data.PlayerData.SixStat[4] >= 200) Managers.NickName.OpenNickname(NickNameKor.평온한);
         if (Managers.Data.PlayerData.nowGoldAmount >= 100000) Managers.NickName.OpenNickname(NickNameKor.부르주아);
-        if (Managers.Data.PlayerData.RubiaKarma >= 6) Managers.NickName.OpenNickname(NickNameKor.드래곤);
         if (Managers.Data.PlayerData.nowSubCount >= 100000) Managers.NickName.OpenNickname(NickNameKor.떠오르는);
         if (Managers.Data.PlayerData.nowSubCount >= 1000000) Managers.NickName.OpenNickname(NickNameKor.버튜버);
     }

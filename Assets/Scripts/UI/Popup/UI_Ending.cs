@@ -11,12 +11,12 @@ public class UI_Ending : UI_Popup
     public EasyTransition.TransitionSettings Resettransition;
     public Sprite[] EndingIMGs;
     public TextAsset[] EndingAssets;
-    public static EndingName EndingName;
+    public string[] EndingNameStrings;
+    public static EndingName Static_EndingName;
     public static bool ArchiveMode;
 
     enum Buttons
     {
-        NextBTN,
         FinishBTN
     }
     enum Texts
@@ -61,8 +61,19 @@ public class UI_Ending : UI_Popup
         {
             transform.GetChild(i).gameObject.SetActive(true);
         }
-        GetImage((int)Images.EndingIMG).sprite = EndingIMGs[(int)GetValidEndingName()];
 
+        if (!ArchiveMode) Static_EndingName = GetValidEndingName();
+
+        Setting();
+    }
+
+    //제목, 이미지, 텍스트 채워넣기
+    void Setting()
+    {
+        GetText((int)Texts.EndingIndexTMP).text = $"Ending. 0{(int)Static_EndingName+1}";
+        GetText((int)Texts.EndingNameTMP).text = EndingNameStrings[(int)Static_EndingName];
+        GetImage((int)Images.EndingIMG).sprite = EndingIMGs[(int)Static_EndingName];
+        GetText((int)Texts.EndingTextTMP).text = EndingAssets[(int)Static_EndingName].text;
     }
 
     EndingName GetValidEndingName()
@@ -77,6 +88,7 @@ public class UI_Ending : UI_Popup
 
         Managers.NickName.OpenNickname(temp + 1);
         Managers.NickName.OpenNickname(temp + 22);
+        if (Managers.Data.PlayerData.RubiaKarma >= 6) Managers.NickName.OpenNickname(NickNameKor.드래곤);
         Managers.NickName.CheckPerfectNickName();
         return (EndingName)temp;
     }
@@ -90,24 +102,13 @@ public class UI_Ending : UI_Popup
     IEnumerator ResetGame()
     {
 
-        if (UI_Tutorial.instance == null)
-        {
-            yield return new WaitForSeconds(0.1f);
-        }
-        else
-        {
-            yield return new WaitForSeconds(2f);
-        }
+        yield return new WaitForSeconds(0.1f);
         EasyTransition.TransitionManager.Instance().Transition(Resettransition, 0);
         yield return new WaitForSeconds(1f);
 
-        if (UI_Tutorial.instance == null)
-        {
-            Managers.Data.PersistentUser.InCreaseResetCount();
-        }
-
+        Managers.Data.PersistentUser.InCreaseResetCount();
         Managers.UI_Manager.CloseALlPopupUI();
-        Managers.Data.PlayerData = new Define.PlayerData();
+        Managers.Data.PlayerData = new PlayerData();
         Managers.Data.SaveData();
         UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
         Managers.UI_Manager.ShowPopupUI<UI_BeforeSelectNickName>();
