@@ -1,22 +1,52 @@
 {
-    "NowWeek": 1,
-    "nowSubCount": 10,
-    "nowGoldAmount": 5000,
-    "RubiaKarma": 0,
-    "NowHeart": 100.0,
-    "NowStar": 100.0,
+    "NowWeek": 20,
+    "nowSubCount": 1538560,
+    "nowGoldAmount": 94210,
+    "RubiaKarma": 11,
+    "NowHeart": 68.0,
+    "NowStar": 50.0,
     "SixStat": [
         0.0,
-        20.0,
+        200.0,
         0.0,
-        0.0,
-        0.0,
-        0.0
+        138.0,
+        10.0,
+        38.0
     ],
-    "DoneEventNames": [],
-    "BoughtItems": [],
+    "DoneEventNames": [
+        "자르반 84세와 만남",
+        "표절논란",
+        "고삼차 먹방",
+        "실버 버튼 언박싱"
+    ],
+    "BoughtItems": [
+        "인어의 수정 목걸이",
+        "로렐라이의 보주",
+        "황올맛 프로틴",
+        "네잎클로버 책갈피",
+        "S급쿨뷰티마법사의 복대"
+    ],
     "SubStoryIndex": [
-        27
+        27,
+        2,
+        22,
+        21,
+        4,
+        0,
+        26,
+        7,
+        28,
+        16,
+        9,
+        8,
+        29,
+        19,
+        20,
+        17,
+        15,
+        6,
+        11,
+        18
     ],
     "NowNickName": "빛나는 아이돌"
 }

@@ -20,7 +20,8 @@
         10,
         11,
         5,
-        4
+        4,
+        9
     ],
     "WatchedRandEvent": [
         8,
@@ -34,7 +35,9 @@
         14,
         1,
         5,
-        2
+        2,
+        16,
+        4
     ],
     "WatchedEndingName": [],
     "OwnedNickNameBoolList": [
@@ -82,8 +85,8 @@
         false
     ],
     "ResetCount": 9,
-    "BigSuccessCount": 13,
-    "MMCount": 18,
-    "BroadcastCount": 282,
+    "BigSuccessCount": 14,
+    "MMCount": 20,
+    "BroadcastCount": 344,
     "ColdCount": 0
 }

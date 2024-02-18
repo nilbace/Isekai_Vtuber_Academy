@@ -38,7 +38,7 @@ public class UI_Buy : UI_Popup
 
             for (int i = 0; i < 6; i++)
             {
-                Managers.Data.PlayerData.SixStat[i] += item.SixStats[i];
+                Managers.Data.PlayerData.ChangeStat((StatName)i, item.SixStats[i]);
             }
             Managers.Data.PlayerData.RubiaKarma += item.Karma;
 
