@@ -92,25 +92,45 @@ public class UI_SelectNickName : UI_Popup
 
         for (int i = 0; i < 3; i++)
         {
-            if (ResultArray[i] != 0)
+            if (prefixStats[i] != 0)
             {
-                GetText((int)Texts.InfoTMP).text += $"{(StatNameKor)i} 실력 {GetIconString(i)} +" + ResultArray[i] + "\n";
+                GetText((int)Texts.InfoTMP).text += $"{(StatNameKor)i} 실력 {GetIconString(i)} +" + prefixStats[i] + "\n";
+            }
+            if (suffixStats[i] != 0)
+            {
+                GetText((int)Texts.Info2TMP).text += $"{(StatNameKor)i} 실력 {GetIconString(i)} +" + suffixStats[i] + "\n";
             }
         }
+
+
         for (int i = 3; i < 6; i++)
         {
-            if (ResultArray[i] != 0)
+            if (prefixStats[i] != 0)
             {
-                GetText((int)Texts.Info2TMP).text += $"{(StatNameKor)i} {GetIconString(i)} +" + ResultArray[i] + "\n";
+                GetText((int)Texts.InfoTMP).text += $"{(StatNameKor)i} {GetIconString(i)} +" + prefixStats[i] + "\n";
+            }
+            if (suffixStats[i] != 0)
+            {
+                GetText((int)Texts.Info2TMP).text += $"{(StatNameKor)i} {GetIconString(i)} +" + suffixStats[i] + "\n";
             }
         }
-        if (ResultArray[6] != 0)
+
+        if (SelectedPrefix.MoneyValue != 0)
         {
-            GetText((int)Texts.InfoTMP).text += $"돈 {GetIconString(StatIcons.Gold)} +" + ResultArray[6];
+            GetText((int)Texts.InfoTMP).text += $"돈 {GetIconString(StatIcons.Gold)} +" + SelectedPrefix.MoneyValue + "\n";
         }
-        if (ResultArray[7] != 0)
+        if (SelectedSuffix.MoneyValue != 0)
         {
-            GetText((int)Texts.Info2TMP).text += $"구독자 {GetIconString(StatIcons.Sub)}+" + ResultArray[7];
+            GetText((int)Texts.Info2TMP).text += $"돈 {GetIconString(StatIcons.Gold)} +" + SelectedSuffix.MoneyValue + "\n";
+        }
+
+        if (SelectedPrefix.SubCount != 0)
+        {
+            GetText((int)Texts.InfoTMP).text += $"구독자 {GetIconString(StatIcons.Sub)}+" + SelectedPrefix.SubCount;
+        }
+        if (SelectedSuffix.SubCount != 0)
+        {
+            GetText((int)Texts.Info2TMP).text += $"구독자 {GetIconString(StatIcons.Sub)}+" + SelectedSuffix.SubCount;
         }
     }
 

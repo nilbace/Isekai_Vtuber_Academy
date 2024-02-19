@@ -1,0 +1,22 @@
+{
+    "NowWeek": 1,
+    "nowSubCount": 10,
+    "nowGoldAmount": 5000,
+    "RubiaKarma": 0,
+    "NowHeart": 100.0,
+    "NowStar": 100.0,
+    "SixStat": [
+        10.0,
+        0.0,
+        0.0,
+        5.0,
+        5.0,
+        5.0
+    ],
+    "DoneEventNames": [],
+    "BoughtItems": [],
+    "SubStoryIndex": [
+        13
+    ],
+    "NowNickName": "대담한 초보"
+}

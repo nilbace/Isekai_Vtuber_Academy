@@ -28,7 +28,7 @@ public class NicknameManager
         {
             Managers.Data.PersistentUser.OwnedNickNameBoolList[n] = true;
             NickName temp = DataParser.Inst.NickNameList[n];
-            Alarm.ShowAlarm($"ÄªÈ£ {temp.NicknameString}À» È¹µæÇÏ¿´½À´Ï´Ù.");
+            Alarm.ShowAlarm($"ÄªÈ£ '{temp.NicknameString}'À» È¹µæÇÏ¿´½À´Ï´Ù.");
         }
     }
 

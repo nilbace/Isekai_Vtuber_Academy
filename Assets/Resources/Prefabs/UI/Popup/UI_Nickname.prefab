@@ -413,8 +413,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &818856596241090026
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,8 +694,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &1111858094144395085
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,8 +841,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &1117628187976452372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,8 +1096,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &1264051789626094587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1963,8 +1963,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &2101870635863549491
 GameObject:
   m_ObjectHideFlags: 0
@@ -2244,8 +2244,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &2336203798051988879
 GameObject:
   m_ObjectHideFlags: 0
@@ -2391,8 +2391,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &2370239620340169243
 GameObject:
   m_ObjectHideFlags: 0
@@ -2538,8 +2538,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &2414130873821797705
 GameObject:
   m_ObjectHideFlags: 0
@@ -2819,8 +2819,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &2633808127068199901
 GameObject:
   m_ObjectHideFlags: 0
@@ -3234,8 +3234,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &2666231810084525277
 GameObject:
   m_ObjectHideFlags: 0
@@ -3515,8 +3515,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &2898382117630430161
 GameObject:
   m_ObjectHideFlags: 0
@@ -3662,8 +3662,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &3056493257528854510
 GameObject:
   m_ObjectHideFlags: 0
@@ -4335,8 +4335,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &3848314271246916486
 GameObject:
   m_ObjectHideFlags: 0
@@ -4482,8 +4482,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &3868600130811891553
 GameObject:
   m_ObjectHideFlags: 0
@@ -4763,8 +4763,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &3909642167236367742
 GameObject:
   m_ObjectHideFlags: 0
@@ -4910,8 +4910,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &4037128121690878902
 GameObject:
   m_ObjectHideFlags: 0
@@ -5727,8 +5727,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &4564318304531617680
 GameObject:
   m_ObjectHideFlags: 0
@@ -5874,8 +5874,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &4740055730880093339
 GameObject:
   m_ObjectHideFlags: 0
@@ -6021,8 +6021,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &4889789454419405480
 GameObject:
   m_ObjectHideFlags: 0
@@ -6704,8 +6704,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &5501035149407559674
 GameObject:
   m_ObjectHideFlags: 0
@@ -6793,7 +6793,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5501035149407559673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6970,8 +6970,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &5727076763314716627
 GameObject:
   m_ObjectHideFlags: 0
@@ -7117,8 +7117,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &5749123962389291025
 GameObject:
   m_ObjectHideFlags: 0
@@ -7643,8 +7643,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &5990863292211120619
 GameObject:
   m_ObjectHideFlags: 0
@@ -8036,8 +8036,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &6140127131924882796
 GameObject:
   m_ObjectHideFlags: 0
@@ -8183,8 +8183,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &6251333515177630994
 GameObject:
   m_ObjectHideFlags: 0
@@ -8464,8 +8464,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &6422052386002027112
 GameObject:
   m_ObjectHideFlags: 0
@@ -8879,8 +8879,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &6702079303634693569
 GameObject:
   m_ObjectHideFlags: 0
@@ -9122,8 +9122,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &6746240477589938183
 GameObject:
   m_ObjectHideFlags: 0
@@ -9403,8 +9403,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &6911495818569445889
 GameObject:
   m_ObjectHideFlags: 0
@@ -9774,8 +9774,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &7270950569449158517
 GameObject:
   m_ObjectHideFlags: 0
@@ -10055,8 +10055,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &7341492866744138114
 GameObject:
   m_ObjectHideFlags: 0
@@ -10336,8 +10336,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &7515103368931276130
 GameObject:
   m_ObjectHideFlags: 0
@@ -10826,8 +10826,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &7818884558627375489
 GameObject:
   m_ObjectHideFlags: 0
@@ -10893,7 +10893,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC0C1\uC810"
+  m_text: "\uCE6D\uD638"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8bae00d3f38bac44ca17df61f33b456e, type: 2}
   m_sharedMaterial: {fileID: -3381243541127260742, guid: 8bae00d3f38bac44ca17df61f33b456e, type: 2}
@@ -11241,8 +11241,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &7977881501035924449
 GameObject:
   m_ObjectHideFlags: 0
@@ -11388,8 +11388,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &8028812972983653219
 GameObject:
   m_ObjectHideFlags: 0
@@ -11893,8 +11893,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &8151304513289912237
 GameObject:
   m_ObjectHideFlags: 0
@@ -12040,8 +12040,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &8191885242220379372
 GameObject:
   m_ObjectHideFlags: 0
@@ -12187,8 +12187,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &8288723634849323933
 GameObject:
   m_ObjectHideFlags: 0
@@ -12334,8 +12334,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &8468839512882245161
 GameObject:
   m_ObjectHideFlags: 0
@@ -12690,8 +12690,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &8699232358959175827
 GameObject:
   m_ObjectHideFlags: 0
@@ -12837,8 +12837,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &8700514885326261486
 GameObject:
   m_ObjectHideFlags: 0
@@ -13252,8 +13252,8 @@ MonoBehaviour:
     StrStat: 0
     MenStat: 0
     LuckStat: 0
-    SubCount: 0
     MoneyValue: 0
+    SubCount: 0
 --- !u!1 &9039982293455669336
 GameObject:
   m_ObjectHideFlags: 0
