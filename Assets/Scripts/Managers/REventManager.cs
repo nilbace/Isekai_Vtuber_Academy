@@ -125,7 +125,7 @@ public class REventManager
     {
         WeekEventData temp = new WeekEventData();
         
-        switch (Managers.Data.PlayerData.GetHigestStatName())
+        switch (Managers.Data.PlayerData.GetHigestMainStatName())
         {
             case StatName.Game:
                 foreach(WeekEventData temp2 in eventlist)

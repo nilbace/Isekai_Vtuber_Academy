@@ -143,7 +143,7 @@ public class Managers : MonoBehaviour
     public MainStory ChooseMainStory()
     {
         MainStory mainStory;
-        string temp = Data.PlayerData.GetHigestStatName().ToString();
+        string temp = Data.PlayerData.GetHigestMainStatName().ToString();
         temp += (Data.PlayerData.NowWeek / 4).ToString();
 
         Enum.TryParse(temp, out mainStory);

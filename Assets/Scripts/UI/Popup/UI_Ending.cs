@@ -78,13 +78,14 @@ public class UI_Ending : UI_Popup
 
     EndingName GetValidEndingName()
     {
+        var data = Managers.Data.PlayerData;
         int temp = 0;
-        if (Managers.Data.PlayerData.RubiaKarma >= 3) temp += 0;
-        else if (Managers.Data.PlayerData.RubiaKarma <= -3) temp += 1;
+        if (data.RubiaKarma >= 3 && data.nowSubCount >=1000000 && data.GetHigestMainStatValue()>=200) temp += 0;
+        else if (data.RubiaKarma <= -3 && data.nowSubCount >= 1000000 && data.GetHigestMainStatValue() >= 200) temp += 1;
         else temp += 2;
 
-        if (Managers.Data.PlayerData.GetHigestStatName() == StatName.Song) temp += 3;
-        else if (Managers.Data.PlayerData.GetHigestStatName() == StatName.Draw) temp += 6;
+        if (Managers.Data.PlayerData.GetHigestMainStatName() == StatName.Song) temp += 3;
+        else if (Managers.Data.PlayerData.GetHigestMainStatName() == StatName.Draw) temp += 6;
 
         Managers.NickName.OpenNickname(temp + 1);
         Managers.NickName.OpenNickname(temp + 22);

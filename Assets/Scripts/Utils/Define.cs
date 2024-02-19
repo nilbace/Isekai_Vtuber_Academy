@@ -454,7 +454,7 @@ public class Define
             UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
         }
 
-        public Define.StatName GetHigestStatName()
+        public StatName GetHigestMainStatName()
         {
             Define.StatName temp = Define.StatName.Game;
             float temp2 = 0;
@@ -468,6 +468,11 @@ public class Define
                 }
             }
             return temp;
+        }
+
+        public float GetHigestMainStatValue()
+        {
+            return SixStat[(int)GetHigestMainStatName()];
         }
 
         public void ChangeStatAndPlayAnimation(float[] stats)
