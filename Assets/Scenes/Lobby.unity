@@ -4705,8 +4705,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainStatUpValuePerTier: 10
   _str_MenDownValuePerTier: 0.1
-  _bigSuccessProbabilityPerTier: 7
-  _bigSuccessCoefficientValuePerTier: 1.3
+  _bigSuccessProbabilityPerTier: 5
+  _bigSuccessCoefficientValuePerTier: 1.25
 --- !u!4 &399023211
 Transform:
   m_ObjectHideFlags: 0
