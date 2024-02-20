@@ -419,8 +419,26 @@ public class Define
         public int nowSubCount;
         public int nowGoldAmount;
         public int RubiaKarma;
-        public float NowHeart;
-        public float NowStar;
+        [SerializeField] float _nowHeart;
+        public float NowHeart
+        {
+            get => _nowHeart;
+            set
+            {
+                _nowHeart = Mathf.Clamp(value, 0, 100);
+                if(UI_MainBackUI.instance != null) UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
+            }
+        }
+        [SerializeField] private float _nowStar;
+        public float NowStar
+        {
+            get => _nowStar;
+            set
+            {
+                _nowStar = Mathf.Clamp(value, 0, 100);
+                if (UI_MainBackUI.instance != null) UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
+            }
+        }
         public float[] SixStat;
         public List<string> DoneEventNames;
         public List<string> BoughtItems;
@@ -439,20 +457,6 @@ public class Define
             SubStoryIndex = new List<int>();
         }
 
-        public void ChangeHeart(float value)
-        {
-            NowHeart += value;
-            NowHeart = Mathf.Clamp(NowHeart, 0, 100);
-            UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
-        }
-
-
-        public void ChangeStar(float value)
-        {
-            NowStar += value;
-            NowStar = Mathf.Clamp(NowStar, 0, 100);
-            UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
-        }
 
         public StatName GetHigestMainStatName()
         {
@@ -475,7 +479,7 @@ public class Define
             return SixStat[(int)GetHigestMainStatName()];
         }
 
-        public void ChangeStatAndPlayAnimation(float[] stats)
+        public void ChangeStatAndPlayUIAnimation(float[] stats)
         {
             for (int i = 0; i < 6; i++)
             {
@@ -498,12 +502,12 @@ public class Define
             }
             else if(rewardStat.StatName == StatName.Heart)
             {
-                Managers.Data.PlayerData.ChangeHeart(rewardStat.Value);
+                Managers.Data.PlayerData.NowHeart += rewardStat.Value;
                 UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
             }
             else if(rewardStat.StatName == StatName.Star)
             {
-                Managers.Data.PlayerData.ChangeStar(rewardStat.Value);
+                Managers.Data.PlayerData.NowStar += rewardStat.Value;
                 UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
             }
             else

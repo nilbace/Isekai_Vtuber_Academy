@@ -116,8 +116,8 @@ public class UI_RandomEvent : UI_Popup
 
 
             //하트 별 변화량
-            Managers.Data.PlayerData.ChangeHeart(optionArray[0]);
-            Managers.Data.PlayerData.ChangeStar(optionArray[1]);
+            Managers.Data.PlayerData.NowHeart += optionArray[0];
+            Managers.Data.PlayerData.NowStar += optionArray[1];
             //스텟 변화량
             float[] eventStatValues = new float[6];
             for (int i = 0; i < 6; i++)
@@ -125,7 +125,7 @@ public class UI_RandomEvent : UI_Popup
                 eventStatValues[i] = optionArray[i + 2];
             }
 
-            Managers.Data.PlayerData.ChangeStatAndPlayAnimation(eventStatValues);
+            Managers.Data.PlayerData.ChangeStatAndPlayUIAnimation(eventStatValues);
         }
     }
 

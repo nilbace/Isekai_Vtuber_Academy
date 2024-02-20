@@ -1,15 +1,25 @@
 {
     "BoughtAdPass": false,
     "WatchedTutorial": true,
-    "WatchedCaught": false,
-    "WatchedRunAway": false,
+    "WatchedCaught": true,
+    "WatchedRunAway": true,
     "WatchedBroadCast": [
-        0
+        0,
+        1,
+        6,
+        4,
+        5
     ],
-    "WatchedRest": [],
-    "WatchedGoOut": [],
+    "WatchedRest": [
+        0,
+        1
+    ],
+    "WatchedGoOut": [
+        9
+    ],
     "WatchedRandEvent": [
-        8
+        14,
+        16
     ],
     "WatchedEndingName": [],
     "OwnedNickNameBoolList": [
@@ -56,9 +66,9 @@
         false,
         false
     ],
-    "ResetCount": 22,
+    "ResetCount": 2,
     "BigSuccessCount": 0,
     "MMCount": 0,
-    "BroadcastCount": 7,
+    "BroadcastCount": 30,
     "ColdCount": 0
 }

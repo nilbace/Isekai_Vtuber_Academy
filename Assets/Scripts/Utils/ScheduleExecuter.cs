@@ -269,7 +269,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             {
                 tempstat[i] = oneDay.Six_Stats[i] * bigSuccessMultiplier;
             }
-            Managers.Data.PlayerData.ChangeStatAndPlayAnimation(tempstat);
+            Managers.Data.PlayerData.ChangeStatAndPlayUIAnimation(tempstat);
         }
 
         
@@ -403,8 +403,8 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         }
         int RestHeartStarValue = 10;
 
-        Managers.Data.PlayerData.ChangeHeart(RestHeartStarValue);
-        Managers.Data.PlayerData.ChangeStar(RestHeartStarValue);
+        Managers.Data.PlayerData.NowHeart += RestHeartStarValue;
+        Managers.Data.PlayerData.NowStar += RestHeartStarValue;
     }
 
     bool BigSuccess = false;
