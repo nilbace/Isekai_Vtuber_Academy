@@ -59,7 +59,7 @@ public class UI_NickSubContent : MonoBehaviour
         else
         {
             NameTMP.text = nickName.NicknameString;
-            thisButton.onClick.AddListener(() => UI_SelectNickName.instance.SetInfoTexts(ThisNickName));
+            thisButton.onClick.AddListener(() => UI_SelectNickName.instance.SelectNickName(ThisNickName));
         }
     }
 

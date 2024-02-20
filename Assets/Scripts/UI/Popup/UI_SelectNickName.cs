@@ -9,8 +9,9 @@ public class UI_SelectNickName : UI_Popup
     public static UI_SelectNickName instance;
     UI_NickSubContent[] Prefixs;
     UI_NickSubContent[] Suffixs;
-    public NickName SelectedPrefix;
-    public NickName SelectedSuffix;
+    [HideInInspector] public NickName SelectedPrefix;
+    [HideInInspector] public NickName SelectedSuffix;
+    NickName EmptyNickname = new NickName();
 
     enum Buttons
     {
@@ -51,16 +52,21 @@ public class UI_SelectNickName : UI_Popup
         CheckOwnedNickName();
         UpdateInfoText();
 
-        GetButton((int)Buttons.StartBTN).onClick.AddListener(StartGame);
+        GetButton((int)Buttons.StartBTN).onClick.AddListener(() => Managers.UI_Manager.ShowPopupUI<UI_ConfirmNickName>());
+        GetButton((int)Buttons.StartBTN).onClick.AddListener(() => Managers.Sound.Play(Define.Sound.SmallBTN));
     }
 
-    public void SetInfoTexts(NickName nick)
+    /// <summary>
+    /// 칭호를 선택하고, UI창 화면을 갱신해줌
+    /// </summary>
+    /// <param name="nick"></param>
+    public void SelectNickName(NickName nick)
     {
         if(nick.NicknameType == NickNameType.prefix)
         {
             if(nick == SelectedPrefix)
             {
-                SelectedPrefix = new NickName();
+                SelectedPrefix = EmptyNickname;
             }
             else
             {
@@ -71,33 +77,20 @@ public class UI_SelectNickName : UI_Popup
         {
             if (nick == SelectedSuffix)
             {
-                SelectedSuffix = new NickName();
+                SelectedSuffix = EmptyNickname;
             }
             else
             {
                 SelectedSuffix = nick;
             }
         }
-
-        foreach(UI_NickSubContent nickName in Prefixs)
-        {
-            nickName.SetFrameImage();
-        }
-        foreach (UI_NickSubContent nickName in Suffixs)
-        {
-            nickName.SetFrameImage();
-        }
         UpdateInfoText();
     }
 
+    //UI하단에 칭호 이름과 효과 텍스트 갱신
     void UpdateInfoText()
     {
-        var NickList = DataParser.Inst.NickNameList;
-        if (SelectedPrefix == null) SelectedPrefix = NickList[0];
-        if (SelectedSuffix == null) SelectedSuffix = NickList[21];
-
-        //보이는 칭호 설정
-        GetText((int)Texts.NameTMP).text = SelectedPrefix.NicknameString + " " + SelectedSuffix.NicknameString;
+        GetText((int)Texts.NameTMP).text = (SelectedPrefix.NicknameString + " " + SelectedSuffix.NicknameString).Trim();
 
         int[] ResultArray = new int[8];
         int[] prefixStats = SelectedPrefix.GetSixStat(); // SelectedPrefix의 6개 스텟을 가져옴
@@ -155,6 +148,16 @@ public class UI_SelectNickName : UI_Popup
         {
             GetText((int)Texts.Info2TMP).text += $"구독자 {GetIconString(StatIcons.Sub)}+" + SelectedSuffix.SubCount;
         }
+
+        //선택된 칭호는 붉은 모양으로
+        foreach (UI_NickSubContent nickName in Prefixs)
+        {
+            nickName.SetFrameImage();
+        }
+        foreach (UI_NickSubContent nickName in Suffixs)
+        {
+            nickName.SetFrameImage();
+        }
     }
 
   
@@ -202,7 +205,7 @@ public class UI_SelectNickName : UI_Popup
         }
     }
 
-    void StartGame()
+    public void StartGame()
     {
         //기본 스텟 및 소지금 애니메이션 없이 수치 깡 업데이트
         int[] prefixStats = SelectedPrefix.GetSixStat(); 
