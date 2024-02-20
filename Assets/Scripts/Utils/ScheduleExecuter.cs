@@ -68,12 +68,12 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
         ChattingManager.Inst.gameObject.SetActive(false);
 
-        EndSchedule();
+        AfterSchedule();
     }
 
 
 
-    void EndSchedule()
+    void AfterSchedule()
     {
         var NowWeek = Managers.Data.PlayerData.NowWeek;
 

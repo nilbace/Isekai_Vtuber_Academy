@@ -9,11 +9,28 @@ public class UI_NickSubContent : MonoBehaviour
     Button thisButton;
     TMPro.TMP_Text NameTMP;
     public NickName ThisNickName;
+    public Sprite NormalSprite;
+    public Sprite SelectedSprite;
     void Awake()
     {
         thisButton = GetComponent<Button>();
         NameTMP = GetComponentInChildren<TMPro.TMP_Text>();
     }
+
+    public void SetFrameImage()
+    {
+        var Image = GetComponent<Image>();
+        if(UI_SelectNickName.instance.SelectedPrefix.NicknameIndex == ThisNickName.NicknameIndex || UI_SelectNickName.instance.SelectedSuffix.NicknameIndex == ThisNickName.NicknameIndex)
+        {
+            Image.sprite = SelectedSprite;
+        }
+        else
+        {
+            Image.sprite = NormalSprite;
+        }
+    }
+
+   
 
     public void Setting(NickName nickName, bool isOwned)
     {

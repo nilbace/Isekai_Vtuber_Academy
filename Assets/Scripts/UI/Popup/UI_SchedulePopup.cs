@@ -424,8 +424,11 @@ public class UI_SchedulePopup : UI_Popup
 
     public bool IsShowing3ContentsUI()
     {
-        if (GetGameObject((int)GameObjects.Contents3).activeSelf)
-            return true;
+        if (GetGameObject((int)GameObjects.Contents3) != null)
+        {
+            if (GetGameObject((int)GameObjects.Contents3).activeSelf)
+                return true;
+        }
         return false;
     }
 

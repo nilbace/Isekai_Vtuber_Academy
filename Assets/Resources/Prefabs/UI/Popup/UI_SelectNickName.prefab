@@ -147,6 +147,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &99284564834132932
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,6 +832,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &432231890029480482
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,6 +981,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &453460499611824733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,6 +1264,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &907837558755809585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1540,6 +1548,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &1012454713340004711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,6 +1697,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &1111858094144395085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,6 +1846,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &1117628187976452372
 GameObject:
   m_ObjectHideFlags: 0
@@ -2089,6 +2103,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &1264051789626094587
 GameObject:
   m_ObjectHideFlags: 0
@@ -2555,6 +2571,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &1656433399295722625
 GameObject:
   m_ObjectHideFlags: 0
@@ -2970,6 +2988,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &1994488118618458637
 GameObject:
   m_ObjectHideFlags: 0
@@ -3117,6 +3137,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &2004219184813584863
 GameObject:
   m_ObjectHideFlags: 0
@@ -3532,6 +3554,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &2395060427759160650
 GameObject:
   m_ObjectHideFlags: 0
@@ -4081,6 +4105,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &2666231810084525277
 GameObject:
   m_ObjectHideFlags: 0
@@ -4530,6 +4556,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &3056493257528854510
 GameObject:
   m_ObjectHideFlags: 0
@@ -4981,6 +5009,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &3497668015997424867
 GameObject:
   m_ObjectHideFlags: 0
@@ -5350,6 +5380,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &3848314271246916486
 GameObject:
   m_ObjectHideFlags: 0
@@ -5497,6 +5529,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &3907669690560748670
 GameObject:
   m_ObjectHideFlags: 0
@@ -5644,6 +5678,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &3909642167236367742
 GameObject:
   m_ObjectHideFlags: 0
@@ -5791,6 +5827,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &4037128121690878902
 GameObject:
   m_ObjectHideFlags: 0
@@ -6340,6 +6378,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &4564006476543186951
 GameObject:
   m_ObjectHideFlags: 0
@@ -6621,6 +6661,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &4740055730880093339
 GameObject:
   m_ObjectHideFlags: 0
@@ -6768,6 +6810,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &4808907610780592571
 GameObject:
   m_ObjectHideFlags: 0
@@ -7184,6 +7228,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &5489612348944805172
 GameObject:
   m_ObjectHideFlags: 0
@@ -7436,6 +7482,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f06b23f39dcdb41980e63b6f20a7ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SelectedPrefix:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    MoneyValue: 0
+    SubCount: 0
+  SelectedSuffix:
+    NicknameIndex: -1
+    NicknameType: 1
+    NicknameString: 
+    ConditionString: 
+    GameStat: 0
+    SongStat: 0
+    DrawStat: 0
+    StrStat: 0
+    MenStat: 0
+    LuckStat: 0
+    MoneyValue: 0
+    SubCount: 0
 --- !u!1 &5567250422082659120
 GameObject:
   m_ObjectHideFlags: 0
@@ -7583,6 +7655,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &5865998945597922769
 GameObject:
   m_ObjectHideFlags: 0
@@ -8101,6 +8175,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &6251333515177630994
 GameObject:
   m_ObjectHideFlags: 0
@@ -8382,6 +8458,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &6439519494067665564
 GameObject:
   m_ObjectHideFlags: 0
@@ -8529,6 +8607,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &6510812637416987971
 GameObject:
   m_ObjectHideFlags: 0
@@ -8945,6 +9025,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &6702079303634693569
 GameObject:
   m_ObjectHideFlags: 0
@@ -9188,6 +9270,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &6746240477589938183
 GameObject:
   m_ObjectHideFlags: 0
@@ -9469,6 +9553,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &6911495818569445889
 GameObject:
   m_ObjectHideFlags: 0
@@ -10108,6 +10194,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &7515103368931276130
 GameObject:
   m_ObjectHideFlags: 0
@@ -10598,6 +10686,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &7759394456661190448
 GameObject:
   m_ObjectHideFlags: 0
@@ -11147,6 +11237,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &7977881501035924449
 GameObject:
   m_ObjectHideFlags: 0
@@ -11294,6 +11386,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &8019228017954911187
 GameObject:
   m_ObjectHideFlags: 0
@@ -11575,6 +11669,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &8043539910855982995
 GameObject:
   m_ObjectHideFlags: 0
@@ -11812,6 +11908,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &8149442111273629878
 GameObject:
   m_ObjectHideFlags: 0
@@ -11959,6 +12057,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &8151304513289912237
 GameObject:
   m_ObjectHideFlags: 0
@@ -12106,6 +12206,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &8191885242220379372
 GameObject:
   m_ObjectHideFlags: 0
@@ -12253,6 +12355,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &8463770781807342630
 GameObject:
   m_ObjectHideFlags: 0
@@ -12743,6 +12847,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &8647214170499276750
 GameObject:
   m_ObjectHideFlags: 0
@@ -13426,6 +13532,8 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
 --- !u!1 &8851123882474636684
 GameObject:
   m_ObjectHideFlags: 0
@@ -14109,3 +14217,5 @@ MonoBehaviour:
     LuckStat: 0
     MoneyValue: 0
     SubCount: 0
+  NormalSprite: {fileID: -3779323929125812920, guid: cb51c40c55c22d048bd29922b4446320, type: 3}
+  SelectedSprite: {fileID: -5606891845912014232, guid: cb51c40c55c22d048bd29922b4446320, type: 3}

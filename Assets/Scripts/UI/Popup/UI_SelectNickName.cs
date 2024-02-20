@@ -9,8 +9,8 @@ public class UI_SelectNickName : UI_Popup
     public static UI_SelectNickName instance;
     UI_NickSubContent[] Prefixs;
     UI_NickSubContent[] Suffixs;
-    NickName SelectedPrefix;
-    NickName SelectedSuffix;
+    public NickName SelectedPrefix;
+    public NickName SelectedSuffix;
 
     enum Buttons
     {
@@ -58,11 +58,34 @@ public class UI_SelectNickName : UI_Popup
     {
         if(nick.NicknameType == NickNameType.prefix)
         {
-            SelectedPrefix = nick;
+            if(nick == SelectedPrefix)
+            {
+                SelectedPrefix = new NickName();
+            }
+            else
+            {
+                SelectedPrefix = nick;
+            }
         }
         else
         {
-            SelectedSuffix = nick;
+            if (nick == SelectedSuffix)
+            {
+                SelectedSuffix = new NickName();
+            }
+            else
+            {
+                SelectedSuffix = nick;
+            }
+        }
+
+        foreach(UI_NickSubContent nickName in Prefixs)
+        {
+            nickName.SetFrameImage();
+        }
+        foreach (UI_NickSubContent nickName in Suffixs)
+        {
+            nickName.SetFrameImage();
         }
         UpdateInfoText();
     }
