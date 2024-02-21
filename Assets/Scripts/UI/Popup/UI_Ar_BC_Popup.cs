@@ -39,7 +39,7 @@ public class UI_Ar_BC_Popup : UI_Popup
         base.Init();
 
         BTN_Close.onClick.AddListener(CloseBTN);
-        oneDayScheduleData = Managers.Data.GetOneDayDataByObject(tasktype);
+        if(!isCold && !isRunAway)oneDayScheduleData = Managers.Data.GetOneDayDataByScheduleType((ScheduleType)tasktype);
         ScreenAnimator.speed = RubiaAnimator.speed = ScreenAniSpeed;
         if(isCold || isRunAway)
         {
@@ -54,7 +54,7 @@ public class UI_Ar_BC_Popup : UI_Popup
             Infotext.text = oneDayScheduleData.ArchiveInfoText;
         }
      
-        if(tasktype is BroadCastType)
+        if(tasktype !=null &&  (int)tasktype < (int)ScheduleType.Commission)
         {
             RubiaAnimator.SetTrigger(oneDayScheduleData.RubiaAni);
         }

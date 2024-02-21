@@ -41,21 +41,12 @@ public class UI_ArchiveList : UI_Popup
         {
             case ArchiveState.BroadCast:
                 PanelStateTMP.text = "πÊº€»≠∏È";
-                for (int i = 0; i < 9; i++)
-                {
-                    PhotoGroup[i].Set((BroadCastType)i);
+                for (int i = 0; i < (int)ScheduleType.MaxCount; i++)
+                {   
+                    PhotoGroup[i].Set((ScheduleType)i);
                 }
-                for (int i = 9; i < 15; i++)
-                {
-                    PhotoGroup[i].Set((RestType)(i - 9));
-                }
-                for (int i = 15; i < 21; i++)
-                {
-                    PhotoGroup[i].Set((GoOutType)(i - 15));
-                }
-                PhotoGroup[21].SetCold();
-                PhotoGroup[22].SetRunAway();
                 break;
+
             case ArchiveState.EventCutscene:
                 PanelStateTMP.text = "¿Ã∫•∆Æƒ∆æ¿";
                 for (int i = 0; i < 23; i++)

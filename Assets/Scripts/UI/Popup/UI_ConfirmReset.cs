@@ -50,7 +50,7 @@ public class UI_ConfirmReset : UI_Popup
 
         if (UI_Tutorial.instance == null)
         {
-            Managers.Data.PersistentUser.InCreaseResetCount();
+            Managers.Data.PersistentUser.ResetCount++;
         }
         
         Managers.UI_Manager.CloseALlPopupUI();

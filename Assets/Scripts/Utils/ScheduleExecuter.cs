@@ -170,7 +170,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         else
         {
             //휴식 하는게 아니라면 아플 수 있음
-            if (oneDay.scheduleType != ContentType.Rest && !isSick)
+            if (oneDay.ContentType != ContentType.Rest && !isSick)
             {
                 Check_illnessProbability();
             }
@@ -180,7 +180,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         if (isSick)
         {
             todaySick = true;
-            ExecuteSickDay();
+            ExecuteSickDay(oneDay);
             //실패 카운트 증가
             SuccessTimeContainer[2]++;
 
@@ -193,7 +193,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         {
             UI_MainBackUI.instance.StartScreenAnimation(oneDay.PathName, oneDay.RubiaAni);
             oneDay.CheckAndAddIfNotWatched();
-            if(oneDay.scheduleType == ContentType.BroadCast)
+            if(oneDay.ContentType == ContentType.BroadCast)
             {
                 ChattingManager.Inst.gameObject.SetActive(true);
                 ChattingManager.Inst.StartGenerateChattingByType(oneDay.broadcastType);
@@ -228,7 +228,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                     bigSuccessMultiplier = Managers.instance.BigSuccessCoefficientValue;
                     //대성공 카운트 증가
                     SuccessTimeContainer[0]++;
-                    Managers.Data.PersistentUser.IncreaseBigSuccessCount();
+                    Managers.Data.PersistentUser.BigSuccessCount++;
                 }
                 else
                 {
@@ -242,15 +242,15 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             yield return new WaitForSeconds(waitTime);
 
             //방송을 진행했다면 돈 구독자 증가
-            if (oneDay.scheduleType == ContentType.BroadCast)
+            if (oneDay.ContentType == ContentType.BroadCast)
             {
-                Managers.Data.PersistentUser.IncreaseBCCount();
+                Managers.Data.PersistentUser.BroadcastCount++;
                 IncreaseSubsAndMoney(oneDay, bigSuccessMultiplier);
             }
 
             //컨디션 변화
             float HeartVariance; float StarVariance;
-            if (oneDay.scheduleType == ContentType.Rest)
+            if (oneDay.ContentType == ContentType.Rest)
             {
                 HeartVariance = oneDay.HeartVariance * bigSuccessMultiplier;
                 StarVariance = oneDay.StarVariance * bigSuccessMultiplier;
@@ -376,19 +376,21 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             }
         }
 
-        if (caughtCold) Managers.Data.PersistentUser.IncreaseColdCount();
+        if (caughtCold) Managers.Data.PersistentUser.ColdCount++;
     }
 
-    void ExecuteSickDay()
+    void ExecuteSickDay(OneDayScheduleData oneday)
     {
         if(caughtCold)
         {
-            Managers.Data.PersistentUser.WatchedCaught = true;
+            oneday.ScheduleType = ScheduleType.Caught;
+            oneday.CheckAndAddIfNotWatched();
             UI_MainBackUI.instance.StartScreenAnimation("Cold");
         }
         else if(caughtDepression)
         {
-            Managers.Data.PersistentUser.WatchedRunAway = true;
+            oneday.ScheduleType = ScheduleType.RunAway;
+            oneday.CheckAndAddIfNotWatched();
             UI_MainBackUI.instance.StartScreenAnimation("RunAway");
         }
         if (FirstSickDay)

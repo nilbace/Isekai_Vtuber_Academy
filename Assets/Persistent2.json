@@ -1,23 +1,35 @@
 {
     "BoughtAdPass": false,
     "WatchedTutorial": true,
-    "WatchedCaught": true,
-    "WatchedRunAway": false,
-    "WatchedBroadCast": [
-        0,
-        4,
-        7
-    ],
-    "WatchedRest": [
-        0
-    ],
-    "WatchedGoOut": [
-        0
-    ],
-    "WatchedRandEvent": [],
-    "WatchedEndingName": [],
-    "OwnedNickNameBoolList": [
-        true,
+    "WatchedScehdule": {
+        "keys": [
+            11,
+            22,
+            2,
+            9,
+            4
+        ],
+        "values": [
+            false,
+            false,
+            false,
+            false,
+            false
+        ]
+    },
+    "WatchedRandEvent": {
+        "keys": [
+            9
+        ],
+        "values": [
+            false
+        ]
+    },
+    "WatchedEndingName": {
+        "keys": [],
+        "values": []
+    },
+    "OwnedNickNameArr": [
         false,
         false,
         false,
@@ -27,7 +39,6 @@
         false,
         false,
         false,
-        true,
         false,
         false,
         false,
@@ -38,7 +49,9 @@
         false,
         false,
         false,
-        true,
+        false,
+        false,
+        false,
         false,
         false,
         false,
@@ -60,9 +73,9 @@
         false,
         false
     ],
-    "ResetCount": 1,
-    "BigSuccessCount": 0,
-    "MMCount": 0,
-    "BroadcastCount": 3,
-    "ColdCount": 0
+    "_resetCount": 0,
+    "_bigSuccessCount": 0,
+    "_mmCount": 0,
+    "_coldCount": 0,
+    "_broadcastCount": 6
 }

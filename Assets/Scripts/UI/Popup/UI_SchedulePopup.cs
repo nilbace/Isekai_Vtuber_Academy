@@ -130,12 +130,12 @@ public class UI_SchedulePopup : UI_Popup
         }
         else
         {
-            if (_SevenDayScheduleDatas[(int)_nowSelectedDay].scheduleType == ContentType.BroadCast)
+            if (_SevenDayScheduleDatas[(int)_nowSelectedDay].ContentType == ContentType.BroadCast)
             {
                 ChooseContentType(ContentType.BroadCast);
                 GetGameObject((int)GameObjects.Category).SetActive(true);
             }
-            else if (_SevenDayScheduleDatas[(int)_nowSelectedDay].scheduleType == ContentType.Rest)
+            else if (_SevenDayScheduleDatas[(int)_nowSelectedDay].ContentType == ContentType.Rest)
             {
                 ChooseContentType(ContentType.Rest);
             }
@@ -210,14 +210,14 @@ public class UI_SchedulePopup : UI_Popup
                     Under7dayIMGs[i].sprite = DaysSprites[4];
                 }
             }
-            else if(_SevenDayScheduleDatas[i].scheduleType == ContentType.BroadCast)
+            else if(_SevenDayScheduleDatas[i].ContentType == ContentType.BroadCast)
             {
                 GetButton(i).GetComponent<Image>().sprite = DaysSprites[0];
                 Under7dayIMGs[i].sprite = DaysSprites[0];
                 GetButton(i).GetComponentInChildren<TMP_Text>().color = baseTextColor[1];
                 Under7dayIMGs[i].GetComponentInChildren<TMP_Text>().color = baseTextColor[1];
             }
-            else if(_SevenDayScheduleDatas[i].scheduleType == ContentType.Rest)
+            else if(_SevenDayScheduleDatas[i].ContentType == ContentType.Rest)
             {
                 GetButton(i).GetComponent<Image>().sprite = DaysSprites[1];
                 Under7dayIMGs[i].sprite = DaysSprites[1];

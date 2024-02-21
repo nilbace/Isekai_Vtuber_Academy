@@ -107,7 +107,7 @@ public class UI_Ending : UI_Popup
         EasyTransition.TransitionManager.Instance().Transition(Resettransition, 0);
         yield return new WaitForSeconds(1f);
 
-        Managers.Data.PersistentUser.InCreaseResetCount();
+        Managers.Data.PersistentUser.ResetCount++;
         Managers.UI_Manager.CloseALlPopupUI();
         Managers.Data.PlayerData = new PlayerData();
         Managers.Data.SaveData();

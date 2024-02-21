@@ -40,15 +40,8 @@ public class Define
         Drag,
 
     }
-    public enum MouseEvent
-    {
-        Press,
-        Click,
-    }
-    public enum CameraMode
-    {
-        QuaterView,
-    }
+   
+  
 
     #region StatName
     public enum StatName
@@ -184,6 +177,18 @@ public class Define
         MaxCount
     }
 
+    /// <summary>
+    /// 방송,휴식,외출,감기 등
+    /// </summary>
+    public enum ScheduleType {
+        Healing, LOL, Horror, Challenge, Sing, PlayInst, Compose, Sketch, Commission,
+        rest1, rest2, rest3, rest4, rest5, rest6,
+        Game, Song, Draw, Str, Men, Luck,
+        Caught, RunAway,
+        MaxCount
+    }
+
+
     public enum DefaultPopupState
     {
         Normal, Merchant, RandomEvent, RandEventArchive,
@@ -211,10 +216,11 @@ public class Define
     {
         public string KorName;
         public string infotext;
-        public ContentType scheduleType;
+        public ContentType ContentType;
         public BroadCastType broadcastType;
         public RestType restType;
         public GoOutType goOutType;
+        public ScheduleType ScheduleType;
         public float FisSubsUpValue;
         public float PerSubsUpValue;
         public float HeartVariance;
@@ -229,7 +235,7 @@ public class Define
         public OneDayScheduleData()
         {
             KorName = "";
-            this.scheduleType = ContentType.Null;
+            this.ContentType = ContentType.Null;
             this.broadcastType = BroadCastType.MaxCount_Name;
             this.restType = RestType.MaxCount;
             this.goOutType = GoOutType.MaxCount;
@@ -244,22 +250,70 @@ public class Define
             Six_Stats = new float[6];
         }
 
+        //수정 필요
+
         public void CheckAndAddIfNotWatched()
         {
-            switch (scheduleType)
+            Debug.Log(ScheduleType);
+            if(!Managers.Data.PersistentUser.WatchedScehdule.ContainsKey(ScheduleType))
             {
-                case ContentType.BroadCast:
-                    Managers.Data.PersistentUser.CheckAndAddIfNotWatched(broadcastType);
+                Managers.Data.PersistentUser.WatchedScehdule.Add(ScheduleType, false);
+            }
+
+
+            bool allKeysExist = true;
+            for (int i = 0; i <= (int)ScheduleType.Commission; i++)
+            {
+                ScheduleType scheduleType = (ScheduleType)i;
+                if (!Managers.Data.PersistentUser.WatchedScehdule.ContainsKey(scheduleType))
+                {
+                    allKeysExist = false;
                     break;
-                case ContentType.Rest:
-                    Managers.Data.PersistentUser.CheckAndAddIfNotWatched(restType);
+                }
+            }
+
+            if (allKeysExist)
+            {
+                Managers.NickName.OpenNickname(NickNameKor.카멜레온);
+            }
+
+            Managers.NickName.CheckPerfectNickName();
+        }
+
+        public string GetIcon()
+        {
+            string temp = "";
+            switch (broadcastType)
+            {
+                case BroadCastType.Healing:
+                    temp = GetIconString(StatIcons.Game);
                     break;
-                case ContentType.GoOut:
-                    Managers.Data.PersistentUser.CheckAndAddIfNotWatched(goOutType);
+                case BroadCastType.LOL:
+                    temp = GetIconString(StatIcons.Game);
+                    break;
+                case BroadCastType.Horror:
+                    temp = GetIconString(StatIcons.Game);
+                    break;
+                case BroadCastType.Challenge:
+                    temp = GetIconString(StatIcons.Game);
+                    break;
+                case BroadCastType.Sing:
+                    temp = GetIconString(StatIcons.Song);
+                    break;
+                case BroadCastType.PlayInst:
+                    temp = GetIconString(StatIcons.Song);
+                    break;
+                case BroadCastType.Compose:
+                    temp = GetIconString(StatIcons.Song);
+                    break;
+                case BroadCastType.Sketch:
+                    temp = GetIconString(StatIcons.Draw);
+                    break;
+                case BroadCastType.Commission:
+                    temp = GetIconString(StatIcons.Draw);
                     break;
             }
-            if (Managers.Data.PersistentUser.WatchedBroadCast.Count >= 9) Managers.NickName.OpenNickname(NickNameKor.카멜레온);
-            Managers.NickName.CheckPerfectNickName();
+            return temp;
         }
     }
 
@@ -578,128 +632,98 @@ public class Define
     {
         public bool BoughtAdPass;
         public bool WatchedTutorial;
-        public bool WatchedCaught;
-        public bool WatchedRunAway;
-        public List<BroadCastType> WatchedBroadCast;
-        public List<RestType> WatchedRest;
-        public List<GoOutType> WatchedGoOut;
-        public List<RandEventName> WatchedRandEvent;
-        public List<EndingName> WatchedEndingName;
-        public List<bool> OwnedNickNameBoolList;
-        public int ResetCount;
-        public int BigSuccessCount;
-        public int MMCount;
-        public int BroadcastCount;
-        public int ColdCount;
+
+        //각 Dictionary들은 Key에 무엇을 봤는지, value에 레드닷이 떠야 하는지를 나타냄
+        //방송에 <LoL(대전게임), false>가 저장되어 있다면 대전 게임을 봤고, 레드닷이 아직 지워지지 않았다를 뜻함
+        //<LoL, true>라면 대전 게임을 봤고, 레드닷이 지워졌다(도감을 봤다)를 뜻함
+        public SerializableDictionary<ScheduleType, bool> WatchedScehdule;
+        public SerializableDictionary<RandEventName, bool> WatchedRandEvent;
+        public SerializableDictionary<EndingName, bool> WatchedEndingName;
+        public bool[] OwnedNickNameArr;
+        [SerializeField] private int _resetCount = 0;
+        public int ResetCount { get { return _resetCount; } set { _resetCount = value;
+                if (ResetCount == 1)
+                {
+                    Managers.NickName.OpenNickname(NickNameKor.익숙한);
+                }
+                if (ResetCount == 50)
+                {
+                    Managers.NickName.OpenNickname(NickNameKor.시공간의);
+                }
+                if (ResetCount == 100)
+                {
+                    Managers.NickName.OpenNickname(NickNameKor.회귀자);
+                }
+            } }
+
+
+        [SerializeField] private int _bigSuccessCount;
+        public int BigSuccessCount
+        {
+            get { return _bigSuccessCount; }
+            set
+            {
+                _bigSuccessCount = value;
+                if (BigSuccessCount == 50)
+                {
+                    Managers.NickName.OpenNickname(NickNameKor.천재);
+                }
+            }
+        }
+
+        [SerializeField] private int _mmCount;
+        public int MMCount
+        {
+            get { return _mmCount; }
+            set
+            {
+                _mmCount = value;
+                if (MMCount >= 100)
+                {
+                    Managers.NickName.OpenNickname(NickNameKor.뮹뮹이의);
+                }
+            }
+        }
+
+        [SerializeField] private int _coldCount;
+        public int ColdCount
+        {
+            get { return _coldCount; }
+            set
+            {
+                _coldCount = value;
+                if (ColdCount >= 10)
+                {
+                    Managers.NickName.OpenNickname(NickNameKor.환자);
+                }
+            }
+        }
+
+        [SerializeField] private int _broadcastCount;
+        public int BroadcastCount
+        {
+            get { return _broadcastCount; }
+            set
+            {
+                _broadcastCount = value;
+                if (BroadcastCount >= 200)
+                {
+                    Managers.NickName.OpenNickname(NickNameKor.노예);
+                }
+            }
+        }
 
         public PersistentUserData()
         {
             BoughtAdPass = false;
             WatchedTutorial = false;
-            WatchedCaught = false;
-            WatchedRunAway = false;
-            WatchedBroadCast = new List<BroadCastType>();
-            WatchedRest = new List<RestType>();
-            WatchedGoOut = new List<GoOutType>();
-            WatchedRandEvent = new List<RandEventName>();
-            WatchedEndingName = new List<EndingName>();
-            OwnedNickNameBoolList = new List<bool>();
-            for (int i = 0; i < 42; i++)
-            {
-                OwnedNickNameBoolList.Add(false);
-            }
+            WatchedScehdule = new SerializableDictionary<ScheduleType, bool>();
+            WatchedRandEvent = new SerializableDictionary<RandEventName, bool>();
+            WatchedEndingName = new SerializableDictionary<EndingName, bool>();
+            OwnedNickNameArr = new bool[42];
             ResetCount = 0;
             BigSuccessCount = 0;
             MMCount = 0;
-        }
-
-        public bool CheckAndAddIfNotWatched<T>(T enumValue)
-        {
-            List<T> watchedList;
-            if (typeof(T) == typeof(BroadCastType))
-            {
-                watchedList = WatchedBroadCast as List<T>;
-            }
-            else if (typeof(T) == typeof(RestType))
-            {
-                watchedList = WatchedRest as List<T>;
-            }
-            else if (typeof(T) == typeof(GoOutType))
-            {
-                watchedList = WatchedGoOut as List<T>;
-            }
-            else if(typeof(T)== typeof(RandEventName))
-            {
-                watchedList = WatchedRandEvent as List<T>;
-            }
-            else if (typeof(T) == typeof(EndingName))
-            {
-                watchedList = WatchedEndingName as List<T>;
-            }
-            else
-            {
-                throw new ArgumentException("Invalid type");
-            }
-
-            bool isWatched = watchedList.Exists(item => item.Equals(enumValue));
-            if (!isWatched)
-            {
-                watchedList.Add(enumValue);
-            }
-            return isWatched;
-        }
-
-        public void InCreaseResetCount()
-        {
-            ResetCount++;
-            if(ResetCount == 1)
-            {
-                Managers.NickName.OpenNickname(NickNameKor.익숙한);
-            }
-            if (ResetCount == 50)
-            {
-                Managers.NickName.OpenNickname(NickNameKor.시공간의);
-            }
-            if (ResetCount == 100)
-            {
-                Managers.NickName.OpenNickname(NickNameKor.회귀자);
-            }
-        }
-
-        public void IncreaseBigSuccessCount()
-        {
-            BigSuccessCount++;
-            if (BigSuccessCount == 50)
-            {
-                Managers.NickName.OpenNickname(NickNameKor.천재);
-            }
-        }
-
-        public void IncreaseMMCount()
-        {
-            MMCount++;
-            if (MMCount >= 100)
-            {
-                Managers.NickName.OpenNickname(NickNameKor.뮹뮹이의);
-            }
-        }
-
-        public void IncreaseColdCount()
-        {
-            ColdCount++;
-            if (ColdCount >= 10)
-            {
-                Managers.NickName.OpenNickname(NickNameKor.환자);
-            }
-        }
-
-        public void IncreaseBCCount()
-        {
-            BroadcastCount++;
-            if (BroadcastCount >= 200)
-            {
-                Managers.NickName.OpenNickname(NickNameKor.노예);
-            }
         }
     }
 
@@ -801,6 +825,5 @@ public class Define
         }
     }
 
-    
-}
 
+}

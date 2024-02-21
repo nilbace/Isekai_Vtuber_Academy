@@ -24,9 +24,9 @@ public class NicknameManager
     /// <param name="n"></param>
     public void OpenNickname(int n)
     {
-        if(Managers.Data.PersistentUser.OwnedNickNameBoolList[n] == false)
+        if(Managers.Data.PersistentUser.OwnedNickNameArr[n] == false)
         {
-            Managers.Data.PersistentUser.OwnedNickNameBoolList[n] = true;
+            Managers.Data.PersistentUser.OwnedNickNameArr[n] = true;
             NickName temp = DataParser.Inst.NickNameList[n];
             Alarm.ShowAlarm($"ÄªÈ£ '{temp.NicknameString}'À» È¹µæÇÏ¿´½À´Ï´Ù.");
         }
@@ -36,15 +36,15 @@ public class NicknameManager
     {
         if (Managers.Data.PersistentUser.WatchedEndingName.Count == (int)EndingName.MaxCount &&
             Managers.Data.PersistentUser.WatchedRandEvent.Count == 18&&
-            Managers.Data.PersistentUser.WatchedBroadCast.Count == (int)BroadCastType.MaxCount_Name)
+            Managers.Data.PersistentUser.WatchedScehdule.Count == (int)ScheduleType.MaxCount)
             OpenNickname(NickNameKor.¿Ïº®ÁÖÀÇÀÚ);
     }
 
     public void OpenNicknameWithoutAlarm(int n)
     {
-        if (Managers.Data.PersistentUser.OwnedNickNameBoolList[n] == false)
+        if (Managers.Data.PersistentUser.OwnedNickNameArr[n] == false)
         {
-            Managers.Data.PersistentUser.OwnedNickNameBoolList[n] = true;
+            Managers.Data.PersistentUser.OwnedNickNameArr[n] = true;
             NickName temp = DataParser.Inst.NickNameList[n];
         }
     }

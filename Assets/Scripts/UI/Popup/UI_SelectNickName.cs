@@ -164,7 +164,7 @@ public class UI_SelectNickName : UI_Popup
 
     public void CheckOwnedNickName()
     {
-        var OwnedCheckList = Managers.Data.PersistentUser.OwnedNickNameBoolList;
+        var OwnedCheckList = Managers.Data.PersistentUser.OwnedNickNameArr;
         var NickNameList = DataParser.Inst.NickNameList;
         int prefixIndex = 0;
         int suffixIndex = 0;

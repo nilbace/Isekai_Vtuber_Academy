@@ -256,7 +256,7 @@ public class REventManager
 
         public void CheckAndAddIfNotWatched()
         {
-            Managers.Data.PersistentUser.CheckAndAddIfNotWatched(eventName);
+            Managers.Data.PersistentUser.WatchedRandEvent.Add(eventName, false);
         }
     }
 

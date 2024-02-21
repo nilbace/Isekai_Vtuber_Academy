@@ -74,7 +74,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         thisSubSchedleData = scheduleData;
         thisBTNDay = nowDay;    
         SpriteState ButtonBackImage = new SpriteState();
-        switch (scheduleData.scheduleType)
+        switch (scheduleData.ContentType)
         {
             case ContentType.BroadCast:
                 GetComponent<Image>().sprite = TaskPannelSprites[0];
@@ -96,18 +96,19 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
                 break;
         }
 
-        GetText((int)Texts.NameTMP).text    = thisSubSchedleData.KorName;
+        if(thisSubSchedleData.ContentType == ContentType.BroadCast) GetText((int)Texts.NameTMP).text = thisSubSchedleData.GetIcon()+ thisSubSchedleData.KorName;
+        else GetText((int)Texts.NameTMP).text = thisSubSchedleData.KorName;
+
         GetText((int)Texts.InfoTMP).text    = thisSubSchedleData.infotext;
-        GetText((int)Texts.SubTMP).text     = thisSubSchedleData.KorName;
         GetText((int)Texts.GoldTMP).text    = (-thisSubSchedleData.MoneyCost).ToString();
         GetText((int)Texts.HeartTMP).text = HeartStarVarianceToString(scheduleData, StatName.Strength);
         GetText((int)Texts.StarTMP).text  = HeartStarVarianceToString(scheduleData, StatName.Mental);
-        if (scheduleData.scheduleType == ContentType.GoOut)
+        if (scheduleData.ContentType == ContentType.GoOut)
         {
             GetText((int)Texts.StatTMP).text = thisSubSchedleData.Six_Stats[(int)statName].ToString();
         }
 
-        if (scheduleData.scheduleType == ContentType.BroadCast)
+        if (scheduleData.ContentType == ContentType.BroadCast)
         {
             SetMoneyAndSubData_BroadCast();
         }
@@ -123,7 +124,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         thisBTN.interactable = true;
 
         //외출, 휴식이라면
-        if(scheduleData.scheduleType != ContentType.BroadCast)
+        if(scheduleData.ContentType != ContentType.BroadCast)
         {
             //먼저 선택된 것이 없다면
             if(settedData == null)
@@ -222,7 +223,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
     {
         TruelyInteractable = false;
         thisBTN.interactable = false;
-        switch (thisSubSchedleData.scheduleType)
+        switch (thisSubSchedleData.ContentType)
         {
             case ContentType.BroadCast:
                 GetComponent<Image>().sprite = TaskPannelSprites[1];
@@ -252,7 +253,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 
     int ExpectedSub(int SubCount, OneDayScheduleData oneDayScheduleData)
     {
-        if(oneDayScheduleData.scheduleType == ContentType.BroadCast)
+        if(oneDayScheduleData.ContentType == ContentType.BroadCast)
         {
             Bonus temp = Managers.Data.GetMainProperty(GetStatNameByBroadCastType(oneDayScheduleData.broadcastType));
             int newSubs = ScheduleExecuter.Inst.CalculateSubAfterDay(SubCount, oneDayScheduleData.FisSubsUpValue, oneDayScheduleData.PerSubsUpValue, 1);
@@ -265,7 +266,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
 
     int ExpectedInCome(int SubCount, OneDayScheduleData oneDayScheduleData)
     {
-        if (oneDayScheduleData.scheduleType == ContentType.BroadCast)
+        if (oneDayScheduleData.ContentType == ContentType.BroadCast)
         {
             Bonus temp = Managers.Data.GetMainProperty(GetStatNameByBroadCastType(oneDayScheduleData.broadcastType));
 
@@ -287,7 +288,7 @@ public class UI_SubContent : UI_Base, IPointerDownHandler, IPointerUpHandler, ID
         else
             value = oneDayScheduleData.StarVariance;
         
-        if(oneDayScheduleData.scheduleType != ContentType.Rest)value = value * ScheduleExecuter.Inst.GetSubStatProperty(HeartOrStar);
+        if(oneDayScheduleData.ContentType != ContentType.Rest)value = value * ScheduleExecuter.Inst.GetSubStatProperty(HeartOrStar);
 
         temp = value.ToString("F0");
 

@@ -140,6 +140,15 @@ public class DataManager
         return oneDayData;
     }
 
+    public OneDayScheduleData GetOneDayDataByScheduleType(ScheduleType schedule)
+    {
+        OneDayScheduleData temp = new OneDayScheduleData();
+        foreach (OneDayScheduleData one in oneDayDatasList)
+        {
+            if (one.ScheduleType == schedule) temp = one;
+        }
+        return temp;
+    }
 
     public OneDayScheduleData GetOneDayDataByName(RestType restType)
     {
@@ -214,17 +223,17 @@ public class DataManager
 
         if(scheduleType == ContentType.BroadCast)
         {
-            temp.scheduleType = ContentType.BroadCast;
+            temp.ContentType = ContentType.BroadCast;
             temp.broadcastType = (BroadCastType)index;
         }
         else if(scheduleType == ContentType.Rest)
         {
-            temp.scheduleType = ContentType.Rest;
+            temp.ContentType = ContentType.Rest;
             temp.restType = (RestType)index;
         }
         else
         {
-            temp.scheduleType = ContentType.GoOut;
+            temp.ContentType = ContentType.GoOut;
             temp.goOutType = (GoOutType)index;
         }
         
@@ -243,6 +252,7 @@ public class DataManager
         temp.RubiaAni = tempstringQueue.Dequeue();
         temp.infotext = tempstringQueue.Dequeue();
         temp.ArchiveInfoText = tempstringQueue.Dequeue();
+        Enum.TryParse(tempstringQueue.Dequeue(), out temp.ScheduleType);
         oneDayDatasList.Add(temp);
     }
 

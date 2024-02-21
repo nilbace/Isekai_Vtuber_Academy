@@ -8,12 +8,9 @@ public class UI_Photo : UI_Base
 {
     public Button CoverBTN;
     public Image BaseImage;
-    public Sprite[] BroadCastImgs;
-    public Sprite[] RestImgs;
-    public Sprite[] GoOutImgs;
+    public Image RedDot;
+    public Sprite[] ScheduleTypeImgs;
     public Sprite[] EndingImgs;
-    public Sprite ColdImg;
-    public Sprite RunAwayImg;
     public Sprite[] RandEventCutScene;
 
 
@@ -32,7 +29,7 @@ public class UI_Photo : UI_Base
         {
             BaseImage.sprite = EndingImgs[(int)TaskEnum];
 
-            if (Managers.Data.PersistentUser.WatchedEndingName.Contains((EndingName)TaskEnum))
+            if (Managers.Data.PersistentUser.WatchedEndingName.ContainsKey((EndingName)TaskEnum))
             {
                 CoverBTN.gameObject.SetActive(false);
             }
@@ -44,71 +41,45 @@ public class UI_Photo : UI_Base
             int index = (int)TaskEnum;
             BaseImage.sprite = GetProperRandCutsceneIMG(Managers.RandEvent.EventDatasList[index].CutSceneName);
 
-            if (Managers.Data.PersistentUser.WatchedRandEvent.Contains((RandEventName)TaskEnum))
+            if (Managers.Data.PersistentUser.WatchedRandEvent.ContainsKey((RandEventName)TaskEnum))
             {
                 CoverBTN.gameObject.SetActive(false);
             }
 
             BaseImage.GetComponent<Button>().onClick.AddListener(() => ShowRandEventPopup(index));
         }
-        else if(TaskEnum is BroadCastType)
+        else if(TaskEnum is ScheduleType)
         {
-            BaseImage.sprite = BroadCastImgs[(int)TaskEnum];
+            BaseImage.sprite = ScheduleTypeImgs[(int)TaskEnum];
 
-            if (Managers.Data.PersistentUser.WatchedBroadCast.Contains((BroadCastType)TaskEnum))
+            //±× ½ºÄÉÁìÀ» ºÃ´Ù¸é
+            if (Managers.Data.PersistentUser.WatchedScehdule.ContainsKey((ScheduleType)TaskEnum))
             {
+                //Ä¿¹ö ¾ø¾Ö°í
                 CoverBTN.gameObject.SetActive(false);
+                //·¹µå´åÀº ºÃ´Ù¸é ²ö´Ù
+                RedDot.gameObject.SetActive(!Managers.Data.PersistentUser.WatchedScehdule[(ScheduleType)TaskEnum]);
             }
-
+            else
+            {
+                //·¹µå´åÀ» ²ö´Ù
+                RedDot.gameObject.SetActive(false);
+            }
             BaseImage.GetComponent<Button>().onClick.AddListener(()=> ShowBcPopup((BroadCastType)TaskEnum));
-        }
-        else if(TaskEnum is RestType)
-        {
-            BaseImage.sprite = RestImgs[(int)TaskEnum];
-            if (Managers.Data.PersistentUser.WatchedRest.Contains((RestType)TaskEnum))
+
+            if((int)TaskEnum == (int)ScheduleType.Caught)
             {
-                CoverBTN.gameObject.SetActive(false);
+                BaseImage.GetComponent<Button>().onClick.RemoveAllListeners();
+                BaseImage.GetComponent<Button>().onClick.AddListener(ShowColdPopup);
             }
-
-            BaseImage.GetComponent<Button>().onClick.AddListener(() => ShowBcPopup((RestType)TaskEnum));
-        }
-        else if(TaskEnum is GoOutType)
-        {
-            BaseImage.sprite = GoOutImgs[(int)TaskEnum];
-            for (int i = (int)TaskEnum * 3; i <= (int)TaskEnum * 3 + 2; i++)
+            if ((int)TaskEnum == (int)ScheduleType.RunAway)
             {
-                if (Managers.Data.PersistentUser.WatchedGoOut.Contains((GoOutType)i))
-                {
-                    CoverBTN.gameObject.SetActive(false);
-                    break;
-                }
+                BaseImage.GetComponent<Button>().onClick.RemoveAllListeners();
+                BaseImage.GetComponent<Button>().onClick.AddListener(ShowRunawayPopup);
             }
-
-            BaseImage.GetComponent<Button>().onClick.AddListener(() => ShowBcPopup((GoOutType)((int)TaskEnum*3)));
         }
     }
 
-    public void SetCold()
-    {
-        BaseImage.sprite = ColdImg;
-        if (Managers.Data.PersistentUser.WatchedCaught)
-        {
-            CoverBTN.gameObject.SetActive(false);
-        }
-
-        BaseImage.GetComponent<Button>().onClick.AddListener(ShowColdPopup);
-    }
-
-    public void SetRunAway()
-    {
-        BaseImage.sprite = RunAwayImg;
-        if (Managers.Data.PersistentUser.WatchedRunAway)
-        {
-            CoverBTN.gameObject.SetActive(false);
-        }
-
-        BaseImage.GetComponent<Button>().onClick.AddListener(ShowRunawayPopup);
-    }
 
 
     void ShowBcPopup(object broadCastType)
