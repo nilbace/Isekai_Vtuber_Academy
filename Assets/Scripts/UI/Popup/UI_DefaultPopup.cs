@@ -41,6 +41,7 @@ public class UI_DefaultPopup : UI_Popup
         Bind<TMPro.TMP_Text>(typeof(Texts));
 
         GetButton((int)Buttons.ResultBTN).onClick.AddListener(ResultBTN);
+        GetButton((int)Buttons.ResultBTN).onClick.AddListener(()=>Managers.Sound.Play(Sound.SmallBTN));
         Setting();
         if (popupState == DefaultPopupState.Merchant)
         {
