@@ -31,6 +31,7 @@ public class Define
         Skip,
         knock,
         Chat1, Chat2, Chat3,
+        BunnyAppear,
 
         MaxCount,
     }

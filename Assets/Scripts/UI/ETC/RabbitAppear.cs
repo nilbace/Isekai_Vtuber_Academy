@@ -30,6 +30,7 @@ public class RabbitAppear : MonoBehaviour
         ChatTMP.color = new Color(0, 0, 0, 0);
         ChatTMP.text = Dialogues[Random.Range(0, 5)];
 
+        Managers.Sound.Play(Define.Sound.BunnyAppear);
         // 아래로 즉시 이동
         targetRectTransform.anchoredPosition -= new Vector2(0f, offset);
 
