@@ -9,6 +9,7 @@ public class RabbitAppear : MonoBehaviour
     public RectTransform targetRectTransform;  // 이동시킬 UI 컴포넌트의 RectTransform
     public float offset = 100f;  // 아래로 이동할 거리
     public float moveTime = 1f;  // 이동 시간
+    public float ShakeSoundAppearTime;
     public float shakeStrength = 20f;  // 떨림의 세기
     bool startShake;
     bool canMove = true;
@@ -29,8 +30,8 @@ public class RabbitAppear : MonoBehaviour
         ChatBubble.color = Define.alpha0;
         ChatTMP.color = new Color(0, 0, 0, 0);
         ChatTMP.text = Dialogues[Random.Range(0, 5)];
-
-        Managers.Sound.Play(Define.Sound.BunnyAppear);
+        StartCoroutine(ShakeSoundCor());
+        
         // 아래로 즉시 이동
         targetRectTransform.anchoredPosition -= new Vector2(0f, offset);
 
@@ -44,9 +45,14 @@ public class RabbitAppear : MonoBehaviour
             targetRectTransform.DOAnchorPos(initialPosition, 0.1f);
             StartCoroutine(ShowChatBubble());
         });
-
-
     }
+
+    IEnumerator ShakeSoundCor()
+    {
+        yield return new WaitForSeconds(ShakeSoundAppearTime);
+        Managers.Sound.Play(Define.Sound.BunnyAppear);
+    }
+
     private void Update()
     {
         if (canMove && startShake)

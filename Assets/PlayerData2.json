@@ -16,7 +16,11 @@
     "DoneEventNames": [],
     "BoughtItems": [],
     "SubStoryIndex": [
-        26
+        26,
+        24,
+        10,
+        16,
+        12
     ],
     "NowNickName": "대담한 초보"
 }
