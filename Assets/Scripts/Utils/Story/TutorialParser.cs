@@ -46,6 +46,8 @@ public class TutorialParser : MonoSingleton<TutorialParser>
 
         //대화 하나
         temp.sentence = lines[4].ConvertEuroToNewline();
+
+        temp.Ypoz = lines[5].Trim();
         
         return temp;
     }

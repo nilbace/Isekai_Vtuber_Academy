@@ -152,6 +152,7 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
         ChooseBubbleIMG(dialogue);
         ShowCharImage(dialogue);
         SetFocusImg(dialogue);
+        SetCharAndBubbleYPoz(dialogue.Ypoz);
         // 대사 출력을 위한 코루틴 실행
         typingCoroutine = StartCoroutine(TypeSentence(dialogue));
     }
@@ -249,7 +250,30 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
         {
             TurnOnImage(dialogue.isLeft, CharIMGs[2]);
         }
-        
+    }
+
+    void SetCharAndBubbleYPoz(string poz)
+    {
+        if (poz == "위")
+        {
+            GetImage((int)Images.LeftIMG).rectTransform.anchoredPosition = new Vector2(-75, 170);
+            GetImage((int)Images.RightIMG).rectTransform.anchoredPosition = new Vector2(80, 170);
+            GetImage((int)Images.ChatBubbleIMG).rectTransform.anchoredPosition = new Vector2(0, 72);
+        }
+        else if (poz == "중간")
+        {
+            GetImage((int)Images.LeftIMG).rectTransform.anchoredPosition = new Vector2(-75, -38);
+            GetImage((int)Images.RightIMG).rectTransform.anchoredPosition = new Vector2(80, -38);
+            GetImage((int)Images.ChatBubbleIMG).rectTransform.anchoredPosition = new Vector2(0, -136);
+        }
+        else if (poz == "아래")
+        {
+            GetImage((int)Images.LeftIMG).rectTransform.anchoredPosition = new Vector2(-75, -32);
+            GetImage((int)Images.RightIMG).rectTransform.anchoredPosition = new Vector2(80, -32);
+            GetImage((int)Images.ChatBubbleIMG).rectTransform.anchoredPosition = new Vector2(0, -130);
+        }
+        else
+            return;
     }
 
     //특정 선택지들은 선택박스가 딸려옴

@@ -313,7 +313,7 @@ public class Define
         TuesdayBTN,
         Category_Song,
         Song,
-        MM,
+        MMBTNArea,
         HealthBox,
         StatBox,
         BaseGame,
@@ -362,6 +362,7 @@ public class Define
         public List<RewardStat> rewardStats;
         public TutorialFocusPoint tutorialFocus;
         public bool IsInteractable;
+        public string Ypoz;
 
         public Dialogue(string name = "", string sentence = "", bool isLeft = false, int costGold = 0)
         {
@@ -410,6 +411,46 @@ public class Define
     {
         string temp = $"<sprite={index}>";
         return temp;
+    }
+
+    [System.Serializable]
+    public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
+    {
+        [SerializeField]
+        private List<TKey> keys = new List<TKey>();
+
+        [SerializeField]
+        private List<TValue> values = new List<TValue>();
+
+        // 딕셔너리를 배열로 변환하는 메서드
+        public void OnBeforeSerialize()
+        {
+            keys.Clear();
+            values.Clear();
+
+            foreach (KeyValuePair<TKey, TValue> pair in this)
+            {
+                keys.Add(pair.Key);
+                values.Add(pair.Value);
+            }
+        }
+
+        // 배열을 딕셔너리로 변환하는 메서드
+        public void OnAfterDeserialize()
+        {
+            this.Clear();
+
+            if (keys.Count != values.Count)
+            {
+                Debug.LogError("Key와 Value의 개수가 일치하지 않습니다.");
+                return;
+            }
+
+            for (int i = 0; i < keys.Count; i++)
+            {
+                this.Add(keys[i], values[i]);
+            }
+        }
     }
 
     [System.Serializable]
