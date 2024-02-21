@@ -3,13 +3,19 @@
     "WatchedTutorial": true,
     "WatchedScehdule": {
         "keys": [
-            11,
-            22,
-            2,
+            0,
+            1,
             9,
-            4
+            19,
+            17,
+            10,
+            5,
+            15
         ],
         "values": [
+            false,
+            false,
+            false,
             false,
             false,
             false,
@@ -19,10 +25,12 @@
     },
     "WatchedRandEvent": {
         "keys": [
-            9
+            15,
+            7
         ],
         "values": [
-            false
+            true,
+            true
         ]
     },
     "WatchedEndingName": {
@@ -30,6 +38,17 @@
         "values": []
     },
     "OwnedNickNameArr": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
         false,
         false,
         false,
@@ -40,18 +59,7 @@
         false,
         false,
         false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
+        true,
         false,
         false,
         false,
@@ -73,9 +81,9 @@
         false,
         false
     ],
-    "_resetCount": 0,
+    "_resetCount": 3,
     "_bigSuccessCount": 0,
     "_mmCount": 0,
     "_coldCount": 0,
-    "_broadcastCount": 6
+    "_broadcastCount": 14
 }

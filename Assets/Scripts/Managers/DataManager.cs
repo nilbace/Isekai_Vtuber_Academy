@@ -60,16 +60,13 @@ public class DataManager
     public void SaveData()
     {
         string path;
-        string path2;
         if (Application.platform == RuntimePlatform.Android)
         {
             path = Path.Combine(Application.persistentDataPath, "PlayerData2.json");
-            path2 = Path.Combine(Application.persistentDataPath, "Persistent2.json");
         }
         else
         {
             path = Path.Combine(Application.dataPath, "PlayerData2.json");
-            path2 = Path.Combine(Application.dataPath, "Persistent2.json");
         }
         string jsonData = JsonUtility.ToJson(PlayerData, true);
         FileStream fileStream = new FileStream(path, FileMode.Create);
@@ -77,6 +74,21 @@ public class DataManager
         fileStream.Write(data, 0, data.Length);
         fileStream.Close();
 
+        SavePersistentData();
+    }
+
+    public void SavePersistentData()
+    {
+        string path2;
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            path2 = Path.Combine(Application.persistentDataPath, "Persistent2.json");
+        }
+        else
+        {
+            path2 = Path.Combine(Application.dataPath, "Persistent2.json");
+        }
+      
         string jsonData2 = JsonUtility.ToJson(PersistentUser, true);
         FileStream fileStream2 = new FileStream(path2, FileMode.Create);
         byte[] data2 = Encoding.UTF8.GetBytes(jsonData2);

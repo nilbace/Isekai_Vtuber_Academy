@@ -46,6 +46,7 @@ public class UI_RandomEvent : UI_Popup
         if(!ArchiveMode) _eventData = Managers.RandEvent.GetProperEvent();
         _eventData.CheckAndAddIfNotWatched();
         Managers.NickName.CheckPerfectNickName();
+        UpdateRedDot();
         Bind<Image>(typeof(Images));
         Bind<Button>(typeof(Buttons));
         Bind<TMPro.TMP_Text>(typeof(Texts));
@@ -126,6 +127,30 @@ public class UI_RandomEvent : UI_Popup
             }
 
             Managers.Data.PlayerData.ChangeStatAndPlayUIAnimation(eventStatValues);
+        }
+    }
+
+    void UpdateRedDot()
+    {
+        if (ArchiveMode && Managers.Data.PersistentUser.WatchedRandEvent.ContainsKey(_eventData.eventName))
+        {
+            Managers.Data.PersistentUser.WatchedRandEvent[_eventData.eventName] = true;
+            Managers.Data.SavePersistentData();
+        }
+        //레드닷 업데이트 파트
+        if (UI_ArchiveList.instance != null)
+        {
+            UI_ArchiveList.instance.SetListByState();
+        }
+
+        if (UI_Archive.instance != null)
+        {
+            UI_Archive.instance.UpdateRedDot();
+        }
+
+        if (UI_MainBackUI.instance != null)
+        {
+            UI_MainBackUI.instance.UpdateReddot();
         }
     }
 

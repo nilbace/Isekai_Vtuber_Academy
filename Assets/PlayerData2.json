@@ -1,26 +1,24 @@
 {
-    "NowWeek": 3,
-    "nowSubCount": 745,
-    "nowGoldAmount": 9417,
+    "NowWeek": 2,
+    "nowSubCount": 569,
+    "nowGoldAmount": 14164,
     "RubiaKarma": 0,
-    "_nowHeart": 100.0,
-    "_nowStar": 56.0,
+    "_nowHeart": 92.0,
+    "_nowStar": 44.0,
     "SixStat": [
-        8.0,
-        1.0,
-        3.0,
+        11.0,
+        4.0,
+        4.0,
         0.0,
         0.0,
-        0.0
+        10.0
     ],
     "DoneEventNames": [
-        "팬레터 읽기"
+        "도수치료 직캠"
     ],
     "BoughtItems": [],
     "SubStoryIndex": [
-        9,
-        6,
         12
     ],
-    "NowNickName": ""
+    "NowNickName": "대담한 초보"
 }

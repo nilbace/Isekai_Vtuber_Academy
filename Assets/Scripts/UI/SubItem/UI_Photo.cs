@@ -25,6 +25,8 @@ public class UI_Photo : UI_Base
 
     public void Set(object TaskEnum)
     {
+        BaseImage.GetComponent<Button>().onClick.RemoveAllListeners();
+
         if (TaskEnum is EndingName)
         {
             BaseImage.sprite = EndingImgs[(int)TaskEnum];
@@ -32,22 +34,35 @@ public class UI_Photo : UI_Base
             if (Managers.Data.PersistentUser.WatchedEndingName.ContainsKey((EndingName)TaskEnum))
             {
                 CoverBTN.gameObject.SetActive(false);
+                RedDot.gameObject.SetActive(!Managers.Data.PersistentUser.WatchedEndingName[(EndingName)TaskEnum]);
+            }
+            else
+            {
+                RedDot.gameObject.SetActive(false);
             }
 
             BaseImage.GetComponent<Button>().onClick.AddListener(() => ShowBcPopup((EndingName)TaskEnum));
         }
+
         else if(TaskEnum is RandEventName)
         {
             int index = (int)TaskEnum;
             BaseImage.sprite = GetProperRandCutsceneIMG(Managers.RandEvent.EventDatasList[index].CutSceneName);
 
+
             if (Managers.Data.PersistentUser.WatchedRandEvent.ContainsKey((RandEventName)TaskEnum))
             {
                 CoverBTN.gameObject.SetActive(false);
+                RedDot.gameObject.SetActive(!Managers.Data.PersistentUser.WatchedRandEvent[(RandEventName)TaskEnum]);
+            }
+            else
+            {
+                RedDot.gameObject.SetActive(false);
             }
 
             BaseImage.GetComponent<Button>().onClick.AddListener(() => ShowRandEventPopup(index));
         }
+
         else if(TaskEnum is ScheduleType)
         {
             BaseImage.sprite = ScheduleTypeImgs[(int)TaskEnum];

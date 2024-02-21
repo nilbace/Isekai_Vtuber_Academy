@@ -256,7 +256,7 @@ public class REventManager
 
         public void CheckAndAddIfNotWatched()
         {
-            Managers.Data.PersistentUser.WatchedRandEvent.Add(eventName, false);
+            if(!Managers.Data.PersistentUser.WatchedRandEvent.ContainsKey(eventName)) Managers.Data.PersistentUser.WatchedRandEvent.Add(eventName, false);
         }
     }
 

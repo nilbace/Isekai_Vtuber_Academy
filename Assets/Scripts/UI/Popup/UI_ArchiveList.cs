@@ -11,6 +11,7 @@ public enum ArchiveState
 
 public class UI_ArchiveList : UI_Popup
 {
+    public static UI_ArchiveList instance;
     public Transform Parent;
     UI_Photo[] PhotoGroup;
     public static ArchiveState archiveState;
@@ -19,7 +20,11 @@ public class UI_ArchiveList : UI_Popup
     {
         CloseBTN
     }
- 
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -31,12 +36,13 @@ public class UI_ArchiveList : UI_Popup
         base.Init();
         Bind<Button>(typeof(Buttons));
         GetButton(0).onClick.AddListener(CloseBTN);
+        PhotoGroup = GetComponentsInChildren<UI_Photo>();
         SetListByState();
     }
 
-    void SetListByState()
+    public void SetListByState()
     {
-        PhotoGroup = GetComponentsInChildren<UI_Photo>();
+        
         switch (archiveState)
         {
             case ArchiveState.BroadCast:

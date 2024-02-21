@@ -72,7 +72,7 @@ public class UI_MainBackUI : UI_Scene
 
     enum Images
     {
-        HeartBar, StarBar
+        HeartBar, StarBar, Reddot
     }
     enum Animators
     {
@@ -151,6 +151,7 @@ public class UI_MainBackUI : UI_Scene
         }
 
         Get<Animator>((int)Animators.ScreenIMG).speed = ScreenAniSpeed;
+        UpdateReddot();
         UpdateUItextsAndCheckNickname();
         RegisterActionToOtherScripts();
     }
@@ -204,6 +205,18 @@ public class UI_MainBackUI : UI_Scene
         else
         {
             UI_StatProperty.instance.Setting(statName);
+        }
+    }
+
+    public void UpdateReddot()
+    {
+        if (Managers.Data.PersistentUser.WatchedScehdule.ContainsValue(false) || Managers.Data.PersistentUser.WatchedRandEvent.ContainsValue(false) || Managers.Data.PersistentUser.WatchedEndingName.ContainsValue(false))
+        {
+            GetImage((int)Images.Reddot).gameObject.SetActive(true);
+        }
+        else
+        {
+            GetImage((int)Images.Reddot).gameObject.SetActive(false);
         }
     }
 
@@ -405,6 +418,7 @@ public class UI_MainBackUI : UI_Scene
         if (Managers.Data.PlayerData.nowGoldAmount >= 100000) Managers.NickName.OpenNickname(NickNameKor.부르주아);
         if (Managers.Data.PlayerData.nowSubCount >= 100000) Managers.NickName.OpenNickname(NickNameKor.떠오르는);
         if (Managers.Data.PlayerData.nowSubCount >= 1000000) Managers.NickName.OpenNickname(NickNameKor.버튜버);
+        UpdateReddot();
     }
 
     private string GetInitialTextForType(Texts textType)
