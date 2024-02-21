@@ -6,17 +6,15 @@
     "_nowHeart": 100.0,
     "_nowStar": 100.0,
     "SixStat": [
+        4.0,
+        4.0,
+        4.0,
         0.0,
         0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
+        10.0
     ],
     "DoneEventNames": [],
     "BoughtItems": [],
-    "SubStoryIndex": [
-        23
-    ],
-    "NowNickName": ""
+    "SubStoryIndex": [],
+    "NowNickName": "대담한 초보"
 }
