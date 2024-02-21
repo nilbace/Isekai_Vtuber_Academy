@@ -254,7 +254,6 @@ public class Define
 
         public void CheckAndAddIfNotWatched()
         {
-            Debug.Log(ScheduleType);
             if(!Managers.Data.PersistentUser.WatchedScehdule.ContainsKey(ScheduleType))
             {
                 Managers.Data.PersistentUser.WatchedScehdule.Add(ScheduleType, false);

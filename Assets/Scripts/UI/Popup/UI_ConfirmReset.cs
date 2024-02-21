@@ -52,7 +52,7 @@ public class UI_ConfirmReset : UI_Popup
         {
             Managers.Data.PersistentUser.ResetCount++;
         }
-        
+        UI_MainBackUI.instance.ChangeUnderRedDotState(true);
         Managers.UI_Manager.CloseALlPopupUI();
         Managers.Data.PlayerData = new Define.PlayerData();
         Managers.Data.SaveData();

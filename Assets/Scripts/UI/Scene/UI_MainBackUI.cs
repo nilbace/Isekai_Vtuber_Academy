@@ -72,7 +72,7 @@ public class UI_MainBackUI : UI_Scene
 
     enum Images
     {
-        HeartBar, StarBar, Reddot
+        HeartBar, StarBar, Reddot, Reddot2
     }
     enum Animators
     {
@@ -218,6 +218,15 @@ public class UI_MainBackUI : UI_Scene
         {
             GetImage((int)Images.Reddot).gameObject.SetActive(false);
         }
+        GetImage((int)Images.Reddot2).gameObject.SetActive(PlayerPrefs.GetInt("UnderR_D_State", 0) == 1);
+    }
+
+    public void ChangeUnderRedDotState(bool newState)
+    {
+        PlayerPrefs.SetInt("UnderR_D_State", newState ? 1 : 0);
+        PlayerPrefs.Save();
+
+        UpdateReddot();
     }
 
     //하단 배속 버튼
@@ -318,6 +327,7 @@ public class UI_MainBackUI : UI_Scene
 
     void CommunicationBTN()
     {
+        ChangeUnderRedDotState(false);
         StartCoroutine(ShowSubStoryCor(NowWeekSubStoryIndex));
     }
 
@@ -541,6 +551,7 @@ public class UI_MainBackUI : UI_Scene
     //주차 끝날때
     void FinishWeek()
     {
+        ChangeUnderRedDotState(true);
         EndScheduleAndSetUI();
         UpdateUItextsAndCheckNickname();
     }

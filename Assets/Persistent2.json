@@ -26,11 +26,13 @@
     "WatchedRandEvent": {
         "keys": [
             15,
-            7
+            7,
+            10
         ],
         "values": [
             true,
-            true
+            true,
+            false
         ]
     },
     "WatchedEndingName": {
@@ -81,9 +83,9 @@
         false,
         false
     ],
-    "_resetCount": 3,
+    "_resetCount": 5,
     "_bigSuccessCount": 0,
     "_mmCount": 0,
     "_coldCount": 0,
-    "_broadcastCount": 14
+    "_broadcastCount": 21
 }
