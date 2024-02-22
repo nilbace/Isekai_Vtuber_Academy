@@ -1,22 +1,26 @@
 {
-    "NowWeek": 10,
-    "nowSubCount": 2322,
-    "nowGoldAmount": 41592,
-    "RubiaKarma": 1,
+    "NowWeek": 15,
+    "nowSubCount": 7443,
+    "nowGoldAmount": 84430,
+    "RubiaKarma": -2,
     "_nowHeart": 96.0,
-    "_nowStar": 54.0,
+    "_nowStar": 52.0,
     "SixStat": [
-        36.0,
+        101.0,
         4.0,
         4.0,
+        10.0,
         0.0,
-        0.0,
-        10.0
+        5.0
     ],
     "DoneEventNames": [
-        "표절논란"
+        "표절논란",
+        "진수성찬 먹방"
     ],
-    "BoughtItems": [],
+    "BoughtItems": [
+        "도적의 장갑",
+        "신경자극의 펜던트"
+    ],
     "SubStoryIndex": [
         26,
         24,
@@ -27,7 +31,12 @@
         15,
         0,
         7,
-        23
+        23,
+        9,
+        29,
+        25,
+        6,
+        14
     ],
     "NowNickName": "대담한 초보"
 }

@@ -297,7 +297,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5501035149407559673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -777,7 +777,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uBC88 \uD68C\uCC28\uB97C \uB9AC\uC14B\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?\r\n\uC774
+  m_text: "\uC774\uBC88 \uD68C\uCC28\uB97C <color=#dd002e>\uB9AC\uC14B</color>\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?\r\n\uC774
     \uD589\uB3D9\uC740 \uB3CC\uC774\uD0AC \uC218 \uC5C6\uC2B5\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dfd3ad76c45247c47a1abbe6a9ce36ea, type: 2}
@@ -787,8 +787,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190335
-  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -805,8 +805,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 13.9
+  m_fontSizeBase: 13.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 5.03
@@ -879,7 +879,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5918557025823451763
 RectTransform:
   m_ObjectHideFlags: 0
