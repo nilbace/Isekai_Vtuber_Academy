@@ -123,7 +123,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 5090577189869044554}
   - component: {fileID: 5155767662143609327}
   m_Layer: 5
-  m_Name: Image (6)
+  m_Name: ministat_health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -331,7 +331,7 @@ RectTransform:
   - {fileID: 7142343958486291728}
   - {fileID: 5965621025676580973}
   m_Father: {fileID: 5501035149407559670}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 4944528728054055366}
   - component: {fileID: 2725168075964144871}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -673,7 +673,7 @@ GameObject:
   - component: {fileID: 398972875716501003}
   - component: {fileID: 7057939637628845384}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -941,7 +941,7 @@ GameObject:
   - component: {fileID: 1257885243008009319}
   - component: {fileID: 6481583010540510594}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1075,7 +1075,7 @@ GameObject:
   - component: {fileID: 1477916702729711941}
   - component: {fileID: 2697745542377196708}
   m_Layer: 5
-  m_Name: Image (4)
+  m_Name: ministat_draw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1152,7 +1152,7 @@ GameObject:
   - component: {fileID: 4203634112291373753}
   - component: {fileID: 5973888599357038830}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1286,7 +1286,7 @@ GameObject:
   - component: {fileID: 1950242646341750165}
   - component: {fileID: 6029039155286784936}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: ministat_music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1399,7 +1399,7 @@ GameObject:
   - component: {fileID: 4269542824282631387}
   - component: {fileID: 5507591071464611741}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1897,7 +1897,7 @@ GameObject:
   - component: {fileID: 5769647419165469187}
   - component: {fileID: 2192763761088330223}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: ministat_game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2405,8 +2405,8 @@ RectTransform:
   - {fileID: 2859610791202290954}
   - {fileID: 6171337941295332261}
   - {fileID: 446230141801174723}
-  - {fileID: 3523307633327487666}
   - {fileID: 1791883389527971750}
+  - {fileID: 3523307633327487666}
   - {fileID: 1780713162699896169}
   - {fileID: 2842092230567977986}
   m_Father: {fileID: 0}
@@ -2460,7 +2460,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5501035149407559673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2616,7 +2616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8533017152215290586
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2736,7 +2736,7 @@ GameObject:
   - component: {fileID: 4245505789382109572}
   - component: {fileID: 1300115228318996779}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3385,7 +3385,7 @@ GameObject:
   - component: {fileID: 7934794436522543844}
   - component: {fileID: 4672886741026665844}
   m_Layer: 5
-  m_Name: Image (7)
+  m_Name: ministat_luck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3462,7 +3462,7 @@ GameObject:
   - component: {fileID: 4609632596100512541}
   - component: {fileID: 6398914967241352838}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3596,7 +3596,7 @@ GameObject:
   - component: {fileID: 3316045269847021672}
   - component: {fileID: 777521360296004047}
   m_Layer: 5
-  m_Name: Image (5)
+  m_Name: ministat_mental
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3616,7 +3616,7 @@ RectTransform:
   - {fileID: 4663649347107148598}
   - {fileID: 6213098922781721945}
   m_Father: {fileID: 5501035149407559670}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
