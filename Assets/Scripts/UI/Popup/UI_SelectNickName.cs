@@ -88,7 +88,7 @@ public class UI_SelectNickName : UI_Popup
     }
 
     //UI하단에 칭호 이름과 효과 텍스트 갱신
-    void UpdateInfoText()
+    public void UpdateInfoText()
     {
         GetText((int)Texts.NameTMP).text = (SelectedPrefix.NicknameString + " " + SelectedSuffix.NicknameString).Trim();
 
@@ -164,7 +164,7 @@ public class UI_SelectNickName : UI_Popup
 
     public void CheckOwnedNickName()
     {
-        var OwnedCheckList = Managers.Data.PersistentUser.OwnedNickNameArr;
+        var OwnedCheckDic = Managers.Data.PersistentUser.OwnedNickname;
         var NickNameList = DataParser.Inst.NickNameList;
         int prefixIndex = 0;
         int suffixIndex = 0;
@@ -179,7 +179,7 @@ public class UI_SelectNickName : UI_Popup
             {
                 if (prefixIndex < Prefixs.Length)
                 {
-                    Prefixs[prefixIndex].SetForSelectNickName(NickNameList[i], OwnedCheckList[i]);
+                    Prefixs[prefixIndex].SetForSelectNickName(NickNameList[i], OwnedCheckDic.ContainsKey((NickNameKor)NickNameList[i].NicknameIndex));
                     prefixIndex++;
                 }
             }
@@ -187,7 +187,7 @@ public class UI_SelectNickName : UI_Popup
             {
                 if (suffixIndex < Suffixs.Length)
                 {
-                    Suffixs[suffixIndex].SetForSelectNickName(NickNameList[i], OwnedCheckList[i]);
+                    Suffixs[suffixIndex].SetForSelectNickName(NickNameList[i], OwnedCheckDic.ContainsKey((NickNameKor)NickNameList[i].NicknameIndex));
                     suffixIndex++;
                 }
             }

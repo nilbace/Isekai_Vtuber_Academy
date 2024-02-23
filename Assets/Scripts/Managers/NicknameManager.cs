@@ -24,9 +24,9 @@ public class NicknameManager
     /// <param name="n"></param>
     public void OpenNickname(int n)
     {
-        if(Managers.Data.PersistentUser.OwnedNickNameArr[n] == false)
+        if(!Managers.Data.PersistentUser.OwnedNickname.ContainsKey((NickNameKor)n))
         {
-            Managers.Data.PersistentUser.OwnedNickNameArr[n] = true;
+            Managers.Data.PersistentUser.OwnedNickname.Add((NickNameKor)n, false);
             NickName temp = DataParser.Inst.NickNameList[n];
             Alarm.ShowAlarm($"ÄªÈ£ '{temp.NicknameString}'À» È¹µæÇÏ¿´½À´Ï´Ù.");
         }
@@ -42,10 +42,9 @@ public class NicknameManager
 
     public void OpenNicknameWithoutAlarm(int n)
     {
-        if (Managers.Data.PersistentUser.OwnedNickNameArr[n] == false)
+        if (!Managers.Data.PersistentUser.OwnedNickname.ContainsKey((NickNameKor)n))
         {
-            Managers.Data.PersistentUser.OwnedNickNameArr[n] = true;
-            NickName temp = DataParser.Inst.NickNameList[n];
+            Managers.Data.PersistentUser.OwnedNickname.Add((NickNameKor)n, false);
         }
     }
 

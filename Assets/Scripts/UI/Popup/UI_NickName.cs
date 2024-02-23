@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using static Define;
 public class UI_NickName : UI_Popup
 {
+    public static UI_NickName instance;
     public Transform PrefixParent;
     UI_NickSubContent[] PrefixGOs;
     public Transform SuffixParent;
@@ -14,7 +15,10 @@ public class UI_NickName : UI_Popup
         CloseBTN
     }
 
-
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         Init();
@@ -35,7 +39,7 @@ public class UI_NickName : UI_Popup
     
     public void CheckOwnedNickName()
     {
-        var OwnedCheckList = Managers.Data.PersistentUser.OwnedNickNameArr;
+        var OwnedCheckDic = Managers.Data.PersistentUser.OwnedNickname;
         var NickNameList = DataParser.Inst.NickNameList;
         int prefixIndex = 0;
         int suffixIndex = 0;
@@ -49,7 +53,7 @@ public class UI_NickName : UI_Popup
             {
                 if (prefixIndex < PrefixGOs.Length)
                 {
-                    PrefixGOs[prefixIndex].Setting(NickNameList[i], OwnedCheckList[i]);
+                    PrefixGOs[prefixIndex].Setting(NickNameList[i], OwnedCheckDic.ContainsKey((NickNameKor)NickNameList[i].NicknameIndex));
                     prefixIndex++;
                 }
             }
@@ -57,7 +61,7 @@ public class UI_NickName : UI_Popup
             {
                 if (suffixIndex < SuffixGOs.Length)
                 {
-                    SuffixGOs[suffixIndex].Setting(NickNameList[i], OwnedCheckList[i]);
+                    SuffixGOs[suffixIndex].Setting(NickNameList[i], OwnedCheckDic.ContainsKey((NickNameKor)NickNameList[i].NicknameIndex));
                     suffixIndex++;
                 }
             }

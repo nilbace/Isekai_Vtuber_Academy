@@ -639,7 +639,7 @@ public class Define
         public SerializableDictionary<ScheduleType, bool> WatchedScehdule;
         public SerializableDictionary<RandEventName, bool> WatchedRandEvent;
         public SerializableDictionary<EndingName, bool> WatchedEndingName;
-        public bool[] OwnedNickNameArr;
+        public SerializableDictionary<NickNameKor, bool> OwnedNickname;
         [SerializeField] private int _resetCount = 0;
         public int ResetCount { get { return _resetCount; } set { _resetCount = value;
                 if (ResetCount == 1)
@@ -720,7 +720,6 @@ public class Define
             WatchedScehdule = new SerializableDictionary<ScheduleType, bool>();
             WatchedRandEvent = new SerializableDictionary<RandEventName, bool>();
             WatchedEndingName = new SerializableDictionary<EndingName, bool>();
-            OwnedNickNameArr = new bool[42];
             ResetCount = 0;
             BigSuccessCount = 0;
             MMCount = 0;

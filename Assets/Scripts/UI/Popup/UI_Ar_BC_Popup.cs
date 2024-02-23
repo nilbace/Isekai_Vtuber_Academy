@@ -32,6 +32,7 @@ public class UI_Ar_BC_Popup : UI_Popup
             else
             {
                 ScreenAnimator.SetTrigger(oneDayScheduleData.PathName);
+                RubiaAnimator.SetTrigger(oneDayScheduleData.RubiaAni);
             }
         }
     }

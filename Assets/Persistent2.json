@@ -2,96 +2,40 @@
     "BoughtAdPass": false,
     "WatchedTutorial": true,
     "WatchedScehdule": {
-        "keys": [
-            0,
-            1,
-            9,
-            19,
-            17,
-            10,
-            5,
-            15,
-            22
-        ],
-        "values": [
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false
-        ]
+        "keys": [],
+        "values": []
     },
     "WatchedRandEvent": {
-        "keys": [
-            15,
-            7,
-            10,
-            16,
-            5
-        ],
-        "values": [
-            true,
-            true,
-            false,
-            false,
-            false
-        ]
+        "keys": [],
+        "values": []
     },
     "WatchedEndingName": {
         "keys": [],
         "values": []
     },
-    "OwnedNickNameArr": [
-        true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-    ],
-    "_resetCount": 7,
+    "OwnedNickname": {
+        "keys": [
+            10,
+            0,
+            1,
+            2,
+            3,
+            4,
+            21
+        ],
+        "values": [
+            false,
+            true,
+            true,
+            false,
+            false,
+            true,
+            true
+        ]
+    },
+    "_resetCount": 5,
     "_bigSuccessCount": 0,
     "_mmCount": 0,
     "_coldCount": 0,
-    "_broadcastCount": 64
+    "_broadcastCount": 0
 }
