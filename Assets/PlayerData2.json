@@ -1,20 +1,35 @@
 {
-    "NowWeek": 1,
-    "nowSubCount": 10,
-    "nowGoldAmount": 8000,
+    "NowWeek": 5,
+    "nowSubCount": 569,
+    "nowGoldAmount": 114164,
     "RubiaKarma": 0,
-    "_nowHeart": 100.0,
-    "_nowStar": 100.0,
+    "_nowHeart": 72.0,
+    "_nowStar": 44.0,
     "SixStat": [
-        12.0,
+        40.0,
+        23.0,
         2.0,
-        2.0,
+        8.0,
         0.0,
-        0.0,
-        5.0
+        2.0
     ],
     "DoneEventNames": [],
-    "BoughtItems": [],
-    "SubStoryIndex": [],
+    "BoughtItems": [
+        "멘드레이크 쥬스",
+        "악마의 렌즈",
+        "인어의 수정 목걸이",
+        "수상한 악보",
+        "핑크 덤벨"
+    ],
+    "SubStoryIndex": [
+        18,
+        9,
+        26,
+        4,
+        23,
+        28,
+        11,
+        0
+    ],
     "NowNickName": "불멸의 초보"
 }

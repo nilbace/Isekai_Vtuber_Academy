@@ -2,8 +2,12 @@
     "BoughtAdPass": false,
     "WatchedTutorial": true,
     "WatchedScehdule": {
-        "keys": [],
-        "values": []
+        "keys": [
+            0
+        ],
+        "values": [
+            false
+        ]
     },
     "WatchedRandEvent": {
         "keys": [],
@@ -21,7 +25,8 @@
             2,
             3,
             4,
-            21
+            21,
+            34
         ],
         "values": [
             false,
@@ -30,12 +35,13 @@
             false,
             false,
             true,
-            true
+            true,
+            false
         ]
     },
     "_resetCount": 5,
     "_bigSuccessCount": 0,
     "_mmCount": 0,
     "_coldCount": 0,
-    "_broadcastCount": 0
+    "_broadcastCount": 7
 }

@@ -19,6 +19,7 @@ public class MerChantItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         _thisItem = item;
 
+
         if(_thisItem.Cost <= Managers.Data.PlayerData.nowGoldAmount && !IsBought(_thisItem))
         {
             NameTmp.text = _thisItem.ItemName;

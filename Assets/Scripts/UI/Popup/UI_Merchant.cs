@@ -17,6 +17,13 @@ public class UI_Merchant : UI_Popup
     enum Texts
     {
         EventText,
+        GameStatTMP,
+        SongStatTMP,
+        DrawStatTMP,
+        StrStatTMP,
+        MenStatTMP,
+        LuckStatTMP,
+        MoneyAmountTMP
     }
 
     enum Images
@@ -45,6 +52,7 @@ public class UI_Merchant : UI_Popup
     {
         base.Init();
         Bind<Button>(typeof(Buttons));
+        Bind<TMPro.TMP_Text>(typeof(Texts));
         Bind<GameObject>(typeof(GameObjects));
 
         Transform parent = GetGameObject((int)GameObjects.Content).transform;
@@ -56,6 +64,12 @@ public class UI_Merchant : UI_Popup
                 itemList.Add(temp);
             }
         }
+
+        for (int i = 0; i < 6; i++)
+        {
+            GetText(i + 1).text = Managers.Data.PlayerData.SixStat[i].RoundToString();
+        }
+        GetText((int)Texts.MoneyAmountTMP).text = Util.FormatMoney(Managers.Data.PlayerData.nowGoldAmount);
 
         for (int i = 0; i < itemList.Count; i++)
         {
@@ -80,5 +94,11 @@ public class UI_Merchant : UI_Popup
         {
             parent.GetChild(i).GetComponent<MerChantItem>().Setting(itemList[i]);
         }
+
+        for (int i = 0; i < 6; i++) 
+        {
+            GetText(i+1).text = Managers.Data.PlayerData.SixStat[i].RoundToString();
+        }
+        GetText((int)Texts.MoneyAmountTMP).text = Util.FormatMoney(Managers.Data.PlayerData.nowGoldAmount);
     }
 }
