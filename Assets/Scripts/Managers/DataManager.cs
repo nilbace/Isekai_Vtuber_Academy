@@ -302,7 +302,7 @@ public class DataManager
         Item tempitem = new Item();
 
         tempitem.EntWeek = int.Parse(tempstrings.Dequeue()); 
-        tempitem.ItemName = tempstrings.Dequeue();           
+        tempitem.ItemName = tempstrings.Dequeue();
         tempitem.Cost = int.Parse(tempstrings.Dequeue());    
         tempitem.ItemImageName = tempstrings.Dequeue();      
 
@@ -315,8 +315,6 @@ public class DataManager
 
         tempitem.SixStats = tempint;
 
-        tempitem.Karma = string.IsNullOrEmpty(tempstrings.Peek()) ? 0 : int.Parse(tempstrings.Peek());
-        tempstrings.Dequeue();
 
         tempitem.ItemInfoText = tempstrings.Dequeue();
         ItemList.Add(tempitem);
