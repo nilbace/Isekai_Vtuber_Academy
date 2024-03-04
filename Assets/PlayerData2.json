@@ -1,20 +1,28 @@
 {
-    "NowWeek": 1,
-    "nowSubCount": 10,
-    "nowGoldAmount": 5000,
+    "NowWeek": 4,
+    "nowSubCount": 1743,
+    "nowGoldAmount": 33996,
     "RubiaKarma": 0,
-    "_nowHeart": 100.0,
-    "_nowStar": 100.0,
+    "_nowHeart": 60.0,
+    "WeeklyCommunicationRewarded": false,
+    "_nowStar": 0.0,
     "SixStat": [
-        2.0,
-        2.0,
-        2.0,
+        22.0,
+        4.0,
+        4.0,
         0.0,
         5.0,
-        5.0
+        10.0
     ],
-    "DoneEventNames": [],
+    "DoneEventNames": [
+        "TS 코스프레"
+    ],
     "BoughtItems": [],
-    "SubStoryIndex": [],
-    "NowNickName": "익숙한 초보"
+    "SubStoryIndex": [
+        23,
+        17,
+        3,
+        9
+    ],
+    "NowNickName": "대담한 초보"
 }

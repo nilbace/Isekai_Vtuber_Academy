@@ -71,6 +71,17 @@ public class UI_DefaultPopup : UI_Popup
         Managers.UI_Manager.ShowPopupUI<UI_DefaultPopup>();
     }
 
+    public static void WeeklyCommuncationEnd()
+    {
+        int RewardValue = 2;
+
+        SetDefaultPopupUI(DefaultPopupState.WeeklyCommunicationReward, $"별과 하트 {RewardValue}개씩", "우마잇");
+        Managers.Data.PlayerData.NowStar += RewardValue;
+        Managers.Data.PlayerData.NowHeart += RewardValue;
+        Managers.Data.PlayerData.WeeklyCommunicationRewarded = true;
+        Managers.UI_Manager.ShowPopupUI<UI_DefaultPopup>();
+    }
+
     public static void SetDefaultPopupUI(DefaultPopupState defaultPopupState, string infotext, string resulttext)
     {
         popupState = defaultPopupState;
@@ -92,6 +103,10 @@ public class UI_DefaultPopup : UI_Popup
                 Managers.UI_Manager.ShowPopupUI<UI_RandomEvent>();
                 break;
             case DefaultPopupState.RandEventArchive:
+                UI_ArchiveList.CloseTwoPopup();
+                break;
+
+            case DefaultPopupState.WeeklyCommunicationReward:
                 UI_ArchiveList.CloseTwoPopup();
                 break;
         }

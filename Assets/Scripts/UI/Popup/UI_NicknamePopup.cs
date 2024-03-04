@@ -58,11 +58,11 @@ public class UI_NicknamePopup : UI_Popup
         }
         if (nickName.SubCount != 0)
         {
-            temp += $"구독자 수 <sprite=6>+{nickName.SubCount} ";
+            temp += $"<sprite=6>+{nickName.SubCount} ";
         }
         if(nickName.MoneyValue != 0)
         {
-            temp += $"골드 <sprite=7>+{nickName.MoneyValue}";
+            temp += $"<sprite=7>+{nickName.MoneyValue}";
         }
 
         return temp;

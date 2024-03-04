@@ -94,9 +94,9 @@ public class UI_NickSubContent : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (ThisNickName.NicknameIndex != -1)
+        bool OwnThisNickname = Managers.Data.PersistentUser.OwnedNickname.ContainsKey(((NickNameKor)ThisNickName.NicknameIndex));
+        if (ThisNickName.NicknameIndex != -1 && OwnThisNickname)
         {
-            Debug.Log((NickNameKor)ThisNickName.NicknameIndex);
             Managers.Data.PersistentUser.OwnedNickname[(NickNameKor)ThisNickName.NicknameIndex] = true;
             Managers.Data.SavePersistentData();
             if (UI_SelectNickName.instance != null) UI_SelectNickName.instance.CheckOwnedNickName();

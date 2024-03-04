@@ -28,6 +28,7 @@ public class SubStoryParser : MonoSingleton<SubStoryParser>
         }
 
         UI_Communication.instance.StartDiagloue(Dialogues);
+        UI_Communication.instance.IsWeeklyCommunication = true;
     }
 
     Dialogue DebugSetence(string asdf)

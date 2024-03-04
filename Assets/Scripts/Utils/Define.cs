@@ -192,7 +192,7 @@ public class Define
 
     public enum DefaultPopupState
     {
-        Normal, Merchant, RandomEvent, RandEventArchive,
+        Normal, Merchant, RandomEvent, RandEventArchive, WeeklyCommunicationReward,
     }
 
     public enum SevenDays
@@ -515,6 +515,7 @@ public class Define
         public int nowGoldAmount;
         public int RubiaKarma;
         [SerializeField] float _nowHeart;
+        public bool WeeklyCommunicationRewarded;
         public float NowHeart
         {
             get => _nowHeart;

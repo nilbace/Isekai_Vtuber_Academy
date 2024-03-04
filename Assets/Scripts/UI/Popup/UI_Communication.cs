@@ -23,6 +23,7 @@ public class UI_Communication : UI_Popup
     public float MoveTime;
     public float PeriodScale;
 
+    public bool IsWeeklyCommunication = false;
     bool isEnd;
 
     enum Texts { sentenceTMP, Option1TMP, Option2TMP }
@@ -68,9 +69,10 @@ public class UI_Communication : UI_Popup
     void Update()
     {
         // 화면을 터치하면 다음 대사로 넘어가기
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began
-            || Input.GetMouseButtonDown(0))
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began || Input.GetMouseButtonDown(0))
         {
+            if (UI_DefaultPopup.instance != null &&  UI_DefaultPopup.instance.gameObject.activeInHierarchy) return;
+
             if (isTyping)
             {
                 // 글자 출력 중이라면 모든 대사 한 번에 보여주기
@@ -140,6 +142,11 @@ public class UI_Communication : UI_Popup
 
     void EndDialogue()
     {
+        if(IsWeeklyCommunication && !Managers.Data.PlayerData.WeeklyCommunicationRewarded)
+        {
+            UI_DefaultPopup.WeeklyCommuncationEnd();
+            return;
+        }
         Managers.UI_Manager.ClosePopupUI();
     }
 

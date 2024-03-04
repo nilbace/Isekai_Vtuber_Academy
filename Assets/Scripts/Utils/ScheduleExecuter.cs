@@ -507,6 +507,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     public void FinishWeek()
     {
         Managers.Data.PlayerData.NowWeek++;
+        Managers.Data.PlayerData.WeeklyCommunicationRewarded = false;
         WeekOverAction?.Invoke();
         Managers.Data.SaveData();
     }
