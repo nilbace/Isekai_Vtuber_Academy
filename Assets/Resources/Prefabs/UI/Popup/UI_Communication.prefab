@@ -545,6 +545,7 @@ MonoBehaviour:
   TargetX: 0
   MoveTime: 1.29
   PeriodScale: 0.75
+  IsWeeklyCommunication: 0
 --- !u!114 &7221598937047955787
 MonoBehaviour:
   m_ObjectHideFlags: 0
