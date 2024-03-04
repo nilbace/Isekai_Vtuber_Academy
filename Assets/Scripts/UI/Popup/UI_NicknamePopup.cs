@@ -41,19 +41,19 @@ public class UI_NicknamePopup : UI_Popup
     string GenerateEffectString()
     {
         var sixstat = nickName.GetSixStat();
-        string temp = "√ ±‚ ";
+        string temp = "";
         for (int i = 0; i < 3; i++)
         {
             if(sixstat[i] != 0)
             {
-                temp += $"{(StatNameKor)i} Ω«∑¬ Ω∫≈› <sprite={i}>+{sixstat[i]} ";
+                temp += $"<sprite={i}>+{sixstat[i]} ";
             }
         }
         for (int i = 3; i < 6; i++)
         {
             if (sixstat[i] != 0)
             {
-                temp += $"{(StatNameKor)i} Ω∫≈› <sprite={i}>+{sixstat[i]} ";
+                temp += $"<sprite={i}>+{sixstat[i]} ";
             }
         }
         if (nickName.SubCount != 0)
