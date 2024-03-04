@@ -278,7 +278,7 @@ public class UI_Communication : UI_Popup
                 Managers.Data.PlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 2].rewardStats[i]);
             }
         }
-        UI_DefaultPopup.SetDefaultPopupUI(DefaultPopupState.Normal, dialogues[currentDialogueIndex + 2].sentence, "임시");
+        UI_DefaultPopup.SetDefaultPopupUI(DefaultPopupState.Normal, dialogues[currentDialogueIndex + 2].sentence, "확인");
         Managers.UI_Manager.ShowPopupUI<UI_DefaultPopup>();
     }
 
@@ -302,7 +302,7 @@ public class UI_Communication : UI_Popup
                 Managers.Data.PlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 3].rewardStats[i]);
             }
         }
-        UI_DefaultPopup.SetDefaultPopupUI(DefaultPopupState.Normal, dialogues[currentDialogueIndex + 3].sentence, "임시");
+        UI_DefaultPopup.SetDefaultPopupUI(DefaultPopupState.Normal, dialogues[currentDialogueIndex + 3].sentence, "확인");
         Managers.UI_Manager.ShowPopupUI<UI_DefaultPopup>();
     }
 

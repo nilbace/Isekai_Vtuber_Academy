@@ -35,6 +35,8 @@ public class UI_NickName : UI_Popup
         PrefixGOs = PrefixParent.GetComponentsInChildren<UI_NickSubContent>();
         SuffixGOs = SuffixParent.GetComponentsInChildren<UI_NickSubContent>();
         CheckOwnedNickName();
+
+
     }
     
     public void CheckOwnedNickName()
