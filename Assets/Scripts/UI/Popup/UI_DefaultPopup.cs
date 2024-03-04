@@ -75,7 +75,7 @@ public class UI_DefaultPopup : UI_Popup
     {
         int RewardValue = 2;
 
-        SetDefaultPopupUI(DefaultPopupState.WeeklyCommunicationReward, $"별과 하트 {RewardValue}개씩", "우마잇");
+        SetDefaultPopupUI(DefaultPopupState.WeeklyCommunicationReward, $"{GetIconString(StatIcons.Heart)}와 {GetIconString(StatIcons.Star)} {RewardValue}개씩", "우마잇");
         Managers.Data.PlayerData.NowStar += RewardValue;
         Managers.Data.PlayerData.NowHeart += RewardValue;
         Managers.Data.PlayerData.WeeklyCommunicationRewarded = true;
