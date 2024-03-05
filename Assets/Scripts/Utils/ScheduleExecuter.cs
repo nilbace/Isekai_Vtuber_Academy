@@ -38,6 +38,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         //상태 초기화
         isSick = false; FirstSickDay = false;
         BeforeScheduleData.FillDatas();
+        UI_MainBackUI.instance.StopScreenAni();
         for (int i = 0; i < 3; i++)
         {
             SuccessTimeContainer[i] = 0;
@@ -508,6 +509,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     {
         Managers.Data.PlayerData.NowWeek++;
         Managers.Data.PlayerData.WeeklyCommunicationRewarded = false;
+        UI_MainBackUI.instance.StartScreenAnimation("WaitingArea");
         WeekOverAction?.Invoke();
         Managers.Data.SaveData();
     }

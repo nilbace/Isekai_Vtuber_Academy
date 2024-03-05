@@ -132,7 +132,8 @@ public class UI_MainBackUI : UI_Scene
         {
             DayResultSeals[i] = GetGameObject((int)GameObjects.Days7).transform.GetChild(i).GetChild(1).GetComponent<Image>();
         }
-        
+
+   
 
         //방송 타이틀 오른쪽으로 뺴고 시작
         GetGameObject((int)GameObjects.BroadCastTitle).transform.localPosition += new Vector3(XOffset, 0, 0);
@@ -149,6 +150,7 @@ public class UI_MainBackUI : UI_Scene
             //다른 주차라면 저장된 서브스토리 인덱스 셋팅
             NowWeekSubStoryIndex = Managers.Data.PlayerData.SubStoryIndex[Managers.Data.PlayerData.NowWeek - 1];
         }
+
 
         Get<Animator>((int)Animators.ScreenIMG).speed = ScreenAniSpeed;
         UpdateReddot();
@@ -372,6 +374,11 @@ public class UI_MainBackUI : UI_Scene
         RubiaAnimator.speed = speed * ScreenAniSpeed;
     }
 
+    public void StopScreenAni()
+    {
+        var ScreenAnimator = Get<Animator>((int)Animators.ScreenIMG);
+        ScreenAnimator.StopPlayback();
+    }
 
 
     #endregion

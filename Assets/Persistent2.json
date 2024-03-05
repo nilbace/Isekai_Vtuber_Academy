@@ -8,7 +8,8 @@
             15,
             11,
             18,
-            2
+            2,
+            9
         ],
         "values": [
             false,
@@ -16,16 +17,19 @@
             false,
             true,
             false,
-            true
+            true,
+            false
         ]
     },
     "WatchedRandEvent": {
         "keys": [
             15,
             12,
-            5
+            5,
+            16
         ],
         "values": [
+            false,
             false,
             false,
             false
@@ -92,26 +96,6 @@
             true,
             true,
             true,
-            false,
-            false,
-            true,
-            true,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            true,
-            false,
-            true,
-            true,
-            true,
-            true,
-            false,
             true,
             true,
             true,
@@ -119,13 +103,33 @@
             true,
             true,
             true,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
             false,
             false,
             false
@@ -135,5 +139,5 @@
     "_bigSuccessCount": 0,
     "_mmCount": 0,
     "_coldCount": 0,
-    "_broadcastCount": 90
+    "_broadcastCount": 104
 }
