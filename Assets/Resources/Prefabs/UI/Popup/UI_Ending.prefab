@@ -37,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.046605, y: -135.9566}
-  m_SizeDelta: {x: 235.91, y: 120.3915}
+  m_AnchoredPosition: {x: -0.046605, y: -138.96411}
+  m_SizeDelta: {x: 235.91, y: 114.3765}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5941714037334583149
 CanvasRenderer:
@@ -370,8 +370,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 119.3, y: 0}
-  m_SizeDelta: {x: 238.6, y: 0}
+  m_AnchoredPosition: {x: 119.37608, y: 0}
+  m_SizeDelta: {x: 218.7522, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6427939369108270930
 CanvasRenderer:
@@ -439,8 +439,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 13.9
+  m_fontSizeBase: 13.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -616,7 +616,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8966989133218187846}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.21210624
+  m_Size: 0.22734348
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -783,7 +783,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5501035149407559673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1171,7 +1171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.00006866455}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8674668183410740118
@@ -1201,10 +1201,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
+    m_Left: 10
+    m_Right: 10
     m_Top: 0
-    m_Bottom: 0
+    m_Bottom: 10
   m_ChildAlignment: 0
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
