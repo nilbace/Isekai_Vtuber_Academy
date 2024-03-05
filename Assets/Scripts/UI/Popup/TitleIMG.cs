@@ -90,6 +90,7 @@ public class TitleIMG : UI_Popup, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        UI_MainBackUI.instance.SetScreenAniSpeed(1);
         UI_MainBackUI.instance.StartScreenAnimation("WaitingArea");
         Managers.instance.CloseTitle();
     }

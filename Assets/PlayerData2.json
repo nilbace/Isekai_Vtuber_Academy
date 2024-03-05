@@ -1,13 +1,13 @@
 {
-    "NowWeek": 4,
-    "nowSubCount": 1256,
-    "nowGoldAmount": 26427,
-    "RubiaKarma": 0,
+    "NowWeek": 7,
+    "nowSubCount": 3250,
+    "nowGoldAmount": 51186,
+    "RubiaKarma": 1,
     "_nowHeart": 96.0,
     "WeeklyCommunicationRewarded": false,
-    "_nowStar": 50.0,
+    "_nowStar": 30.0,
     "SixStat": [
-        14.0,
+        37.0,
         0.0,
         0.0,
         0.0,
@@ -22,7 +22,10 @@
         12,
         11,
         8,
-        14
+        14,
+        26,
+        27,
+        13
     ],
     "NowNickName": ""
 }

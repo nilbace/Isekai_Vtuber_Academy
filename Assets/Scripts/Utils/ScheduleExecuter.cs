@@ -509,6 +509,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     {
         Managers.Data.PlayerData.NowWeek++;
         Managers.Data.PlayerData.WeeklyCommunicationRewarded = false;
+        UI_MainBackUI.instance.SetScreenAniSpeed(1);
         UI_MainBackUI.instance.StartScreenAnimation("WaitingArea");
         WeekOverAction?.Invoke();
         Managers.Data.SaveData();
