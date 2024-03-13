@@ -1,31 +1,21 @@
 {
-    "NowWeek": 7,
-    "nowSubCount": 3250,
-    "nowGoldAmount": 51186,
-    "RubiaKarma": 1,
-    "_nowHeart": 96.0,
+    "NowWeek": 1,
+    "nowSubCount": 410,
+    "nowGoldAmount": 8000,
+    "RubiaKarma": 0,
+    "_nowHeart": 100.0,
     "WeeklyCommunicationRewarded": false,
-    "_nowStar": 30.0,
+    "_nowStar": 100.0,
     "SixStat": [
-        37.0,
         0.0,
+        13.0,
         0.0,
         0.0,
         0.0,
         0.0
     ],
-    "DoneEventNames": [
-        "표절논란"
-    ],
+    "DoneEventNames": [],
     "BoughtItems": [],
-    "SubStoryIndex": [
-        12,
-        11,
-        8,
-        14,
-        26,
-        27,
-        13
-    ],
-    "NowNickName": ""
+    "SubStoryIndex": [],
+    "NowNickName": "빛나는 아이돌"
 }
