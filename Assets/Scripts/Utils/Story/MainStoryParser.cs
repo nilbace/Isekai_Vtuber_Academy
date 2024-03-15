@@ -10,15 +10,15 @@ public class MainStoryParser : MonoSingleton<MainStoryParser>
 
     public List<Dialogue> Dialogues = new List<Dialogue>();
   
-     TextAsset LoadMainStory(MainStory main)
+     TextAsset LoadMainStory(string Name)
     {
-        TextAsset text = Resources.Load<TextAsset>($"MainStory/{main}");
+        TextAsset text = Resources.Load<TextAsset>($"MainStory/{Name}");
         return text;
     }
   
-    public void StartStory(MainStory mainStory)
+    public void StartStory(int mainStoryIndex)
     {
-        string[] lines = LoadMainStory(mainStory).text.Split('\n');
+        string[] lines = LoadMainStory(mainStoryIndex.ToString()).text.Split('\n');
         for (int i = 0; i < lines.Length; i++)
         {
             Dialogues.Add(DebugSetence(lines[i]));

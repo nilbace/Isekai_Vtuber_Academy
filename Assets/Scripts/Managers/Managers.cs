@@ -140,15 +140,11 @@ public class Managers : MonoBehaviour
         MainStoryParser.Inst.StartStory(ChooseMainStory());
     }
 
-    public MainStory ChooseMainStory()
+    public int ChooseMainStory()
     {
-        MainStory mainStory;
-        string temp = Data.PlayerData.GetHigestMainStatName().ToString();
-        temp += (Data.PlayerData.NowWeek / 4).ToString();
+        var HighestMainStat = Data.PlayerData.GetHigestMainStatName();
 
-        Enum.TryParse(temp, out mainStory);
-
-        return mainStory;
+        return Data.PlayerData.EndingIndexs[(int)HighestMainStat];
     }
 
      #endregion

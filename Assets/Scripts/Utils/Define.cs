@@ -404,6 +404,22 @@ public class Define
         Idol,
         MaxCount
     }
+    public enum Apperance
+    {
+        User_Choke2,
+        User_WTF,
+        User_Choke,
+        User_Interesting,
+        User_Flustered,
+        User_Default,
+        Rubia_Interesting,
+        Rubia_Flustered,
+        Rubia_Saechim,
+        Rubia_Heart,
+        Rubia_Mad,
+        Rubia_Default,
+        MM_Default,
+    }
 
 
     [System.Serializable]
@@ -417,6 +433,7 @@ public class Define
         public TutorialFocusPoint tutorialFocus;
         public bool IsInteractable;
         public string Ypoz;
+        public Apperance Apperance;
 
         public Dialogue(string name = "", string sentence = "", bool isLeft = false, int costGold = 0)
         {
@@ -540,6 +557,8 @@ public class Define
         public List<string> BoughtItems;
         public List<int> SubStoryIndex;
         public string NowNickName;
+        public int[] EndingIndexs;
+        public int[] AccumlateSuccessFailTimes;
         public PlayerData()
         {
             NowWeek = 1;
@@ -551,6 +570,12 @@ public class Define
             DoneEventNames = new List<string>();
             BoughtItems = new List<string>();
             SubStoryIndex = new List<int>();
+            EndingIndexs = new int[3];
+            for (int i = 0; i < 3; i++)
+            {
+                EndingIndexs[i] = 100 * (i + 1);
+            }
+            AccumlateSuccessFailTimes = new int[3];
         }
 
 
