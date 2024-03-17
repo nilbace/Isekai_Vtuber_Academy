@@ -12,6 +12,7 @@ public class MainStoryParser : MonoSingleton<MainStoryParser>
   
      TextAsset LoadMainStory(string Name)
     {
+        Debug.Log(Name);
         TextAsset text = Resources.Load<TextAsset>($"MainStory/{Name}");
         return text;
     }
@@ -35,21 +36,40 @@ public class MainStoryParser : MonoSingleton<MainStoryParser>
 
         temp.name = lines[0];
 
+        if(lines[1] == "")
+        {
+            if (temp.name == "루비아") temp.Apperance = Apperance.Rubia_Default;
+            else if (temp.name == "유저") temp.Apperance = Apperance.User_Default;
+            else if (temp.name == "뮹뮹") temp.Apperance = Apperance.MM_Default;
+            else temp.Apperance = Apperance.Narration;
 
-        if (lines[1] == "왼쪽")
+        }
+        else
+            Enum.TryParse(lines[1], out temp.Apperance);
+
+        if (lines[2] == "왼쪽")
             temp.isLeft = true;
         else
             temp.isLeft = false;
 
-        temp.sentence = lines[2].ConvertEuroToNewline();
+        temp.sentence = lines[3].ConvertEuroToNewline();
         
 
-        int tempGold;
+        int tempInt;
         StatName tempStatName;
-        for(int i = 3; i<lines.Length;i++)
+        for(int i = 4; i<lines.Length;i++)
         {
             if (lines[i] == "") continue;
-            else if (int.TryParse(lines[i], out tempGold)) temp.CostGold = tempGold;
+            else if (int.TryParse(lines[i], out tempInt))
+            {
+                //500원 보다 비싸면 필요한 골드
+                if (tempInt > 500)
+                    temp.CostGold = tempInt;
+                //아니라면 다음 스토리 인덱스임
+                else
+                    temp.NextDialogueIndex = tempInt;
+            }
+
             else if (Enum.TryParse(lines[i], out tempStatName))
             {
                 RewardStat tempRewardStat = new RewardStat();
@@ -58,6 +78,7 @@ public class MainStoryParser : MonoSingleton<MainStoryParser>
                 temp.rewardStats.Add(tempRewardStat);
                 i++;
             }
+            
         }
 
         return temp;

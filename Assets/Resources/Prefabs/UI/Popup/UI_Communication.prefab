@@ -246,7 +246,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -82, y: -91.599976}
-  m_SizeDelta: {x: 100, y: 150}
+  m_SizeDelta: {x: 155, y: 155}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5143403004675713981
 CanvasRenderer:
@@ -498,7 +498,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5501035149407559673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,9 +537,20 @@ MonoBehaviour:
   - {fileID: -3866584542801386842, guid: 489bee8bc4499fb498cc1071c63bb2e9, type: 3}
   - {fileID: -8663849537091093976, guid: 489bee8bc4499fb498cc1071c63bb2e9, type: 3}
   CharIMGs:
-  - {fileID: 21300000, guid: 7621377675082f1488b66c0490ccbf8f, type: 3}
-  - {fileID: 21300000, guid: bd34ca46e9f17d64784510bf82fb2d61, type: 3}
-  - {fileID: 21300000, guid: 88eaab7460f3d6447a00b95d214cf4a0, type: 3}
+  - {fileID: 21300000, guid: 9d2fcc69fff0c544b92024e2ec885f62, type: 3}
+  - {fileID: 21300000, guid: fa75079275903b244bdf10a53f47e8e2, type: 3}
+  - {fileID: 21300000, guid: d65712b566c481d4e8ce8ab278588319, type: 3}
+  - {fileID: 21300000, guid: aa2cc182604dba3459cff66b785d66f2, type: 3}
+  - {fileID: 21300000, guid: c79737662cce6ae41ae6ba443d984336, type: 3}
+  - {fileID: 21300000, guid: 3b85db938b923704298e0ade87af434d, type: 3}
+  - {fileID: 21300000, guid: d9e4143d8ef647b46a8ec85a3d917f86, type: 3}
+  - {fileID: 21300000, guid: c4b7bc7fc20d0944a9c48f0b2287fc2a, type: 3}
+  - {fileID: 21300000, guid: dd8b46b385c12384084d0babfc84075d, type: 3}
+  - {fileID: 21300000, guid: 9849413bfcab6954cb44e1b48262c719, type: 3}
+  - {fileID: 21300000, guid: c89cd88552f214948b7ca919fa3cd763, type: 3}
+  - {fileID: 21300000, guid: b2102bd6d51f64c4586b7e421f41e467, type: 3}
+  - {fileID: 21300000, guid: dafcbf9c9a1da5b41a4542ea82e3729d, type: 3}
+  - {fileID: 21300000, guid: 135df3d09786eaf42ad34bc9d779b3d2, type: 3}
   dialogues: []
   TypingDelay: 0.05
   TargetX: 0
@@ -609,7 +620,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 82, y: -91.6}
-  m_SizeDelta: {x: 100, y: 150}
+  m_SizeDelta: {x: 155, y: 155}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &10464530943516495
 CanvasRenderer:

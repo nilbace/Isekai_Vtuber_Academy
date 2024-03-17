@@ -419,6 +419,7 @@ public class Define
         Rubia_Mad,
         Rubia_Default,
         MM_Default,
+        Narration,
     }
 
 
@@ -434,6 +435,7 @@ public class Define
         public bool IsInteractable;
         public string Ypoz;
         public Apperance Apperance;
+        public int NextDialogueIndex;
 
         public Dialogue(string name = "", string sentence = "", bool isLeft = false, int costGold = 0)
         {
@@ -557,7 +559,7 @@ public class Define
         public List<string> BoughtItems;
         public List<int> SubStoryIndex;
         public string NowNickName;
-        public int[] EndingIndexs;
+        public int[] MainStoryIndexs;
         public int[] AccumlateSuccessFailTimes;
         public PlayerData()
         {
@@ -570,10 +572,10 @@ public class Define
             DoneEventNames = new List<string>();
             BoughtItems = new List<string>();
             SubStoryIndex = new List<int>();
-            EndingIndexs = new int[3];
+            MainStoryIndexs = new int[3];
             for (int i = 0; i < 3; i++)
             {
-                EndingIndexs[i] = 100 * (i + 1);
+                MainStoryIndexs[i] = 100 * (i + 1);
             }
             AccumlateSuccessFailTimes = new int[3];
         }

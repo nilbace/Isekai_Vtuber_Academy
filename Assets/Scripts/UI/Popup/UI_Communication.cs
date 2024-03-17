@@ -202,22 +202,13 @@ public class UI_Communication : UI_Popup
 
     void ShowImage(Dialogue dialogue)
     {
-        if (dialogue.name == "유저")
-        {
-            TurnOnImage(dialogue.isLeft, CharIMGs[0]);
-        }
-        else if (dialogue.name == "루비아")
-        {
-            TurnOnImage(dialogue.isLeft, CharIMGs[1]);
-        }
-        else
-        {
-            TurnOnImage(dialogue.isLeft, CharIMGs[2]);
-        }
+        TurnOnImage(dialogue.isLeft, CharIMGs[(int)dialogue.Apperance]);
+
     }
 
     void TurnOnImage(bool isLeft, Sprite sprite)
     {
+
         GetImage((int)Images.LeftIMG).gameObject.SetActive(isLeft);
         GetImage((int)Images.LeftIMG).sprite = isLeft ? sprite : null;
         GetImage((int)Images.LeftIMG).color = isLeft ? Color.white : Color.gray;
@@ -261,11 +252,11 @@ public class UI_Communication : UI_Popup
             option2Button.interactable = false;
             option1Button.GetComponent<Image>().sprite = option1Button.spriteState.pressedSprite;
         }
-        option1Button.onClick.AddListener(ShowOption1);
-        option2Button.onClick.AddListener(ShowOption2);
+        option1Button.onClick.AddListener(ClickOption1);
+        option2Button.onClick.AddListener(ClickOption2);
     }
 
-    void ShowOption1()
+    void ClickOption1()
     {
         if (dialogues[currentDialogueIndex].IsNeedGold())
         {
@@ -285,11 +276,12 @@ public class UI_Communication : UI_Popup
                 Managers.Data.PlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 2].rewardStats[i]);
             }
         }
+        SetStoryIndex(dialogues[currentDialogueIndex + 2]);
         UI_DefaultPopup.SetDefaultPopupUI(DefaultPopupState.Normal, dialogues[currentDialogueIndex + 2].sentence, "확인");
         Managers.UI_Manager.ShowPopupUI<UI_DefaultPopup>();
     }
 
-    void ShowOption2()
+    void ClickOption2()
     {
         if (dialogues[currentDialogueIndex + 1].IsNeedGold())
         {
@@ -309,8 +301,28 @@ public class UI_Communication : UI_Popup
                 Managers.Data.PlayerData.StatUpByDialogue(dialogues[currentDialogueIndex + 3].rewardStats[i]);
             }
         }
+        SetStoryIndex(dialogues[currentDialogueIndex + 3]);
         UI_DefaultPopup.SetDefaultPopupUI(DefaultPopupState.Normal, dialogues[currentDialogueIndex + 3].sentence, "확인");
         Managers.UI_Manager.ShowPopupUI<UI_DefaultPopup>();
     }
 
+    void SetStoryIndex(Dialogue dialogue)
+    {
+        if(dialogue.NextDialogueIndex<200 && dialogue.NextDialogueIndex>=100)
+        {
+            Managers.Data.PlayerData.MainStoryIndexs[0] = dialogue.NextDialogueIndex;
+        }
+        else if(dialogue.NextDialogueIndex<300)
+        {
+            Managers.Data.PlayerData.MainStoryIndexs[1] = dialogue.NextDialogueIndex;
+        }
+        else if(dialogue.NextDialogueIndex <400)
+        {
+            Managers.Data.PlayerData.MainStoryIndexs[2] = dialogue.NextDialogueIndex;
+        }
+        else
+        {
+            Debug.Log("다음 메인 스토리 인덱스 없음");
+        }
+    }
 }

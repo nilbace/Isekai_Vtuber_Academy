@@ -138,7 +138,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 Managers.instance.ShowReceipt();
                 break;
             case 20:
-                Managers.instance.ShowReceipt();
+                Managers.instance.ShowMainStory();
                 break;
         }
 

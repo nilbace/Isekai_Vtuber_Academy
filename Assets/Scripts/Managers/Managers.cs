@@ -144,7 +144,7 @@ public class Managers : MonoBehaviour
     {
         var HighestMainStat = Data.PlayerData.GetHigestMainStatName();
 
-        return Data.PlayerData.EndingIndexs[(int)HighestMainStat];
+        return Data.PlayerData.MainStoryIndexs[(int)HighestMainStat];
     }
 
      #endregion
