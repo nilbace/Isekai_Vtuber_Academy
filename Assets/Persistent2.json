@@ -1,0 +1,45 @@
+{
+    "BoughtAdPass": false,
+    "WatchedTutorial": true,
+    "WatchedScehdule": {
+        "keys": [
+            0,
+            4,
+            7,
+            9,
+            15,
+            21
+        ],
+        "values": [
+            true,
+            true,
+            true,
+            false,
+            true,
+            true
+        ]
+    },
+    "WatchedRandEvent": {
+        "keys": [],
+        "values": []
+    },
+    "WatchedEndingName": {
+        "keys": [],
+        "values": []
+    },
+    "OwnedNickname": {
+        "keys": [
+            0,
+            21
+        ],
+        "values": [
+            true,
+            true
+        ]
+    },
+    "_resetCount": 0,
+    "_bigSuccessCount": 0,
+    "_mmCount": 0,
+    "_coldCount": 0,
+    "_broadcastCount": 3
+}

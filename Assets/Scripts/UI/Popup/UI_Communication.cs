@@ -202,12 +202,8 @@ public class UI_Communication : UI_Popup
 
     void ShowImage(Dialogue dialogue)
     {
-        TurnOnImage(dialogue.isLeft, CharIMGs[(int)dialogue.Apperance]);
-
-    }
-
-    void TurnOnImage(bool isLeft, Sprite sprite)
-    {
+        bool isLeft = dialogue.isLeft;
+        Sprite sprite = CharIMGs[(int)dialogue.Apperance];
 
         GetImage((int)Images.LeftIMG).gameObject.SetActive(isLeft);
         GetImage((int)Images.LeftIMG).sprite = isLeft ? sprite : null;
@@ -217,6 +213,7 @@ public class UI_Communication : UI_Popup
         GetImage((int)Images.RightIMG).sprite = !isLeft ? sprite : null;
         GetImage((int)Images.RightIMG).color = !isLeft ? Color.white : Color.gray;
     }
+
 
     void ShowOptionBTN()
     {

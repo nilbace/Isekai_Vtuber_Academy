@@ -32,6 +32,11 @@ public class TutorialParser : MonoSingleton<TutorialParser>
         //이름
         temp.name = lines[0];
 
+        if (temp.name == "루비아") temp.Apperance = Apperance.Rubia_Default;
+        else if (temp.name == "유저") temp.Apperance = Apperance.User_Default;
+        else if (temp.name == "뮹뮹") temp.Apperance = Apperance.MM_Default;
+        else temp.Apperance = Apperance.Narration;
+
         //왼쪽 오른쪽
         if (lines[1] == "왼쪽")
             temp.isLeft = true;

@@ -205,7 +205,6 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
 
     void ChooseBubbleIMG(Dialogue dialogue)
     {
-        GetImage((int)Images.ChatBubbleIMG).color = alpha1;
         if (dialogue.name == "유저")
         {
             if (dialogue.isLeft) GetImage((int)Images.ChatBubbleIMG).sprite = BubbleIMGs[0];
@@ -221,35 +220,25 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
             if (dialogue.isLeft) GetImage((int)Images.ChatBubbleIMG).sprite = BubbleIMGs[4];
             else GetImage((int)Images.ChatBubbleIMG).sprite = BubbleIMGs[5];
         }
-        else if(dialogue.name == "대기" || dialogue.name == "진행")
-        {
-            GetImage((int)Images.ChatBubbleIMG).sprite = CharIMGs[3];
-        }
+        //빈칸은 투명 이미지
         else
         {
-            GetImage((int)Images.ChatBubbleIMG).sprite = BubbleIMGs[6];
+            GetImage((int)Images.ChatBubbleIMG).sprite = CharIMGs[13];
         }
     }
 
     void ShowCharImage(Dialogue dialogue)
     {
-        if (dialogue.name == "유저")
-        {
-            TurnOnImage(dialogue.isLeft, CharIMGs[0]);
-        }
-        else if (dialogue.name == "루비아")
-        {
-            TurnOnImage(dialogue.isLeft, CharIMGs[1]);
-        }
-        else if(dialogue.name == "대기" || dialogue.name == "진행")
-        {
-            //투명 이미지
-            TurnOnImage(dialogue.isLeft, CharIMGs[3]);
-        }
-        else
-        {
-            TurnOnImage(dialogue.isLeft, CharIMGs[2]);
-        }
+        bool isLeft = dialogue.isLeft;
+        Sprite sprite = CharIMGs[(int)dialogue.Apperance];
+
+        GetImage((int)Images.LeftIMG).gameObject.SetActive(isLeft);
+        GetImage((int)Images.LeftIMG).sprite = isLeft ? sprite : null;
+        GetImage((int)Images.LeftIMG).color = isLeft ? Color.white : Color.gray;
+
+        GetImage((int)Images.RightIMG).gameObject.SetActive(!isLeft);
+        GetImage((int)Images.RightIMG).sprite = !isLeft ? sprite : null;
+        GetImage((int)Images.RightIMG).color = !isLeft ? Color.white : Color.gray;
     }
 
     void SetCharAndBubbleYPoz(string poz)
@@ -441,17 +430,7 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
         FocusImg.GetComponent<RectTransform>().sizeDelta = new Vector3(0, 0, 0);
     }
 
-    void TurnOnImage(bool isLeft, Sprite sprite)
-    {
-        GetImage((int)Images.LeftIMG).gameObject.SetActive(isLeft);
-        GetImage((int)Images.LeftIMG).sprite = isLeft ? sprite : null;
-        GetImage((int)Images.LeftIMG).color = isLeft ? Color.white : Color.gray;
-
-        GetImage((int)Images.RightIMG).gameObject.SetActive(!isLeft);
-        GetImage((int)Images.RightIMG).sprite = !isLeft ? sprite : null;
-        GetImage((int)Images.RightIMG).color = !isLeft ? Color.white : Color.gray;
-    }
-
+  
     private void OnDisable()
     {
         Managers.Data.PersistentUser.WatchedTutorial = true;
