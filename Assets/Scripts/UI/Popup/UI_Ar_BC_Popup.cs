@@ -72,8 +72,9 @@ public class UI_Ar_BC_Popup : UI_Popup
             Infotext.text = oneDayScheduleData.ArchiveInfoText;
         }
      
-        if(tasktype !=null &&  (int)tasktype < (int)ScheduleType.Commission)
+        if(tasktype !=null &&   (int)tasktype < (int)ScheduleType.Commission)
         {
+            Debug.Log(tasktype); Debug.Log(oneDayScheduleData.RubiaAni);
             RubiaAnimator.SetTrigger(oneDayScheduleData.RubiaAni);
         }
         else
@@ -91,5 +92,6 @@ public class UI_Ar_BC_Popup : UI_Popup
     {
         isCold = false;
         isRunAway = false;
+        tasktype = null;
     }
 }

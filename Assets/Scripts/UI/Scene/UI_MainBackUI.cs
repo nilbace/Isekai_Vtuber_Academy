@@ -347,6 +347,7 @@ public class UI_MainBackUI : UI_Scene
 
     public void StartScreenAnimation(string KorName, string RubiaAniIndex = "")
     {
+        Debug.Log($"{KorName} Ω√¿€");
         var ScreenAnimator = Get<Animator>((int)Animators.ScreenIMG);
         var RubiaAnimator = Get<Animator>((int)Animators.RubiaIMG);
 
