@@ -24,6 +24,7 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
 
     bool isEnd;
 
+    public AlphaLerp alphaLerp;
     enum Texts { sentenceTMP, }
     enum Images
     {
@@ -289,10 +290,22 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
                 StartCoroutine(FollowSubcontent("BaseSong", dialogue.IsInteractable));
                 break;
 
+            case TutorialFocusPoint.StartScheduleBTN:
+                alphaLerp.maxAlpha = 0;
+                SetFocusImg(dialogue.tutorialFocus.ToString(), dialogue.IsInteractable);
+                break;
+
+            case TutorialFocusPoint.RecieptBackGroundIMG:
+                alphaLerp.maxAlpha = 0.36f;
+                SetFocusImg(dialogue.tutorialFocus.ToString(), dialogue.IsInteractable);
+                break;
+
 
             case TutorialFocusPoint.MaxCount:
                 FocusImgDisappear();
                 break;
+
+
 
             default:
                 SetFocusImg(dialogue.tutorialFocus.ToString(), dialogue.IsInteractable);
@@ -434,6 +447,5 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
     private void OnDisable()
     {
         Managers.Data.PersistentUser.WatchedTutorial = true;
-        Debug.Log("´Ù ºÃ´ÙÀ×");
     }
 }
