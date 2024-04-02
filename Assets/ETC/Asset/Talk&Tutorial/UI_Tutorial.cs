@@ -246,8 +246,8 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
     {
         if (poz == "위")
         {
-            GetImage((int)Images.LeftIMG).rectTransform.anchoredPosition = new Vector2(-75, 170);
-            GetImage((int)Images.RightIMG).rectTransform.anchoredPosition = new Vector2(80, 170);
+            GetImage((int)Images.LeftIMG).rectTransform.anchoredPosition = new Vector2(-75, 177);
+            GetImage((int)Images.RightIMG).rectTransform.anchoredPosition = new Vector2(80, 177);
             GetImage((int)Images.ChatBubbleIMG).rectTransform.anchoredPosition = new Vector2(0, 72);
         }
         else if (poz == "중간")
@@ -258,8 +258,8 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
         }
         else if (poz == "아래")
         {
-            GetImage((int)Images.LeftIMG).rectTransform.anchoredPosition = new Vector2(-75, -32);
-            GetImage((int)Images.RightIMG).rectTransform.anchoredPosition = new Vector2(80, -32);
+            GetImage((int)Images.LeftIMG).rectTransform.anchoredPosition = new Vector2(-75, -31);
+            GetImage((int)Images.RightIMG).rectTransform.anchoredPosition = new Vector2(80, -31);
             GetImage((int)Images.ChatBubbleIMG).rectTransform.anchoredPosition = new Vector2(0, -136);
         }
         else
