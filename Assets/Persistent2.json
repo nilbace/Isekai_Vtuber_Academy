@@ -14,10 +14,18 @@
         "values": []
     },
     "OwnedNickname": {
-        "keys": [],
-        "values": []
+        "keys": [
+            10,
+            0,
+            21
+        ],
+        "values": [
+            false,
+            true,
+            true
+        ]
     },
-    "_resetCount": 0,
+    "_resetCount": 1,
     "_bigSuccessCount": 0,
     "_mmCount": 0,
     "_coldCount": 0,
