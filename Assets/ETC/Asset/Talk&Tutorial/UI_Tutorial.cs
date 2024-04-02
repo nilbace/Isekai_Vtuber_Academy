@@ -252,15 +252,15 @@ public class UI_Tutorial : UI_Popup, IPointerClickHandler, IPointerDownHandler, 
         }
         else if (poz == "중간")
         {
-            GetImage((int)Images.LeftIMG).rectTransform.anchoredPosition = new Vector2(-75, -38);
-            GetImage((int)Images.RightIMG).rectTransform.anchoredPosition = new Vector2(80, -38);
-            GetImage((int)Images.ChatBubbleIMG).rectTransform.anchoredPosition = new Vector2(0, -136);
+            GetImage((int)Images.LeftIMG).rectTransform.anchoredPosition = new Vector2(-75, 5);
+            GetImage((int)Images.RightIMG).rectTransform.anchoredPosition = new Vector2(80, 5);
+            GetImage((int)Images.ChatBubbleIMG).rectTransform.anchoredPosition = new Vector2(0, -100);
         }
         else if (poz == "아래")
         {
             GetImage((int)Images.LeftIMG).rectTransform.anchoredPosition = new Vector2(-75, -32);
             GetImage((int)Images.RightIMG).rectTransform.anchoredPosition = new Vector2(80, -32);
-            GetImage((int)Images.ChatBubbleIMG).rectTransform.anchoredPosition = new Vector2(0, -130);
+            GetImage((int)Images.ChatBubbleIMG).rectTransform.anchoredPosition = new Vector2(0, -136);
         }
         else
             return;
