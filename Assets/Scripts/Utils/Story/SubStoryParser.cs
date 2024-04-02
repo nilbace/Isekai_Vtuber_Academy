@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,13 +39,24 @@ public class SubStoryParser : MonoSingleton<SubStoryParser>
 
         temp.name = lines[0];
 
+        if (lines[1] == "")
+        {
+            if (temp.name == "风厚酒") temp.Apperance = Apperance.Rubia_Default;
+            else if (temp.name == "蜡历") temp.Apperance = Apperance.User_Default;
+            else if (temp.name == "捓捓") temp.Apperance = Apperance.MM_Default;
+            else temp.Apperance = Apperance.Narration;
 
-        if (lines[1] == "哭率")
+        }
+        else
+            Enum.TryParse(lines[1], out temp.Apperance);
+
+
+        if (lines[2] == "哭率")
             temp.isLeft = true;
         else
             temp.isLeft = false;
 
-        temp.sentence = lines[2].ConvertEuroToNewline();
+        temp.sentence = lines[3].ConvertEuroToNewline();
 
         return temp;
     }
