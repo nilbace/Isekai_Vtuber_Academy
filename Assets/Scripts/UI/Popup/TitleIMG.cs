@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 
 public class TitleIMG : UI_Popup, IPointerClickHandler
 {
+    private const string BGMVolumeKey = "BGMVolume";
+    private const string SFXVolumeKey = "SFXVolume";
     public Image Title;
     public Image TouchToStart;
 
@@ -20,7 +22,43 @@ public class TitleIMG : UI_Popup, IPointerClickHandler
         StartCoroutine(LerpAlphaRepeat());
         StartCoroutine(LerpAlpha());
         Title.rectTransform.DOAnchorPosY(Title.rectTransform.anchoredPosition.y + 30f, duration);
+
+        SetSound();
     }
+
+    #region SoundInit()
+
+    void SetSound()
+    {
+        Managers.Sound.ChangeVolume(Define.Sound.Bgm, LoadBGMVolume());
+        Managers.Sound.ChangeVolume(Define.Sound.Effect, LoadSFXVolume());
+    }
+
+    public float LoadBGMVolume()
+    {
+        if (PlayerPrefs.HasKey(BGMVolumeKey))
+        {
+            return PlayerPrefs.GetFloat(BGMVolumeKey);
+        }
+        else
+        {
+            return 1.0f; // 기본값 설정
+        }
+    }
+
+    public float LoadSFXVolume()
+    {
+        if (PlayerPrefs.HasKey(SFXVolumeKey))
+        {
+            return PlayerPrefs.GetFloat(SFXVolumeKey);
+        }
+        else
+        {
+            return 1.0f; // 기본값 설정
+        }
+    }
+
+    #endregion
 
     private IEnumerator LerpAlphaRepeat()
     {

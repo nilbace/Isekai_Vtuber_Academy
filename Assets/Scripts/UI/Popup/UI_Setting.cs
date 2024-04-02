@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UI_Setting : UI_Popup
 {
+    private const string BGMVolumeKey = "BGMVolume";
+    private const string SFXVolumeKey = "SFXVolume";
 
     enum Buttons
     {
@@ -33,8 +35,10 @@ public class UI_Setting : UI_Popup
         GetButton((int)Buttons.CouponBTN).onClick.AddListener(CouponBTN);
 
         //이름 바뀐거 맞음 
-        BGMSlider.onValueChanged.AddListener(SFX_ValueChanged);
-        SFXSlider.onValueChanged.AddListener(BGM_ValueChanged);
+        BGMSlider.onValueChanged.AddListener(BGM_ValueChanged);
+        BGMSlider.value = LoadBGMVolume();
+        SFXSlider.onValueChanged.AddListener(SFX_ValueChanged);
+        SFXSlider.value = LoadSFXVolume();
     }
 
     void CloseBTN()
@@ -58,12 +62,38 @@ public class UI_Setting : UI_Popup
     void BGM_ValueChanged(float value)
     {
         Managers.Sound.ChangeVolume(Define.Sound.Bgm, value);
+        PlayerPrefs.SetFloat(BGMVolumeKey, value);
+        PlayerPrefs.Save();
     }
 
     void SFX_ValueChanged(float value)
     {
         Managers.Sound.ChangeVolume(Define.Sound.Effect, value);
+        PlayerPrefs.SetFloat(SFXVolumeKey, value);
+        PlayerPrefs.Save();
     }
 
-    
+    public float LoadBGMVolume()
+    {
+        if (PlayerPrefs.HasKey(BGMVolumeKey))
+        {
+            return PlayerPrefs.GetFloat(BGMVolumeKey);
+        }
+        else
+        {
+            return 1.0f; // 기본값 설정
+        }
+    }
+
+    public float LoadSFXVolume()
+    {
+        if (PlayerPrefs.HasKey(SFXVolumeKey))
+        {
+            return PlayerPrefs.GetFloat(SFXVolumeKey);
+        }
+        else
+        {
+            return 1.0f; // 기본값 설정
+        }
+    }
 }
