@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class AlphaLerp : MonoBehaviour
 {
-    public float minAlpha = 1/255f; // 최소 알파값
-    public float maxAlpha = 50f/255f; // 최대 알파값
+    public float minAlpha = 0f; // 최소 알파값
+    public float maxAlpha = 0.36f; // 최대 알파값
     public float lerpSpeed = 1f; // lerp 속도
 
     private float currentAlpha; // 현재 알파값
