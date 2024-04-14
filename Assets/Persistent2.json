@@ -1,6 +1,6 @@
 {
     "BoughtAdPass": false,
-    "WatchedTutorial": false,
+    "WatchedTutorial": true,
     "WatchedScehdule": {
         "keys": [
             0,
@@ -28,12 +28,18 @@
         "values": []
     },
     "OwnedNickname": {
-        "keys": [],
-        "values": []
+        "keys": [
+            0,
+            21
+        ],
+        "values": [
+            true,
+            true
+        ]
     },
     "_resetCount": 0,
     "_bigSuccessCount": 0,
     "_mmCount": 0,
     "_coldCount": 0,
-    "_broadcastCount": 6
+    "_broadcastCount": 9
 }
