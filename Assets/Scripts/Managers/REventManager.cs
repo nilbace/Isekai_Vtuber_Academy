@@ -200,7 +200,7 @@ public class REventManager
                 case StatName.Luck:
                     break;
                 
-                case StatName.Subs:
+                case StatName.Sub:
                     if (even.ReqStat <= Managers.Data.PlayerData.nowSubCount)
                     {
                         

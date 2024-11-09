@@ -240,21 +240,33 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 }
             }
 
-            float waitTime = isFastMode ? TimeToStamp / 2 : TimeToStamp;
-            if (isDev) waitTime = 0;
-            yield return new WaitForSeconds(waitTime);
+            
+
+            List<(StatName stat, float value)> ChangedList = new List<(StatName stat, float value)>();
+
+            
 
             //방송을 진행했다면 돈 구독자 증가
             if (oneDay.ContentType == ContentType.BroadCast)
             {
+                int beforeSub = Managers.Data.PlayerData.nowSubCount;
+                int beforeGold = Managers.Data.PlayerData.nowGoldAmount;
+
                 Managers.Data.PersistentUser.BroadcastCount++;
                 IncreaseSubsAndMoney(oneDay, bigSuccessMultiplier);
+
+                int changedSub = Managers.Data.PlayerData.nowSubCount - beforeSub;
+                int chagnedGold = Managers.Data.PlayerData.nowGoldAmount - beforeGold;
+
+                ChangedList.Add((StatName.Sub, changedSub));
+                ChangedList.Add((StatName.Gold, chagnedGold));
             }
 
-            List<(StatName stat, int value)> ChangedList = new List<(StatName stat, int value)>();
+            
 
-            //컨디션 변화
-            float HeartVariance; float StarVariance;
+            // 컨디션 변화
+            float HeartVariance;
+            float StarVariance;
             if (oneDay.ContentType == ContentType.Rest)
             {
                 HeartVariance = oneDay.HeartVariance * bigSuccessMultiplier;
@@ -265,20 +277,43 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 HeartVariance = oneDay.HeartVariance * GetSubStatProperty(StatName.Strength);
                 StarVariance = oneDay.StarVariance * GetSubStatProperty(StatName.Mental);
             }
-            Managers.Data.PlayerData.NowHeart = Mathf.Clamp(Mathf.CeilToInt(HeartVariance) + Managers.Data.PlayerData.NowHeart, 0, 100);
-            Managers.Data.PlayerData.NowStar = Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data.PlayerData.NowStar, 0, 100);
 
-            //스텟 변화
+            // 하트(Heart) 값 변경 및 리스트에 추가
+            float newHeartValue = Mathf.Clamp(Mathf.CeilToInt(HeartVariance) + Managers.Data.PlayerData.NowHeart, 0, 100);
+            if (newHeartValue != Managers.Data.PlayerData.NowHeart)
+            {
+                ChangedList.Add((StatName.Heart, newHeartValue - Managers.Data.PlayerData.NowHeart));
+            }
+            Managers.Data.PlayerData.NowHeart = newHeartValue;
+
+            // 별(Star) 값 변경 및 리스트에 추가
+            float newStarValue = Mathf.Clamp(Mathf.CeilToInt(StarVariance) + Managers.Data.PlayerData.NowStar, 0, 100);
+            if (newStarValue != Managers.Data.PlayerData.NowStar)
+            {
+                ChangedList.Add((StatName.Star, newStarValue - Managers.Data.PlayerData.NowStar));
+            }
+            Managers.Data.PlayerData.NowStar = newStarValue;
+
+            // 스탯 변화
             float[] tempstat = new float[6];
             for (int i = 0; i < 6; i++)
             {
                 tempstat[i] = oneDay.Six_Stats[i] * bigSuccessMultiplier;
+                float newStatValue = Mathf.Clamp(Mathf.CeilToInt(tempstat[i]) + Managers.Data.PlayerData.SixStat[i], 0, 200);
+
+                // 스탯 변화가 있으면 리스트에 추가
+                if (newStatValue != Managers.Data.PlayerData.SixStat[i])
+                {
+                    ChangedList.Add(((StatName)i, newStatValue - Managers.Data.PlayerData.SixStat[i]));
+                }
+                Managers.Data.PlayerData.SixStat[i] = newStatValue;
             }
 
-            
+            Managers.Data.PlayerData.ChangeStatAndPlayUIAnimation(ChangedList);
 
-
-            Managers.Data.PlayerData.ChangeStatAndPlayUIAnimation(tempstat);
+            float waitTime = isFastMode ? TimeToStamp / 2 : TimeToStamp;
+            if (isDev) waitTime = 0;
+            yield return new WaitForSeconds(waitTime);
         }
 
         
@@ -326,31 +361,27 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
     public List<PlusText> GetRandomFloatingTextPoz(int number)
     {
-        // 요청된 개수에 맞춰 반환할 리스트 초기화
         List<PlusText> randomPositions = new List<PlusText>();
-
-        // 중복 없이 랜덤 위치 선택을 위한 인덱스 리스트 생성
         List<int> indices = new List<int> { 0, 1, 2, 3 };
 
-        // number가 1~4 범위를 벗어나는 경우 예외 처리
-        if (number < 1 || number > 6)
-        {
-            throw new ArgumentOutOfRangeException(nameof(number), "The number must be between 1 and 4.");
-        }
-
-        // 중복 없이 number 개수만큼 랜덤으로 선택
         for (int i = 0; i < number; i++)
         {
+            // 필요한 경우, 인덱스 리스트를 재설정하여 중복 없이 다시 선택 가능하도록 함
+            if (indices.Count == 0)
+            {
+                indices = new List<int> { 0, 1, 2, 3 };
+            }
+
             int randIndex = UnityEngine.Random.Range(0, indices.Count);
             int selected = indices[randIndex];
 
-            // 선택된 위치를 리스트에 추가하고, 인덱스 제거
             randomPositions.Add(FloatingTextPozs[selected]);
             indices.RemoveAt(randIndex);
         }
 
         return randomPositions;
     }
+
 
 
 

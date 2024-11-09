@@ -8,9 +8,11 @@
             7,
             9,
             15,
-            21
+            21,
+            1
         ],
         "values": [
+            false,
             false,
             false,
             false,
@@ -20,8 +22,12 @@
         ]
     },
     "WatchedRandEvent": {
-        "keys": [],
-        "values": []
+        "keys": [
+            16
+        ],
+        "values": [
+            false
+        ]
     },
     "WatchedEndingName": {
         "keys": [],
@@ -41,5 +47,5 @@
     "_bigSuccessCount": 0,
     "_mmCount": 0,
     "_coldCount": 0,
-    "_broadcastCount": 9
+    "_broadcastCount": 19
 }

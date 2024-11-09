@@ -133,20 +133,20 @@ public class UI_SelectNickName : UI_Popup
 
         if (SelectedPrefix.MoneyValue != 0)
         {
-            GetText((int)Texts.InfoTMP).text += $"µ· {GetIconString(StatIcons.Gold)} +" + SelectedPrefix.MoneyValue + "\n";
+            GetText((int)Texts.InfoTMP).text += $"µ· {GetIconString(StatName.Gold)} +" + SelectedPrefix.MoneyValue + "\n";
         }
         if (SelectedSuffix.MoneyValue != 0)
         {
-            GetText((int)Texts.Info2TMP).text += $"µ· {GetIconString(StatIcons.Gold)} +" + SelectedSuffix.MoneyValue + "\n";
+            GetText((int)Texts.Info2TMP).text += $"µ· {GetIconString(StatName.Gold)} +" + SelectedSuffix.MoneyValue + "\n";
         }
 
         if (SelectedPrefix.SubCount != 0)
         {
-            GetText((int)Texts.InfoTMP).text += $"±¸µ¶ÀÚ {GetIconString(StatIcons.Sub)}+" + SelectedPrefix.SubCount;
+            GetText((int)Texts.InfoTMP).text += $"±¸µ¶ÀÚ {GetIconString(StatName.Sub)}+" + SelectedPrefix.SubCount;
         }
         if (SelectedSuffix.SubCount != 0)
         {
-            GetText((int)Texts.Info2TMP).text += $"±¸µ¶ÀÚ {GetIconString(StatIcons.Sub)}+" + SelectedSuffix.SubCount;
+            GetText((int)Texts.Info2TMP).text += $"±¸µ¶ÀÚ {GetIconString(StatName.Sub)}+" + SelectedSuffix.SubCount;
         }
 
         //¼±ÅÃµÈ ÄªÈ£´Â ºÓÀº ¸ð¾çÀ¸·Î

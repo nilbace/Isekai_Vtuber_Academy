@@ -75,7 +75,7 @@ public class UI_DefaultPopup : UI_Popup
     {
         int RewardValue = 2;
 
-        SetDefaultPopupUI(DefaultPopupState.WeeklyCommunicationReward, $"{GetIconString(StatIcons.Heart)}客 {GetIconString(StatIcons.Star)} {RewardValue}俺究", "快付勒");
+        SetDefaultPopupUI(DefaultPopupState.WeeklyCommunicationReward, $"{GetIconString(StatName.Heart)}客 {GetIconString(StatName.Star)} {RewardValue}俺究", "快付勒");
         Managers.Data.PlayerData.NowStar += RewardValue;
         Managers.Data.PlayerData.NowHeart += RewardValue;
         Managers.Data.PlayerData.WeeklyCommunicationRewarded = true;

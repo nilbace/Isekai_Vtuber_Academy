@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -47,7 +48,7 @@ public class Define
     #region StatName
     public enum StatName
     {
-        Game, Song, Draw, Strength, Mental, Luck, FALSE, Subs, Week, Karma, Heart, Star
+        Game, Song, Draw, Strength, Mental, Luck, Sub, Gold, BigSuccess, Success, Fail, Heart, Star, Ruby, Karma, Week, FALSE
     }
 
     public enum StatNameKor
@@ -286,31 +287,31 @@ public class Define
             switch (broadcastType)
             {
                 case BroadCastType.Healing:
-                    temp = GetIconString(StatIcons.Game);
+                    temp = GetIconString(StatName.Game);
                     break;
                 case BroadCastType.LOL:
-                    temp = GetIconString(StatIcons.Game);
+                    temp = GetIconString(StatName.Game);
                     break;
                 case BroadCastType.Horror:
-                    temp = GetIconString(StatIcons.Game);
+                    temp = GetIconString(StatName.Game);
                     break;
                 case BroadCastType.Challenge:
-                    temp = GetIconString(StatIcons.Game);
+                    temp = GetIconString(StatName.Game);
                     break;
                 case BroadCastType.Sing:
-                    temp = GetIconString(StatIcons.Song);
+                    temp = GetIconString(StatName.Song);
                     break;
                 case BroadCastType.PlayInst:
-                    temp = GetIconString(StatIcons.Song);
+                    temp = GetIconString(StatName.Song);
                     break;
                 case BroadCastType.Compose:
-                    temp = GetIconString(StatIcons.Song);
+                    temp = GetIconString(StatName.Song);
                     break;
                 case BroadCastType.Sketch:
-                    temp = GetIconString(StatIcons.Draw);
+                    temp = GetIconString(StatName.Draw);
                     break;
                 case BroadCastType.Commission:
-                    temp = GetIconString(StatIcons.Draw);
+                    temp = GetIconString(StatName.Draw);
                     break;
             }
             return temp;
@@ -473,8 +474,7 @@ public class Define
     }
 
 
-    public enum StatIcons { Game, Song, Draw, Strength, Mental, Luck, Sub, Gold, BigSuccess, Success, Fail, Heart, Star, Ruby }
-    public static string GetIconString(StatIcons stat)
+    public static string GetIconString(StatName stat)
     {
         string temp = $"<sprite={(int)stat}>";
         return temp;
@@ -633,6 +633,26 @@ public class Define
 
                     // PlusText.Inst.PlayAnimation((StatName)i, (int)stats[i], randomPoz);  // 필요에 따라 randomPoz 전달
                 }
+            }
+
+            UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
+        }
+
+
+        public void ChangeStatAndPlayUIAnimation(List<(StatName stat, float value)> stats)
+        {
+            // 중복 없는 랜덤 위치 리스트를 가져옴
+            List<PlusText> randomPositions = ScheduleExecuter.Inst.GetRandomFloatingTextPoz(stats.Count);
+
+            for (int i = 0; i < stats.Count; i++)
+            {
+                int index = i;
+
+                // 0.1초씩 텀을 두고 각 애니메이션을 실행
+                DOVirtual.DelayedCall(0.1f * index, () =>
+                {
+                    randomPositions[index].PlayAnimation(stats[index].stat, stats[index].value);
+                });
             }
 
             UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();

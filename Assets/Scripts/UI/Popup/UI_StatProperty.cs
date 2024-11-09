@@ -74,22 +74,22 @@ public class UI_StatProperty : UI_Popup
         //영준아 여기 고치고 주석 이거 한줄 통째로 지워줘
         if (stat == StatName.Game || stat == StatName.Song || stat == StatName.Draw)
         {
-            GetText((int)Texts.StatInfoTMP).text = $"  {GetIconString(StatIcons.Sub)} +{nowBonus.SubBonus}%, {GetIconString(StatIcons.Gold)} +{nowBonus.IncomeBonus}%";
+            GetText((int)Texts.StatInfoTMP).text = $"  {GetIconString(StatName.Sub)} +{nowBonus.SubBonus}%, {GetIconString(StatName.Gold)} +{nowBonus.IncomeBonus}%";
             GetText((int)Texts.StatNameTMP).text = GetStatKorName(stat) + " 실력";
         }
         else if(stat == StatName.Strength)
         {
-            GetText((int)Texts.StatInfoTMP).text = $"  {GetIconString(StatIcons.Heart)} 감소량 -{(SelectedStatTier * Managers.instance.Str_Men_ValuePerLevel * 100).RoundToString()}%";
+            GetText((int)Texts.StatInfoTMP).text = $"  {GetIconString(StatName.Heart)} 감소량 -{(SelectedStatTier * Managers.instance.Str_Men_ValuePerLevel * 100).RoundToString()}%";
             GetText((int)Texts.StatNameTMP).text = GetStatKorName(stat);
         }
         else if(stat == StatName.Mental)
         {
-            GetText((int)Texts.StatInfoTMP).text = $"  {GetIconString(StatIcons.Star)} 감소량 -{(SelectedStatTier *Managers.instance.Str_Men_ValuePerLevel * 100 ).RoundToString()}%";
+            GetText((int)Texts.StatInfoTMP).text = $"  {GetIconString(StatName.Star)} 감소량 -{(SelectedStatTier *Managers.instance.Str_Men_ValuePerLevel * 100 ).RoundToString()}%";
             GetText((int)Texts.StatNameTMP).text = GetStatKorName(stat);
         }
         else
         {
-            GetText((int)Texts.StatInfoTMP).text = $"  {GetIconString(StatIcons.BigSuccess)} 대성공 확률 {SelectedStatTier * Managers.instance.BigSuccessProbability}%";
+            GetText((int)Texts.StatInfoTMP).text = $"  {GetIconString(StatName.BigSuccess)} 대성공 확률 {SelectedStatTier * Managers.instance.BigSuccessProbability}%";
             GetText((int)Texts.StatNameTMP).text = GetStatKorName(stat);
         }
 
@@ -202,13 +202,13 @@ public class UI_StatProperty : UI_Popup
 
         string temp = "";
         if (stat == StatName.Game || stat == StatName.Song || stat == StatName.Draw)
-            temp = $"  {GetIconString(StatIcons.Sub)} +{temp2.SubBonus}%, {GetIconString(StatIcons.Gold)} +{temp2.IncomeBonus}%";
+            temp = $"  {GetIconString(StatName.Sub)} +{temp2.SubBonus}%, {GetIconString(StatName.Gold)} +{temp2.IncomeBonus}%";
         else if (stat == StatName.Strength)
-            temp = $"  {GetIconString(StatIcons.Heart)} 감소량 -{tier * Mathf.RoundToInt(Managers.instance.Str_Men_ValuePerLevel*100)}%";
+            temp = $"  {GetIconString(StatName.Heart)} 감소량 -{tier * Mathf.RoundToInt(Managers.instance.Str_Men_ValuePerLevel*100)}%";
         else if (stat == StatName.Mental)
-            temp = $"  {GetIconString(StatIcons.Star)} 감소량 -{tier * Mathf.RoundToInt(Managers.instance.Str_Men_ValuePerLevel * 100)}%";
+            temp = $"  {GetIconString(StatName.Star)} 감소량 -{tier * Mathf.RoundToInt(Managers.instance.Str_Men_ValuePerLevel * 100)}%";
         else
-            temp = $"  {GetIconString(StatIcons.BigSuccess)} 대성공 확률 {tier * Managers.instance.BigSuccessProbability}%";
+            temp = $"  {GetIconString(StatName.BigSuccess)} 대성공 확률 {tier * Managers.instance.BigSuccessProbability}%";
 
         return temp;
     }

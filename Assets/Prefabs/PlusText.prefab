@@ -148,4 +148,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveTime: 1.11
-  Offset: 7
+  Move_Y_Distance: 4.13

@@ -1,23 +1,27 @@
 {
-    "NowWeek": 1,
-    "nowSubCount": 10,
-    "nowGoldAmount": 5000,
+    "NowWeek": 3,
+    "nowSubCount": 870,
+    "nowGoldAmount": 19982,
     "RubiaKarma": 0,
-    "_nowHeart": 100.0,
+    "_nowHeart": 82.0,
     "WeeklyCommunicationRewarded": false,
-    "_nowStar": 100.0,
+    "_nowStar": 43.0,
     "SixStat": [
-        4.0,
+        14.0,
         4.0,
         4.0,
         0.0,
         0.0,
         10.0
     ],
-    "DoneEventNames": [],
+    "DoneEventNames": [
+        "표절논란"
+    ],
     "BoughtItems": [],
     "SubStoryIndex": [
-        24
+        24,
+        22,
+        1
     ],
     "NowNickName": "대담한 초보",
     "MainStoryIndexs": [

@@ -20,9 +20,11 @@ public class PlusText : MonoBehaviour
         InitPoz = rect.anchoredPosition;
     }
 
-    public void PlayAnimation(StatName statName, int value)
+    public void PlayAnimation(StatName statName, float value)
     {
-        text.text = "+" + value.ToString();
+        if (value > 0) text.color = Color.green;
+        else text.color = Color.red;
+        text.text = GetIconString((int)statName) + value.ToString("F0");
         int intValue = (int)statName;
         Vector2 offset = Vector2.zero;
 
@@ -49,7 +51,7 @@ public class PlusText : MonoBehaviour
 
         // 목표 위치 및 알파값 설정
         Vector2 targetPosition = initialPosition + new Vector2(0f, Move_Y_Distance);
-        float targetAlpha = 0f;
+        float targetAlpha = 0.6f;
 
         // 시간 변수 초기화
         float elapsedTime = 0f;
@@ -72,6 +74,7 @@ public class PlusText : MonoBehaviour
             yield return null;
         }
 
+        text.alpha = 0;
         // 애니메이션 종료 후 초기 상태로 되돌리기
         rect.anchoredPosition = initialPosition;
     }
