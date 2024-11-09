@@ -1,13 +1,13 @@
 {
-    "NowWeek": 3,
-    "nowSubCount": 870,
-    "nowGoldAmount": 19982,
+    "NowWeek": 5,
+    "nowSubCount": 1802,
+    "nowGoldAmount": 8981,
     "RubiaKarma": 0,
-    "_nowHeart": 82.0,
+    "_nowHeart": 100.0,
     "WeeklyCommunicationRewarded": false,
-    "_nowStar": 43.0,
+    "_nowStar": 62.0,
     "SixStat": [
-        14.0,
+        45.0,
         4.0,
         4.0,
         0.0,
@@ -21,11 +21,13 @@
     "SubStoryIndex": [
         24,
         22,
-        1
+        1,
+        23,
+        27
     ],
     "NowNickName": "대담한 초보",
     "MainStoryIndexs": [
-        100,
+        110,
         200,
         300
     ],

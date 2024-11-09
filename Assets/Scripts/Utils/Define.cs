@@ -649,7 +649,7 @@ public class Define
                 int index = i;
 
                 // 0.1초씩 텀을 두고 각 애니메이션을 실행
-                DOVirtual.DelayedCall(0.1f * index, () =>
+                DOVirtual.DelayedCall(0.15f * index, () =>
                 {
                     randomPositions[index].PlayAnimation(stats[index].stat, stats[index].value);
                 });

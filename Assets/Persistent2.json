@@ -9,9 +9,15 @@
             9,
             15,
             21,
-            1
+            1,
+            2,
+            10,
+            22
         ],
         "values": [
+            false,
+            false,
+            false,
             false,
             false,
             false,
@@ -47,5 +53,5 @@
     "_bigSuccessCount": 0,
     "_mmCount": 0,
     "_coldCount": 0,
-    "_broadcastCount": 19
+    "_broadcastCount": 25
 }

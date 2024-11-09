@@ -69,14 +69,14 @@ MonoBehaviour:
   m_text: <sprite=12>-5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 794ea1ffe25e4c14fa31159287b2daab, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 8a56bc7e3a013f042a527c70d801c227, type: 2}
+  m_sharedMaterial: {fileID: -7988046402754275766, guid: 794ea1ffe25e4c14fa31159287b2daab, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4285347752
-  m_fontColor: {r: 0.6603774, g: 0.21493416, b: 0.42770973, a: 1}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -147,5 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d9d47ef10af6b408f21908a449885e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveTime: 1.11
-  Move_Y_Distance: 4.13
+  MoveTime: 1.5
+  Move_Y_Distance: 6
+  PlusColor: {r: 1, g: 0.32156864, b: 0.32156864, a: 0}
+  MinusColor: {r: 0.41960788, g: 0.9568628, b: 0.5686275, a: 0}
