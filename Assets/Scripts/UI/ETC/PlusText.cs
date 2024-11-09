@@ -20,16 +20,19 @@ public class PlusText : MonoBehaviour
         InitPoz = rect.anchoredPosition;
     }
 
+    public Color PlusColor;
+    public Color MinusColor;
+
     public void PlayAnimation(StatName statName, float value)
     {
         if (value > 0)
         {
-            text.color = Color.green;
+            text.color = PlusColor;
             text.text = GetIconString((int)statName) + "+" + value.ToString("F0");
         }
         else
         {
-            text.color = Color.red;
+            text.color = MinusColor;
             text.text = GetIconString((int)statName) + value.ToString("F0");
         }
 
