@@ -147,6 +147,14 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
     }
 
+    private void FinishTextAni()
+    {
+        foreach(var item in FloatingTextPozs)
+        {
+            item.StopAllCoroutines();
+            item.text.alpha = 0;
+        }
+    }
     public IEnumerator ExecuteOneDayWork(OneDayScheduleData oneDay, int DayIndex, bool isFastMode)
     {
         //√ ±‚»≠

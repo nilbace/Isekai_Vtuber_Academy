@@ -7,7 +7,7 @@ using static Define;
 
 public class PlusText : MonoBehaviour
 {
-    TMP_Text text;
+    public TMP_Text text;
     RectTransform rect;
     public float MoveTime;
     public float Move_Y_Distance;
@@ -17,7 +17,7 @@ public class PlusText : MonoBehaviour
     {
         text = GetComponent<TMP_Text>();
         rect = GetComponent<RectTransform>();
-        InitPoz = rect.anchoredPosition;
+        InitPoz = Vector2.zero;
     }
 
     public Color PlusColor;
