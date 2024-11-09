@@ -22,9 +22,17 @@ public class PlusText : MonoBehaviour
 
     public void PlayAnimation(StatName statName, float value)
     {
-        if (value > 0) text.color = Color.green;
-        else text.color = Color.red;
-        text.text = GetIconString((int)statName) + value.ToString("F0");
+        if (value > 0)
+        {
+            text.color = Color.green;
+            text.text = GetIconString((int)statName) + "+" + value.ToString("F0");
+        }
+        else
+        {
+            text.color = Color.red;
+            text.text = GetIconString((int)statName) + value.ToString("F0");
+        }
+
         int intValue = (int)statName;
         Vector2 offset = Vector2.zero;
 
