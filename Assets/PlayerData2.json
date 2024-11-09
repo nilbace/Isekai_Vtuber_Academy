@@ -1,33 +1,40 @@
 {
-    "NowWeek": 5,
-    "nowSubCount": 1802,
-    "nowGoldAmount": 8981,
+    "NowWeek": 9,
+    "nowSubCount": 4215,
+    "nowGoldAmount": 5469,
     "RubiaKarma": 0,
     "_nowHeart": 100.0,
     "WeeklyCommunicationRewarded": false,
-    "_nowStar": 62.0,
+    "_nowStar": 100.0,
     "SixStat": [
-        45.0,
+        75.0,
         4.0,
         4.0,
-        0.0,
+        5.0,
         0.0,
         10.0
     ],
     "DoneEventNames": [
-        "표절논란"
+        "표절논란",
+        "스카이 다이빙"
     ],
-    "BoughtItems": [],
+    "BoughtItems": [
+        "멘드레이크 쥬스"
+    ],
     "SubStoryIndex": [
         24,
         22,
         1,
         23,
-        27
+        27,
+        15,
+        28,
+        16,
+        7
     ],
     "NowNickName": "대담한 초보",
     "MainStoryIndexs": [
-        110,
+        120,
         200,
         300
     ],

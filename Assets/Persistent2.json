@@ -29,9 +29,11 @@
     },
     "WatchedRandEvent": {
         "keys": [
-            16
+            16,
+            8
         ],
         "values": [
+            false,
             false
         ]
     },
@@ -53,5 +55,5 @@
     "_bigSuccessCount": 0,
     "_mmCount": 0,
     "_coldCount": 0,
-    "_broadcastCount": 25
+    "_broadcastCount": 38
 }

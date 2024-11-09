@@ -64,6 +64,11 @@ public class PlusText : MonoBehaviour
         Vector2 targetPosition = initialPosition + new Vector2(0f, Move_Y_Distance);
         float targetAlpha = 0.6f;
 
+        // 알파값 변화에 필요한 시간 설정
+        float alphaChangeDuration = 1f; // 알파값이 변화하는 시간
+        float waitBeforeAlphaChange = 1f; // 알파값 변화 전 대기 시간
+        float alphaElapsedTime = 0f; // 알파값 변화에 대한 경과 시간
+
         // 시간 변수 초기화
         float elapsedTime = 0f;
 
@@ -77,7 +82,18 @@ public class PlusText : MonoBehaviour
             rect.anchoredPosition = Vector2.Lerp(initialPosition, targetPosition, t);
 
             // 알파값 변경
-            text.alpha = Mathf.Lerp(initialAlpha, targetAlpha, t);
+            //text.alpha = Mathf.Lerp(initialAlpha, targetAlpha, t);
+
+            // 일정 시간 대기 후에 알파값 변경
+            if (elapsedTime >= waitBeforeAlphaChange)
+            {
+                if (alphaElapsedTime < alphaChangeDuration)
+                {
+                    alphaElapsedTime += Time.deltaTime;
+                    float alphaT = alphaElapsedTime / alphaChangeDuration;
+                    text.alpha = Mathf.Lerp(initialAlpha, targetAlpha, alphaT);
+                }
+            }
 
             // 시간 업데이트
             elapsedTime += Time.deltaTime;

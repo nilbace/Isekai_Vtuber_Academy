@@ -147,7 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d9d47ef10af6b408f21908a449885e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveTime: 1.5
-  Move_Y_Distance: 6
-  PlusColor: {r: 1, g: 0.32156864, b: 0.32156864, a: 0}
-  MinusColor: {r: 0.41960788, g: 0.9568628, b: 0.5686275, a: 0}
+  text: {fileID: 0}
+  MoveTime: 1.8
+  Move_Y_Distance: 7
+  PlusColor: {r: 0.41960785, g: 0.95686275, b: 0.5686275, a: 0}
+  MinusColor: {r: 1, g: 0.32156864, b: 0.32156864, a: 0}
