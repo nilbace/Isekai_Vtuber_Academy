@@ -28,6 +28,8 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     bool caughtCold = false; 
     bool caughtDepression = false;
 
+    public PlusText[] FloatingTextPozs;
+
     void SetAniSpeed(int speed)
     {
         SetAniSpeedAction?.Invoke(speed);
@@ -249,6 +251,8 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 IncreaseSubsAndMoney(oneDay, bigSuccessMultiplier);
             }
 
+            List<(StatName stat, int value)> ChangedList = new List<(StatName stat, int value)>();
+
             //컨디션 변화
             float HeartVariance; float StarVariance;
             if (oneDay.ContentType == ContentType.Rest)
@@ -270,6 +274,10 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
             {
                 tempstat[i] = oneDay.Six_Stats[i] * bigSuccessMultiplier;
             }
+
+            
+
+
             Managers.Data.PlayerData.ChangeStatAndPlayUIAnimation(tempstat);
         }
 
@@ -315,8 +323,39 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     }
 
 
+
+    public List<PlusText> GetRandomFloatingTextPoz(int number)
+    {
+        // 요청된 개수에 맞춰 반환할 리스트 초기화
+        List<PlusText> randomPositions = new List<PlusText>();
+
+        // 중복 없이 랜덤 위치 선택을 위한 인덱스 리스트 생성
+        List<int> indices = new List<int> { 0, 1, 2, 3 };
+
+        // number가 1~4 범위를 벗어나는 경우 예외 처리
+        if (number < 1 || number > 6)
+        {
+            throw new ArgumentOutOfRangeException(nameof(number), "The number must be between 1 and 4.");
+        }
+
+        // 중복 없이 number 개수만큼 랜덤으로 선택
+        for (int i = 0; i < number; i++)
+        {
+            int randIndex = UnityEngine.Random.Range(0, indices.Count);
+            int selected = indices[randIndex];
+
+            // 선택된 위치를 리스트에 추가하고, 인덱스 제거
+            randomPositions.Add(FloatingTextPozs[selected]);
+            indices.RemoveAt(randIndex);
+        }
+
+        return randomPositions;
+    }
+
+
+
     #region Sick__BigSuccess
-    
+
 
     //감기에 걸리거나 가출함
     void Check_illnessProbability()

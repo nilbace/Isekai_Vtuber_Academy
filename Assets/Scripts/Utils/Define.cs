@@ -604,18 +604,41 @@ public class Define
 
         public void ChangeStatAndPlayUIAnimation(float[] stats)
         {
+            // stats 배열에서 0이 아닌 항목의 개수를 계산
+            int nonZeroCount = 0;
+            for (int i = 0; i < stats.Length; i++)
+            {
+                if (stats[i] != 0)
+                {
+                    nonZeroCount++;
+                }
+            }
+
+            // 중복 없는 랜덤 위치 리스트를 가져옴
+            List<PlusText> randomPositions = ScheduleExecuter.Inst.GetRandomFloatingTextPoz(nonZeroCount);
+            int positionIndex = 0;
+
             for (int i = 0; i < 6; i++)
             {
                 SixStat[i] += stats[i];
                 SixStat[i] = Mathf.Clamp(SixStat[i], 0, 200);
+
                 if (stats[i] != 0)
                 {
                     UI_MainBackUI.instance.GlitterStat(i);
-                    PlusText.Inst.PlayAnimation((StatName)i, (int)stats[i]);
+
+                    // 랜덤 위치 리스트에서 순차적으로 위치를 가져와 사용
+                    var randomPoz = randomPositions[positionIndex];
+                    positionIndex++;
+
+                    // PlusText.Inst.PlayAnimation((StatName)i, (int)stats[i], randomPoz);  // 필요에 따라 randomPoz 전달
                 }
             }
+
             UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
         }
+
+
 
         public void StatUpByDialogue(RewardStat rewardStat)
         {

@@ -5,12 +5,12 @@ using TMPro;
 using DG.Tweening;
 using static Define;
 
-public class PlusText : MonoSingleton<PlusText>
+public class PlusText : MonoBehaviour
 {
     TMP_Text text;
     RectTransform rect;
     public float MoveTime;
-    public float Offset;
+    public float Move_Y_Distance;
     Vector2 InitPoz;
     
     void Start()
@@ -48,7 +48,7 @@ public class PlusText : MonoSingleton<PlusText>
         float initialAlpha = 1f;
 
         // 목표 위치 및 알파값 설정
-        Vector2 targetPosition = initialPosition + new Vector2(0f, Offset);
+        Vector2 targetPosition = initialPosition + new Vector2(0f, Move_Y_Distance);
         float targetAlpha = 0f;
 
         // 시간 변수 초기화
