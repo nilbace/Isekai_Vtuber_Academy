@@ -157,6 +157,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     }
     public IEnumerator ExecuteOneDayWork(OneDayScheduleData oneDay, int DayIndex, bool isFastMode)
     {
+        FinishTextAni();
         //√ ±‚»≠
         bool todaySick = false;
         BigSuccess = false;

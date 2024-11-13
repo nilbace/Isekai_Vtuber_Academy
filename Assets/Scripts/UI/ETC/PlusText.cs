@@ -25,6 +25,9 @@ public class PlusText : MonoBehaviour
 
     public void PlayAnimation(StatName statName, float value)
     {
+        Debug.Log(Time.time);
+
+        //값 음수, 양수에 따라 구분
         if (value > 0)
         {
             text.color = PlusColor;
@@ -71,7 +74,7 @@ public class PlusText : MonoBehaviour
 
         // 시간 변수 초기화
         float elapsedTime = 0f;
-
+        text.alpha = 1;
         // 애니메이션 진행
         while (elapsedTime < MoveTime)
         {

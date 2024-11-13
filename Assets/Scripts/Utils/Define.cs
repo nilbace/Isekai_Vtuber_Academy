@@ -644,19 +644,28 @@ public class Define
             // 중복 없는 랜덤 위치 리스트를 가져옴
             List<PlusText> randomPositions = ScheduleExecuter.Inst.GetRandomFloatingTextPoz(stats.Count);
 
+            // DOTween Sequence 생성
+            Sequence sequence = DOTween.Sequence();
+
             for (int i = 0; i < stats.Count; i++)
             {
                 int index = i;
 
-                // 0.1초씩 텀을 두고 각 애니메이션을 실행
-                DOVirtual.DelayedCall(0.15f * index, () =>
+                // 각 애니메이션을 순차적으로 실행하며 0.15초 간격을 둠
+                sequence.AppendCallback(() =>
                 {
                     randomPositions[index].PlayAnimation(stats[index].stat, stats[index].value);
                 });
+                sequence.AppendInterval(0.15f); // 0.15초 간격
             }
 
-            UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
+            // 시퀀스가 끝난 후 UI 업데이트
+            sequence.OnComplete(() =>
+            {
+                UI_MainBackUI.instance.UpdateUItextsAndCheckNickname();
+            });
         }
+
 
 
 
