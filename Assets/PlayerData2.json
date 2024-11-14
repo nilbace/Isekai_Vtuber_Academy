@@ -1,27 +1,30 @@
 {
-    "NowWeek": 15,
-    "nowSubCount": 16984,
-    "nowGoldAmount": 39027,
+    "NowWeek": 20,
+    "nowSubCount": 41269,
+    "nowGoldAmount": 75657,
     "RubiaKarma": 0,
-    "_nowHeart": 100.0,
+    "_nowHeart": 96.0,
     "WeeklyCommunicationRewarded": false,
-    "_nowStar": 55.0,
+    "_nowStar": 51.0,
     "SixStat": [
-        125.0,
+        174.0,
         4.0,
         4.0,
         5.0,
         0.0,
-        10.0
+        14.0
     ],
     "DoneEventNames": [
         "표절논란",
         "스카이 다이빙",
-        "잼민이 맞짱"
+        "잼민이 맞짱",
+        "술 헤롱헤롱"
     ],
     "BoughtItems": [
         "멘드레이크 쥬스",
-        "도적의 장갑"
+        "도적의 장갑",
+        "호문쿨루스 소환서",
+        "불사조의 알 후라이"
     ],
     "SubStoryIndex": [
         24,
@@ -38,11 +41,16 @@
         3,
         12,
         4,
-        9
+        9,
+        29,
+        17,
+        6,
+        11,
+        14
     ],
     "NowNickName": "대담한 초보",
     "MainStoryIndexs": [
-        130,
+        140,
         200,
         300
     ],

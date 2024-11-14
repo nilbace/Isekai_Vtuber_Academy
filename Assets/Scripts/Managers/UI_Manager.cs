@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Define;
 
 public class UI_Manager
 {
@@ -101,6 +102,7 @@ public class UI_Manager
         popup = null;
 
         _order--;
+
     }
 
     public void CloseALlPopupUI()

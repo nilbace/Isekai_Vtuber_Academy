@@ -11,11 +11,10 @@ public class MainStoryParser : MonoSingleton<MainStoryParser>
     public List<Dialogue> Dialogues = new List<Dialogue>();
   
      TextAsset LoadMainStory(string Name)
-    {
-        Debug.Log(Name);
+     {
         TextAsset text = Resources.Load<TextAsset>($"MainStory/{Name}");
         return text;
-    }
+     }
   
     public void StartStory(int mainStoryIndex)
     {
@@ -28,6 +27,7 @@ public class MainStoryParser : MonoSingleton<MainStoryParser>
         UI_Communication.instance.StartDiagloue(Dialogues);
         UI_Communication.instance.HideSkipBTN();
     }
+
 
     Dialogue DebugSetence(string dialogue)
     {
@@ -83,5 +83,48 @@ public class MainStoryParser : MonoSingleton<MainStoryParser>
 
         return temp;
     }
+
+    public void ParseDialogueList(List<Dialogue> dialogues)
+    {
+        var parsedDialogues = new List<Dialogue>();
+
+        foreach (var dialogue in dialogues)
+        {
+            var temp = new Dialogue();
+
+            // 이름 설정
+            temp.name = dialogue.name;
+
+            // 등장 모습 설정
+            if (temp.name == "루비아") temp.Apperance = Apperance.Rubia_Default;
+            else if (temp.name == "유저") temp.Apperance = Apperance.User_Default;
+            else if (temp.name == "뮹뮹") temp.Apperance = Apperance.MM_Default;
+            else temp.Apperance = Apperance.Narration;
+
+            // 대화 위치 설정 (왼쪽/오른쪽)
+            temp.isLeft = dialogue.isLeft;
+
+            // 문장을 엔터 변환하여 설정
+            temp.sentence = dialogue.sentence.ConvertEuroToNewline();
+
+            // 나머지 보상 및 다음 인덱스 설정
+            temp.CostGold = dialogue.CostGold;
+            temp.NextDialogueIndex = dialogue.NextDialogueIndex;
+
+            foreach (var reward in dialogue.rewardStats)
+            {
+                RewardStat rewardStat = new RewardStat();
+                rewardStat.StatName = reward.StatName;
+                rewardStat.Value = reward.Value;
+                temp.rewardStats.Add(rewardStat);
+            }
+
+            parsedDialogues.Add(temp);
+        }
+
+        UI_Communication.instance.StartDiagloue(parsedDialogues);
+        UI_Communication.instance.HideSkipBTN();
+    }
+
 
 }

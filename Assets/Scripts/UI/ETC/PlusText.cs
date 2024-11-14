@@ -25,7 +25,6 @@ public class PlusText : MonoBehaviour
 
     public void PlayAnimation(StatName statName, float value)
     {
-        Debug.Log(Time.time);
 
         //값 음수, 양수에 따라 구분
         if (value > 0)

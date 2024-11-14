@@ -23,12 +23,20 @@ public class UI_Communication : UI_Popup
     public float MoveTime;
     public float PeriodScale;
 
-    public bool IsWeeklyCommunication = false;
+    /// <summary>
+    /// X4X 이후 나오는 엔딩스토리라면은
+    /// </summary>
+    public bool isEndingStory;
+    /// <summary>
+    /// 보상 없는 주간 잡담
+    /// </summary>
+    public bool IsWeeklyCommunication { get; set; }
     bool isEnd;
 
     enum Texts { sentenceTMP, Option1TMP, Option2TMP }
     enum Images 
-    {   LeftIMG, 
+    {   
+        LeftIMG, 
         RightIMG,
         ChatBubbleIMG
     }
@@ -142,13 +150,31 @@ public class UI_Communication : UI_Popup
 
     void EndDialogue()
     {
+        //엔딩 X4X 이후 나오는 스토리라면은
+        if(isEndingStory)
+        {
+            Managers.UI_Manager.ClosePopupUI();
+            return;
+        }
+
         if(IsWeeklyCommunication && !Managers.Data.PlayerData.WeeklyCommunicationRewarded)
         {
             UI_DefaultPopup.WeeklyCommuncationEnd();
             return;
         }
+
+        if(Managers.Data.PlayerData.NowWeek==20)
+        {
+            Managers.instance.ShowEndingStory();
+            return;
+        }
+
         Managers.UI_Manager.ClosePopupUI();
     }
+
+
+   
+
 
     IEnumerator TypeSentence(Dialogue dialogue)
     {

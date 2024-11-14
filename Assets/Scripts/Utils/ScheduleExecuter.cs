@@ -140,6 +140,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 Managers.instance.ShowReceipt();
                 break;
             case 20:
+                //Managers.instance.ShowEndingStory();
                 Managers.instance.ShowMainStory();
                 break;
         }
@@ -163,6 +164,9 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         BigSuccess = false;
         UI_Stamp.Inst.SetStamp(UI_Stamp.StampState.transparent);
         float bigSuccessMultiplier =1f;
+
+        //애니메이션 연출용 변화 스텟 기억용 변수
+        List<(StatName stat, float value)> ChangedList = new List<(StatName stat, float value)>();
 
         //FastMode라면 2배속, 아니면 1배속
         SetAniSpeed(isFastMode ? 2 : 1);
@@ -191,10 +195,26 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         //아픈 첫번쨋날, 두번쨋날 실행되는 부분
         if (isSick)
         {
+            var beforeStar = Managers.Data.PlayerData.NowStar;
+            var beforeHeart = Managers.Data.PlayerData.NowHeart;
+
             todaySick = true;
             ExecuteSickDay(oneDay);
             //실패 카운트 증가
             SuccessTimeContainer[2]++;
+
+            var heartDiff = Managers.Data.PlayerData.NowHeart - beforeHeart;
+            var starDiff =  Managers.Data.PlayerData.NowStar- beforeStar;
+
+            if(heartDiff != 0)
+            {
+                ChangedList.Add((StatName.Heart, heartDiff));
+            }
+            if(starDiff != 0)
+            {
+                ChangedList.Add((StatName.Star, starDiff));
+            }
+            Managers.Data.PlayerData.ChangeStatAndPlayUIAnimation(ChangedList);
 
             float waitTime = isFastMode ? TimeToStamp / 2 : TimeToStamp;
             if (isDev) waitTime = 0;
@@ -249,12 +269,6 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 }
             }
 
-            
-
-            List<(StatName stat, float value)> ChangedList = new List<(StatName stat, float value)>();
-
-            
-
             //방송을 진행했다면 돈 구독자 증가
             if (oneDay.ContentType == ContentType.BroadCast)
             {
@@ -270,8 +284,6 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
                 ChangedList.Add((StatName.Sub, changedSub));
                 ChangedList.Add((StatName.Gold, chagnedGold));
             }
-
-            
 
             // 컨디션 변화
             float HeartVariance;
@@ -371,14 +383,14 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     public List<PlusText> GetRandomFloatingTextPoz(int number)
     {
         List<PlusText> randomPositions = new List<PlusText>();
-        List<int> indices = new List<int> { 0, 1, 2, 3 };
+        List<int> indices = new List<int> { 0, 1, 2, 3,4 };
 
         for (int i = 0; i < number; i++)
         {
             // 필요한 경우, 인덱스 리스트를 재설정하여 중복 없이 다시 선택 가능하도록 함
             if (indices.Count == 0)
             {
-                indices = new List<int> { 0, 1, 2, 3 };
+                indices = new List<int> { 0, 1, 2, 3,4 };
             }
 
             int randIndex = UnityEngine.Random.Range(0, indices.Count);

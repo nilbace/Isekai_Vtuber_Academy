@@ -146,8 +146,65 @@ public class Managers : MonoBehaviour
 
         return Data.PlayerData.MainStoryIndexs[(int)HighestMainStat];
     }
+    #region 엔딩
 
-     #endregion
+    public void ShowEndingStory()
+    {
+        StartCoroutine(ShowEndingStoryCor());
+    }
+    private    IEnumerator ShowEndingStoryCor()
+    {
+        UI_Manager.ClosePopupUI();
+
+        var story = UI_Manager.ShowPopupUI<UI_Communication>();
+        story.isEndingStory = true;
+        var mainParser = story.GetComponent<MainStoryParser>();
+        yield return new WaitForEndOfFrame();
+        if (mainParser != null)
+        {
+            Debug.Log("성공");
+            mainParser.ParseDialogueList(EndingDefaultStory());
+        }
+    }
+
+    private List<Dialogue> EndingDefaultStory()
+    {
+        var newDialogue = new List<Dialogue>();
+
+        newDialogue.Add(new Dialogue("뮹뮹", "......", false));
+        newDialogue.Add(new Dialogue("뮹뮹", "뮤웅...뮹...€어느덧 20주가 지났다뮹.", false));
+        newDialogue.Add(new Dialogue("뮹뮹", "루비아와 함께한€20주는 어땟냐뮹?", false));
+        int nowMainIndex = Data.PlayerData.MainStoryIndexs[(int)Data.PlayerData.GetHigestMainStatName()];
+        Debug.Log(nowMainIndex);
+        newDialogue.Add(new Dialogue("뮹뮹", "곁에서 지켜보기엔...€훌륭한 시간을 보낸 것 같다뮹!", false));
+        newDialogue.Add(new Dialogue("뮹뮹", $"루비아는 {Managers.Data.PlayerData.nowSubCount}명의 €하수인을 거느리게 되었고", false));
+        switch (Managers.Data.PlayerData.GetHigestMainStatName())
+        {
+            case StatName.Game:
+                newDialogue.Add(new Dialogue("뮹뮹", $"게임에 재능을 보여 ", false));
+                newDialogue.Add(new Dialogue("뮹뮹", $"{Managers.Data.PlayerData.SixStat[0]}만큼의€능력을 보유하게 되었다뮹!", false));
+                break;
+            case StatName.Song:
+                newDialogue.Add(new Dialogue("뮹뮹", $"노래에 재능을 보여 ", false));
+                newDialogue.Add(new Dialogue("뮹뮹", $"{Managers.Data.PlayerData.SixStat[1]}만큼의€능력을 보유하게 되었다뮹!", false));
+                break;
+            case StatName.Draw:
+                newDialogue.Add(new Dialogue("뮹뮹", $"그림에 재능을 보여 ", false));
+                newDialogue.Add(new Dialogue("뮹뮹", $"{Managers.Data.PlayerData.SixStat[2]}만큼의€능력을 보유하게 되었다뮹!", false));
+                break;
+        }
+        newDialogue.Add(new Dialogue("뮹뮹", $"꾸준한 운동을 통해 €{Managers.Data.PlayerData.SixStat[3]}만큼의 근력을,", false));
+        newDialogue.Add(new Dialogue("뮹뮹", $"차분한 명상을 통해 €{Managers.Data.PlayerData.SixStat[4]}만큼의 멘탈을,", false));
+        newDialogue.Add(new Dialogue("뮹뮹", $"간절한 기도을 통해 €{Managers.Data.PlayerData.SixStat[5]}만큼의 행운을 얻었다뮹!", false));
+        newDialogue.Add(new Dialogue("뮹뮹", $"그럼 이제 루비아가 어떤 결말을 €맞이하게 될 지 알아보러 가자뮹!", false));
+
+
+        return newDialogue;
+    }
+
+    #endregion
+
+    #endregion
 
 
 

@@ -9,10 +9,7 @@ public class SubStoryParser : MonoSingleton<SubStoryParser>
     public TextAsset[] Stories;
 
     public List<Dialogue> Dialogues = new List<Dialogue>();
-    private void Awake()
-    {
-        base.Awake();
-    }
+ 
 
     TextAsset LoadSubStory(int storyindex)
     {

@@ -33,9 +33,11 @@
         "keys": [
             16,
             8,
-            2
+            2,
+            11
         ],
         "values": [
+            false,
             false,
             false,
             false
@@ -48,16 +50,18 @@
     "OwnedNickname": {
         "keys": [
             0,
-            21
+            21,
+            39
         ],
         "values": [
             true,
-            true
+            true,
+            false
         ]
     },
     "_resetCount": 0,
     "_bigSuccessCount": 0,
     "_mmCount": 0,
     "_coldCount": 0,
-    "_broadcastCount": 62
+    "_broadcastCount": 82
 }
