@@ -29,6 +29,7 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     bool caughtDepression = false;
 
     public PlusText[] FloatingTextPozs;
+    public float FloatingTextOffset;
 
     void SetAniSpeed(int speed)
     {

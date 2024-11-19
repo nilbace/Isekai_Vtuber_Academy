@@ -58,9 +58,15 @@ public class PlusText : MonoBehaviour
 
     private IEnumerator AnimationCoroutine()
     {
+
+        var offset = ScheduleExecuter.Inst.FloatingTextOffset;
+        Vector2 randPoz = new Vector2(UnityEngine.Random.Range(0, offset), UnityEngine.Random.Range(0, offset));
+
         // 초기 위치 및 알파값 설정
-        Vector2 initialPosition = rect.anchoredPosition;
+        Vector2 initialPosition = rect.anchoredPosition + randPoz;
         float initialAlpha = 1f;
+
+        
 
         // 목표 위치 및 알파값 설정
         Vector2 targetPosition = initialPosition + new Vector2(0f, Move_Y_Distance);
