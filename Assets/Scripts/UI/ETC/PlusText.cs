@@ -12,12 +12,13 @@ public class PlusText : MonoBehaviour
     public float MoveTime;
     public float Move_Y_Distance;
     Vector2 InitPoz;
-    
+
     void Start()
     {
         text = GetComponent<TMP_Text>();
         rect = GetComponent<RectTransform>();
-        InitPoz = Vector2.zero;
+        InitPoz = rect.anchoredPosition;
+        text.DOFade(0, 0);
     }
 
     public Color PlusColor;
@@ -25,7 +26,6 @@ public class PlusText : MonoBehaviour
 
     public void PlayAnimation(StatName statName, float value)
     {
-
         //값 음수, 양수에 따라 구분
         if (value > 0)
         {
@@ -58,12 +58,8 @@ public class PlusText : MonoBehaviour
 
     private IEnumerator AnimationCoroutine()
     {
-
-        var offset = ScheduleExecuter.Inst.FloatingTextOffset;
-        Vector2 randPoz = new Vector2(UnityEngine.Random.Range(0, offset), UnityEngine.Random.Range(0, offset));
-
         // 초기 위치 및 알파값 설정
-        Vector2 initialPosition = rect.anchoredPosition + randPoz;
+        Vector2 initialPosition = InitPoz;
         float initialAlpha = 1f;
 
         

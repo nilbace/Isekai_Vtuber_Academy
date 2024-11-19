@@ -27,10 +27,6 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
     bool isSick = false; 
     bool caughtCold = false; 
     bool caughtDepression = false;
-
-    public PlusText[] FloatingTextPozs;
-    public float FloatingTextOffset;
-
     void SetAniSpeed(int speed)
     {
         SetAniSpeedAction?.Invoke(speed);
@@ -151,11 +147,11 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
 
     private void FinishTextAni()
     {
-        foreach(var item in FloatingTextPozs)
-        {
-            item.StopAllCoroutines();
-            item.text.alpha = 0;
-        }
+        //foreach(var item in FloatingTextPozs)
+        //{
+        //    item.StopAllCoroutines();
+        //    item.text.alpha = 0;
+        //}
     }
     public IEnumerator ExecuteOneDayWork(OneDayScheduleData oneDay, int DayIndex, bool isFastMode)
     {
@@ -378,33 +374,6 @@ public class ScheduleExecuter : MonoSingleton<ScheduleExecuter>
         }
 
     }
-
-
-
-    public List<PlusText> GetRandomFloatingTextPoz(int number)
-    {
-        List<PlusText> randomPositions = new List<PlusText>();
-        List<int> indices = new List<int> { 0, 1, 2, 3,4 };
-
-        for (int i = 0; i < number; i++)
-        {
-            // 필요한 경우, 인덱스 리스트를 재설정하여 중복 없이 다시 선택 가능하도록 함
-            if (indices.Count == 0)
-            {
-                indices = new List<int> { 0, 1, 2, 3,4 };
-            }
-
-            int randIndex = UnityEngine.Random.Range(0, indices.Count);
-            int selected = indices[randIndex];
-
-            randomPositions.Add(FloatingTextPozs[selected]);
-            indices.RemoveAt(randIndex);
-        }
-
-        return randomPositions;
-    }
-
-
 
 
     #region Sick__BigSuccess

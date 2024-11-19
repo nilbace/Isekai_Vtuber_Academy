@@ -2,6 +2,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -614,10 +615,6 @@ public class Define
                 }
             }
 
-            // 중복 없는 랜덤 위치 리스트를 가져옴
-            List<PlusText> randomPositions = ScheduleExecuter.Inst.GetRandomFloatingTextPoz(nonZeroCount);
-            int positionIndex = 0;
-
             for (int i = 0; i < 6; i++)
             {
                 SixStat[i] += stats[i];
@@ -626,12 +623,6 @@ public class Define
                 if (stats[i] != 0)
                 {
                     UI_MainBackUI.instance.GlitterStat(i);
-
-                    // 랜덤 위치 리스트에서 순차적으로 위치를 가져와 사용
-                    var randomPoz = randomPositions[positionIndex];
-                    positionIndex++;
-
-                    // PlusText.Inst.PlayAnimation((StatName)i, (int)stats[i], randomPoz);  // 필요에 따라 randomPoz 전달
                 }
             }
 
@@ -641,8 +632,13 @@ public class Define
 
         public void ChangeStatAndPlayUIAnimation(List<(StatName stat, float value)> stats)
         {
-            // 중복 없는 랜덤 위치 리스트를 가져옴
-            List<PlusText> randomPositions = ScheduleExecuter.Inst.GetRandomFloatingTextPoz(stats.Count);
+            stats = stats.OrderBy(x => UnityEngine.Random.value).ToList();
+
+            List<PlusText> floatingTexts = new List<PlusText>();
+            for(int i = 0;i<stats.Count;i++)
+            {
+                floatingTexts.Add(UI_FloatingTextParent.Inst.GetText(stats[i].stat));
+            }
 
             // DOTween Sequence 생성
             Sequence sequence = DOTween.Sequence();
@@ -654,7 +650,7 @@ public class Define
                 // 각 애니메이션을 순차적으로 실행하며 0.15초 간격을 둠
                 sequence.AppendCallback(() =>
                 {
-                    randomPositions[index].PlayAnimation(stats[index].stat, stats[index].value);
+                    floatingTexts[index].PlayAnimation(stats[index].stat, stats[index].value);
                 });
                 sequence.AppendInterval(0.15f); // 0.15초 간격
             }
